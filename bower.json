@@ -1,0 +1,29 @@
+{
+  "name": "JobWorld",
+  "homepage": "https://github.com/ohhapday/jobworld",
+  "authors": [
+    "SJS <ohhapday@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "2.2.4",
+    "bootstrap": "3.3.6",
+    "select2": "4.0.3",
+    "eonasdan-bootstrap-datetimepicker": "4.17.47",
+    "iCheck": "icheck#^1.0.2",
+    "requirejs": "^2.3.3",
+    "moment": "^2.18.1",
+    "numeral": "^2.0.6",
+    "ckeditor": "^4.6.2"
+  }
+}

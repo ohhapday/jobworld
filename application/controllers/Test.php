@@ -19,11 +19,12 @@ class Test extends CI_Controller {
     {
         $this->load->view('welcome_message');
 
-        $query = "
+        /*$query = "
             SELECT * FROM db_test
         ";
         $result = $this->db->query($query)->result();
 
         var_dump($result);
+*/
     }
 }
