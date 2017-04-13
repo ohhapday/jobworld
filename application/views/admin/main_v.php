@@ -4,13 +4,13 @@
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 	<title>드림증권 투자시스템</title>
-	<link rel="stylesheet" type="text/css" href="../dist/css/common.css" />
-	<link rel="stylesheet" type="text/css" href="../dist/css/layout.css" />
-	<link rel="stylesheet" type="text/css" href="../dist/css/content.css" />
-	<script src="../js/jquery-1.11.2.min.js"></script>
-	<script src="../js/common.js"></script>
+	<link rel="stylesheet" type="text/css" href="/dist/css/common.css" />
+	<link rel="stylesheet" type="text/css" href="/dist/css/layout.css" />
+	<link rel="stylesheet" type="text/css" href="/dist/css/content.css" />
+	<script src="/dist/js/jquery-1.11.2.min.js"></script>
+	<script src="/dist/js/common.js"></script>
 	<!--[if lt IE 9]>
-	    <script src="../js/html5shiv.js"></script>
+	    <script src="/dist/js/html5shiv.js"></script>
 	<![endif]-->
 
 </head>
@@ -26,7 +26,7 @@
 <!-- header -->
 <header id="header">
 	<div class="area_logo">
-		<h1><a href="#"><img src="../images/logo_ad.png" alt="드림증권 투자시스템"></a></h1>
+		<h1><a href="#"><img src="/dist/images/logo_ad.png" alt="드림증권 투자시스템"></a></h1>
 		<div class="area_mem">
 			<span class="member"><strong>직원명</strong>님이 로그인하셨습니다.</span>
 			<span class="time">10:10:10</span>
@@ -162,7 +162,7 @@
 				<h3 class="ic2">데이터 초기화</h3>
 			</div>
 			<div class="sbleftdat">
-				<div class="btn_refresh"><a href="#"><img src="../images/btn_refresh.png" alt=""> 모든 데이터를 초기화 합니다.</a></div>
+				<div class="btn_refresh"><a href="#"><img src="/dist/images/btn_refresh.png" alt=""> 모든 데이터를 초기화 합니다.</a></div>
 			</div>
 			<div class="sb_tit">
 				<h3 class="ic3">체험 순서 선택</h3>
