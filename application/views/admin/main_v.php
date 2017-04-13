@@ -13,6 +13,9 @@
 	    <script src="/dist/js/html5shiv.js"></script>
 	<![endif]-->
 
+	<script src="/dist/js/require-config.js"></script>
+	<script src="/bower_components/requirejs/require.js" data-main="/dist/js/app/approval/prev_draft.js"></script>
+
 </head>
 <body>
 
