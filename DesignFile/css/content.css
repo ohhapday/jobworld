@@ -128,7 +128,7 @@
 .box_sbbtm .ar_btm_dt .dttit{overflow: hidden; padding: 25px 40px 26px 40px; background: #eee8d8;}
 .box_sbbtm .ar_btm_dt .dttit > strong{float: left; width: 15%; box-sizing: border-box; padding-top: 15px; background: url(../images/ico_bgtit.png) no-repeat 0 0; font-size: 1.125em;}
 .box_sbbtm .ar_btm_dt .dttit > span{float: left; width: 50%; padding-top: 18px;}
-.box_sbbtm .ar_btm_dt .btn_buyc{position: absolute; top: 121px; right: 50px; padding: 5px 10px; border: 1px solid #6e6b6b; border-radius: 5px;}
+.box_sbbtm .ar_btm_dt .btn_buyc{position: absolute; top: 121px; right: 50px; padding: 5px 10px; padding: 5px 20px 5px 40px; border-radius: 5px; background:#fdc236 url(../images/ico_bt1.png) no-repeat 15px 10px; color: #fff;}
 .box_sbbtm .ar_btm_dt .dtlist{padding: 35px 40px 36px 40px;}
 .box_sbbtm .ar_btm_dt .dtlist li{float: left; width: 48%;}
 .box_sbbtm .ar_btm_dt .dtlist li strong{float: left; width: 40%; padding-right: 10px; padding-left: 15px; background: url(../images/ico_dt1.png) no-repeat 0 13px; box-sizing: border-box;}

@@ -17,6 +17,17 @@ class Admin extends CI_Controller {
 
     public function main()
     {
-        $this->load->view('admin/index_v');
+        $this->load->view('admin/main_v');
+    }
+
+    /**
+     * get 운영자용 페이지 데이터
+     */
+    public function get_admin_main()
+    {
+        $return = new stdClass();
+        $return->user;
+
+        json_encode($return);
     }
 }

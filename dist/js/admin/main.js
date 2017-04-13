@@ -10,8 +10,17 @@ requirejs([
 ], function ($, bootstrap) {
     "use strict";
 
-    let approval_action = location.pathname.split('/')[3],      // 결재 형태
-        document_no = location.pathname.split('/')[4],          // 문서 번호
-        form_no = location.pathname.split('/')[5];              // 양식 번호
+    let approval_action = location.pathname.split('/')[3];
+    let w_data = null;
+
+    $.ajax({
+        async: false,
+        dataType: 'json',
+        type: 'get',
+        url: '',
+        success: function (data, status, xhr) {
+            w_data = data;
+        }
+    });
 });
 
