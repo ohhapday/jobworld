@@ -20,6 +20,7 @@ var requirejs = ({
         /* 사용자 정의 플러그인 */
         'session': '../dist/js/common/session',
         'myFn': '../dist/js/common/myFn',
+        'common': '../dist/js/common',
     },
     shim: {
         'bootstrap': ['jquery'],
@@ -39,5 +40,7 @@ var requirejs = ({
             deps: ['jquery']
         },
         'jquery-slimscroll': ['jquery'],
+        /* 사용자 정의 */
+        'common': ['jquery'],
     }
 });

@@ -7,14 +7,13 @@
 	<link rel="stylesheet" type="text/css" href="/dist/css/common.css" />
 	<link rel="stylesheet" type="text/css" href="/dist/css/layout.css" />
 	<link rel="stylesheet" type="text/css" href="/dist/css/content.css" />
-	<script src="/dist/js/jquery-1.11.2.min.js"></script>
-	<script src="/dist/js/common.js"></script>
+
 	<!--[if lt IE 9]>
 	    <script src="/dist/js/html5shiv.js"></script>
 	<![endif]-->
 
 	<script src="/dist/js/require-config.js"></script>
-	<script src="/bower_components/requirejs/require.js" data-main="/dist/js/app/approval/prev_draft.js"></script>
+	<script src="/bower_components/requirejs/require.js" data-main="/dist/js/admin/main.js"></script>
 
 </head>
 <body>

@@ -1,4 +1,3 @@
-
 $(function(){
 
 	$('#gnb > ul > li').mouseover(function(){
@@ -10,18 +9,11 @@ $(function(){
 		$('.wrap_layerpop').hide();
 	});
 
-	//sizeContent();
 	clickev();
 });
 
-/*$(window).resize(sizeContent);
-//Dynamically assign height
-function sizeContent() {
-	var newHeight = $("html").height() - $("#header").height();
-	$("#container").css("height", newHeight);
-}*/
-
 function clickev(){
+	console.log('test');
 	$('.box_chkt .txt_in .tit_top button').click(function(){
 		$(this).toggleClass('on');
 		$(this).parent().parent().siblings('.tes').toggleClass('on');
