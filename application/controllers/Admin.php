@@ -17,6 +17,6 @@ class Admin extends CI_Controller {
 
     public function main()
     {
-        $this->load->view('admin/main_v');
+        $this->load->view('admin/index_v');
     }
 }
