@@ -8,14 +8,14 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Test extends CI_Controller {
+class Admin extends CI_Controller {
 
     function __construct()
     {
         parent::__construct();
     }
 
-    public function index()
+    public function main()
     {
         $this->load->view('admin/main_v');
     }
