@@ -8,6 +8,7 @@ var requirejs = ({
     paths: {
         // 플러그인 정의
         'jquery': 'jquery/dist/jquery.min',
+        'jquery-ui': 'jquery-ui/jquery-ui.min',
         'bootstrap': 'bootstrap/dist/js/bootstrap',
         'icheck': 'iCheck/icheck.min',
         'select2': 'select2/dist/js/select2.min',

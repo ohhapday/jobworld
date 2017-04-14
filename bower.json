@@ -27,6 +27,7 @@
     "ckeditor": "^4.6.2",
     "jquery-loading": "1.2.0",
     "jquery-slimscroll": "jquery-slimScroll#1.3.8",
-    "html5shiv": "3.7.3"
+    "html5shiv": "3.7.3",
+    "jquery-ui": "1.12.1"
   }
 }

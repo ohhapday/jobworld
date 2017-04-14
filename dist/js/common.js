@@ -13,7 +13,6 @@ $(function(){
 });
 
 function clickev(){
-	console.log('test');
 	$('.box_chkt .txt_in .tit_top button').click(function(){
 		$(this).toggleClass('on');
 		$(this).parent().parent().siblings('.tes').toggleClass('on');

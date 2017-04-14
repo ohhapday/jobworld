@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>드림증권 투자시스템</title>
-	<link rel="stylesheet" type="text/css" href="/dist/css/common.css" />
-	<link rel="stylesheet" type="text/css" href="/dist/css/layout.css" />
-	<link rel="stylesheet" type="text/css" href="/dist/css/content.css" />
+	<link rel="stylesheet" type="text/css" href="/dist/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/dist/css/layout.css"/>
+	<link rel="stylesheet" type="text/css" href="/dist/css/content.css"/>
 
 	<!--[if lt IE 9]>
 	<script src="/dist/js/html5shiv.js"></script>
@@ -19,10 +19,10 @@
 <body>
 
 <div id="skip">
-  <ul>
-    <li><a href="#container">본문 바로가기</a></li>
-    <li><a href="#gnb">주 메뉴 바로가기</a></li>
-  </ul>
+	<ul>
+		<li><a href="#container">본문 바로가기</a></li>
+		<li><a href="#gnb">주 메뉴 바로가기</a></li>
+	</ul>
 </div>
 
 <!-- header -->
@@ -30,8 +30,8 @@
 	<div class="area_logo">
 		<h1><a href="#"><img src="/dist/images/logo_ad.png" alt="드림증권 투자시스템"></a></h1>
 		<div class="area_mem">
-			<span class="member"><strong>직원명</strong>님이 로그인하셨습니다.</span>
-			<span class="time">10:10:10</span>
+			<span class="member"><strong>운영자</strong>님이 로그인하셨습니다.</span>
+			<span class="time">0:0:0</span>
 		</div>
 	</div>
 </header>
@@ -53,33 +53,33 @@
 							<col style="width: 33%;">
 						</colgroup>
 						<thead>
-							<tr>
-								<th scope="col">순번</th>
-								<th scope="col">직원명</th>
-								<th scope="col">남/여</th>
-							</tr>
+						<tr>
+							<th scope="col">순번</th>
+							<th scope="col">직원명</th>
+							<th scope="col">남/여</th>
+						</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>홍길동</td>
-								<td>남</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>홍길동</td>
-								<td>여</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>홍길동</td>
-								<td>여</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>홍길동</td>
-								<td>여</td>
-							</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
 						</tbody>
 					</table>
 				</div>
@@ -91,33 +91,33 @@
 							<col style="width: 33%;">
 						</colgroup>
 						<thead>
-							<tr>
-								<th scope="col">순번</th>
-								<th scope="col">직원명</th>
-								<th scope="col">남/여</th>
-							</tr>
+						<tr>
+							<th scope="col">순번</th>
+							<th scope="col">직원명</th>
+							<th scope="col">남/여</th>
+						</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>홍길동</td>
-								<td>남</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>홍길동</td>
-								<td>여</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>홍길동</td>
-								<td>여</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>홍길동</td>
-								<td>여</td>
-							</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
 						</tbody>
 					</table>
 				</div>
@@ -129,33 +129,33 @@
 							<col style="width: 33%;">
 						</colgroup>
 						<thead>
-							<tr>
-								<th scope="col">순번</th>
-								<th scope="col">직원명</th>
-								<th scope="col">남/여</th>
-							</tr>
+						<tr>
+							<th scope="col">순번</th>
+							<th scope="col">직원명</th>
+							<th scope="col">남/여</th>
+						</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>홍길동</td>
-								<td>남</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>홍길동</td>
-								<td>여</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>홍길동</td>
-								<td>여</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>홍길동</td>
-								<td>여</td>
-							</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
 						</tbody>
 					</table>
 				</div>
@@ -164,7 +164,12 @@
 				<h3 class="ic2">데이터 초기화</h3>
 			</div>
 			<div class="sbleftdat">
-				<div class="btn_refresh"><a href="#"><img src="/dist/images/btn_refresh.png" alt=""> 모든 데이터를 초기화 합니다.</a></div>
+				<div class="btn_refresh">
+					<a href="#">
+						<img src="/dist/images/btn_refresh.png" alt=""> 모든 데이터를 초기화
+						합니다.
+					</a>
+				</div>
 			</div>
 			<div class="sb_tit">
 				<h3 class="ic3">체험 순서 선택</h3>
@@ -172,9 +177,15 @@
 			<div class="sbleftdat">
 				<div class="bx_chk_list clfix">
 					<ul>
-						<li><button type="button" class="on">펀드 체험</button></li>
-						<li><button type="button">채권 체험</button></li>
-						<li><button type="button">투자 체험</button></li>
+						<li>
+							<button type="button" class="on">펀드 체험</button>
+						</li>
+						<li>
+							<button type="button">채권 체험</button>
+						</li>
+						<li>
+							<button type="button">투자 체험</button>
+						</li>
 					</ul>
 					<div class="btn_conf"><a href="">확정</a></div>
 				</div>
@@ -185,9 +196,15 @@
 			<div class="sbleftdat">
 				<div class="bx_chk_list clfix">
 					<ul>
-						<li><button type="button" class="on">1단계 <span>초보</span></button></li>
-						<li><button type="button">1단계 <span>중간</span></button></li>
-						<li><button type="button">3단계 <span>고수</span></button></li>
+						<li>
+							<button type="button" class="on">1단계 <span>초보</span></button>
+						</li>
+						<li>
+							<button type="button">1단계 <span>중간</span></button>
+						</li>
+						<li>
+							<button type="button">3단계 <span>고수</span></button>
+						</li>
 					</ul>
 					<div class="btn_conf"><a href="">확정</a></div>
 				</div>
@@ -218,8 +235,10 @@
 			</div>
 			<div class="bx_tablist">
 				<div class="tab">
-					<div class="tabmenu m1 on"><a href="#" class="btn_tb">이 시간 뉴스</a><a href="#" class="btn_mod">수정</a></div>
-					<div class="tabmenu m2"><a href="#" class="btn_tb">애널리스트 분석</a><a href="#" class="btn_mod">수정</a></div>
+					<div class="tabmenu m1 on"><a href="#" class="btn_tb">이 시간 뉴스</a><a href="#" class="btn_mod">수정</a>
+					</div>
+					<div class="tabmenu m2"><a href="#" class="btn_tb">애널리스트 분석</a><a href="#" class="btn_mod">수정</a>
+					</div>
 				</div>
 				<div class="btmtbl">
 					<div class="box_tbllist">
@@ -230,28 +249,28 @@
 								<col style="width: 33%;">
 							</colgroup>
 							<thead>
-								<tr>
-									<th scope="col">전송</th>
-									<th scope="col">종목 영향</th>
-									<th scope="col">등락 반영</th>
-								</tr>
+							<tr>
+								<th scope="col">전송</th>
+								<th scope="col">종목 영향</th>
+								<th scope="col">등락 반영</th>
+							</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td><a href="" class="btn_send">전송</a></td>
-									<td>제약</td>
-									<td>오름</td>
-								</tr>
-								<tr>
-									<td><a href="" class="btn_sendon">전송됨</a></td>
-									<td>제약</td>
-									<td>내림</td>
-								</tr>
-								<tr>
-									<td><a href="" class="btn_send">전송</a></td>
-									<td>제약</td>
-									<td>내림</td>
-								</tr>
+							<tr>
+								<td><a href="" class="btn_send">전송</a></td>
+								<td>제약</td>
+								<td>오름</td>
+							</tr>
+							<tr>
+								<td><a href="" class="btn_sendon">전송됨</a></td>
+								<td>제약</td>
+								<td>내림</td>
+							</tr>
+							<tr>
+								<td><a href="" class="btn_send">전송</a></td>
+								<td>제약</td>
+								<td>내림</td>
+							</tr>
 							</tbody>
 						</table>
 					</div>
