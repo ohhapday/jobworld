@@ -178,16 +178,16 @@
 				<div class="bx_chk_list clfix">
 					<ul>
 						<li>
-							<button type="button" class="on">펀드 체험</button>
+							<button type="button">펀드 체험</button>
 						</li>
 						<li>
 							<button type="button">채권 체험</button>
 						</li>
 						<li>
-							<button type="button">투자 체험</button>
+							<button type="button">주식 체험</button>
 						</li>
 					</ul>
-					<div class="btn_conf"><a href="">확정</a></div>
+					<div class="btn_conf"><a href="#">확정</a></div>
 				</div>
 			</div>
 			<div class="sb_tit">
@@ -197,7 +197,7 @@
 				<div class="bx_chk_list clfix">
 					<ul>
 						<li>
-							<button type="button" class="on">1단계 <span>초보</span></button>
+							<button type="button">1단계 <span>초보</span></button>
 						</li>
 						<li>
 							<button type="button">1단계 <span>중간</span></button>
@@ -206,7 +206,7 @@
 							<button type="button">3단계 <span>고수</span></button>
 						</li>
 					</ul>
-					<div class="btn_conf"><a href="">확정</a></div>
+					<div class="btn_conf"><a href="#">확정</a></div>
 				</div>
 			</div>
 		</div>
@@ -235,9 +235,13 @@
 			</div>
 			<div class="bx_tablist">
 				<div class="tab">
-					<div class="tabmenu m1 on"><a href="#" class="btn_tb">이 시간 뉴스</a><a href="#" class="btn_mod">수정</a>
+					<div class="tabmenu m1 on">
+						<a href="#" class="btn_tb">이 시간 뉴스</a>
+						<a href="#" class="btn_mod">수정</a>
 					</div>
-					<div class="tabmenu m2"><a href="#" class="btn_tb">애널리스트 분석</a><a href="#" class="btn_mod">수정</a>
+					<div class="tabmenu m2">
+						<a href="#" class="btn_tb">애널리스트 분석</a>
+						<a href="#" class="btn_mod hidden">수정</a>
 					</div>
 				</div>
 				<div class="btmtbl">
@@ -257,18 +261,53 @@
 							</thead>
 							<tbody>
 							<tr>
-								<td><a href="" class="btn_send">전송</a></td>
+								<td><a href="#" class="btn_send">전송</a></td>
 								<td>제약</td>
 								<td>오름</td>
 							</tr>
 							<tr>
-								<td><a href="" class="btn_sendon">전송됨</a></td>
+								<td><a href="#" class="btn_sendon">전송됨</a></td>
 								<td>제약</td>
 								<td>내림</td>
 							</tr>
 							<tr>
-								<td><a href="" class="btn_send">전송</a></td>
+								<td><a href="#" class="btn_send">전송</a></td>
 								<td>제약</td>
+								<td>내림</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="btmtbl" style="display: none;">
+					<div class="box_tbllist">
+						<table>
+							<colgroup>
+								<col style="width: 33%;">
+								<col style="width: 33%;">
+								<col style="width: 33%;">
+							</colgroup>
+							<thead>
+							<tr>
+								<th scope="col">전송</th>
+								<th scope="col">종목 영향</th>
+								<th scope="col">등락 반영</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td><a href="#" class="btn_send">전송</a></td>
+								<td>애널리스트</td>
+								<td>오름</td>
+							</tr>
+							<tr>
+								<td><a href="#" class="btn_sendon">전송됨</a></td>
+								<td>애널리스트</td>
+								<td>내림</td>
+							</tr>
+							<tr>
+								<td><a href="#" class="btn_send">전송</a></td>
+								<td>애널리스트</td>
 								<td>내림</td>
 							</tr>
 							</tbody>
@@ -280,6 +319,396 @@
 	</div>
 </div>
 <!-- //content -->
+
+<!-- 정합환경설정 pop -->
+<div class="wrap_layerpop" style="display: none;">
+
+	<div class="layerpop pop9">
+		<div class="box_titpop">
+			<h2>종합환경설정</h2>
+			<div class="btn_close">
+				<button type="button">닫기</button>
+			</div>
+		</div>
+		<div class="box_codein" style="padding-top: 3em;">
+			<div class="lcode hidden">
+				<span>종합코드명</span>
+				<input type="text">
+			</div>
+			<a href="#" class="btn_search">조회</a>
+		</div>
+		<div class="box_contpop">
+			<div class="box_tbllist col2fl">
+				<table>
+					<colgroup>
+						<col style="width: 20%;">
+						<col style="width: 30%;">
+						<col style="width: 50%;">
+					</colgroup>
+					<thead>
+					<tr>
+						<th scope="col">No</th>
+						<th scope="col">코드</th>
+						<th scope="col">코드명</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr class="hidden">
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="box_tbllist col2fr hidden">
+				<table>
+					<colgroup>
+						<col style="width: 20%;">
+						<col style="width: 40%;">
+						<col style="width: 40%;">
+					</colgroup>
+					<thead>
+					<tr>
+						<th scope="col">No</th>
+						<th scope="col">설정코드</th>
+						<th scope="col">설정정보</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr class="hidden">
+						<td>1</td>
+						<td>01</td>
+						<td>100,000</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="btn_popbtm">
+			<span class="btn_blk"><a href="#">저장</a></span>
+		</div>
+	</div>
+
+</div>
+<!-- //layer pop -->
+
+<!-- 채권 관리 pop -->
+<div class="wrap_layerpop" style="display: none;">
+
+	<div class="layerpop pop10">
+		<div class="box_titpop">
+			<h2>채권 관리</h2>
+			<div class="btn_close">
+				<button type="button">닫기</button>
+			</div>
+		</div>
+		<div class="btn_sl">
+			<a href="" class="btn_search hidden">조회</a>
+		</div>
+		<div class="box_contpop">
+			<div class="box_tbllist">
+				<table>
+					<colgroup>
+						<col style="width: 5%;">
+						<col style="width: 9%;">
+						<col style="width: 21%;">
+						<col style="width: 12%;">
+						<col style="width: 12%;">
+						<col style="width: 9%;">
+						<col style="width: 10%;">
+						<col style="width: 12%;">
+						<col style="width: 10%;">
+					</colgroup>
+					<thead>
+					<tr>
+						<th scope="col">No</th>
+						<th scope="col">표준코드</th>
+						<th scope="col">채권명</th>
+						<th scope="col">채권규모</th>
+						<th scope="col">만기일</th>
+						<th scope="col">기준가격</th>
+						<th scope="col">예상수익률</th>
+						<th scope="col">이자계산주기</th>
+						<th scope="col">구분</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr class="hidden">
+						<td></td>
+						<td></td>
+						<td>
+							<div style=" text-overflow:ellipsis; overflow:hidden; white-space:nowrap;"
+								 data-toggle="tooltip" data-placement="left"
+								 title=""></div>
+						</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="btn_popbtm">
+			<span class="btn_blk"><a href="#">저장</a></span>
+		</div>
+	</div>
+
+</div>
+<!-- //layer pop -->
+
+<!-- 주식종목관리 pop -->
+<div class="wrap_layerpop" style="display: none;">
+
+	<div class="layerpop pop9">
+		<div class="box_titpop">
+			<h2>주식종목관리</h2>
+			<div class="btn_close">
+				<button type="button">닫기</button>
+			</div>
+		</div>
+		<div class="btn_sl">
+			<a href="#" class="btn_search">조회</a>
+		</div>
+		<div class="box_contpop">
+			<div class="box_tbllist col2fl" style="height: 300px; overflow-y: auto;">
+				<table>
+					<colgroup>
+						<col style="width: 20%;">
+						<col style="width: 30%;">
+						<col style="width: 50%;">
+					</colgroup>
+					<thead>
+					<tr>
+						<th scope="col">No</th>
+						<th scope="col">종목코드</th>
+						<th scope="col">종목명</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr class="hidden">
+						<td>1</td>
+						<td>23456</td>
+						<td>삼성전자</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="box_tbllist col2fr hidden" style="height: 300px; overflow-y: auto;">
+				<table>
+					<colgroup>
+						<col style="width: 20%;">
+						<col style="width: 40%;">
+						<col style="width: 40%;">
+					</colgroup>
+					<thead>
+					<tr>
+						<th scope="col">No</th>
+						<th scope="col">상세코드</th>
+						<th scope="col">현재가격</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr class="hidden">
+						<td>1</td>
+						<td></td>
+						<td>100,000</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="area_per_gx">
+			<strong>전체 가격 정보 조정</strong><input type="number" value="10" required><span>% 반영</span>
+			<button type="button" class="btn_play">실행</button>
+		</div>
+		<div class="btn_popbtm">
+			<span class="btn_blk"><a href="#">저장</a></span>
+		</div>
+	</div>
+
+</div>
+<!-- //layer pop -->
+
+<!-- 뉴스정보 pop -->
+<div class="wrap_layerpop" style="display: none;">
+
+	<div class="layerpop pop9">
+		<div class="box_titpop">
+			<h2>뉴스정보</h2>
+			<div class="btn_close">
+				<button type="button">닫기</button>
+			</div>
+		</div>
+		<div class="btn_sl">
+			<a href="#" class="btn_search">조회</a>
+		</div>
+		<div class="box_contpop">
+			<div class="box_tbllist" style="height: 300px; overflow-y: auto;">
+				<table>
+					<colgroup>
+						<col style="width: 10%;">
+						<col style="width: 30%;">
+						<col style="width: 60%;">
+					</colgroup>
+					<thead>
+					<tr>
+						<th scope="col">No</th>
+						<th scope="col">뉴스구분</th>
+						<th scope="col">헤드라인</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr class="hidden">
+						<td>1</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="box_tbllist mt30">
+				<table>
+					<colgroup>
+						<col style="width: 85%;">
+						<col style="width: 15%;">
+					</colgroup>
+					<thead>
+					<tr>
+						<th scope="col">뉴스내용</th>
+						<th scope="col">등락기준</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr class="hidden">
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="btn_popbtm">
+			<span class="btn_blk"><a href="#">저장</a></span>
+		</div>
+	</div>
+
+</div>
+<!-- //layer pop -->
+
+<!-- 애널리스트 pop -->
+<div class="wrap_layerpop" style="display: none;">
+
+	<div class="layerpop pop9">
+		<div class="box_titpop">
+			<h2>애널리스트 정보</h2>
+			<div class="btn_close"><button type="button">닫기</button></div>
+		</div>
+		<div class="btn_sl">
+			<a href="#" class="btn_search">조회</a>
+		</div>
+		<div class="box_contpop">
+			<div class="box_tbllist" style="height: 300px; overflow-y: auto;">
+				<table>
+					<colgroup>
+						<col style="width: 10%;">
+						<col style="width: 30%;">
+						<col style="width: 60%;">
+					</colgroup>
+					<thead>
+					<tr>
+						<th scope="col">No</th>
+						<th scope="col">애널리스트 구분</th>
+						<th scope="col">헤드라인</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr class="hidden">
+						<td>1</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="box_tbllist mt30">
+				<table>
+					<colgroup>
+						<col style="width: 85%;">
+						<col style="width: 15%;">
+					</colgroup>
+					<thead>
+					<tr>
+						<th scope="col">애널리스트 내용</th>
+						<th scope="col">등락기준</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr class="hidden">
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="btn_popbtm">
+			<span class="btn_blk"><a href="#">저장</a></span>
+		</div>
+	</div>
+
+</div>
+<!-- //layer pop -->
 
 </body>
 </html>

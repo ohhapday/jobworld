@@ -29,15 +29,17 @@ class Admin extends CI_Controller
     public function get_admin()
     {
         $return->usabled = (int)$this->main_m->get_usable();
+        $return->STATUS = $this->main_m->get_STATUS();
+        $return->DATA_TYPE = $this->main_m->get_DATA_TYPE();
+        $return->COMP_DATA = $this->main_m->get_COMP_DATA();
 
         echo json_encode($return);
     }
 
     public function put_admin()
     {
-        $aaa = $this->input->input_stream('test', true);
-        var_dump($aaa);
-        exit;
+        $admin_status = $this->input->input_stream('mdata', true);
+        echo $this->main_m->put_admin_status($admin_status);
     }
 
     public function sse_get_user()
@@ -57,6 +59,23 @@ class Admin extends CI_Controller
 
         }
         flush();
+    }
+
+    public function get_table()
+    {
+        $data = array(
+            'table_nm' => $this->input->get('table_nm', true),
+            'where' => array(
+                $this->input->get('where', true)[0] =>
+                $this->input->get('where', true)[1],
+            ),
+            'orderby' => array(
+                $this->input->get('orderby', true)[0],
+                $this->input->get('orderby', true)[1],
+            ),
+        );
+        $return = $this->main_m->get_table($data);
+        echo json_encode($return);
     }
 
 
