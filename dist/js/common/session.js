@@ -13,7 +13,7 @@ define(['jquery'], function ($) {
         // ajax 데이터 로드
         $.ajax({
             async: false,
-            url: '/ajax_info/get_session_info',
+            url: '/login/get_session_info',
             type: 'get',
             dataType: 'json',
             success: function (data, status, xhr) {

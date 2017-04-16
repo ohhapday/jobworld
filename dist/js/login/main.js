@@ -9,8 +9,6 @@ requirejs([
 ], function ($, bootstrap, moment) {
     "use strict";
 
-    let approval_action = location.pathname.split('/')[3];
-    let user = null;                        // 사용자 정보
     let sdata = {
         'usabled': null,
     };

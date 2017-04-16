@@ -45,6 +45,11 @@ class Login extends CI_Controller
         }
     }
 
+    public function get_session_info()
+    {
+        echo json_encode($_SESSION);
+    }
+
     public function sse_get_system()
     {
         $return->usabled = $this->main_m->get_usable();

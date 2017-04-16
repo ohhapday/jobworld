@@ -20,6 +20,18 @@ class Admin extends CI_Controller
 
     public function main()
     {
+        $this->session->sess_destroy();
+
+        // 세션 할당
+        $user_data = array(
+            'EMPL_KEY' => '',
+            'EMPL_NAME' => '운영자',
+            'MF_FG' => 'M',
+        );
+
+        $this->session->set_userdata($user_data);
+
+        var_dump($_SESSION);
         $this->load->view('admin/main_v');
     }
 

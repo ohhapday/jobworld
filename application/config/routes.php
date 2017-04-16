@@ -62,3 +62,8 @@ $route['admin/table']['POST'] = 'admin/post_table';
 $route['admin/table']['GET'] = 'admin/get_table';
 $route['admin/table']['PUT'] = 'admin/put_table';
 $route['admin/table']['DELETE'] = 'admin/delete_table';
+
+$route['main/data']['POST'] = 'main/post_data';
+$route['main/data']['GET'] = 'main/get_data';
+$route['main/data']['PUT'] = 'main/put_data';
+$route['main/data']['DELETE'] = 'main/delete_data';

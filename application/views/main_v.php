@@ -7,11 +7,13 @@
 	<link rel="stylesheet" type="text/css" href="/dist/css/common.css" />
 	<link rel="stylesheet" type="text/css" href="/dist/css/layout.css" />
 	<link rel="stylesheet" type="text/css" href="/dist/css/content.css" />
-	<script src="../js/jquery-1.11.2.min.js"></script>
-	<script src="../js/common.js"></script>
+
 	<!--[if lt IE 9]>
 	<script src="../js/html5shiv.js"></script>
 	<![endif]-->
+
+	<script src="/dist/js/require-config.js"></script>
+	<script src="/bower_components/requirejs/require.js" data-main="/dist/js/main/main.js"></script>
 
 </head>
 <body>
@@ -28,13 +30,13 @@
 	<div class="area_logo">
 		<h1><a href="#"><img src="/dist/images/logo.png" alt="드림증권 투자시스템"></a></h1>
 		<div class="area_mem">
-			<span class="member"><strong>직원명</strong>님이 로그인하셨습니다.</span>
-			<span class="time">10:10:10</span>
+			<span class="member"><strong></strong>님이 로그인하셨습니다.</span>
+			<span class="time"></span>
 		</div>
 	</div>
 	<nav id="gnb">
 		<ul class="clfix">
-			<li class="on"><a href="#">투자성향</a></li>
+			<li class=""><a href="#">투자성향</a></li>
 			<li><a href="#">펀드</a></li>
 			<li><a href="#">채권</a></li>
 			<li><a href="#">주식</a></li>
@@ -138,6 +140,8 @@
 	</div>
 </div>
 <!-- //content -->
+
+<div class="wrap_layerpop" style="display: none;"></div>
 
 </body>
 </html>

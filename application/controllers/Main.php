@@ -17,15 +17,21 @@ class Main extends CI_Controller
         parent::__construct();
 
         $this->load->helper(array('common', 'url', 'alert'));
+        /*if (!$this->session->EMPL_NAME) {
+            alert('로그아웃 되었습니다.', '/login/main');
+        }*/
 
         $this->load->model('admin/main_m');
         $this->load->model('login/login_m');
+
+
     }
 
     public function index()
     {
         $this->load->view('main_v');
     }
+
 
 
 }
