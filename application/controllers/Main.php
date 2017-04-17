@@ -32,6 +32,11 @@ class Main extends CI_Controller
         $this->load->view('main_v');
     }
 
+    public function get_udata()
+    {
+
+    }
+
 
 
 }

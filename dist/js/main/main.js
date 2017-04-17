@@ -10,15 +10,15 @@ requirejs([
     "use strict";
 
     let approval_action = location.pathname.split('/')[3];
-    let user = {
-        key: session.EMPL_KEY,
-        name: session.EMPL_NAME,
-        mf: session.MF_FG,
-    };                        // 사용자 정보
-    let sdata = {
+    let user = {                            // 사용자 정보
+        key: session.EMPL_KEY,              // 기본키
+        name: session.EMPL_NAME,            // 사용자 이름
+        mf: session.MF_FG,                  // 성별
+    };
+    let sdata = {                           // 시스템 데이터
         'usabled': '1',
     };
-    let udata = {
+    let udata = {                           // 클라이언트 데이터
         news: null,
 
     };
@@ -27,11 +27,23 @@ requirejs([
 
     // ajax 처리
     let handle_ajax = (function () {
-
+        // 클라이언트 Data 바인드
+        (function () {
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'get',
+                url: '/main/get_udata',
+                success: function (data, status, xhr) {
+                    sdata = data;
+                }
+            });
+        })();
     })();
 
     // eventSource
     (function () {
+        // 시스템 데이터 바인드
         let eventSource = new EventSource('/login/sse_get_system');
         eventSource.onmessage = function (e) {
             if (e.data !== JSON.stringify(sdata)) {
