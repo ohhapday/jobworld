@@ -41,6 +41,16 @@ requirejs([
         })();
     })();
 
+    // UI 처리 함수
+    let handle_ui = function () {
+        // 프로그램 사용 중지
+        if (sdata.usabled === '1') {
+            $('.wrap_layerpop').hide();
+        } else {
+            $('.wrap_layerpop').show();
+        }
+    };
+
     // eventSource
     (function () {
         // 시스템 데이터 바인드
@@ -65,16 +75,6 @@ requirejs([
     (function () {
         $('.member strong').text(user.name);
     })();
-
-    // UI 처리 함수
-    let handle_ui = function () {
-        // 프로그램 사용 중지
-        if (sdata.usabled === '1') {
-            $('.wrap_layerpop').hide();
-        } else {
-            $('.wrap_layerpop').show();
-        }
-    };
 
     handle_ui();
 });

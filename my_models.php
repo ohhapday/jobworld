@@ -17,8 +17,9 @@
  * @property products_model   $products_model
  * @property film_model       $film_model
  * @property film_model1      $film_model1
- * @property main_m             $main_m
+ * @property admin_m             $admin_m
  * @property login_m             $login_m
+ * @property main_m             $main_m
  *
  *
  *

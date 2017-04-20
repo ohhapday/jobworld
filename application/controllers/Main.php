@@ -21,8 +21,8 @@ class Main extends CI_Controller
             alert('로그아웃 되었습니다.', '/login/main');
         }*/
 
-        $this->load->model('admin/main_m');
-        $this->load->model('login/login_m');
+        $this->load->model('admin_m');
+        $this->load->model('login_m');
 
 
     }
@@ -34,7 +34,7 @@ class Main extends CI_Controller
 
     public function get_udata()
     {
-
+        $this->main_m;
     }
 
 

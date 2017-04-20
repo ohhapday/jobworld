@@ -18,8 +18,8 @@ class Login extends CI_Controller
 
         $this->load->helper(array('common', 'url', 'alert'));
 
-        $this->load->model('admin/main_m');
-        $this->load->model('login/login_m');
+        $this->load->model('admin_m');
+        $this->load->model('login_m');
     }
 
     public function main()

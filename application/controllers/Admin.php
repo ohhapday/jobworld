@@ -15,7 +15,7 @@ class Admin extends CI_Controller
     {
         parent::__construct();
 
-        $this->load->model('admin/main_m');
+        $this->load->model('admin_m');
     }
 
     public function main()

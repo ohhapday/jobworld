@@ -1,6 +1,6 @@
 <?PHP
 
-class Main_m extends CI_Model
+class Admin_m extends CI_Model
 {
 
     function __construct()
