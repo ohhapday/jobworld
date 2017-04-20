@@ -52,7 +52,7 @@ class Login extends CI_Controller
 
     public function sse_get_system()
     {
-        $return->usabled = $this->main_m->get_usable();
+        $return->usabled = $this->admin_m->get_usable();
 
         if ($return->usabled === '1') {
             $retry = 5000;

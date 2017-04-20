@@ -22,8 +22,7 @@ class Main extends CI_Controller
         }*/
 
         $this->load->model('admin_m');
-        $this->load->model('login_m');
-
+        $this->load->model('main_m');
 
     }
 
@@ -34,7 +33,11 @@ class Main extends CI_Controller
 
     public function get_udata()
     {
-        $return->news = $this->admin_m->get_table('job016');
+        $data = array(
+            'table_nm' => 'job016',
+            'where' => array('1' => '1'),
+        );
+        $return->news = $this->main_m->get_table($data);
 
         echo json_encode($return);
     }
