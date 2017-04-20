@@ -16,6 +16,7 @@ class Admin extends CI_Controller
         parent::__construct();
 
         $this->load->model('admin_m');
+        $this->load->model('main_m');
     }
 
     public function main()
@@ -30,8 +31,6 @@ class Admin extends CI_Controller
         );
 
         $this->session->set_userdata($user_data);
-
-        var_dump($_SESSION);
         $this->load->view('admin/main_v');
     }
 

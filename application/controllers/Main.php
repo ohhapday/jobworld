@@ -34,7 +34,9 @@ class Main extends CI_Controller
 
     public function get_udata()
     {
-        $this->main_m;
+        $return->news = $this->admin_m->get_table('job016');
+
+        echo json_encode($return);
     }
 
 
