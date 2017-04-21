@@ -15,10 +15,10 @@ requirejs([
         name: session.EMPL_NAME,            // 사용자 이름
         mf: session.MF_FG,                  // 성별
     };
-    let eData = {                           // EvnetSource 데이터
+    let eData = {                           // 실시간 데이터
         usabled: '1',
     };
-    let mData = {                           // 화면 표시 데이터
+    let mData = {                           // 1회 로딩 데이터
         NEWS: null,
         ANAL: null,
         KOS: null,
@@ -35,7 +35,7 @@ requirejs([
                 async: false,
                 dataType: 'json',
                 type: 'get',
-                url: '/main/get_udata',
+                url: '/main/get_mData',
                 success: function (data, status, xhr) {
                     mData = data;
                 }
@@ -80,9 +80,43 @@ requirejs([
         $('.member strong').text(user.name);
 
         // 뉴스 처리
-        $.each(mData.NEWS, function (i) {
-            $('.news').eq(i).find('span').text(moment().format('YYYY.MM.DD'));
-            $('.news').eq(i).find('em').text(this.NEWS_HEAD);
+        (function () {
+            $.each(mData.NEWS, function (i) {
+                let $li = $('.news').eq(i);
+                $li.find('span').text(moment().format('YYYY.MM.DD'));
+                $li.find('em').text(this.NEWS_HEAD);
+            });
+
+            $('.news').on('click', function () {
+                let index = $(this).index() - 1;            // '앞에 주요뉴스'라는 애가 li:0임
+                console.log(index);
+            });
+
+            console.log($('.news'));
+        })();
+
+        // 종합지수 처리
+        $.each(mData.KOS, function (i) {
+            let $li = $('.pt_list li').eq(i);
+            $li.find('.pt1').text(this.NOW_RATE);
+
+            if(this.MEASURE > 0) {
+                $li.find('.pt2 img').attr('src', '/dist/images/ico_mnup.png');
+                $li.addClass('up');
+            } else {
+                $li.find('.pt2 img').attr('src', '/dist/images/ico_mndw.png');
+                $li.addClass('down');
+            }
+
+            $li.find('.pt2 span').text(this.MEASURE);
+            $li.find('.per').text(this.PER_MEASURE + '%');
+        });
+
+        // 종목주가 처리
+        $.each(mData.COMP, function (i) {
+            let $li = $('.area_cpm li').eq(i);
+            $li.find('strong').text(this.COMP_NAME);
+            $li.find('span').text(nf.format(this.COMP_PRICE));
         });
     })();
 

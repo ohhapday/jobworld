@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<meta charset="UTF-8" />
+	<meta charset="UTF-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>드림증권 투자시스템</title>
-	<link rel="stylesheet" type="text/css" href="/dist/css/common.css" />
-	<link rel="stylesheet" type="text/css" href="/dist/css/layout.css" />
-	<link rel="stylesheet" type="text/css" href="/dist/css/content.css" />
+	<link rel="stylesheet" type="text/css" href="/dist/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/dist/css/layout.css"/>
+	<link rel="stylesheet" type="text/css" href="/dist/css/content.css"/>
 
 	<!--[if lt IE 9]>
 	<script src="../js/html5shiv.js"></script>
@@ -81,9 +81,38 @@
 					<div class="tit_pt">종합지수</div>
 					<div class="pt_list">
 						<ul>
-							<li class="down"><strong>KOSDAQ</strong><div><span class="pt1">600.73</span><span class="pt2"><img src="/dist/images/ico_mndw.png" alt="">820</span></div><em class="per">1.35%</em></li>
-							<li class="down"><strong>KOSPI</strong><div><span class="pt1">2000.77</span><span class="pt2"><img src="/dist/images/ico_mndw.png" alt="">22.22</span></div><em class="per">1.35%</em></li>
-							<li class="up"><strong>KOSPI200</strong><div><span class="pt1">270.77</span><span class="pt2"><img src="/dist/images/ico_mnup.png" alt="">2.88</span></div><em class="per">1.35%</em></li>
+							<li class="">
+								<strong>KOSPI</strong>
+								<div>
+									<span class="pt1">600.73</span>
+									<span class="pt2">
+										<img src="" alt="">
+										<span>820</span>
+									</span>
+								</div>
+								<em class="per">1.35%</em>
+							</li>
+							<li class="">
+								<strong>KOSDAQ</strong>
+								<div>
+									<span class="pt1">2000.77</span>
+									<span class="pt2">
+										<img src="" alt="">
+										<span>820</span>
+									</span>
+								</div>
+								<em class="per">1.35%</em>
+							</li>
+							<li class="">
+								<strong>KOSPI200</strong>
+								<div>
+									<span class="pt1">270.77</span>
+									<span class="pt2">
+										<img src="" alt="">
+										<span>820</span>
+									</span>
+								</div>
+								<em class="per">1.35%</em></li>
 						</ul>
 					</div>
 				</div>
@@ -96,8 +125,10 @@
 					<ul class="clfix">
 						<li><a href="#"><strong>삼성전자</strong><span>5,500</span></a></li>
 						<li><a href="#"><strong>삼성전자</strong><span>5,500</span></a></li>
+						<li><a href="#"><strong>삼성전자</strong><span>5,500</span></a></li>
 					</ul>
 					<ul class="clfix">
+						<li><a href="#"><strong>삼성전자</strong><span>5,500</span></a></li>
 						<li><a href="#"><strong>삼성전자</strong><span>5,500</span></a></li>
 						<li><a href="#"><strong>삼성전자</strong><span>5,500</span></a></li>
 					</ul>
@@ -141,7 +172,25 @@
 </div>
 <!-- //content -->
 
-<div class="wrap_layerpop" style="display: none;"></div>
+<!-- 뉴스정보 pop -->
+<div class="wrap_layerpop" style="display: none;">
+
+	<div class="layerpop pop1">
+		<div class="box_titpop">
+			<h2>이 시각 뉴스</h2>
+			<div class="btn_close"><button type="button">닫기</button></div>
+		</div>
+		<div class="box_contpop">
+			<h3 class="news_tit">한국은행 기준 금리 동결 방침 한국은행 기준 금리 동결 방침</h3>
+			<p>한국은행이 연내 기준금리를 낮출 것이라는 전망을 내놓았던 외국계 투자은행이 태도를 급선회했습니다. 미국 연방준비제도의 3월 기준금리 인상이 기정 사실화되자 <em class="colred">한국은행이 연말까지 기준금리를 동결할 것이라는 전망에</em> 무게가 더 싣고 있는 겁니다. 기준금리 인상은 가계부채 증폭 부담이 크고 , 반면에 기준금리 인하는 금리 역전에 따른다.</p>
+			<div class="date align-r">
+				<em class="colblu">서울경제</em><span class="l_pd">|</span><span>2017.03.23</span>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- //layer pop -->
 
 </body>
 </html>

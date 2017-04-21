@@ -43,6 +43,9 @@ a:link, a:visited, a:hover, a:focus, a:active{ text-decoration:none; }
 .clfix{ display:block; }
 * html .clfix { height:1%; } /* Hides from IE-mac */
 .clfix{ zoom:1; } /*for IE 5.5-7*/
+.clfix strong{
+	overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+} /*for IE 5.5-7*/
 
 #skip, .skip { font-size:0; width:0; height:0; line-height:0; position:absolute; left:-9999px; }
 

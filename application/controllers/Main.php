@@ -31,13 +31,12 @@ class Main extends CI_Controller
         $this->load->view('main_v');
     }
 
-    public function get_udata()
+    public function get_mData()
     {
-        $data = array(
-            'table_nm' => 'job016',
-            'where' => array('1' => '1'),
-        );
-        $return->news = $this->main_m->get_table($data);
+        $return->NEWS = $this->main_m->get_NEWS();
+        $return->ANAL = $this->main_m->get_ANAL();
+        $return->KOS = $this->main_m->get_KOS();
+        $return->COMP = $this->main_m->get_COMP();
 
         echo json_encode($return);
     }
