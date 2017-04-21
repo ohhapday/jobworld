@@ -15,12 +15,14 @@ requirejs([
         name: session.EMPL_NAME,            // 사용자 이름
         mf: session.MF_FG,                  // 성별
     };
-    let sdata = {                           // 시스템 데이터
-        'usabled': '1',
+    let eData = {                           // EvnetSource 데이터
+        usabled: '1',
     };
-    let udata = {                           // 클라이언트 데이터
-        news: null,
-
+    let mData = {                           // 화면 표시 데이터
+        NEWS: null,
+        ANAL: null,
+        KOS: null,
+        COMP: null,
     };
 
     let nf = new Intl.NumberFormat(["en-US"]);
@@ -35,7 +37,7 @@ requirejs([
                 type: 'get',
                 url: '/main/get_udata',
                 success: function (data, status, xhr) {
-                    sdata = data;
+                    mData = data;
                 }
             });
         })();
@@ -44,10 +46,12 @@ requirejs([
     // UI 처리 함수
     let handle_ui = function () {
         // 프로그램 사용 중지
-        if (sdata.usabled === '1') {
-            $('.wrap_layerpop').hide();
+        if (eData.usabled === '0') {
+            $('.clfix li a').css('cursor', 'not-allowed');
+            $('.clfix li a').attr('href', '#');
         } else {
-            $('.wrap_layerpop').show();
+            $('.clfix li a').css('cursor', 'pointer');
+            $('.clfix li a').attr('href', '#');
         }
     };
 
@@ -56,8 +60,8 @@ requirejs([
         // 시스템 데이터 바인드
         let eventSource = new EventSource('/login/sse_get_system');
         eventSource.onmessage = function (e) {
-            if (e.data !== JSON.stringify(sdata)) {
-                sdata = JSON.parse(e.data);
+            if (e.data !== JSON.stringify(eData)) {
+                eData = JSON.parse(e.data);
                 handle_ui();
             }
         }
@@ -74,6 +78,12 @@ requirejs([
     // 기본 UI (1회만 처리)
     (function () {
         $('.member strong').text(user.name);
+
+        // 뉴스 처리
+        $.each(mData.NEWS, function (i) {
+            $('.news').eq(i).find('span').text(moment().format('YYYY.MM.DD'));
+            $('.news').eq(i).find('em').text(this.NEWS_HEAD);
+        });
     })();
 
     handle_ui();
