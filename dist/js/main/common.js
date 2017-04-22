@@ -8,6 +8,12 @@ requirejs([
 ], function ($, bootstrap, moment, a, session) {
     "use strict";
 
+    let user = {                            // 사용자 정보
+        key: session.EMPL_KEY,              // 기본키
+        name: session.EMPL_NAME,            // 사용자 이름
+        mf: session.MF_FG,                  // 성별
+    };
+
     let eData = {                           // 실시간 데이터
         usabled: '1',
     };
@@ -32,6 +38,15 @@ requirejs([
         }, 1000);
     })();
 
+    // 공통 UI 처리
+    (function () {
+        // 팝업 숨기기
+        $('.wrap_layerpop .btn_close').click(function () {
+            $(this).closest('.wrap_layerpop').fadeOut(500);
+        });
+        $('.member strong').text(user.name);
+    })();
+
     // event 처리 함수
     let handle_event = function () {
         // 프로그램 사용 중지
@@ -54,7 +69,7 @@ requirejs([
 
             // 펀드
             $('#gnb li').eq(1).on('click', function () {
-                alert('펀드');
+                $(location).attr('href', '/main/fund');
             });
 
             // 채권

@@ -31,6 +31,11 @@ class Main extends CI_Controller
         $this->load->view('main_v');
     }
 
+    public function fund()
+    {
+        $this->load->view('fund_v');
+    }
+
     public function get_mData()
     {
         $return->NEWS = $this->main_m->get_NEWS();
@@ -43,7 +48,9 @@ class Main extends CI_Controller
 
     public function get_survey()
     {
+        $return->SURVEY = $this->main_m->get_survey();
 
+        echo json_encode($return);
     }
 
 }

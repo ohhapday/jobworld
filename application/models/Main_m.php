@@ -88,4 +88,38 @@ class Main_m extends CI_Model
         return (object)$result;
     }
 
+    public function get_survey()
+    {
+        $query = "
+            SELECT
+              QUES_KEY, QUES_NO, QUES_NAME
+            FROM
+              job030; 
+        ";
+        $result1 = $this->db->query($query)->result();
+
+        $query = "
+            SELECT
+              QUES_KEY, ANSW_KEY, ANSW_NO, ANSW_NAME, ANSW_POINT
+            FROM
+              job031;
+        ";
+        $result2 = $this->db->query($query)->result();
+        foreach ($result2 as $item) {
+            $ANSW[$item->QUES_KEY][] = $item;
+        }
+
+        foreach ($result1 as $item) {
+            $return[] = array(
+                'QUES_KEY' => $item->QUES_KEY,
+                'QUES_NO' => $item->QUES_NO,
+                'QUES_NAME' => $item->QUES_NAME,
+                'QUES_ANSW' => $ANSW[$item->QUES_KEY],
+            );
+        }
+
+        return $return;
+    }
+
+
 }

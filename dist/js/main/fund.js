@@ -43,28 +43,6 @@ requirejs([
 
     // 기본 UI (1회만 처리)
     (function () {
-        // 뉴스 처리
-        (function () {
-            $.each(mData.NEWS, function (i) {
-                let $li = $('.news').eq(i);
-                $li.find('span').text(moment().format('YYYY.MM.DD'));
-                $li.find('em').text(this.NEWS_HEAD);
-            });
-
-            $('.news').on('click', function () {
-                let index = $('.news').index(this);
-                let pop = $('.wrap_layerpop:eq(0)');
-
-                pop.find('.box_titpop h2').text('이 시각 뉴스');
-                pop.find('.news_tit').text(mData.NEWS[index].NEWS_HEAD);
-                pop.find('.box_contpop p').html(mData.NEWS[index].NEWS_FILE);
-                // todo 컨텐츠 하단에 "서울경제"부분 DB 처리 필요
-                pop.find('.date span:eq(1)').text(moment().format('YYYY.MM.DD'));
-
-                pop.fadeIn(500);
-            });
-        })();
-
         // 종합지수 처리
         (function () {
             $.each(mData.KOS, function (i) {
@@ -81,31 +59,6 @@ requirejs([
 
                 $li.find('.pt2 span').text(this.MEASURE);
                 $li.find('.per').text(this.PER_MEASURE + '%');
-            });
-        })();
-
-        // 종목주가 처리
-        (function () {
-            $.each(mData.COMP, function (i) {
-                let $li = $('.area_cpm li').eq(i);
-                $li.find('strong').text(this.COMP_NAME);
-                $li.find('span').text(nf.format(this.COMP_PRICE));
-            });
-        })();
-
-        // 애널리스트 처리
-        (function () {
-            $('.box_mnrtg2 li').on('click', function () {
-                let index = $('.box_mnrtg2 li').index(this);
-                let pop = $('.wrap_layerpop:eq(0)');
-
-                pop.find('.box_titpop h2').text('애널리스트 보고서');
-                pop.find('.news_tit').text(mData.ANAL[index].ANAL_HEAD);
-                pop.find('.box_contpop p').html(mData.ANAL[index].ANAL_FILE);
-                // todo 컨텐츠 하단에 "서울경제"부분 DB 처리 필요
-                pop.find('.date span:eq(1)').text(moment().format('YYYY.MM.DD'));
-
-                pop.fadeIn(500);
             });
         })();
     })();
