@@ -41,6 +41,9 @@ class Main extends CI_Controller
         echo json_encode($return);
     }
 
+    public function get_survey()
+    {
 
+    }
 
 }

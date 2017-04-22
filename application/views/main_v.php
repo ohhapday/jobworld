@@ -36,7 +36,7 @@
 	</div>
 	<nav id="gnb">
 		<ul class="clfix">
-			<li class=""><a href="#">투자성향</a></li>
+			<li class="on"><a href="#">투자성향</a></li>
 			<li><a href="#">펀드</a></li>
 			<li><a href="#">채권</a></li>
 			<li><a href="#">주식</a></li>
@@ -177,7 +177,7 @@
 
 	<div class="layerpop pop1">
 		<div class="box_titpop">
-			<h2>이 시각 뉴스</h2>
+			<h2>컨텐츠 형태</h2>
 			<div class="btn_close"><button type="button">닫기</button></div>
 		</div>
 		<div class="box_contpop">
@@ -190,7 +190,132 @@
 	</div>
 
 </div>
-<!-- //layer pop -->
+<!-- //뉴스정보 pop -->
+
+<!-- 설문조사 pop -->
+<div class="wrap_layerpop" style="display: none;">
+
+	<div class="layerpop pop1">
+		<div class="box_titpop">
+			<h2>투자성향 진단하기</h2>
+			<div class="btn_close"><button type="button">닫기</button></div>
+		</div>
+		<div class="box_contpop">
+			<ul class="list_qu">
+				<li>
+					<strong>1. 귀하의 나이는 어떻게 되십니까?</strong>
+					<ul class="clfix">
+						<li class="mr20">
+							<input type="radio" id="qu11" name="qu1" checked><label for="qu11" class="ml5">18세 이상</label>
+						</li>
+						<li class="mr20">
+							<input type="radio" id="qu12" name="qu1"><label for="qu12" class="ml5">15~17세</label>
+						</li>
+						<li class="mr20">
+							<input type="radio" id="qu13" name="qu1"><label for="qu113" class="ml5">12~14세</label>
+						</li>
+						<li class="mr20">
+							<input type="radio" id="qu14" name="qu1"><label for="qu14" class="ml5">9~11세</label>
+						</li>
+						<li>
+							<input type="radio" id="qu15" name="qu1"><label for="qu15" class="ml5">8세 이하</label>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<strong>2. 돈을 투자를 한다면 어떠한 상품으로 투자 하고 싶습니까?</strong>
+					<ul class="clfix">
+						<li class="mr20">
+							<input type="radio" id="qu21" name="qu2" checked><label for="qu21" class="ml5">18세 이상</label>
+						</li>
+						<li class="mr20">
+							<input type="radio" id="qu22" name="qu2"><label for="qu22" class="ml5">15~17세</label>
+						</li>
+						<li class="mr20">
+							<input type="radio" id="qu23" name="qu2"><label for="qu23" class="ml5">12~14세</label>
+						</li>
+						<li class="mr20">
+							<input type="radio" id="qu24" name="qu2"><label for="qu24" class="ml5">9~11세</label>
+						</li>
+						<li>
+							<input type="radio" id="qu25" name="qu2"><label for="qu25" class="ml5">8세 이하</label>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<strong>3. 돈을 투자 했을 때 수익을 얻고 싶은 비율과 손실이 생겨도 괜찮은 비율은?</strong>
+					<ul class="clfix">
+						<li class="mr20">
+							<input type="radio" id="qu31" name="qu3" checked><label for="qu31" class="ml5">18세 이상</label>
+						</li>
+						<li class="mr20">
+							<input type="radio" id="qu32" name="qu3"><label for="qu32" class="ml5">15~17세</label>
+						</li>
+						<li class="mr20">
+							<input type="radio" id="qu33" name="qu3"><label for="qu33" class="ml5">12~14세</label>
+						</li>
+						<li class="mr20">
+							<input type="radio" id="qu34" name="qu3"><label for="qu34" class="ml5">9~11세</label>
+						</li>
+						<li>
+							<input type="radio" id="qu35" name="qu3"><label for="qu35" class="ml5">8세 이하</label>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<strong>4. 증권 하면 무엇이 떠오르는가요?</strong>
+					<ul class="subul">
+						<li>
+							<input type="radio" id="qu41" name="qu4" checked><label for="qu41" class="mr20">경험이 없어서 모름</label>
+						</li>
+						<li>
+							<input type="radio" id="qu42" name="qu4"><label for="qu42" class="mr20">주식매매, 펀드가입, 채권매매, 주식시세 용어 정도 알고 있음</label>
+						</li>
+						<li>
+							<input type="radio" id="qu43" name="qu4"><label for="qu43" class="mr20">경제와 연관관계가 있으며 주식, 채권, 펀드 투자에 대한 위험성을 알고 있음 </label>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<strong>5. 돈을 투자 한다면 어떤 목적으로 투자를 하시겠습니까?</strong>
+					<ul class="subul">
+						<li>
+							<input type="radio" id="qu51" name="qu5" checked><label for="qu51" class="mr20">투자수익 보다는 원금보존을 중요 시 하면서 투자</label>
+						</li>
+						<li>
+							<input type="radio" id="qu52" name="qu5"><label for="qu52" class="mr20">원금보존 보다는 투자수익을 중요 시 하면서 투자</label>
+						</li>
+						<li>
+							<input type="radio" id="qu53" name="qu5"><label for="qu53" class="mr20">손실 위험이 있더라도  투자수익을 중요 시 하면서 투자</label>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="btn_popbtm">
+			<span class="btn_blk"><a href="#">결과보기</a></span>
+		</div>
+	</div>
+
+	<!-- 우측 팝 -->
+	<div class="layerpop pop1" style="display: none;">
+		<div class="box_titpop">
+			<h2>투자성향 결과</h2>
+			<div class="btn_close"><button type="button">닫기</button></div>
+		</div>
+		<div class="box_contpop">
+			<div class="area_res">
+				<div class="type type1">
+					<strong>안정형</strong>
+					<p>첫째도 안정,  둘째도 안정 </p>
+					<span>투자한 돈의 손실을 원하지 않아 위험이 적은 상품에 투자하는 성격</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- //설문조사 pop -->
 
 </body>
 </html>

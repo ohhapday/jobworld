@@ -1,6 +1,6 @@
 /**
  * Created by 서정석 on 2017/04/13.
- *
+ * todo 체험 순서 선택에 "투자성향", "결과보기" 필요할듯
  */
 
 requirejs([
@@ -9,7 +9,6 @@ requirejs([
 ], function ($, bootstrap, moment) {
     "use strict";
 
-    let approval_action = location.pathname.split('/')[3];
     let user = null;                        // 사용자 정보
     let mdata = {
         usabled: 0,                         // 시스템 중지 여부(0, 1)
@@ -210,6 +209,7 @@ requirejs([
 
         // 데이터 초기화
         (function () {
+            // todo 어떤거 초기화 해야 할지
             $('.btn_refresh').on('click', function () {
                 if ((confirm('데이터가 초기화됩니다. 실행하시겠습니까?'))) {
                     // $(this).css('background', '#6e6b6b');
@@ -227,6 +227,11 @@ requirejs([
 
     // 프로그램 사용 제한
     (function () {
+        // 팝업 숨기기
+        $('.wrap_layerpop .btn_close').click(function () {
+            $(this).closest('.wrap_layerpop').fadeOut(500);
+        });
+
         // 종합환경설정
         (function () {
             let pop = $('.wrap_layerpop:eq(0)');
@@ -286,10 +291,6 @@ requirejs([
 
                 pop.find('.col2fr').removeClass('hidden');
             });
-
-            pop.find('.btn_close').click(function () {
-                pop.fadeOut(500);
-            });
         })();
 
         // 채권관리
@@ -333,10 +334,6 @@ requirejs([
             pop.find('tbody tr:eq(0)').on('click', function () {
                 pop.find('tbody tr').removeClass('on');
                 $(this).addClass('on');
-            });
-
-            pop.find('.btn_close').click(function () {
-                pop.fadeOut(500);
             });
 
             // todo 저장 버튼
@@ -407,10 +404,6 @@ requirejs([
 
             pop.find('.btn_play').on('click', function () {
                 alert('작업중중');
-            });
-
-            pop.find('.btn_close').click(function () {
-                pop.fadeOut(500);
             });
         })();
     })();
@@ -513,10 +506,6 @@ requirejs([
 
                 pop.find('.box_tbllist:eq(1)').removeClass('hidden');
             });
-
-            pop.find('.btn_close').click(function () {
-                pop.fadeOut(500);
-            });
         })();
 
         // 애널리스트 분석
@@ -580,10 +569,6 @@ requirejs([
                 });
 
                 pop.find('.box_tbllist:eq(1)').removeClass('hidden');
-            });
-
-            pop.find('.btn_close').click(function () {
-                pop.fadeOut(500);
             });
         })();
     })();
