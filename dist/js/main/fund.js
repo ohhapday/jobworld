@@ -1,14 +1,14 @@
 /**
  * Created by 서정석 on 2017/04/16.
- *
  */
 
 requirejs([
     'jquery', 'bootstrap', 'moment', 'jquery-ui', 'session',
     '/dist/js/main/common.js',         // 공통 처리 js
-    '/dist/js/main/survey.js',         // 설문 조사 js
 ], function ($, bootstrap, moment, a, session) {
     "use strict";
+
+    let nf = new Intl.NumberFormat(["en-US"]);
 
     let user = {                            // 사용자 정보
         key: session.EMPL_KEY,              // 기본키
@@ -22,8 +22,6 @@ requirejs([
         KOS: null,
         COMP: null,
     };
-
-    let nf = new Intl.NumberFormat(["en-US"]);
 
     // ajax 처리
     let handle_ajax = (function () {

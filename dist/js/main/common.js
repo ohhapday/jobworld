@@ -74,12 +74,12 @@ requirejs([
 
             // 채권
             $('#gnb li').eq(2).on('click', function () {
-                alert('채권');
+                $(location).attr('href', '/main/bond');
             });
 
             // 주식
             $('#gnb li').eq(3).on('click', function () {
-                alert('주식');
+                $(location).attr('href', '/main/stock');
             });
         })();
     };

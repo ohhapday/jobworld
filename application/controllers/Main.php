@@ -36,6 +36,16 @@ class Main extends CI_Controller
         $this->load->view('fund_v');
     }
 
+    public function bond()
+    {
+        $this->load->view('bond_v');
+    }
+
+    public function stock()
+    {
+        $this->load->view('stock_v');
+    }
+
     public function get_mData()
     {
         $return->NEWS = $this->main_m->get_NEWS();
