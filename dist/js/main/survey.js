@@ -90,6 +90,8 @@ requirejs([
 
             }
 
+            alert(total + '점입니다.');
+
             q_pop.fadeOut(500);
             a_pop.fadeIn(500);
         });
