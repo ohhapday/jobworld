@@ -115,6 +115,7 @@ requirejs([
         $('.btn_plss').on('click', function () {
             pop.fadeIn(500);
             pop_show();
+            // git 테스트
         });
     })();
 
