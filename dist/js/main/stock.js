@@ -23,25 +23,72 @@ requirejs([
 
     let mData = {};
 
-    let handle_ui = function () {
-
-        return;
+    let ui = {
+        init: function () {
+            this.news();
+            this.anal();
+        },
+        news: function () {
+            $.each(mData.NEWS, function (i) {
+                let $li = $('.dtlist:eq(0) li').eq(i);
+                $li.find('strong').text(this.NEWS_HEAD);
+                $li.find('span').text(moment().format('YYYY-MM-DD'));
+            });
+        },
+        anal: function () {
+            $.each(mData.ANAL, function (i) {
+                let $li = $('.dtlist:eq(1) li').eq(i);
+                $li.find('strong').text(this.ANAL_HEAD);
+                $li.find('span').text(moment().format('YYYY-MM-DD'));
+            });
+        },
     };
 
-    // eventSource
-    (function () {
-        // 시스템 데이터 바인드
-        let eventSource = new EventSource('/login/sse_get_system');
-        eventSource.onmessage = function (e) {
-            if (e.data !== JSON.stringify(eData)) {
-                eData = $.extend(true, eData, JSON.parse(e.data));
-                console.log(eData);
-            }
-        }
+    // 기본 event (1회만 처리)
+    let event = (function () {
+        // 실시간 뉴스 탭 클릭 처리
+        $('.bx_tablist:eq(0) .tabmenu').on('click', function () {
+            $('.bx_tablist:eq(0) .tabmenu').toggleClass('on');
+            $('.bx_tablist:eq(0) .btmtbl').toggle();
+        });
 
-        let handle_event = function () {
+        // 매수/매도 탭 클릭 처리
+        $('.bx_tablist:eq(1) .tabmenu').on('click', function () {
+            $('.bx_tablist:eq(1) .tabmenu').toggleClass('on');
+            $('.bx_tablist:eq(1) .btmtbl').toggle();
+        });
 
-        }
+        // 관심종목 클릭 처리 (매수)
+        $('.box_tbllist:eq(0) tbody tr').on('click', function () {
+            $('.bx_tablist:eq(1) .tabmenu:eq(0)').addClass('on');
+            $('.bx_tablist:eq(1) .tabmenu:eq(1)').removeClass('on');
+            $('.bx_tablist:eq(1) .btmtbl:eq(0)').show();
+            $('.bx_tablist:eq(1) .btmtbl:eq(1)').hide();
+
+            $('.box_tbllist:eq(0) tbody tr').css('background-color', '');
+            $('.box_tbllist:eq(1) tbody tr').css('background-color', '');
+            $(this).css('background-color', '#CAE1F7');
+
+            $('.bx_tablist:eq(1) .btmtbl:eq(0) span').text($(this).find('.align-l').text());
+            $('.bx_tablist:eq(1) .btmtbl:eq(0) input[name="cost"]')
+                .val($(this).find('td:eq(1)').text().replace(/,/g, ''));
+        });
+
+        // 보유현황 종목 클릭 처리 (매도)
+        $('.box_tbllist:eq(1) tbody tr').on('click', function () {
+            $('.bx_tablist:eq(1) .tabmenu:eq(1)').addClass('on');
+            $('.bx_tablist:eq(1) .tabmenu:eq(0)').removeClass('on');
+            $('.bx_tablist:eq(1) .btmtbl:eq(1)').show();
+            $('.bx_tablist:eq(1) .btmtbl:eq(0)').hide();
+
+            $('.box_tbllist:eq(0) tbody tr').css('background-color', '');
+            $('.box_tbllist:eq(1) tbody tr').css('background-color', '');
+            $(this).css('background-color', '#CAE1F7');
+
+            $('.bx_tablist:eq(1) .btmtbl:eq(1) span').text($(this).find('.align-l').text());
+            $('.bx_tablist:eq(1) .btmtbl:eq(1) input[name="cost"]')
+                .val($(this).find('td:eq(2)').text().replace(/,/g, ''));
+        });
     })();
 
     // 기본 UI (1회만 처리)
@@ -53,8 +100,20 @@ requirejs([
             url: '/main/get_stockData',
             success: function (data, status, xhr) {
                 mData = data;
-                handle_ui();
+                ui.init();
+                console.log(mData);
             }
         });
+    })();
+
+    // eventSource
+    (function () {
+        // 시스템 데이터 바인드
+        let eventSource = new EventSource('/login/sse_get_system');
+        eventSource.onmessage = function (e) {
+            if (e.data !== JSON.stringify(eData)) {
+                eData = $.extend(true, eData, JSON.parse(e.data));
+            }
+        }
     })();
 });

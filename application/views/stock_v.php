@@ -58,10 +58,22 @@
 							<h4 class="sb_bg">이 시각<br>주요뉴스</h4>
 							<span class="thum"><img src="/dist/images/thum_ex.gif" alt=""></span>
 							<ul class="dtlist">
-								<li><a href=""><strong>코스피 23.6P 하락 마감</strong><span>2017-03-03</span></a></li>
-								<li><a href=""><strong>코스피 23.6P 하락 마감</strong><span>2017-03-03</span></a></li>
-								<li><a href=""><strong>코스피 23.6P 하락 마감</strong><span>2017-03-03</span></a></li>
-								<li><a href=""><strong>코스피 23.6P 하락 마감</strong><span>2017-03-03</span></a></li>
+								<li><a href="#"><strong></strong><span></span></a></li>
+								<li><a href="#"><strong></strong><span></span></a></li>
+								<li><a href="#"><strong></strong><span></span></a></li>
+								<li><a href="#"><strong></strong><span></span></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="btmtbl" style="display: none">
+						<div class="ar_btm_news">
+							<h4 class="sb_bg">이 시각<br>보고서</h4>
+							<span class="thum"><img src="/dist/images/thum_ex.gif" alt=""></span>
+							<ul class="dtlist">
+								<li><a href="#"><strong></strong><span></span></a></li>
+								<li><a href="#"><strong></strong><span></span></a></li>
+								<li><a href="#"><strong></strong><span></span></a></li>
+								<li><a href="#"><strong></strong><span></span></a></li>
 							</ul>
 						</div>
 					</div>
@@ -83,13 +95,32 @@
 								<li>
 									<strong>사는수량</strong>
 									<div class="numchk">
-										<input type="number" name="" value="1">
+										<input type="number" name="ea" value="1">
 									</div>
 								</li>
 								<li>
 									<strong>사는금액</strong>
 									<div class="numchk">
-										<input type="number" name="" value="1">
+										<input type="number" name="cost" value="0" readonly>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="btmtbl" style="display: none;">
+						<div class="ar_btm_dt">
+							<ul class="dtlist clfix">
+								<li><strong>품목명</strong><span>삼성전자</span></li>
+								<li>
+									<strong>파는수량</strong>
+									<div class="numchk">
+										<input type="number" name="ea" value="1">
+									</div>
+								</li>
+								<li>
+									<strong>파는금액</strong>
+									<div class="numchk">
+										<input type="number" name="cost" value="0" readonly>
 									</div>
 								</li>
 							</ul>
@@ -124,25 +155,25 @@
 						<tbody>
 						<tr>
 							<td class="align-l">삼성전자</td>
-							<td>5,500</td>
+							<td>15,500</td>
 							<td><span class="pt2 colblu"><img src="/dist/images/ico_mndw.png" alt="">820</span></td>
 							<td><em class="colblu">+2.00%</em></td>
 						</tr>
 						<tr>
-							<td class="align-l">삼성전자</td>
-							<td>5,500</td>
+							<td class="align-l">엘지전자</td>
+							<td>25,500</td>
 							<td><span class="pt2 colred"><img src="/dist/images/ico_mnup.png" alt="">820</span></td>
 							<td><em class="colred">-2.00%</em></td>
 						</tr>
 						<tr>
-							<td class="align-l">삼성전자</td>
+							<td class="align-l">현대자동차</td>
 							<td>5,500</td>
 							<td>100</td>
 							<td><em>0%</em></td>
 						</tr>
 						<tr>
 							<td class="align-l">삼성전자</td>
-							<td>5,500</td>
+							<td>35,500</td>
 							<td><span class="pt2 colblu"><img src="/dist/images/ico_mndw.png" alt="">820</span></td>
 							<td><em class="colblu">+2.00%</em></td>
 						</tr>
@@ -186,23 +217,23 @@
 							</thead>
 							<tbody>
 							<tr>
-								<td class="align-l">삼성전자</td>
+								<td class="align-l">엘지전자</td>
 								<td>2,000</td>
-								<td>2,000</td>
+								<td>3,000</td>
 								<td>2,000</td>
 								<td>2,000,000</td>
 							</tr>
 							<tr>
-								<td class="align-l">삼성전자</td>
+								<td class="align-l">현대전자</td>
 								<td>2,000</td>
-								<td>2,000</td>
+								<td>4,000</td>
 								<td class="colred">-2,000</td>
 								<td>2,000,000</td>
 							</tr>
 							<tr>
 								<td class="align-l">삼성전자</td>
 								<td>2,000</td>
-								<td>2,000</td>
+								<td>5,000</td>
 								<td>2,000</td>
 								<td>&nbsp;</td>
 							</tr>
