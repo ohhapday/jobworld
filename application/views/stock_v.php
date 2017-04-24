@@ -288,10 +288,10 @@
 							<td class="align-l"><a href="#"><label for="">삼성전자</label></a></td>
 							<td>5,500</td>
 							<td>
-								<span class="pt2 colblu"><img src="/dist/images/ico_mndw.png" alt="">820</span>
+								<img src="/dist/images/ico_mndw.png" alt=""> <span class="pt2">820</span>
 							</td>
 							<td>
-								<em class="colblu">+2.00%</em>
+								<em class="">+2.00%</em>
 							</td>
 						</tr>
 						<!--

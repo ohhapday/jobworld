@@ -130,15 +130,25 @@ class Main_m extends CI_Model
         ";
         $rownum = $this->db->query($query)->row()->stock_rownum;
 
+        $this->db->query('SET @COMP_DATE = ?;', $rownum);
         $query = "
             SELECT
-             COMP_KEY, SECT_KEY, COMP_CODE, COMP_NAME, COMP_PRICE, COMP_DATE
-            FROM job015_copy
-            WHERE
-                COMP_DATE = ?
-            ORDER BY SECT_KEY ASC
+              COMP_KEY, SECT_KEY, COMP_CODE, COMP_NAME, COMP_DATE, NOW_PRICE AS COMP_PRICE,
+              PREV_PRICE - NOW_PRICE AS MEASURE,
+              ROUND((PREV_PRICE - NOW_PRICE) / NOW_PRICE * 100, 2) AS PER_MEASURE
+            FROM
+              (SELECT
+              COMP_KEY, SECT_KEY, COMP_CODE, COMP_NAME, COMP_DATE,
+              SUM(IF(COMP_DATE = @COMP_DATE, COMP_PRICE, 0)) AS NOW_PRICE,
+              SUM(IF(COMP_DATE = @COMP_DATE - 1, COMP_PRICE, 0)) AS PREV_PRICE
+               FROM job015_copy
+               WHERE
+                 COMP_DATE IN (@COMP_DATE - 1, @COMP_DATE)
+               GROUP BY SECT_KEY
+               ORDER BY SECT_KEY ASC) aa;
         ";
         $return = $this->db->query($query, $rownum)->result();
+        // todo 쿼리 음수 양수 좀 이상
 
         return $return;
     }

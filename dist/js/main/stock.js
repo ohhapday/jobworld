@@ -95,17 +95,32 @@ requirejs([
     (function () {
         let pop = $('.wrap_layerpop:eq(0)');
         let $table = pop.find('.ovtbl table tbody');
-        let $clone = pop.find('.ovtbl tbody tr:eq(0)')
-            .clone(true).css('display', '');
 
         // 관심종목 팝업 생성
         var pop_show = function () {
             $.each(mData.stock, function (i) {
+                let $clone = pop.find('.ovtbl tbody tr:eq(0)')
+                    .clone(true).css('display', '');
+
                 $clone.find('td:eq(0) input').val(this.COMP_CODE);
                 $clone.find('td:eq(0) input').attr('id', 'id' + this.COMP_CODE);
                 $clone.find('td:eq(1) label').attr('for', 'id' + this.COMP_CODE);
                 $clone.find('td:eq(1) label').text(this.COMP_NAME);
                 $clone.find('td:eq(2)').text(nf.format(this.COMP_PRICE));
+
+                if (parseInt(this.MEASURE) >= 0) {
+                    $clone.find('td:eq(3) img').attr('src', '/dist/images/ico_mnup.png');
+                    $clone.find('td:eq(3) span').addClass('colred');
+                    $clone.find('td:eq(4) em').addClass('colred');
+                } else {
+                    $clone.find('td:eq(3) img').attr('src', '/dist/images/ico_mndw.png');
+                    $clone.find('td:eq(3) span').addClass('colblu');
+                    $clone.find('td:eq(4) em').addClass('colblu');
+                    console.log(this.MEASURE);
+                }
+                $clone.find('td:eq(3) span').text(nf.format(this.MEASURE));
+                $clone.find('td:eq(4) em').text(nf.format(this.PER_MEASURE) + '%');
+                // todo nf percent 찾기
 
                 $table.append($clone.clone(true));
             });
