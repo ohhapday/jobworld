@@ -89,5 +89,14 @@ class Admin extends CI_Controller
         echo json_encode($return);
     }
 
+    public function put_init()
+    {
+        return $this->admin_m->put_init();
+    }
+
+    public function put_stock_rownum()
+    {
+        return $this->admin_m->put_stock_rownum();
+    }
 
 }

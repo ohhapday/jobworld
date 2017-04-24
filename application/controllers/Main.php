@@ -56,6 +56,14 @@ class Main extends CI_Controller
         echo json_encode($return);
     }
 
+    public function get_stockData()
+    {
+        $return->NEWS = $this->main_m->get_NEWS();
+        $return->ANAL = $this->main_m->get_ANAL();
+
+        echo json_encode($return);
+    }
+
     public function get_survey()
     {
         $return->SURVEY = $this->main_m->get_survey();

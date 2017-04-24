@@ -3,7 +3,7 @@
  *
  */
 
-requirejs([
+define([
     'jquery', 'bootstrap', 'moment', 'jquery-ui', 'session',
 ], function ($, bootstrap, moment, a, session) {
     "use strict";
@@ -13,22 +13,6 @@ requirejs([
         name: session.EMPL_NAME,            // 사용자 이름
         mf: session.MF_FG,                  // 성별
     };
-
-    let eData = {                           // 실시간 데이터
-        usabled: '1',
-    };
-
-    // eventSource
-    (function () {
-        // 시스템 데이터 바인드
-        let eventSource = new EventSource('/login/sse_get_system');
-        eventSource.onmessage = function (e) {
-            if (e.data !== JSON.stringify(eData)) {
-                eData = JSON.parse(e.data);
-                handle_ui();
-            }
-        }
-    })();
 
     // 카운터 시계
     (function () {
@@ -45,18 +29,6 @@ requirejs([
             $(this).closest('.wrap_layerpop').fadeOut(500);
         });
         $('.member strong').text(user.name);
-    })();
-
-    // event 처리 함수
-    let handle_event = function () {
-        // 프로그램 사용 중지
-        if (eData.usabled === '0') {
-            $('.clfix li a').css('cursor', 'not-allowed');
-            $('.clfix li a').attr('href', '#');
-        } else {
-            $('.clfix li a').css('cursor', 'pointer');
-            $('.clfix li a').attr('href', '#');
-        }
 
         // 메뉴 버튼
         (function () {
@@ -82,8 +54,22 @@ requirejs([
                 $(location).attr('href', '/main/stock');
             });
         })();
+    })();
+
+    // event 처리 함수
+    let handle_event = function (eData) {
+        // 프로그램 사용 중지
+        if (eData.usabled === '0') {
+            $('.clfix li a').css('cursor', 'not-allowed');
+            $('.clfix li a').attr('href', '#');
+        } else {
+            $('.clfix li a').css('cursor', 'pointer');
+            $('.clfix li a').attr('href', '#');
+        }
     };
 
-    handle_event();
+    return {
+        handle_event: handle_event,
+    }
 });
 

@@ -69,4 +69,41 @@ class Admin_m extends CI_Model
         return true;
     }
 
+    public function put_init()
+    {
+        $this->db->trans_start();
+
+        $update_data = array(
+            'PG_LOCK' => 0,
+            'fund_STATUS' => 0,
+            'bond_STATUS' => 0,
+            'stock_STATUS' => 0,
+            'DATA_TYPE' => '30',
+            'stock_rownum' => 10
+        );
+        $this->db->update('tb_admin', $update_data);
+
+        $this->db->trans_complete();
+
+        return $this->db->trans_status();
+    }
+
+    public function get_system()
+    {
+        $query = "
+            SELECT * FROM tb_admin
+        ";
+        $return = $this->db->query($query)->row();
+
+        return $return;
+    }
+
+    public function put_stock_rownum()
+    {
+        $query = "
+            UPDATE tb_admin SET stock_rownum = stock_rownum + 1
+        ";
+        $this->db->query($query);
+    }
+
 }

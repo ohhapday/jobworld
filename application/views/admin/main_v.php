@@ -197,13 +197,13 @@
 				<div class="bx_chk_list clfix">
 					<ul>
 						<li>
-							<button type="button">1단계 <span>초보</span></button>
+							<button type="button"><span>초보 (60초)</span></button>
 						</li>
 						<li>
-							<button type="button">1단계 <span>중간</span></button>
+							<button type="button"><span>중간 (50초)</span></button>
 						</li>
 						<li>
-							<button type="button">3단계 <span>고수</span></button>
+							<button type="button"><span>고수 (30초)</span></button>
 						</li>
 					</ul>
 					<div class="btn_conf"><a href="#">확정</a></div>

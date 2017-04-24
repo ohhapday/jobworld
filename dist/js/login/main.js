@@ -10,15 +10,10 @@ requirejs([
     "use strict";
 
     let sdata = {
-        'usabled': null,
+        PG_LOCK: null,
     };
 
     let nf = new Intl.NumberFormat(["en-US"]);
-
-    // ajax 처리
-    let handle_ajax = (function () {
-
-    })();
 
     // eventSource
     (function () {
@@ -33,7 +28,7 @@ requirejs([
 
     // UI 처리 함수
     let handle_ui = function () {
-        if (sdata.usabled === '1') {
+        if (sdata.PG_LOCK === '1') {
             $('input').attr('disabled', false);
             $('.btn_loglist').removeClass('hidden');
         } else {

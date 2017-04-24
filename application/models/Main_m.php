@@ -26,6 +26,7 @@ class Main_m extends CI_Model
     {
         $query = "
             SELECT * FROM job016
+            WHERE SEND = 1
             ORDER BY NEWS_KEY ASC
             LIMIT 3
         ";
@@ -37,6 +38,7 @@ class Main_m extends CI_Model
     {
         $query = "
             SELECT * FROM job017
+            WHERE SEND = 1
             GROUP BY ANAL_TYPE
             ORDER BY ANAL_KEY ASC
             LIMIT 6

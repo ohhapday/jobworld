@@ -120,6 +120,7 @@ requirejs([
         // 프로그램 사용 제한
         (function () {
             if (mdata.usabled === 1) {
+                $('.btn_refresh').css('background', '#6e6b6b');
                 $('.btn_use').animate({
                     backgroundColor: "#f34937",
                 }, 1000);
@@ -127,6 +128,7 @@ requirejs([
                     backgroundColor: "#6e6b6b",
                 }, 1000);
             } else {
+                $('.btn_refresh').css('background', '#fdc236');
                 $('.btn_use').animate({
                     backgroundColor: "#6e6b6b",
                 }, 1000);
@@ -209,10 +211,22 @@ requirejs([
 
         // 데이터 초기화
         (function () {
+            var data_init = function () {
+                $.ajax({
+                    async: false,
+                    dataType: 'json',
+                    type: 'post',
+                    url: '/admin/put_init',
+                    success: function (data, status, xhr) {
+                        alert('데이터가 초기화 되었습니다.');
+                    }
+                });
+            };
+
             // todo 어떤거 초기화 해야 할지
             $('.btn_refresh').on('click', function () {
                 if ((confirm('데이터가 초기화됩니다. 실행하시겠습니까?'))) {
-                    // $(this).css('background', '#6e6b6b');
+                    data_init();
                 }
             });
         })();

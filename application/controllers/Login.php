@@ -19,6 +19,7 @@ class Login extends CI_Controller
         $this->load->helper(array('common', 'url', 'alert'));
 
         $this->load->model('admin_m');
+        $this->load->model('main_m');
         $this->load->model('login_m');
     }
 
@@ -52,18 +53,14 @@ class Login extends CI_Controller
 
     public function sse_get_system()
     {
-        $return->usabled = $this->admin_m->get_usable();
+        $return->status = $this->admin_m->get_system();
 
-        if ($return->usabled === '1') {
-            $retry = 5000;
-        } else {
-            $retry = 1000;
-        }
+        $retry = 5000;
 
         header('Content-Type: text/event-stream');
         header('Cache-Control: no-cache');
 
-        echo "data: " . json_encode($return) . "\n\n";
+        echo "data: " . json_encode($return->status) . "\n\n";
         echo "retry: " . $retry . "\n";
 
         flush();
