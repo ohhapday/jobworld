@@ -60,6 +60,7 @@ class Main extends CI_Controller
     {
         $return->NEWS = $this->main_m->get_NEWS();
         $return->ANAL = $this->main_m->get_ANAL();
+        $return->stock = $this->main_m->get_stock();
 
         echo json_encode($return);
     }

@@ -45,7 +45,7 @@ requirejs([
     };
 
     // 기본 event (1회만 처리)
-    let event = (function () {
+    (function () {
         // 실시간 뉴스 탭 클릭 처리
         $('.bx_tablist:eq(0) .tabmenu').on('click', function () {
             $('.bx_tablist:eq(0) .tabmenu').toggleClass('on');
@@ -88,6 +88,33 @@ requirejs([
             $('.bx_tablist:eq(1) .btmtbl:eq(1) span').text($(this).find('.align-l').text());
             $('.bx_tablist:eq(1) .btmtbl:eq(1) input[name="cost"]')
                 .val($(this).find('td:eq(2)').text().replace(/,/g, ''));
+        });
+    })();
+
+    // 관심종목 처리
+    (function () {
+        let pop = $('.wrap_layerpop:eq(0)');
+        let $table = pop.find('.ovtbl table tbody');
+        let $clone = pop.find('.ovtbl tbody tr:eq(0)')
+            .clone(true).css('display', '');
+
+        // 관심종목 팝업 생성
+        var pop_show = function () {
+            $.each(mData.stock, function (i) {
+                $clone.find('td:eq(0) input').val(this.COMP_CODE);
+                $clone.find('td:eq(0) input').attr('id', 'id' + this.COMP_CODE);
+                $clone.find('td:eq(1) label').attr('for', 'id' + this.COMP_CODE);
+                $clone.find('td:eq(1) label').text(this.COMP_NAME);
+                $clone.find('td:eq(2)').text(nf.format(this.COMP_PRICE));
+
+                $table.append($clone.clone(true));
+            });
+        };
+
+        // 관심종목 추가 버튼
+        $('.btn_plss').on('click', function () {
+            pop.fadeIn(500);
+            pop_show();
         });
     })();
 

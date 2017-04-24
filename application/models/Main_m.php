@@ -123,5 +123,25 @@ class Main_m extends CI_Model
         return $return;
     }
 
+    public function get_stock()
+    {
+        $query = "
+            SELECT stock_rownum FROM tb_admin
+        ";
+        $rownum = $this->db->query($query)->row()->stock_rownum;
+
+        $query = "
+            SELECT
+             COMP_KEY, SECT_KEY, COMP_CODE, COMP_NAME, COMP_PRICE, COMP_DATE
+            FROM job015_copy
+            WHERE
+                COMP_DATE = ?
+            ORDER BY SECT_KEY ASC
+        ";
+        $return = $this->db->query($query, $rownum)->result();
+
+        return $return;
+    }
+
 
 }

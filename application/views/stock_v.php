@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<meta charset="UTF-8" />
+	<meta charset="UTF-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>드림증권 투자시스템</title>
-	<link rel="stylesheet" type="text/css" href="/dist/css/common.css" />
-	<link rel="stylesheet" type="text/css" href="/dist/css/layout.css" />
-	<link rel="stylesheet" type="text/css" href="/dist/css/content.css" />
+	<link rel="stylesheet" type="text/css" href="/dist/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/dist/css/layout.css"/>
+	<link rel="stylesheet" type="text/css" href="/dist/css/content.css"/>
 
 	<!--[if lt IE 9]>
 	<script src="../js/html5shiv.js"></script>
@@ -91,7 +91,7 @@
 					<div class="btmtbl">
 						<div class="ar_btm_dt">
 							<ul class="dtlist clfix">
-								<li><strong>품목명</strong><span>삼성전자</span></li>
+								<li><strong>품목명</strong><span></span></li>
 								<li>
 									<strong>사는수량</strong>
 									<div class="numchk">
@@ -110,7 +110,7 @@
 					<div class="btmtbl" style="display: none;">
 						<div class="ar_btm_dt">
 							<ul class="dtlist clfix">
-								<li><strong>품목명</strong><span>삼성전자</span></li>
+								<li><strong>품목명</strong><span></span></li>
 								<li>
 									<strong>파는수량</strong>
 									<div class="numchk">
@@ -134,7 +134,7 @@
 			<div class="sbleftbt3">
 				<div class="sb_tit">
 					<h3 class="ic5">관심종목</h3>
-					<a href="" class="btn_plss"><img src="/dist/images/ico_sbpls.gif" alt=""></a>
+					<a href="#" class="btn_plss"><img src="/dist/images/ico_sbpls.gif" alt=""></a>
 				</div>
 				<div class="box_tbllist">
 					<table>
@@ -250,6 +250,71 @@
 	</div>
 </div>
 <!-- //content -->
+
+<!-- 관심종목 pop -->
+<div class="wrap_layerpop" style="display: none;">
+
+	<div class="layerpop pop9">
+		<div class="box_titpop">
+			<h2>관심종목 등록하기</h2>
+			<div class="btn_close">
+				<button type="button">닫기</button>
+			</div>
+		</div>
+		<div class="box_contpop">
+			<div class="contpdd">
+				<div class="box_tbllist ovtbl">
+					<table>
+						<colgroup>
+							<col style="width: 7%;">
+							<col style="width: 33%;">
+							<col style="width: 18%;">
+							<col style="width: 18%;">
+							<col style="width: 18%;">
+						</colgroup>
+						<thead>
+						<tr>
+							<th scope="col">선택</th>
+							<th scope="col">종목명</th>
+							<th scope="col">현재가</th>
+							<th scope="col">전일대비</th>
+							<th scope="col">등락율</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr style="display: none;">
+							<!-- <input type="radio" name="chdate" id="chdate1" checked><label for="chdate1">만기</label> -->
+							<td><input type="checkbox" name="favor" value=""></td>
+							<td class="align-l"><a href="#"><label for="">삼성전자</label></a></td>
+							<td>5,500</td>
+							<td>
+								<span class="pt2 colblu"><img src="/dist/images/ico_mndw.png" alt="">820</span>
+							</td>
+							<td>
+								<em class="colblu">+2.00%</em>
+							</td>
+						</tr>
+						<!--
+						<tr>
+							<td><input type="checkbox" name="favor" value="" id="aaaaaa"></td>
+							<td class="align-l"><a href="#"><label for="aaaaaa">삼성전자</label></a></td>
+							<td>5,500</td>
+							<td><span class="pt2 colred"><img src="/dist/images/ico_mnup.png" alt="">820</span></td>
+							<td><em class="colred">-2.00%</em></td>
+						</tr>
+						-->
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="btn_popbtm">
+			<span class="btn_blk"><a href="">저장</a></span>
+		</div>
+	</div>
+
+</div>
+<!-- //관심종목 pop -->
 
 </body>
 </html>
