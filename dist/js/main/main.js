@@ -58,7 +58,7 @@ requirejs([
                 pop.find('.box_titpop h2').text('이 시각 뉴스');
                 pop.find('.news_tit').text(mData.NEWS[index].NEWS_HEAD);
                 pop.find('.box_contpop p').html(mData.NEWS[index].NEWS_FILE);
-                // todo 컨텐츠 하단에 "서울경제"부분 DB 처리 필요
+                pop.find('.date em').text('잡월드 뉴스');
                 pop.find('.date span:eq(1)').text(moment().format('YYYY.MM.DD'));
 
                 pop.fadeIn(500);
@@ -102,7 +102,7 @@ requirejs([
                 pop.find('.box_titpop h2').text('애널리스트 보고서');
                 pop.find('.news_tit').text(mData.ANAL[index].ANAL_HEAD);
                 pop.find('.box_contpop p').html(mData.ANAL[index].ANAL_FILE);
-                // todo 컨텐츠 하단에 "서울경제"부분 DB 처리 필요
+                pop.find('.date em').text('잡월드 애널리스트');
                 pop.find('.date span:eq(1)').text(moment().format('YYYY.MM.DD'));
 
                 pop.fadeIn(500);

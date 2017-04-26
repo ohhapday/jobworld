@@ -188,7 +188,7 @@
 						class="colred">한국은행이 연말까지 기준금리를 동결할 것이라는 전망에</em> 무게가 더 싣고 있는 겁니다. 기준금리 인상은 가계부채 증폭 부담이 크고 , 반면에
 				기준금리 인하는 금리 역전에 따른다.</p>
 			<div class="date align-r">
-				<em class="colblu">서울경제</em><span class="l_pd">|</span><span>2017.03.23</span>
+				<em class="colblu">잡월드 뉴스</em><span class="l_pd">|</span><span>2017.03.23</span>
 			</div>
 		</div>
 	</div>

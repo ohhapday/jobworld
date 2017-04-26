@@ -70,6 +70,7 @@ define([
 
     return {
         handle_event: handle_event,
+        user: user,
     }
 });
 

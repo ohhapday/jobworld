@@ -61,6 +61,8 @@ class Main extends CI_Controller
         $return->NEWS = $this->main_m->get_NEWS();
         $return->ANAL = $this->main_m->get_ANAL();
         $return->stock = $this->main_m->get_stock();
+        $return->favor = $this->main_m->get_favor();
+        $return->cashFlow = $this->main_m->get_cash();
 
         echo json_encode($return);
     }
@@ -68,6 +70,14 @@ class Main extends CI_Controller
     public function get_survey()
     {
         $return->SURVEY = $this->main_m->get_survey();
+
+        echo json_encode($return);
+    }
+
+    public function post_favor()
+    {
+        $data = $this->input->post('favor', true);
+        $return = $this->main_m->post_favor($data);
 
         echo json_encode($return);
     }

@@ -81,7 +81,7 @@ class Main_m extends CI_Model
             FROM
               job015
             WHERE
-              COMP_DATE = 1
+              COMP_DATE = 10
             GROUP BY SECT_KEY
             LIMIT 9
         ";
@@ -134,8 +134,8 @@ class Main_m extends CI_Model
         $query = "
             SELECT
               COMP_KEY, SECT_KEY, COMP_CODE, COMP_NAME, COMP_DATE, NOW_PRICE AS COMP_PRICE,
-              PREV_PRICE - NOW_PRICE AS MEASURE,
-              ROUND((PREV_PRICE - NOW_PRICE) / NOW_PRICE * 100, 2) AS PER_MEASURE
+              NOW_PRICE - PREV_PRICE AS MEASURE,
+              ROUND((NOW_PRICE - PREV_PRICE) / PREV_PRICE, 4) AS PER_MEASURE
             FROM
               (SELECT
               COMP_KEY, SECT_KEY, COMP_CODE, COMP_NAME, COMP_DATE,
@@ -148,7 +148,70 @@ class Main_m extends CI_Model
                ORDER BY SECT_KEY ASC) aa;
         ";
         $return = $this->db->query($query, $rownum)->result();
-        // todo 쿼리 음수 양수 좀 이상
+
+        return $return;
+    }
+
+    public function post_favor($data)
+    {
+        $this->db->trans_start();
+
+        $this->db->where('EMPL_KEY', $_SESSION['EMPL_KEY']);
+        $this->db->delete('job080');
+
+        if ($data !== null) {
+            foreach ($data as $item) {
+                $insert_data[] = array(
+                    'EMPL_KEY' => $_SESSION['EMPL_KEY'],
+                    'COMP_KEY' => $item
+                );
+            }
+            $this->db->insert_batch('job080', $insert_data);
+        }
+
+        $this->db->trans_complete();
+
+        return $this->db->trans_status();
+    }
+
+    public function get_favor()
+    {
+        $query = "
+            SELECT COMP_KEY
+            FROM job080
+            WHERE
+              EMPL_KEY = ?
+        ";
+        $result = $this->db->query($query, $_SESSION['EMPL_KEY'])->result();
+
+        $return = array();
+        foreach ($result as $item) {
+            $return[] = $item->COMP_KEY;
+        }
+
+        return $return;
+    }
+
+    public function get_cash()
+    {
+        $query = "
+            SELECT EMPL_CASH FROM job050
+            WHERE
+              EMPL_KEY = ?            
+        ";
+        $return1 = $this->db->query($query, $_SESSION['EMPL_KEY'])->row()->EMPL_CASH;
+
+        $query = "
+            SELECT SUM(EMPL_BUYTOT) AS BUYTOT FROM job083
+            WHERE
+              EMPL_KEY = ?
+            GROUP BY EMPL_KEY
+        ";
+        $return2 = $this->db->query($query, $_SESSION['EMPL_KEY'])->row()->BUYTOT;
+
+        $return->cash1 = $return1 + $return2;               // 고객자산
+        $return->cash2 = 0;                                 // 투자금액
+        $return->cash3 = 0;                                 // 잔고
 
         return $return;
     }

@@ -12,6 +12,7 @@
 .box_tbllist table td .pt2 img{margin-right: 5px;}
 .box_tbllist td .btn_send{display: block; width: 80%; margin: 0 auto; padding: 5px 0; border-radius: 5px; border: 1px solid #afaaa3;}
 .box_tbllist td .btn_sendon{display: block; width: 80%; margin: 0 auto; padding: 5px 0; border-radius: 5px; background: #d0d518; color: #fff;}
+#container .box_tbllist .on{background-color: #CAE1F7!important;}
 .box_tblwrite{border-top: 1px solid #1f1e1c;}
 .box_tblwrite th{padding: 10px 20px; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; background: #f5f5f5; text-align: left;}
 .box_tblwrite td{padding: 10px 3px; border-bottom: 1px solid #ddd;}
@@ -64,6 +65,8 @@
 .box_sbtop .bx_tablist .btmtbl .ar_btm_dt .dtlist li .numchk{float: left; width: 52%;}
 .box_sbtop .bx_tablist .btmtbl .ar_btm_dt .dtlist li .numchk input{float: left; width: 98%; border: 0; background: transparent;}
 .box_sbtop .bx_tablist .btmtbl .ar_btm_dt .dtlist li > span{float: left; width: 55%;}
+.box_sbtop .bx_tablist .btmtbl.on{display: block}
+.box_sbtop .bx_tablist .btmtbl.off{display: none;}
 .box_sbtop .bx_tablist .btn_bview{display: block; width: 100%; height: 75px; margin-top: 10px; box-sizing: border-box; background:#f34937; font-size: 1.125em; color: #fff; text-align: center;}
 .box_sbtop .bx_tablist .btn_bview span{display: inline-block; padding: 20px 0 20px 50px; background:url(../images/ico_sbplsb2.png) no-repeat 0 50%;}
 

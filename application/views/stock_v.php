@@ -53,7 +53,7 @@
 						<div class="tabmenu m1 on"><a href="#" class="btn_tb">증권뉴스</a></div>
 						<div class="tabmenu m2"><a href="#" class="btn_tb">애널리스트 보고서</a></div>
 					</div>
-					<div class="btmtbl">
+					<div class="btmtbl on">
 						<div class="ar_btm_news">
 							<h4 class="sb_bg">이 시각<br>주요뉴스</h4>
 							<span class="thum"><img src="/dist/images/thum_ex.gif" alt=""></span>
@@ -65,7 +65,7 @@
 							</ul>
 						</div>
 					</div>
-					<div class="btmtbl" style="display: none">
+					<div class="btmtbl off">
 						<div class="ar_btm_news">
 							<h4 class="sb_bg">이 시각<br>보고서</h4>
 							<span class="thum"><img src="/dist/images/thum_ex.gif" alt=""></span>
@@ -88,45 +88,41 @@
 						<div class="tabmenu m1 on"><a href="#" class="btn_tb">사기(매수)</a></div>
 						<div class="tabmenu m2"><a href="#" class="btn_tb">팔기(매도)</a></div>
 					</div>
-					<div class="btmtbl">
+					<div class="btmtbl on">
 						<div class="ar_btm_dt">
 							<ul class="dtlist clfix">
 								<li><strong>품목명</strong><span></span></li>
 								<li>
 									<strong>사는수량</strong>
 									<div class="numchk">
-										<input type="number" name="ea" value="1">
+										<input type="number" name="ea" value="0" step="10" min="0">
 									</div>
 								</li>
 								<li>
 									<strong>사는금액</strong>
-									<div class="numchk">
-										<input type="number" name="cost" value="0" readonly>
-									</div>
+									<div class="numchk"></div>
 								</li>
 							</ul>
 						</div>
 					</div>
-					<div class="btmtbl" style="display: none;">
+					<div class="btmtbl off">
 						<div class="ar_btm_dt">
 							<ul class="dtlist clfix">
 								<li><strong>품목명</strong><span></span></li>
 								<li>
 									<strong>파는수량</strong>
 									<div class="numchk">
-										<input type="number" name="ea" value="1">
+										<input type="number" name="ea" value="0" step="10" min="0">
 									</div>
 								</li>
 								<li>
 									<strong>파는금액</strong>
-									<div class="numchk">
-										<input type="number" name="cost" value="0" readonly>
-									</div>
+									<div class="numchk"></div>
 								</li>
 							</ul>
 						</div>
 					</div>
-					<a href="" class="btn_bview"><span>결제(완료)</span></a>
+					<a href="#" class="btn_bview"><span>결제(완료)</span></a>
 				</div>
 			</div>
 		</div>
@@ -136,7 +132,7 @@
 					<h3 class="ic5">관심종목</h3>
 					<a href="#" class="btn_plss"><img src="/dist/images/ico_sbpls.gif" alt=""></a>
 				</div>
-				<div class="box_tbllist">
+				<div class="box_tbllist" style="height: 305px; overflow-y: auto;">
 					<table>
 						<colgroup>
 							<col style="width: 40%;">
@@ -153,29 +149,11 @@
 						</tr>
 						</thead>
 						<tbody>
-						<tr>
+						<tr style="display: none;">
 							<td class="align-l">삼성전자</td>
 							<td>15,500</td>
-							<td><span class="pt2 colblu"><img src="/dist/images/ico_mndw.png" alt="">820</span></td>
-							<td><em class="colblu">+2.00%</em></td>
-						</tr>
-						<tr>
-							<td class="align-l">엘지전자</td>
-							<td>25,500</td>
-							<td><span class="pt2 colred"><img src="/dist/images/ico_mnup.png" alt="">820</span></td>
-							<td><em class="colred">-2.00%</em></td>
-						</tr>
-						<tr>
-							<td class="align-l">현대자동차</td>
-							<td>5,500</td>
-							<td>100</td>
-							<td><em>0%</em></td>
-						</tr>
-						<tr>
-							<td class="align-l">삼성전자</td>
-							<td>35,500</td>
-							<td><span class="pt2 colblu"><img src="/dist/images/ico_mndw.png" alt="">820</span></td>
-							<td><em class="colblu">+2.00%</em></td>
+							<td><img src="/dist/images/ico_mndw.png" alt=""> <span class="pt2">820</span></td>
+							<td><em class="">+2.00%</em></td>
 						</tr>
 						</tbody>
 					</table>
@@ -191,13 +169,13 @@
 				</div>
 				<div class="ar_btm_sel">
 					<ul class="dtlist clfix">
-						<li><strong>고객자산</strong><span>10,000,000</span></li>
+						<li><strong>고객자산</strong><span></span></li>
 						<li><strong>투자금액</strong><span>10,000,000</span></li>
 						<li><strong>잔고</strong><span>10,000,000</span></li>
 					</ul>
 				</div>
 				<div class="ar_btm_bx clfix">
-					<div class="box_tbllist">
+					<div class="box_tbllist" style="height: 300px; overflow-y: auto;">
 						<table>
 							<colgroup>
 								<col style="width: 28%;">
@@ -235,7 +213,7 @@
 								<td>2,000</td>
 								<td>5,000</td>
 								<td>2,000</td>
-								<td>&nbsp;</td>
+								<td>2,000,000</td>
 							</tr>
 							<tr class="last">
 								<th scope="row">합계</th>
@@ -283,7 +261,6 @@
 						</thead>
 						<tbody>
 						<tr style="display: none;">
-							<!-- <input type="radio" name="chdate" id="chdate1" checked><label for="chdate1">만기</label> -->
 							<td><input type="checkbox" name="favor" value=""></td>
 							<td class="align-l"><a href="#"><label for="">삼성전자</label></a></td>
 							<td>5,500</td>
@@ -294,27 +271,40 @@
 								<em class="">+2.00%</em>
 							</td>
 						</tr>
-						<!--
-						<tr>
-							<td><input type="checkbox" name="favor" value="" id="aaaaaa"></td>
-							<td class="align-l"><a href="#"><label for="aaaaaa">삼성전자</label></a></td>
-							<td>5,500</td>
-							<td><span class="pt2 colred"><img src="/dist/images/ico_mnup.png" alt="">820</span></td>
-							<td><em class="colred">-2.00%</em></td>
-						</tr>
-						-->
 						</tbody>
 					</table>
 				</div>
 			</div>
 		</div>
 		<div class="btn_popbtm">
-			<span class="btn_blk"><a href="">저장</a></span>
+			<span class="btn_blk"><a href="#">저장</a></span>
 		</div>
 	</div>
 
 </div>
 <!-- //관심종목 pop -->
+
+<!-- 뉴스정보 pop -->
+<div class="wrap_layerpop" style="display: none;">
+	<div class="layerpop pop1">
+		<div class="box_titpop">
+			<h2>컨텐츠 형태</h2>
+			<div class="btn_close">
+				<button type="button">닫기</button>
+			</div>
+		</div>
+		<div class="box_contpop">
+			<h3 class="news_tit">한국은행 기준 금리 동결 방침 한국은행 기준 금리 동결 방침</h3>
+			<p>한국은행이 연내 기준금리를 낮출 것이라는 전망을 내놓았던 외국계 투자은행이 태도를 급선회했습니다. 미국 연방준비제도의 3월 기준금리 인상이 기정 사실화되자 <em
+						class="colred">한국은행이 연말까지 기준금리를 동결할 것이라는 전망에</em> 무게가 더 싣고 있는 겁니다. 기준금리 인상은 가계부채 증폭 부담이 크고 , 반면에
+				기준금리 인하는 금리 역전에 따른다.</p>
+			<div class="date align-r">
+				<em class="colblu">잡월드 뉴스</em><span class="l_pd">|</span><span></span>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //뉴스정보 pop -->
 
 </body>
 </html>
