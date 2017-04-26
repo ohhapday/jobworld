@@ -176,7 +176,7 @@
 				</div>
 				<div class="ar_btm_bx clfix">
 					<div class="box_tbllist" style="height: 300px; overflow-y: auto;">
-						<table>
+						<table style="height: 299px;">
 							<colgroup>
 								<col style="width: 28%;">
 								<col style="width: 18%;">
@@ -201,25 +201,13 @@
 								<td>2,000</td>
 								<td>2,000,000</td>
 							</tr>
-							<tr>
-								<td class="align-l">현대전자</td>
-								<td>2,000</td>
-								<td>4,000</td>
-								<td class="colred">-2,000</td>
-								<td>2,000,000</td>
-							</tr>
-							<tr>
-								<td class="align-l">삼성전자</td>
-								<td>2,000</td>
-								<td>5,000</td>
-								<td>2,000</td>
-								<td>2,000,000</td>
-							</tr>
+							</tbody>
+							<tfoot>
 							<tr class="last">
 								<th scope="row">합계</th>
 								<td colspan="4" class="cobg">7,500</td>
 							</tr>
-							</tbody>
+							</tfoot>
 						</table>
 					</div>
 				</div>

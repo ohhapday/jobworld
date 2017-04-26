@@ -211,7 +211,7 @@ class Main_m extends CI_Model
 
         $return->cash1 = $return1 + $return2;               // 고객자산
         $return->cash2 = 0;                                 // 투자금액
-        $return->cash3 = 0;                                 // 잔고
+        $return->cash3 = $return->cash1 - $return->cash2;   // 잔고
 
         return $return;
     }

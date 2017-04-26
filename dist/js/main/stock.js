@@ -28,6 +28,7 @@ requirejs([
         stock: null,
         favor: null,
         cashFlow: null,
+        myStock: null,
     };
 
     // ui 생성 함수 모음
@@ -89,6 +90,11 @@ requirejs([
             li.eq(0).find('span').text(nf.format(mData.cashFlow.cash1));
             li.eq(1).find('span').text(nf.format(mData.cashFlow.cash2));
             li.eq(2).find('span').text(nf.format(mData.cashFlow.cash3));
+        },
+        myStock: function () {
+            console.log(mData.myStock);
+            console.log($('.box_tbllist:eq(1) tbody tr'));
+            // todo 라인 생성
         },
     };
 
@@ -172,7 +178,7 @@ requirejs([
 
         // 매수 금액 변경
         $('.sbright2 input[name="ea"]:eq(0)').on('change', function () {
-            let index, stock, total;
+            let index = null, stock, total;
             let tr = $('.box_tbllist:eq(0) tbody tr:not(:eq(0))');
             $.each(tr, function () {
                 if ($(this).hasClass('on')) {
@@ -180,9 +186,7 @@ requirejs([
                 }
             });
 
-            console.log(index);
-
-            if(index != "undefined") {
+            if (index !== null) {
                 stock = mData.stock.find(function (item) {
                     return item.COMP_CODE == mData.favor[index];
                 });
@@ -197,11 +201,16 @@ requirejs([
 
         // 결제 버튼
         $('.btn_bview').on('click', function () {
-            let index;
+            let index = null, stock, buyTotal;
             let aa = ($('.sbright2 .btmtbl:eq(0)').hasClass('on')) ? 0 : 1;
             let box = $('.sbright2 .btmtbl:eq(' + aa + ')');
-            let ea = box.find('input[name=ea]').val();
+            let ea = parseInt(box.find('input[name=ea]').val());
             let tr = $('.box_tbllist:eq(' + aa + ') tbody tr:not(:eq(0))');
+
+            if (ea == 0) {
+                alert('수량을 선택해 주세요.');
+                return;
+            }
 
             $.each(tr, function () {
                 if ($(this).hasClass('on')) {
@@ -209,14 +218,43 @@ requirejs([
                 }
             });
 
-            console.log(index);
+            if (index !== null) {
+                stock = mData.stock.find(function (item) {
+                    return item.COMP_CODE == mData.favor[index];
+                });
 
-            if(index) {
-                if (ea == 0) {
-                    alert('수량을 선택해 주세요.');
+                buyTotal = stock.COMP_PRICE * ea;
+
+                // 잔고 비교
+                if (buyTotal > mData.cashFlow.cash3) {
+                    alert('잔고가 부족합니다.');
                     return;
                 }
+
+                $.ajax({
+                    async: false,
+                    dataType: 'json',
+                    type: 'post',
+                    url: '/main/post_myStock',
+                    data: {
+                        favor: mData.favor,
+                    },
+                    success: function (data, status, xhr) {
+                        ui.myStock();
+                    }
+                });
+
+                mData.myStock = [
+                    {
+                        BUY_KEY: null,
+                        COMP_CODE: parseInt(stock.COMP_CODE),
+                        EMPL_BUYQTY: ea,
+                        EMPL_BUYPRICE: parseInt(stock.COMP_PRICE),
+                        EMPL_BUYTOT: buyTotal,
+                    }
+                ];
             }
+            ui.myStock();
         });
     })();
 
