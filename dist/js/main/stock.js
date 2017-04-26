@@ -101,12 +101,12 @@ requirejs([
         });
 
         /*
-        // 매수/매도 탭 클릭 처리
-        $('.bx_tablist:eq(1) .tabmenu').on('click', function () {
-            $('.bx_tablist:eq(1) .tabmenu').toggleClass('on');
-            $('.bx_tablist:eq(1) .btmtbl').toggle();
-        });
-        */
+         // 매수/매도 탭 클릭 처리
+         $('.bx_tablist:eq(1) .tabmenu').on('click', function () {
+         $('.bx_tablist:eq(1) .tabmenu').toggleClass('on');
+         $('.bx_tablist:eq(1) .btmtbl').toggle();
+         });
+         */
 
         // 관심종목 클릭 처리 (매수)
         $('.box_tbllist:eq(0) tbody tr').on('click', function () {
@@ -180,21 +180,43 @@ requirejs([
                 }
             });
 
-            stock = mData.stock.find(function (item) {
-                return item.COMP_CODE == mData.favor[index];;
-            });
+            console.log(index);
 
-            total = stock.COMP_PRICE * $(this).val();
-            $(this).closest('li').next().find('.numchk').text(nf.format(total));
+            if(index != "undefined") {
+                stock = mData.stock.find(function (item) {
+                    return item.COMP_CODE == mData.favor[index];
+                });
+
+                total = stock.COMP_PRICE * $(this).val();
+                $(this).closest('li').next().find('.numchk').text(nf.format(total));
+            }
         });
 
+        // 매수 금액 변경
+        // todo
+
         // 결제 버튼
-        $('.btn_bview').on('click', function() {
+        $('.btn_bview').on('click', function () {
+            let index;
             let aa = ($('.sbright2 .btmtbl:eq(0)').hasClass('on')) ? 0 : 1;
             let box = $('.sbright2 .btmtbl:eq(' + aa + ')');
-            let ea = $('.sbright2 .btmtbl:eq(0)').val();
+            let ea = box.find('input[name=ea]').val();
+            let tr = $('.box_tbllist:eq(' + aa + ') tbody tr:not(:eq(0))');
 
-            // todo 결재 처리 필요
+            $.each(tr, function () {
+                if ($(this).hasClass('on')) {
+                    index = tr.index($(this));
+                }
+            });
+
+            console.log(index);
+
+            if(index) {
+                if (ea == 0) {
+                    alert('수량을 선택해 주세요.');
+                    return;
+                }
+            }
         });
     })();
 
