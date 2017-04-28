@@ -38,6 +38,7 @@ requirejs([
             this.anal();
             this.favor();
             this.cashFlow();
+            this.buyStock();
         },
         news: function () {
             $.each(mData.NEWS, function (i) {
@@ -92,12 +93,12 @@ requirejs([
             li.eq(2).find('span').text(nf.format(mData.cashFlow.cash3));
         },
         buyStock: function () {
-            console.log(mData.buyStock);
-            console.log($('.box_tbllist:eq(1) tbody tr'));
-
+            let tot_profit = 0;
             let $table = $('.box_sbbtm table:eq(1) tbody');
 
             $table.find('tr:not(:eq(0))').remove();
+
+            console.log(mData.buyStock);
 
             $.each(mData.buyStock, function (i) {
                 let $clone = $table.find('tr:eq(0)')
@@ -105,13 +106,19 @@ requirejs([
                 let self = this;
 
                 let stock = mData.stock.find(function (item) {
-                    return item.COMP_CODE == self;
+                    return item.COMP_CODE == self.COMP_CODE;
                 });
 
-                $clone.find('td:eq(0)').text(stock.COMP_NAME);
-                $clone.find('td:eq(1)').text(nf.format(stock.COMP_PRICE));
+                let profit = parseInt(this.EMPL_BUYPRICE - stock.COMP_PRICE);
+                tot_profit += profit;
 
-                if (parseInt(stock.MEASURE) >= 0) {
+                $clone.find('td:eq(0)').text(stock.COMP_NAME);
+                $clone.find('td:eq(1)').text(nf.format(this.EMPL_BALQTY));
+                $clone.find('td:eq(2)').text(nf.format(this.EMPL_BUYPRICE));
+                $clone.find('td:eq(3)').text(nf.format(stock.COMP_PRICE));
+                $clone.find('td:eq(4)').text(nf.format(profit));
+
+                /*if (parseInt(stock.MEASURE) >= 0) {
                     $clone.find('td:eq(2) img').attr('src', '/dist/images/ico_mnup.png');
                     $clone.find('td:eq(2) span').addClass('colred');
                     $clone.find('td:eq(3) em').addClass('colred');
@@ -119,12 +126,12 @@ requirejs([
                     $clone.find('td:eq(2) img').attr('src', '/dist/images/ico_mndw.png');
                     $clone.find('td:eq(2) span').addClass('colblu');
                     $clone.find('td:eq(3) em').addClass('colblu');
-                }
-                $clone.find('td:eq(2) span').text(nf.format(stock.MEASURE));
-                $clone.find('td:eq(3) em').text(parseFloat(stock.PER_MEASURE * 100).toFixed(2) + '%');
+                }*/
 
                 $table.append($clone.clone(true));
             });
+
+            $('.box_sbbtm table:eq(1) tfoot td').text(nf.format(tot_profit));
         },
     };
 
@@ -249,7 +256,7 @@ requirejs([
             });
 
             // 매입
-            if(aa === 0) {
+            if (aa === 0) {
                 if (index !== null) {
                     stock = mData.stock.find(function (item) {
                         return item.COMP_CODE == mData.favor[index];
@@ -269,7 +276,7 @@ requirejs([
                         type: 'post',
                         url: '/main/post_buyStock',
                         data: {
-                            buyStock:{
+                            buyStock: {
                                 COMP_CODE: stock.COMP_CODE,
                                 EMPL_BUYQTY: ea,
                                 EMPL_BUYPRICE: parseInt(stock.COMP_PRICE),
@@ -277,7 +284,7 @@ requirejs([
                             }
                         },
                         success: function (data, status, xhr) {
-                            data.buyStock = data;
+                            mData.buyStock = data;
                             ui.buyStock();
                         }
                     });
@@ -285,7 +292,7 @@ requirejs([
             }
 
             // 매수
-            if(aa === 1) {
+            if (aa === 1) {
                 if (index !== null) {
                     stock = mData.stock.find(function (item) {
                         return item.COMP_CODE == mData.favor[index];
@@ -305,7 +312,7 @@ requirejs([
                         type: 'post',
                         url: '/main/post_buyStock',
                         data: {
-                            buyStock:{
+                            buyStock: {
                                 BUY_KEY: null,
                                 COMP_CODE: parseInt(stock.COMP_CODE),
                                 EMPL_BUYQTY: ea,

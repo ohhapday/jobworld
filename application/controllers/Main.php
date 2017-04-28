@@ -63,6 +63,7 @@ class Main extends CI_Controller
         $return->stock = $this->main_m->get_stock();
         $return->favor = $this->main_m->get_favor();
         $return->cashFlow = $this->main_m->get_cash();
+        $return->buyStock = $this->main_m->get_buyStock();
 
         echo json_encode($return);
     }

@@ -209,35 +209,15 @@ class Main_m extends CI_Model
         ";
         $return2 = $this->db->query($query, $_SESSION['EMPL_KEY'])->row()->BUYTOT;
 
-        $return->cash1 = $return1 + $return2;               // 고객자산
-        $return->cash2 = 0;                                 // 투자금액
+        $return->cash1 = $return1;               // 고객자산
+        $return->cash2 = $return2;                          // 투자금액
         $return->cash3 = $return->cash1 - $return->cash2;   // 잔고
 
         return $return;
     }
 
-    public function post_buyStock($data)
+    public function get_buyStock()
     {
-        $insert_data = array(
-            'EMPL_KEY' => $_SESSION['EMPL_KEY'],
-            'COMP_CODE' => $data['COMP_CODE'],
-            'EMPL_BUYQTY' => $data['EMPL_BUYQTY'],
-            'EMPL_BUYPRICE' => $data['COMP_CODE'],
-            'EMPL_BUYTOT' => $data['COMP_CODE'],
-        );
-        $this->db->insert('job081', $insert_data);
-        $BUY_KEY = $this->db->insert_id();
-
-        $insert_data = array(
-            'BUY_KEY' => $BUY_KEY,
-            'EMPL_KEY' => $_SESSION['EMPL_KEY'],
-            'COMP_CODE' => $data['COMP_CODE'],
-            'EMPL_BUYQTY' => $data['EMPL_BUYQTY'],
-            'EMPL_BUYPRICE' => $data['COMP_CODE'],
-            'EMPL_BUYTOT' => $data['COMP_CODE'],
-        );
-        $this->db->insert('job083', $insert_data);
-
         $query = "
             SELECT 
               BUY_KEY, EMPL_KEY, COMP_CODE, EMPL_BALQTY, EMPL_BUYPRICE, EMPL_BUYTOT 
@@ -246,9 +226,37 @@ class Main_m extends CI_Model
             WHERE 
               EMPL_KEY = ?
         ";
-        $result = $this->db->query($query, $_SESSION)->result();
-
+        $result = $this->db->query($query, $_SESSION['EMPL_KEY'])->result();
         return $result;
+    }
+
+    public function post_buyStock($data)
+    {
+        $this->db->trans_start();
+
+        $insert_data = array(
+            'EMPL_KEY' => $_SESSION['EMPL_KEY'],
+            'COMP_CODE' => $data['COMP_CODE'],
+            'EMPL_BUYQTY' => $data['EMPL_BUYQTY'],
+            'EMPL_BUYPRICE' => $data['EMPL_BUYPRICE'],
+            'EMPL_BUYTOT' => $data['EMPL_BUYTOT'],
+        );
+        $this->db->insert('job081', $insert_data);
+        $BUY_KEY = $this->db->insert_id();
+
+        $insert_data = array(
+            'BUY_KEY' => $BUY_KEY,
+            'EMPL_KEY' => $_SESSION['EMPL_KEY'],
+            'COMP_CODE' => $data['COMP_CODE'],
+            'EMPL_BALQTY' => $data['EMPL_BUYQTY'],
+            'EMPL_BUYPRICE' => $data['EMPL_BUYPRICE'],
+            'EMPL_BUYTOT' => $data['EMPL_BUYTOT'],
+        );
+        $this->db->insert('job083', $insert_data);
+
+        $this->db->trans_complete();
+
+        return $this->get_buyStock();
     }
 
 }
