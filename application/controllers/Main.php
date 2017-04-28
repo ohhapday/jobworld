@@ -82,4 +82,12 @@ class Main extends CI_Controller
         echo json_encode($return);
     }
 
+    public function post_buyStock()
+    {
+        $data = $this->input->post('buyStock', true);
+        $return = $this->main_m->post_buyStock($data);
+
+        echo json_encode($return);
+    }
+
 }

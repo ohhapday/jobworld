@@ -194,7 +194,7 @@
 							</tr>
 							</thead>
 							<tbody>
-							<tr>
+							<tr style="display: none;">
 								<td class="align-l">엘지전자</td>
 								<td>2,000</td>
 								<td>3,000</td>

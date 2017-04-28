@@ -216,5 +216,39 @@ class Main_m extends CI_Model
         return $return;
     }
 
+    public function post_buyStock($data)
+    {
+        $insert_data = array(
+            'EMPL_KEY' => $_SESSION['EMPL_KEY'],
+            'COMP_CODE' => $data['COMP_CODE'],
+            'EMPL_BUYQTY' => $data['EMPL_BUYQTY'],
+            'EMPL_BUYPRICE' => $data['COMP_CODE'],
+            'EMPL_BUYTOT' => $data['COMP_CODE'],
+        );
+        $this->db->insert('job081', $insert_data);
+        $BUY_KEY = $this->db->insert_id();
+
+        $insert_data = array(
+            'BUY_KEY' => $BUY_KEY,
+            'EMPL_KEY' => $_SESSION['EMPL_KEY'],
+            'COMP_CODE' => $data['COMP_CODE'],
+            'EMPL_BUYQTY' => $data['EMPL_BUYQTY'],
+            'EMPL_BUYPRICE' => $data['COMP_CODE'],
+            'EMPL_BUYTOT' => $data['COMP_CODE'],
+        );
+        $this->db->insert('job083', $insert_data);
+
+        $query = "
+            SELECT 
+              BUY_KEY, EMPL_KEY, COMP_CODE, EMPL_BALQTY, EMPL_BUYPRICE, EMPL_BUYTOT 
+            FROM
+              job083
+            WHERE 
+              EMPL_KEY = ?
+        ";
+        $result = $this->db->query($query, $_SESSION)->result();
+
+        return $result;
+    }
 
 }

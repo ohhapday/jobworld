@@ -28,7 +28,7 @@ requirejs([
         stock: null,
         favor: null,
         cashFlow: null,
-        myStock: null,
+        buyStock: null,
     };
 
     // ui 생성 함수 모음
@@ -59,7 +59,7 @@ requirejs([
             $table.find('tr:not(:eq(0))').remove();
 
             $.each(mData.favor, function (i) {
-                let $clone = $('.box_sbbtm tbody tr:eq(0)')
+                let $clone = $table.find('tr:eq(0)')
                     .clone(true).css('display', '');
                 let self = this;
 
@@ -91,10 +91,40 @@ requirejs([
             li.eq(1).find('span').text(nf.format(mData.cashFlow.cash2));
             li.eq(2).find('span').text(nf.format(mData.cashFlow.cash3));
         },
-        myStock: function () {
-            console.log(mData.myStock);
+        buyStock: function () {
+            console.log(mData.buyStock);
             console.log($('.box_tbllist:eq(1) tbody tr'));
-            // todo 라인 생성
+
+            let $table = $('.box_sbbtm table:eq(1) tbody');
+
+            $table.find('tr:not(:eq(0))').remove();
+
+            $.each(mData.buyStock, function (i) {
+                let $clone = $table.find('tr:eq(0)')
+                    .clone(true).css('display', '');
+                let self = this;
+
+                let stock = mData.stock.find(function (item) {
+                    return item.COMP_CODE == self;
+                });
+
+                $clone.find('td:eq(0)').text(stock.COMP_NAME);
+                $clone.find('td:eq(1)').text(nf.format(stock.COMP_PRICE));
+
+                if (parseInt(stock.MEASURE) >= 0) {
+                    $clone.find('td:eq(2) img').attr('src', '/dist/images/ico_mnup.png');
+                    $clone.find('td:eq(2) span').addClass('colred');
+                    $clone.find('td:eq(3) em').addClass('colred');
+                } else {
+                    $clone.find('td:eq(2) img').attr('src', '/dist/images/ico_mndw.png');
+                    $clone.find('td:eq(2) span').addClass('colblu');
+                    $clone.find('td:eq(3) em').addClass('colblu');
+                }
+                $clone.find('td:eq(2) span').text(nf.format(stock.MEASURE));
+                $clone.find('td:eq(3) em').text(parseFloat(stock.PER_MEASURE * 100).toFixed(2) + '%');
+
+                $table.append($clone.clone(true));
+            });
         },
     };
 
@@ -218,43 +248,78 @@ requirejs([
                 }
             });
 
-            if (index !== null) {
-                stock = mData.stock.find(function (item) {
-                    return item.COMP_CODE == mData.favor[index];
-                });
+            // 매입
+            if(aa === 0) {
+                if (index !== null) {
+                    stock = mData.stock.find(function (item) {
+                        return item.COMP_CODE == mData.favor[index];
+                    });
 
-                buyTotal = stock.COMP_PRICE * ea;
+                    buyTotal = stock.COMP_PRICE * ea;
 
-                // 잔고 비교
-                if (buyTotal > mData.cashFlow.cash3) {
-                    alert('잔고가 부족합니다.');
-                    return;
+                    // 잔고 비교
+                    if (buyTotal > mData.cashFlow.cash3) {
+                        alert('잔고가 부족합니다.');
+                        return;
+                    }
+
+                    $.ajax({
+                        async: false,
+                        dataType: 'json',
+                        type: 'post',
+                        url: '/main/post_buyStock',
+                        data: {
+                            buyStock:{
+                                COMP_CODE: stock.COMP_CODE,
+                                EMPL_BUYQTY: ea,
+                                EMPL_BUYPRICE: parseInt(stock.COMP_PRICE),
+                                EMPL_BUYTOT: buyTotal,
+                            }
+                        },
+                        success: function (data, status, xhr) {
+                            data.buyStock = data;
+                            ui.buyStock();
+                        }
+                    });
                 }
-
-                $.ajax({
-                    async: false,
-                    dataType: 'json',
-                    type: 'post',
-                    url: '/main/post_myStock',
-                    data: {
-                        favor: mData.favor,
-                    },
-                    success: function (data, status, xhr) {
-                        ui.myStock();
-                    }
-                });
-
-                mData.myStock = [
-                    {
-                        BUY_KEY: null,
-                        COMP_CODE: parseInt(stock.COMP_CODE),
-                        EMPL_BUYQTY: ea,
-                        EMPL_BUYPRICE: parseInt(stock.COMP_PRICE),
-                        EMPL_BUYTOT: buyTotal,
-                    }
-                ];
             }
-            ui.myStock();
+
+            // 매수
+            if(aa === 1) {
+                if (index !== null) {
+                    stock = mData.stock.find(function (item) {
+                        return item.COMP_CODE == mData.favor[index];
+                    });
+
+                    buyTotal = stock.COMP_PRICE * ea;
+
+                    // 잔고 비교
+                    if (buyTotal > mData.cashFlow.cash3) {
+                        alert('잔고가 부족합니다.');
+                        return;
+                    }
+
+                    $.ajax({
+                        async: false,
+                        dataType: 'json',
+                        type: 'post',
+                        url: '/main/post_buyStock',
+                        data: {
+                            buyStock:{
+                                BUY_KEY: null,
+                                COMP_CODE: parseInt(stock.COMP_CODE),
+                                EMPL_BUYQTY: ea,
+                                EMPL_BUYPRICE: parseInt(stock.COMP_PRICE),
+                                EMPL_BUYTOT: buyTotal,
+                            }
+                        },
+                        success: function (data, status, xhr) {
+                            data.buyStock = data;
+                            ui.buyStock();
+                        }
+                    });
+                }
+            }
         });
     })();
 
