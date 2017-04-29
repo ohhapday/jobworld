@@ -195,23 +195,23 @@ class Main_m extends CI_Model
     public function get_cash()
     {
         $query = "
-            SELECT EMPL_CASH FROM job050
+            SELECT stock_CASH FROM job050
             WHERE
               EMPL_KEY = ?            
         ";
-        $return1 = $this->db->query($query, $_SESSION['EMPL_KEY'])->row()->EMPL_CASH;
+        $return1 = $this->db->query($query, $_SESSION['EMPL_KEY'])->row()->stock_CASH;
 
         $query = "
             SELECT SUM(EMPL_BUYTOT) AS BUYTOT FROM job083
             WHERE
-              EMPL_KEY = ?
+              EMPL_KEY = ? AND EMPL_BALQTY != 0
             GROUP BY EMPL_KEY
         ";
         $return2 = $this->db->query($query, $_SESSION['EMPL_KEY'])->row()->BUYTOT;
 
-        $return->cash1 = $return1;               // 고객자산
+        $return->cash1 = $return1 + $return2;               // 고객자산
         $return->cash2 = $return2;                          // 투자금액
-        $return->cash3 = $return->cash1 - $return->cash2;   // 잔고
+        $return->cash3 = $return1;   // 잔고
 
         return $return;
     }
@@ -224,7 +224,7 @@ class Main_m extends CI_Model
             FROM
               job083
             WHERE 
-              EMPL_KEY = ?
+              EMPL_KEY = ? AND EMPL_BALQTY != 0
         ";
         $result = $this->db->query($query, $_SESSION['EMPL_KEY'])->result();
         return $result;
@@ -234,12 +234,22 @@ class Main_m extends CI_Model
     {
         $this->db->trans_start();
 
+        $query = "
+            SELECT
+              COMP_PRICE
+            FROM
+              job015_copy a, tb_admin b
+            WHERE
+              a.COMP_DATE = b.stock_rownum AND COMP_CODE = ?        
+        ";
+        $COMP_PRICE = $this->db->query($query, $data['COMP_CODE'])->row()->COMP_PRICE;
+
         $insert_data = array(
             'EMPL_KEY' => $_SESSION['EMPL_KEY'],
             'COMP_CODE' => $data['COMP_CODE'],
             'EMPL_BUYQTY' => $data['EMPL_BUYQTY'],
-            'EMPL_BUYPRICE' => $data['EMPL_BUYPRICE'],
-            'EMPL_BUYTOT' => $data['EMPL_BUYTOT'],
+            'EMPL_BUYPRICE' => $COMP_PRICE,
+            'EMPL_BUYTOT' => $COMP_PRICE * $data['EMPL_BUYQTY'],
         );
         $this->db->insert('job081', $insert_data);
         $BUY_KEY = $this->db->insert_id();
@@ -249,10 +259,59 @@ class Main_m extends CI_Model
             'EMPL_KEY' => $_SESSION['EMPL_KEY'],
             'COMP_CODE' => $data['COMP_CODE'],
             'EMPL_BALQTY' => $data['EMPL_BUYQTY'],
-            'EMPL_BUYPRICE' => $data['EMPL_BUYPRICE'],
-            'EMPL_BUYTOT' => $data['EMPL_BUYTOT'],
+            'EMPL_BUYPRICE' => $COMP_PRICE,
+            'EMPL_BUYTOT' => $COMP_PRICE * $data['EMPL_BUYQTY'],
         );
         $this->db->insert('job083', $insert_data);
+
+        $query = "
+            UPDATE job050 SET stock_CASH = stock_CASH - ?
+            WHERE
+              EMPL_KEY = ?
+        ";
+        $this->db->query($query, array($COMP_PRICE * $data['EMPL_BUYQTY'], $_SESSION['EMPL_KEY']));
+
+        $this->db->trans_complete();
+
+        return $this->get_buyStock();
+    }
+
+    public function post_sellStock($data)
+    {
+        $this->db->trans_start();
+
+        $query = "
+            SELECT
+              COMP_PRICE
+            FROM
+              job015_copy a, tb_admin b
+            WHERE
+              a.COMP_DATE = b.stock_rownum AND COMP_CODE = ?        
+        ";
+        $COMP_PRICE = $this->db->query($query, $data['COMP_CODE'])->row()->COMP_PRICE;
+
+        $insert_data = array(
+            'BUY_KEY' => $data['BUY_KEY'],
+            'EMPL_KEY' => $_SESSION['EMPL_KEY'],
+            'COMP_CODE' => $data['COMP_CODE'],
+            'EMPL_SELQTY' => $data['EMPL_SELQTY'],
+            'EMPL_SELPRICE' => $COMP_PRICE,
+            'EMPL_SELTOT' => $COMP_PRICE * $data['EMPL_SELQTY'],
+        );
+        $this->db->insert('job082', $insert_data);
+
+        $query = "
+            UPDATE job083 SET EMPL_BALQTY = EMPL_BALQTY - ?, EMPL_BUYTOT = EMPL_BUYTOT - (EMPL_BUYPRICE * ?)
+            WHERE BUY_KEY = ?
+        ";
+        $this->db->query($query, array($data['EMPL_SELQTY'], $data['EMPL_SELQTY'], $data['BUY_KEY']));
+
+        $query = "
+            UPDATE job050 SET stock_CASH = stock_CASH + ?
+            WHERE
+              EMPL_KEY = ?
+        ";
+        $this->db->query($query, array($COMP_PRICE * $data['EMPL_SELQTY'], $_SESSION['EMPL_KEY']));
 
         $this->db->trans_complete();
 

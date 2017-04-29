@@ -19,33 +19,6 @@ class Admin_m extends CI_Model
         return (object)$result;
     }
 
-    public function get_usable()
-    {
-        $query = "
-            SELECT PG_LOCK FROM job011
-        ";
-        $result = $this->db->query($query)->row()->PG_LOCK;
-        return (string)$result;
-    }
-
-    public function get_STATUS()
-    {
-        $query = "
-            SELECT STATUS FROM job010
-        ";
-        $result = $this->db->query($query)->row()->STATUS;
-        return json_decode($result);
-    }
-
-    public function get_DATA_TYPE()
-    {
-        $query = "
-            SELECT DATA_TYPE FROM job012
-        ";
-        $result = $this->db->query($query)->row()->DATA_TYPE;
-        return (int)$result;
-    }
-
     public function get_COMP_DATA()
     {
         $query = "
@@ -61,9 +34,14 @@ class Admin_m extends CI_Model
     {
         $this->db->trans_start();
 
-        $this->db->update('job011', array('PG_LOCK' => $data['usabled']));
-        $this->db->update('job010', array('STATUS' => json_encode($data['STATUS'])));
-        $this->db->update('job012', array('DATA_TYPE' => $data['DATA_TYPE']));
+        $update_data = array(
+            'PG_LOCK' => $data['usabled'],
+            'fund_STATUS' => $data['STATUS']['fund_STATUS'],
+            'bond_STATUS' => $data['STATUS']['bond_STATUS'],
+            'stock_STATUS' => $data['STATUS']['stock_STATUS'],
+            'DATA_TYPE' => $data['DATA_TYPE'],
+        );
+        $this->db->update('tb_admin', $update_data);
 
         $this->db->trans_complete();
         return true;
@@ -79,9 +57,17 @@ class Admin_m extends CI_Model
             'bond_STATUS' => 0,
             'stock_STATUS' => 0,
             'DATA_TYPE' => '30',
-            'stock_rownum' => 10
+            'stock_rownum' => 10,
+            'news_que' => 1,
+            'anal_que' => 1,
         );
         $this->db->update('tb_admin', $update_data);
+
+        $this->db->query('truncate job050');
+        $this->db->query('truncate job080');
+        $this->db->query('truncate job081');
+        $this->db->query('truncate job082');
+        $this->db->query('truncate job083');
 
         $this->db->trans_complete();
 

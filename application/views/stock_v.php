@@ -170,8 +170,8 @@
 				<div class="ar_btm_sel">
 					<ul class="dtlist clfix">
 						<li><strong>고객자산</strong><span></span></li>
-						<li><strong>투자금액</strong><span>10,000,000</span></li>
-						<li><strong>잔고</strong><span>10,000,000</span></li>
+						<li><strong>투자금액</strong><span></span></li>
+						<li><strong>잔고</strong><span></span></li>
 					</ul>
 				</div>
 				<div class="ar_btm_bx clfix">

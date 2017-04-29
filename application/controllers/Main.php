@@ -86,7 +86,17 @@ class Main extends CI_Controller
     public function post_buyStock()
     {
         $data = $this->input->post('buyStock', true);
-        $return = $this->main_m->post_buyStock($data);
+        $return->buyStock = $this->main_m->post_buyStock($data);
+        $return->cashFlow = $this->main_m->get_cash();
+
+        echo json_encode($return);
+    }
+
+    public function post_sellStock()
+    {
+        $data = $this->input->post('sellStock', true);
+        $return->buyStock = $this->main_m->post_sellStock($data);
+        $return->cashFlow = $this->main_m->get_cash();
 
         echo json_encode($return);
     }

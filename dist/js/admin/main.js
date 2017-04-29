@@ -13,12 +13,12 @@ requirejs([
     let mdata = {
         usabled: 0,                         // 시스템 중지 여부(0, 1)
         STATUS: {                           // 체험 순서
-            fund: false,
-            bond: false,
-            stock: true,
-            COMP_DATA: null,                // 주식종목
+            fund_STATUS: 0,
+            bond_STATUS: 0,
+            stock_STATUS: 0,
         },
-        DATA_TYPE: 1,
+        DATA_TYPE: 30,
+        COMP_DATA: null,                // 주식종목
     };
 
     let nf = new Intl.NumberFormat(["en-US"]);
@@ -96,9 +96,30 @@ requirejs([
 
     // 카운터 시계
     (function () {
+        var timer_update = function () {
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'get',
+                url: '/admin/put_stock_rownum',
+            });
+        }
+
+        let timer = 0;
         window.setInterval(function () {
             let now_time = moment().format('HH:mm:ss');
             $('.time').text(now_time);
+
+            // 주식 데이터 rownum 변경
+            if (mdata.usabled === 1) {
+                timer += 1;
+                if(timer > mdata.DATA_TYPE) {
+                    timer_update();
+                    timer = 0;
+                }
+            } else {
+                timer = 0;
+            }
         }, 1000);
     })();
 
@@ -140,19 +161,19 @@ requirejs([
 
         // 체험 순서 선택
         (function () {
-            if (mdata.STATUS.fund === 'true') {
+            if (mdata.STATUS.fund_STATUS === 1) {
                 $('.bx_chk_list:eq(0) button:eq(0)').addClass('on');
             } else {
                 $('.bx_chk_list:eq(0) button:eq(0)').removeClass('on');
             }
 
-            if (mdata.STATUS.bond === 'true') {
+            if (mdata.STATUS.bond_STATUS === 1) {
                 $('.bx_chk_list:eq(0) button:eq(1)').addClass('on');
             } else {
                 $('.bx_chk_list:eq(0) button:eq(1)').removeClass('on');
             }
 
-            if (mdata.STATUS.stock === 'true') {
+            if (mdata.STATUS.stock_STATUS === 1) {
                 $('.bx_chk_list:eq(0) button:eq(2)').addClass('on');
             } else {
                 $('.bx_chk_list:eq(0) button:eq(2)').removeClass('on');
@@ -162,7 +183,11 @@ requirejs([
         // 주식 데이터 선택
         (function () {
             $('.bx_chk_list:eq(1) button').removeClass('on');
-            $('.bx_chk_list:eq(1) button:eq(' + mdata.DATA_TYPE + ')').addClass('on');
+            $.each($('.bx_chk_list:eq(1) button'), function () {
+                if (mdata.DATA_TYPE === $(this).data('value')) {
+                    $(this).addClass('on');
+                }
+            })
         })();
     };
 
@@ -186,15 +211,21 @@ requirejs([
         // 체험 순서 선택
         (function () {
             $('.bx_chk_list:eq(0) button:eq(0)').on('click', function () {
-                mdata.STATUS.fund = (mdata.STATUS.fund == 'true') ? 'false' : 'true';
+                mdata.STATUS.fund_STATUS = 1;
+                mdata.STATUS.bond_STATUS = 0;
+                mdata.STATUS.stock_STATUS = 0;
                 handle_ui();
             });
             $('.bx_chk_list:eq(0) button:eq(1)').on('click', function () {
-                mdata.STATUS.bond = (mdata.STATUS.bond == 'true') ? 'false' : 'true';
+                mdata.STATUS.fund_STATUS = 0;
+                mdata.STATUS.bond_STATUS = 1;
+                mdata.STATUS.stock_STATUS = 0;
                 handle_ui();
             });
             $('.bx_chk_list:eq(0) button:eq(2)').on('click', function () {
-                mdata.STATUS.stock = (mdata.STATUS.stock == 'true') ? 'false' : 'true';
+                mdata.STATUS.fund_STATUS = 0;
+                mdata.STATUS.bond_STATUS = 0;
+                mdata.STATUS.stock_STATUS = 1;
                 handle_ui();
             });
         })();
@@ -203,7 +234,7 @@ requirejs([
         (function () {
             $('.bx_chk_list:eq(1) button').each(function (i) {
                 $(this).on('click', function () {
-                    mdata.DATA_TYPE = i;
+                    mdata.DATA_TYPE = $(this).data('value');
                     handle_ui();
                 });
             });
@@ -217,10 +248,8 @@ requirejs([
                     dataType: 'json',
                     type: 'post',
                     url: '/admin/put_init',
-                    success: function (data, status, xhr) {
-                        alert('데이터가 초기화 되었습니다.');
-                    }
                 });
+                location.reload();
             };
 
             // todo 어떤거 초기화 해야 할지

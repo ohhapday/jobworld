@@ -172,7 +172,7 @@
 				</div>
 			</div>
 			<div class="sb_tit">
-				<h3 class="ic3">체험 순서 선택</h3>
+				<h3 class="ic3">체험 선택</h3>
 			</div>
 			<div class="sbleftdat">
 				<div class="bx_chk_list clfix">
@@ -197,13 +197,13 @@
 				<div class="bx_chk_list clfix">
 					<ul>
 						<li>
-							<button type="button"><span>초보 (60초)</span></button>
+							<button type="button" data-value="60"><span>초보 (60초)</span></button>
 						</li>
 						<li>
-							<button type="button"><span>중간 (50초)</span></button>
+							<button type="button" data-value="50"><span>중간 (50초)</span></button>
 						</li>
 						<li>
-							<button type="button"><span>고수 (30초)</span></button>
+							<button type="button" data-value="30"><span>고수 (30초)</span></button>
 						</li>
 					</ul>
 					<div class="btn_conf"><a href="#">확정</a></div>

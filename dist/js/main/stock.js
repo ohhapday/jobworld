@@ -57,11 +57,11 @@ requirejs([
         favor: function () {
             let $table = $('.box_sbbtm table:eq(0) tbody');
 
+            $table.find('tr:not(:eq(0))').hide(500);
             $table.find('tr:not(:eq(0))').remove();
 
             $.each(mData.favor, function (i) {
-                let $clone = $table.find('tr:eq(0)')
-                    .clone(true).css('display', '');
+                let $clone = $table.find('tr:eq(0)').clone(true);
                 let self = this;
 
                 let stock = mData.stock.find(function (item) {
@@ -85,6 +85,7 @@ requirejs([
 
                 $table.append($clone.clone(true));
             });
+            $table.find('tr:not(:eq(0))').show(500);
         },
         cashFlow: function () {
             let li = $('.ar_btm_sel li');
@@ -98,8 +99,6 @@ requirejs([
 
             $table.find('tr:not(:eq(0))').remove();
 
-            console.log(mData.buyStock);
-
             $.each(mData.buyStock, function (i) {
                 let $clone = $table.find('tr:eq(0)')
                     .clone(true).css('display', '');
@@ -108,8 +107,9 @@ requirejs([
                 let stock = mData.stock.find(function (item) {
                     return item.COMP_CODE == self.COMP_CODE;
                 });
+                let benifit = (stock.COMP_PRICE - this.EMPL_BUYPRICE) * this.EMPL_BALQTY;
 
-                let profit = parseInt(this.EMPL_BUYPRICE - stock.COMP_PRICE);
+                let profit = parseInt(benifit);
                 tot_profit += profit;
 
                 $clone.find('td:eq(0)').text(stock.COMP_NAME);
@@ -118,15 +118,11 @@ requirejs([
                 $clone.find('td:eq(3)').text(nf.format(stock.COMP_PRICE));
                 $clone.find('td:eq(4)').text(nf.format(profit));
 
-                /*if (parseInt(stock.MEASURE) >= 0) {
-                    $clone.find('td:eq(2) img').attr('src', '/dist/images/ico_mnup.png');
-                    $clone.find('td:eq(2) span').addClass('colred');
-                    $clone.find('td:eq(3) em').addClass('colred');
+                if (benifit > 0) {
+                    $clone.find('td:eq(4)').addClass('colred');
                 } else {
-                    $clone.find('td:eq(2) img').attr('src', '/dist/images/ico_mndw.png');
-                    $clone.find('td:eq(2) span').addClass('colblu');
-                    $clone.find('td:eq(3) em').addClass('colblu');
-                }*/
+                    $clone.find('td:eq(4)').addClass('colblu');
+                }
 
                 $table.append($clone.clone(true));
             });
@@ -143,14 +139,6 @@ requirejs([
             $('.bx_tablist:eq(0) .btmtbl').toggle();
         });
 
-        /*
-         // 매수/매도 탭 클릭 처리
-         $('.bx_tablist:eq(1) .tabmenu').on('click', function () {
-         $('.bx_tablist:eq(1) .tabmenu').toggleClass('on');
-         $('.bx_tablist:eq(1) .btmtbl').toggle();
-         });
-         */
-
         // 관심종목 클릭 처리 (매수)
         $('.box_tbllist:eq(0) tbody tr').on('click', function () {
             $('.bx_tablist:eq(1) .tabmenu:eq(0)').addClass('on');
@@ -162,14 +150,20 @@ requirejs([
             $(this).addClass('on');
 
             $('.bx_tablist:eq(1) .btmtbl:eq(0) span').text($(this).find('.align-l').text());
+            $('.bx_tablist:eq(1) .btmtbl:eq(0) input[name="ea"]').val(0);
             $('.bx_tablist:eq(1) .btmtbl:eq(0) .numchk:eq(1)')
                 .text($(this).find('td:eq(1)').text());
-            $('.bx_tablist:eq(1) .btmtbl:eq(0) input[name="ea"]').val(0);
             $('.bx_tablist:eq(1) .btmtbl:eq(0) input[name="ea"]').focus();
         });
 
         // 보유현황 종목 클릭 처리 (매도)
         $('.box_tbllist:eq(1) tbody tr').on('click', function () {
+            let index = $('.box_tbllist:eq(1) tbody tr:not(:eq(0))').index($(this));
+
+            let stock = mData.stock.find(function (item) {
+                return item.COMP_CODE == mData.buyStock[index].COMP_CODE;
+            });
+
             $('.bx_tablist:eq(1) .tabmenu:eq(1)').addClass('on');
             $('.bx_tablist:eq(1) .tabmenu:eq(0)').removeClass('on');
             $('.bx_tablist:eq(1) .btmtbl:eq(1)').removeClass('off').addClass('on');
@@ -179,9 +173,11 @@ requirejs([
             $(this).addClass('on');
 
             $('.bx_tablist:eq(1) .btmtbl:eq(1) span').text($(this).find('.align-l').text());
+            $('.bx_tablist:eq(1) .btmtbl:eq(1) input[name="ea"]').val(mData.buyStock[index].EMPL_BALQTY);
+            $('.bx_tablist:eq(1) .btmtbl:eq(1) input[name="ea"]').attr('max', mData.buyStock[index].EMPL_BALQTY);
+            $('.bx_tablist:eq(1) .btmtbl:eq(1) input[name="ea"]').data('BUY_KEY', mData.buyStock[index].BUY_KEY);
             $('.bx_tablist:eq(1) .btmtbl:eq(1) .numchk:eq(1)')
-                .text($(this).find('td:eq(2)').text());
-            $('.bx_tablist:eq(1) .btmtbl:eq(1) input[name="ea"]').val(0);
+                .text(nf.format(mData.buyStock[index].EMPL_BALQTY * stock.COMP_PRICE));
             $('.bx_tablist:eq(1) .btmtbl:eq(1) input[name="ea"]').focus();
         });
 
@@ -233,8 +229,25 @@ requirejs([
             }
         });
 
-        // 매수 금액 변경
-        // todo
+        // 매도 금액 변경
+        $('.sbright2 input[name="ea"]:eq(1)').on('change', function () {
+            let index = null, stock, total;
+            let tr = $('.box_tbllist:eq(1) tbody tr:not(:eq(0))');
+            $.each(tr, function () {
+                if ($(this).hasClass('on')) {
+                    index = tr.index($(this));
+                }
+            });
+
+            if (index !== null) {
+                stock = mData.stock.find(function (item) {
+                    return item.COMP_CODE == mData.buyStock[index].COMP_CODE;
+                });
+
+                total = stock.COMP_PRICE * $(this).val();
+                $(this).closest('li').next().find('.numchk').text(nf.format(total));
+            }
+        });
 
         // 결제 버튼
         $('.btn_bview').on('click', function () {
@@ -279,13 +292,17 @@ requirejs([
                             buyStock: {
                                 COMP_CODE: stock.COMP_CODE,
                                 EMPL_BUYQTY: ea,
-                                EMPL_BUYPRICE: parseInt(stock.COMP_PRICE),
-                                EMPL_BUYTOT: buyTotal,
                             }
                         },
                         success: function (data, status, xhr) {
-                            mData.buyStock = data;
+                            mData.buyStock = data.buyStock;
+                            mData.cashFlow = data.cashFlow;
+
                             ui.buyStock();
+                            ui.cashFlow();
+
+                            $('.bx_tablist:eq(1) .btmtbl:eq(0) span').text('');
+                            $('.bx_tablist:eq(1) .btmtbl:eq(0) input[name="ea"]').val(0);
                         }
                     });
                 }
@@ -293,40 +310,48 @@ requirejs([
 
             // 매수
             if (aa === 1) {
+                let BUY_KEY = $('.bx_tablist:eq(1) .btmtbl:eq(1) input[name="ea"]').data('BUY_KEY');
+
                 if (index !== null) {
                     stock = mData.stock.find(function (item) {
-                        return item.COMP_CODE == mData.favor[index];
+                        return item.COMP_CODE == mData.buyStock[index].COMP_CODE;
                     });
-
-                    buyTotal = stock.COMP_PRICE * ea;
-
-                    // 잔고 비교
-                    if (buyTotal > mData.cashFlow.cash3) {
-                        alert('잔고가 부족합니다.');
-                        return;
-                    }
 
                     $.ajax({
                         async: false,
                         dataType: 'json',
                         type: 'post',
-                        url: '/main/post_buyStock',
+                        url: '/main/post_sellStock',
                         data: {
-                            buyStock: {
-                                BUY_KEY: null,
-                                COMP_CODE: parseInt(stock.COMP_CODE),
-                                EMPL_BUYQTY: ea,
-                                EMPL_BUYPRICE: parseInt(stock.COMP_PRICE),
-                                EMPL_BUYTOT: buyTotal,
+                            sellStock: {
+                                BUY_KEY: BUY_KEY,
+                                COMP_CODE: stock.COMP_CODE,
+                                EMPL_SELQTY: ea,
                             }
                         },
                         success: function (data, status, xhr) {
-                            data.buyStock = data;
+                            mData.buyStock = data.buyStock;
+                            mData.cashFlow = data.cashFlow;
+
                             ui.buyStock();
+                            ui.cashFlow();
+
+                            $('.bx_tablist:eq(1) .btmtbl:eq(0) span').text('');
+                            $('.bx_tablist:eq(1) .btmtbl:eq(0) input[name="ea"]').val(0);
                         }
                     });
                 }
             }
+        });
+
+        // 공시정보 클릭
+        $('.btn_adgre').on('click', function () {
+            alert('공시정보 준비중입니다.');
+        });
+
+        // 주가그래프
+        $('.btn_adgre2').on('click', function () {
+            alert('주가그래프 준비중입니다.');
         });
     })();
 
@@ -413,16 +438,49 @@ requirejs([
     let get_ajax = function (tmp) {
         // 뉴스 데이터 변경
         if (tmp.news_que !== eData.news_que) {
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'get',
+                url: '/main/get_stockData',
+                success: function (data, status, xhr) {
+                    mData = $.extend(true, mData, data);
+                    ui.init();
+                    console.log(mData);
+                }
+            });
             console.log('뉴스 변경');
         }
 
         // 애널리스트 데이터 변경
         if (tmp.anal_que !== eData.anal_que) {
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'get',
+                url: '/main/get_stockData',
+                success: function (data, status, xhr) {
+                    mData = $.extend(true, mData, data);
+                    ui.init();
+                    console.log(mData);
+                }
+            });
             console.log('애널 변경');
         }
 
         // 주식 데이터 변경
         if (tmp.stock_rownum !== eData.stock_rownum) {
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'get',
+                url: '/main/get_stockData',
+                success: function (data, status, xhr) {
+                    mData = $.extend(true, mData, data);
+                    ui.init();
+                    console.log(mData);
+                }
+            });
             console.log('주식 변경');
         }
     };

@@ -39,9 +39,14 @@ class Admin extends CI_Controller
      */
     public function get_admin()
     {
-        $return->usabled = (int)$this->admin_m->get_usable();
-        $return->STATUS = $this->admin_m->get_STATUS();
-        $return->DATA_TYPE = $this->admin_m->get_DATA_TYPE();
+        $system = $this->admin_m->get_system();
+
+        $return->usabled = (int)$system->PG_LOCK;
+        $return->STATUS->fund_STATUS = (int)$system->fund_STATUS;
+        $return->STATUS->bond_STATUS = (int)$system->bond_STATUS;
+        $return->STATUS->stock_STATUS = (int)$system->stock_STATUS;
+        $return->DATA_TYPE = (int)$system->DATA_TYPE;
+
         $return->COMP_DATA = $this->admin_m->get_COMP_DATA();
 
         echo json_encode($return);
@@ -65,7 +70,7 @@ class Admin extends CI_Controller
         if ($aa === 1) {
             $time = date('r');
             echo "data: " . json_encode($return) . "\n\n";
-            echo "retry: 10000\n";
+            echo "retry: 1000\n";
         } else {
 
         }
@@ -98,5 +103,7 @@ class Admin extends CI_Controller
     {
         return $this->admin_m->put_stock_rownum();
     }
+
+
 
 }
