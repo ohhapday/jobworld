@@ -36,15 +36,9 @@ class Main extends CI_Controller
         $this->load->view('fund_v');
     }
 
-    public function bond()
-    {
-        $this->load->view('bond_v');
-    }
-
-    public function stock()
-    {
-        $this->load->view('stock_v');
-    }
+    /**
+     * begin 메인 페이지
+     */
 
     public function get_mData()
     {
@@ -56,6 +50,46 @@ class Main extends CI_Controller
         echo json_encode($return);
     }
 
+    public function get_survey()
+    {
+        $return->SURVEY = $this->main_m->get_survey();
+
+        echo json_encode($return);
+    }
+
+    /**
+     * end 메인 페이지
+     */
+
+    /**
+     * begin 채권 투자 체험
+     */
+
+    public function bond()
+    {
+        $this->load->view('bond_v');
+    }
+
+    public function get_bondData()
+    {
+        $return->BOND = $this->main_m->get_bond();
+
+        echo json_encode($return);
+    }
+
+    /**
+     * end 채권 투자 체험
+     */
+
+    /**
+     * begin 주식 투자 체험
+     */
+
+    public function stock()
+    {
+        $this->load->view('stock_v');
+    }
+
     public function get_stockData()
     {
         $return->NEWS = $this->main_m->get_NEWS();
@@ -64,13 +98,6 @@ class Main extends CI_Controller
         $return->favor = $this->main_m->get_favor();
         $return->cashFlow = $this->main_m->get_cash();
         $return->buyStock = $this->main_m->get_buyStock();
-
-        echo json_encode($return);
-    }
-
-    public function get_survey()
-    {
-        $return->SURVEY = $this->main_m->get_survey();
 
         echo json_encode($return);
     }
@@ -100,5 +127,9 @@ class Main extends CI_Controller
 
         echo json_encode($return);
     }
+
+    /**
+     * end 주식 투자 체험
+     */
 
 }

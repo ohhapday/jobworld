@@ -28,7 +28,7 @@ class Main_m extends CI_Model
             SELECT * FROM job016
             WHERE SEND = 1
             ORDER BY NEWS_KEY ASC
-            LIMIT 3
+            LIMIT 4
         ";
         $return = $this->db->query($query)->result();
         return $return;
@@ -151,6 +151,30 @@ class Main_m extends CI_Model
 
         return $return;
     }
+
+    /**
+     * begin 채권 투자 체험
+     */
+
+    public function get_bond()
+    {
+        $query = "
+            SELECT *, IF(BOND_TYPE = '01', '국채', '회사채') AS BOND_TYPE FROM job020
+            ORDER BY
+              BOND_KEY
+        ";
+        $return = $this->db->query($query)->result();
+
+        return $return;
+    }
+
+    /**
+     * end 채권 투자 체험
+     */
+
+    /**
+     * begin 주식 투자 체험
+     */
 
     public function post_favor($data)
     {
@@ -318,4 +342,7 @@ class Main_m extends CI_Model
         return $this->get_buyStock();
     }
 
+    /**
+     * end 주식 투자 체험
+     */
 }

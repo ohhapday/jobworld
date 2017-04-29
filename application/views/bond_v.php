@@ -48,7 +48,7 @@
 				<div class="sb_tit">
 					<h3 class="ic1">채권 상품 목록</h3>
 				</div>
-				<div class="box_tbllist">
+				<div class="box_tbllist" style="overflow-y: auto; height: 360px;">
 					<table>
 						<colgroup>
 							<col style="width: 25%;">
@@ -69,45 +69,16 @@
 						</tr>
 						</thead>
 						<tbody>
-						<tr>
-							<td class="align-l"><button type="button">국고채(1년)</button></td>
+						<tr style="display: none;">
+							<td class="align-l" style="overflow:hidden; white-space:nowrap; text-overflow:ellipsis;"
+								title="aaaaaa">
+								<button type="button">국고채(1년)</button>
+							</td>
 							<td>10,000,000</td>
 							<td>10,000</td>
 							<td>3%</td>
 							<td>국채</td>
-							<td><a href="" class="und">상세보기</a></td>
-						</tr>
-						<tr>
-							<td class="align-l"><button type="button">국고채(1년)</button></td>
-							<td>10,000,000</td>
-							<td>10,000</td>
-							<td>3%</td>
-							<td>국채</td>
-							<td><a href="" class="und">상세보기</a></td>
-						</tr>
-						<tr>
-							<td class="align-l"><button type="button">국고채(1년)</button></td>
-							<td>10,000,000</td>
-							<td>10,000</td>
-							<td>3%</td>
-							<td>국채</td>
-							<td><a href="" class="und">상세보기</a></td>
-						</tr>
-						<tr>
-							<td class="align-l"><button type="button">국고채(1년)</button></td>
-							<td>10,000,000</td>
-							<td>10,000</td>
-							<td>3%</td>
-							<td>국채</td>
-							<td><a href="" class="und">상세보기</a></td>
-						</tr>
-						<tr>
-							<td class="align-l"><button type="button">국고채(1년)</button></td>
-							<td>10,000,000</td>
-							<td>10,000</td>
-							<td>3%</td>
-							<td>국채</td>
-							<td><a href="" class="und">상세보기</a></td>
+							<td><a href="#" class="und">상세보기</a></td>
 						</tr>
 						</tbody>
 					</table>
@@ -200,6 +171,85 @@
 	</div>
 </div>
 <!-- //content -->
+
+<!-- layer pop -->
+<div class="wrap_layerpop" style="display: none;">
+
+	<div class="layerpop pop10">
+		<div class="box_titpop">
+			<h2>채권 상세보기 화면</h2>
+			<div class="btn_close"><button type="button">닫기</button></div>
+		</div>
+		<div class="area_sbptit clfix">
+			<h3 class="poph3bg2">채권명(종목명)</h3>
+			<span>국고채(3년)</span>
+		</div>
+		<div class="box_contpop">
+			<div class="box_tblwrite col2fl">
+				<table>
+					<colgroup>
+						<col style="width: 35%;">
+						<col style="width: 65%;">
+					</colgroup>
+					<tbody>
+					<tr>
+						<th scope="row">채권구분</th>
+						<td class="pl20">국채</td>
+					</tr>
+					<tr>
+						<th scope="row">표준코드</th>
+						<td class="pl20">0300482828</td>
+					</tr>
+					<tr>
+						<th scope="row">채권규모(발행금액)</th>
+						<td class="pl20">200,000,000</td>
+					</tr>
+					<tr>
+						<th scope="row">기준가격</th>
+						<td class="pl20">10,00</td>
+					</tr>
+					<tr>
+						<th scope="row">예상수익률</th>
+						<td class="pl20">2%</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="box_tblwrite col2fr">
+				<table>
+					<colgroup>
+						<col style="width: 35%;">
+						<col style="width: 65%;">
+					</colgroup>
+					<tbody>
+					<tr>
+						<th scope="row">발행일</th>
+						<td class="pl20">2017-05-02</td>
+					</tr>
+					<tr>
+						<th scope="row">만기일</th>
+						<td class="pl20">2017-05-02</td>
+					</tr>
+					<tr>
+						<th scope="row">이자계산주기</th>
+						<td class="pl20">3개월</td>
+					</tr>
+					<tr>
+						<th scope="row">등록기관</th>
+						<td class="pl20">한국은행</td>
+					</tr>
+					<tr>
+						<th scope="row">지급기관</th>
+						<td class="pl20">한국%</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- //layer pop -->
 
 </body>
 </html>
