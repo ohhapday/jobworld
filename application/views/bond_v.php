@@ -71,7 +71,7 @@
 						<tbody>
 						<tr style="display: none;">
 							<td class="align-l" style="overflow:hidden; white-space:nowrap; text-overflow:ellipsis;"
-								title="aaaaaa">
+								title="">
 								<button type="button">국고채(1년)</button>
 							</td>
 							<td>10,000,000</td>
@@ -105,16 +105,20 @@
 					<h3 class="ic3">보유 채권 예상 손실/이익 보기</h3>
 				</div>
 				<div class="ar_btm_dt">
-					<div class="dttit"><strong>채권명</strong><span>국고채(3년)</span></div>
+					<div class="dttit"><strong>채권명</strong><span></span></div>
 					<a href="#" class="btn_buyc">채권사기</a>
 					<ul class="dtlist clfix">
-						<li class="mb10"><strong>사는단가</strong><span class="align-r">10,000</span></li>
-						<li class="mb10"><strong>사는수량</strong><span>100</span></li>
-						<li class="mb10"><strong>사는금액</strong><span class="align-r">1,000,000</span></li>
-						<li class="mb10"><strong>만기일자</strong><span>2020-03-09</span></li>
-						<li class="mb10"><strong>사는날짜</strong><span>2017-03-30</span></li>
-						<li class="mb10"><strong class="colred">수익금</strong><span class="align-r">1,020,000</span></li>
-						<li><strong>만기수익률</strong><span>2%</span></li>
+						<li class="mb10"><strong>사는단가</strong><span class="align-r">0</span></li>
+						<li class="mb10"><strong>사는수량</strong>
+							<span>
+								<input type="number" style="width: 50%" value="100" step="100" min="0">
+							</span>
+						</li>
+						<li class="mb10"><strong>사는금액</strong><span class="align-r">0</span></li>
+						<li class="mb10"><strong>만기일자</strong><span></span></li>
+						<li class="mb10"><strong>사는날짜</strong><span></span></li>
+						<li class="mb10"><strong class="colred">수익금</strong><span class="align-r">0</span></li>
+						<li><strong>만기수익률</strong><span>0%</span></li>
 					</ul>
 				</div>
 			</div>
@@ -122,7 +126,8 @@
 				<div class="box_bt_rdo clfix">
 					<div class="ar_rdol">
 						<input type="radio" name="chdate" id="chdate1" checked><label for="chdate1">만기</label>
-						<input type="radio" name="chdate" id="chdate2"><label for="chdate2">중도해지</label><input type="text" value="2017-10-10">
+						<input type="radio" name="chdate" id="chdate2"><label for="chdate2">중도해지</label>
+						<input type="text" value="2017-10-10">
 					</div>
 					<a href="" class="btn_bview"><span>예상 수익률 보기</span></a>
 				</div>

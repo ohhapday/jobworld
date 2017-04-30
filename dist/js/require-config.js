@@ -3,7 +3,7 @@
  * requirejs config 파일
  */
 var requirejs = ({
-    urlArgs: "ts=20170413",
+    urlArgs: "ts=" + new Date().getFullYear() + (new Date().getMonth() + 1) + new Date().getDate(),
     baseUrl: "/bower_components",
     paths: {
         // 플러그인 정의

@@ -50,19 +50,60 @@ requirejs([
                 $table.append($clone.clone(true));
             });
             $table.find('tr:not(:eq(0))').show(500);
+        },
+        buyBond: function (index) {
+            let bond = mData.BOND[index];
+            console.log(bond[index]);
+
+            $('.ar_btm_dt .dttit span').text(bond.BOND_NAME);
+
+            $('.ar_btm_dt .mb10:eq(0) span').text(nf.format(bond.BOND_PRICE));
+            $('.ar_btm_dt .mb10:eq(1) input').val(100);
+            $('.ar_btm_dt .mb10:eq(2) span').text(nf.format(bond.BOND_PRICE * 100));
+            $('.ar_btm_dt .mb10:eq(3) span').text(bond.BOND_CLDATE);
+            $('.ar_btm_dt .mb10:eq(4) span').text(bond.BOND_INDATE);
+            $('.ar_btm_dt .mb10:eq(5) span').text(nf.format(bond.BOND_PRICE * 100 * bond.BOND_PER / 100));
+            $('.ar_btm_dt li:last span').text(bond.BOND_PER + ' %');
+
+            $('.ar_btm_dt .mb10:eq(1) input').on('change', function () {
+                let buyPrice = bond.BOND_PRICE * $(this).val();
+                $('.ar_btm_dt .mb10:eq(2) span').text(nf.format(buyPrice));
+                $('.ar_btm_dt .mb10:eq(5) span').text(nf.format(buyPrice * bond.BOND_PER / 100));
+            });
         }
     };
 
     // 기본 event (1회만 처리)
     (function () {
+        // 상세보기
         $('.und').on('click', function () {
             let index = $('.und:not(:eq(0))').index($(this));
             let bond = mData.BOND[index];
             let pop = $('.wrap_layerpop:eq(0)');
 
             pop.find('.area_sbptit span').text(bond.BOND_NAME);
+            pop.find('.box_tblwrite:eq(0) td:eq(0)').text(bond.BOND_TYPE);
+            pop.find('.box_tblwrite:eq(0) td:eq(1)').text(bond.BOND_CODE);
+            pop.find('.box_tblwrite:eq(0) td:eq(2)').text(nf.format(bond.BOND_TOT));
+            pop.find('.box_tblwrite:eq(0) td:eq(3)').text(nf.format(bond.BOND_PRICE));
+            pop.find('.box_tblwrite:eq(0) td:eq(4)').text(bond.BOND_PER);
+
+            pop.find('.box_tblwrite:eq(1) td:eq(0)').text(bond.BOND_INDATE);
+            pop.find('.box_tblwrite:eq(1) td:eq(1)').text(bond.BOND_CLDATE);
+            pop.find('.box_tblwrite:eq(1) td:eq(2)').text(bond.BOND_BOTIME + ' 개월');
+            pop.find('.box_tblwrite:eq(1) td:eq(3)').text(bond.BOND_BANK);
+            pop.find('.box_tblwrite:eq(1) td:eq(4)').text(bond.BOND_PROD);
 
             $('.wrap_layerpop:eq(0)').fadeIn(500);
+        });
+
+        // 채권명 클릭
+        $('.box_tbllist:eq(0) table tbody tr').on('click', function () {
+            let index = $('.box_tbllist:eq(0) table tbody tr:not(:eq(0))').index($(this));
+            $('.box_tbllist:eq(0) table tbody tr').removeClass('on');
+            $(this).addClass('on');
+
+            ui.buyBond(index);
         });
     })();
 

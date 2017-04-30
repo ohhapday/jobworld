@@ -118,19 +118,19 @@
 				</div>
 				<div class="area_cpm">
 					<ul class="fst clfix">
-						<li><a href="#"><strong>삼성전자</strong><span>5,500</span></a></li>
-						<li><a href="#"><strong>삼성전자</strong><span>5,500</span></a></li>
-						<li><a href="#"><strong>삼성전자</strong><span>5,500</span></a></li>
+						<li><a href="#"><strong></strong><span></span></a></li>
+						<li><a href="#"><strong></strong><span></span></a></li>
+						<li><a href="#"><strong></strong><span></span></a></li>
 					</ul>
 					<ul class="clfix">
-						<li><a href="#"><strong>삼성전자</strong><span>5,500</span></a></li>
-						<li><a href="#"><strong>삼성전자</strong><span>5,500</span></a></li>
-						<li><a href="#"><strong>삼성전자</strong><span>5,500</span></a></li>
+						<li><a href="#"><strong></strong><span></span></a></li>
+						<li><a href="#"><strong></strong><span></span></a></li>
+						<li><a href="#"><strong></strong><span></span></a></li>
 					</ul>
 					<ul class="clfix">
-						<li><a href="#"><strong>삼성전자</strong><span>5,500</span></a></li>
-						<li><a href="#"><strong>삼성전자</strong><span>5,500</span></a></li>
-						<li><a href="#"><strong>삼성전자</strong><span>5,500</span></a></li>
+						<li><a href="#"><strong></strong><span></span></a></li>
+						<li><a href="#"><strong></strong><span></span></a></li>
+						<li><a href="#"><strong></strong><span></span></a></li>
 					</ul>
 				</div>
 			</div>
