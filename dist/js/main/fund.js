@@ -131,9 +131,9 @@ requirejs([
             });
 
             if (mData.FUND.length === 0) {
-                $('.box_tbllist:eq(0) div').fadeIn(500);
+                $('.box_tbllist:eq(1) div').fadeIn(500);
             } else {
-                $('.box_tbllist:eq(0) div').fadeOut(500);
+                $('.box_tbllist:eq(1) div').fadeOut(500);
             }
         },
         fund_add_stock: function () {
@@ -330,7 +330,7 @@ requirejs([
                 if (ajax.post_myFund(data) === true) {
                     console.log(mData.FUND);
                     ui.fund();
-                    ui.fund_myStock();
+                    // ui.fund_myStock();
                     pop.fadeOut(500);
                 }
             }
