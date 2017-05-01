@@ -153,6 +153,189 @@ class Main_m extends CI_Model
     }
 
     /**
+     * begin 펀드 투자 체험
+     */
+
+    public function get_fund()
+    {
+        $query = "
+            SELECT
+              FUND_KEY, FUND_NAME, FUND_TOT, FUND_DAY, FUND_ADDPER
+            FROM job060
+            WHERE
+              EMPL_KEY = ?
+            ORDER BY FUND_KEY
+        ";
+        $return = $this->db->query($query, $_SESSION['EMPL_KEY'])->result();
+
+        foreach ($return as $key => $item) {
+            $query = "
+                SELECT * FROM job061
+                WHERE FUND_KEY = ?
+            ";
+            $return[$key]->stock = $this->db->query($query, $item->FUND_KEY)->result();
+        }
+
+        return $return;
+    }
+
+    public function get_investor()
+    {
+        $query = "
+            SELECT
+              *,
+              (c.MD_NAME - IF(d.SUM1 IS NULL, 0, d.SUM1)) AS balance
+            FROM
+              (SELECT
+                 b.KEY, b.MD_CODE, CAST(b.MD_NAME AS UNSIGNED) AS MD_NAME
+               FROM job023 a, job024 b
+               WHERE
+                 a.MKEY = b.MKEY AND a.MKEY = 1) c
+              LEFT OUTER JOIN
+              (SELECT
+                 d.CUSTOM_KEY, SUM(d.CUSTOM_PAY) AS SUM1
+               FROM job062 d
+               WHERE d.EMPL_KEY = ?
+               GROUP BY d.CUSTOM_KEY) d
+                ON d.CUSTOM_KEY = c.KEY;
+        ";
+        $return = $this->db->query($query, $_SESSION['EMPL_KEY'])->result();
+
+        return $return;
+    }
+
+    public function post_myFund($data)
+    {
+        $this->db->trans_start();
+
+        $job060_data = array(
+            'EMPL_KEY' => $_SESSION['EMPL_KEY'],
+            'FUND_NAME' => $data['name'],
+            'FUND_TOT' => $data['FUND_TOT'],
+            'FUND_DAY' => $data['FUND_DAY'],
+        );
+        $this->db->insert('job060', $job060_data);
+        $FUND_KEY = $this->db->insert_id();
+
+        $CUSTOM = $this->get_investor();
+        foreach ($CUSTOM as $item) {
+            $job062_data[] = array(
+                'FUND_KEY' => $FUND_KEY,
+                'CUSTOM_KEY' => (int)$item->KEY,
+                'CUSTOM_PAY' => $item->balance * $data['percent'] / 100,
+                'EMPL_KEY' => $_SESSION['EMPL_KEY'],
+            );
+        }
+        $this->db->insert_batch('job062', $job062_data);
+
+        $this->db->trans_complete();
+    }
+
+    public function post_myFundStock($data)
+    {
+        $this->db->trans_start();
+
+        $this->db->where(array('FUND_KEY' => $data['FUND_KEY']));
+        $this->db->delete('job061');
+
+        foreach ($data['stock'] as $item) {
+            $job061_data[] = array(
+                'FUND_KEY' => $data['FUND_KEY'],
+                'COMP_CODE' => $item['COMP_CODE'],
+                'FUND_PER' => 0,
+                'FUND_PRICE' => $item['COMP_PRICE'],
+                'EMPL_KEY' => $_SESSION['EMPL_KEY'],
+            );
+            $stock[] = array(
+                'COMP_CODE' => $item['COMP_CODE'],
+                'FUND_PRICE' => $item['COMP_PRICE'],
+            );
+            // $tot_price += $item['FUND_PRICE'];
+        }
+        $this->db->insert_batch('job061', $job061_data);
+
+        $query = "
+            SELECT * FROM job060
+            WHERE FUND_KEY = ?
+        ";
+        $fund = $this->db->query($query, $data['FUND_KEY'])->row();
+
+        // 수익률
+        $benifit = $this->get_fund_benifit($stock, $fund->FUND_DAY);
+
+        // 임시로 수익금의 10%만
+        $my_benifit_price = ($fund->FUND_TOT * $benifit / 100) * 0.1;
+
+        // 펀드 테이블 update
+        $update_data = array(
+            'FUND_ADDPER' => round($benifit, 2),
+            'FUND_USERPAY' => ($benifit > 0) ? $my_benifit_price : 0,
+        );
+        $this->db->where(array('FUND_KEY' => $data['FUND_KEY']));
+        $this->db->update('job060', $update_data);
+
+        // 투자자 테이블 update
+        $query = "
+            UPDATE job062 SET CUSTOM_ADDPER = ?, CUSTOM_ADDPAY = CUSTOM_PAY + (CUSTOM_PAY * ? / 100)
+            WHERE FUND_KEY = ?
+        ";
+        $this->db->query($query, array($benifit, $benifit, $data['FUND_KEY']));
+
+        $this->db->trans_complete();
+    }
+
+    public function get_fund_benifit($stock, $MM)
+    {
+        foreach ($stock as $item) {
+            $in .= "'" . $item['COMP_CODE'] . "',";
+            $tot_price += $item['FUND_PRICE'];
+        }
+
+        $in = substr($in, 0, -1);
+
+        $query = "
+            SELECT
+              a.*, SUM(COMP_PRICE) AS expect_price
+            FROM
+              job015_copy a, tb_admin b
+            WHERE
+              COMP_CODE IN (" . $in . ") AND COMP_DATE = (b.stock_rownum + ?);
+        ";
+        $expect_price = $this->db->query($query, array($MM))->row()->expect_price;
+        $benifit = round(($expect_price - $tot_price) / $tot_price * 100, 2);
+
+        return $benifit;
+    }
+
+    public function get_fund_stock($key)
+    {
+        $query = "
+            SELECT COMP_CODE FROM job061
+            WHERE FUND_KEY = ?
+        ";
+        $return = $this->db->query($query, $key)->result();
+
+        return $return;
+    }
+
+    public function get_custom($key)
+    {
+        $query = "
+            SELECT CUSTOM_KEY, CUSTOM_PAY, CUSTOM_ADDPER, CUSTOM_ADDPAY FROM job062
+            WHERE
+              FUND_KEY = ?
+              ORDER BY CUSTOM_KEY
+        ";
+        $return = $this->db->query($query, $key)->result();
+
+        return $return;
+    }
+
+    /**
+     * end 펀드 투자 체험
+     */
+
+    /**
      * begin 채권 투자 체험
      */
 

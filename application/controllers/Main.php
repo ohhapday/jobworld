@@ -26,19 +26,14 @@ class Main extends CI_Controller
 
     }
 
+    /**
+     * begin 메인 페이지
+     */
+
     public function index()
     {
         $this->load->view('main_v');
     }
-
-    public function fund()
-    {
-        $this->load->view('fund_v');
-    }
-
-    /**
-     * begin 메인 페이지
-     */
 
     public function get_mData()
     {
@@ -59,6 +54,73 @@ class Main extends CI_Controller
 
     /**
      * end 메인 페이지
+     */
+
+    /**
+     * begin 펀드 투자 체험
+     */
+
+    public function fund()
+    {
+        $this->load->view('fund_v');
+    }
+
+    public function get_fundData()
+    {
+        $return->FUND = $this->main_m->get_fund();
+        $return->NEWS = $this->main_m->get_NEWS();
+        $return->KOS = $this->main_m->get_KOS();
+        $return->fund_stock = $this->main_m->get_stock();
+
+        echo json_encode($return);
+    }
+
+    public function get_investor()
+    {
+        $return->investor = $this->main_m->get_investor();
+
+        echo json_encode($return);
+    }
+
+    public function post_myFund()
+    {
+        $data = $this->input->post('fund', true);
+        $this->main_m->post_myFund($data);
+        $return->FUND = $this->main_m->get_fund();
+
+        echo json_encode($return);
+    }
+
+    public function get_fund_stock()
+    {
+        $return->stock = $this->main_m->get_stock();
+
+        echo json_encode($return);
+    }
+
+    public function post_myFundStock()
+    {
+        $data = array(
+            'stock' => $this->input->post('stock', true),
+            'FUND_KEY' => $this->input->post('FUND_KEY', true),
+        );
+
+        $this->main_m->post_myFundStock($data);
+        $return->FUND = $this->main_m->get_fund();
+
+        echo json_encode($return);
+    }
+
+    public function get_custom()
+    {
+        $key = $this->input->get('FUND_KEY', true);
+        $return->custom = $this->main_m->get_custom($key);
+
+        echo json_encode($return);
+    }
+
+    /**
+     * end 펀드 투자 체험
      */
 
     /**

@@ -64,6 +64,9 @@ class Admin_m extends CI_Model
         $this->db->update('tb_admin', $update_data);
 
         $this->db->query('truncate job050');
+        $this->db->query('truncate job060');
+        $this->db->query('truncate job061');
+        $this->db->query('truncate job062');
         $this->db->query('truncate job080');
         $this->db->query('truncate job081');
         $this->db->query('truncate job082');
