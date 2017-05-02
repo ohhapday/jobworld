@@ -104,6 +104,8 @@ requirejs([
             $table.find('tr:not(:eq(0))').hide(500);
             $table.find('tr:not(:eq(0))').remove();
 
+            console.log(mData.FUND[index].stock);
+
             $.each(mData.FUND[index].stock, function (i) {
                 let $clone = $table.find('tr:eq(0)').clone(true);
                 let self = this;
@@ -130,7 +132,7 @@ requirejs([
                 $table.append($clone.clone(true).fadeIn(500));
             });
 
-            if (mData.FUND.length === 0) {
+            if (mData.FUND[index].stock.length === 0) {
                 $('.box_tbllist:eq(1) div').fadeIn(500);
             } else {
                 $('.box_tbllist:eq(1) div').fadeOut(500);
@@ -175,17 +177,29 @@ requirejs([
             let $li = $('.rightar li:not(:eq(0))');
 
             $.each(custom, function (i) {
-                let benifit = parseInt(this.CUSTOM_PAY) * parseFloat(this.CUSTOM_ADDPER) / 100;
-
-                console.log(benifit);
+                let CUSTOM_ADDPER = this.CUSTOM_ADDPER || 0;
+                let benifit = parseInt(this.CUSTOM_PAY) * parseFloat(CUSTOM_ADDPER) / 100;
 
                 $li.eq(i).find('input:eq(0)').val(nf.format(this.CUSTOM_PAY));
                 $li.eq(i).find('input:eq(1)').val(nf.format(benifit));
             });
 
-            console.log(custom);
-
             $('select[name="FUND_MM"]').val(fund.FUND_DAY).attr('selected', true);
+        },
+        fund_change_MM: function () {
+            let index = $('.box_tbllist:eq(0) tbody tr:not(:eq(0))').index($('.box_tbllist:eq(0) tbody tr.on'));
+            let fund = mData.FUND[index];
+            let custom = ajax.get_custom(fund.FUND_KEY);
+            let $li = $('.rightar li:not(:eq(0))');
+
+            $.each(custom, function (i) {
+                let benifit = parseInt(this.CUSTOM_PAY) * parseFloat(fund.FUND_MMPER) / 100;
+
+                $li.eq(i).find('input:eq(0)').val(nf.format(this.CUSTOM_PAY));
+                $li.eq(i).find('input:eq(1)').val(nf.format(benifit));
+            });
+        },
+        fund_result: function () {
 
         },
     };
@@ -244,8 +258,8 @@ requirejs([
                     FUND_KEY: FUND_KEY,
                 },
                 success: function (data, status, xhr) {
+                    mData.FUND = null;
                     mData.FUND = $.extend(true, mData.FUND, data.FUND);
-                    mData.FUND[index].stock = $.extend(true, mData.FUND[index].stock, data.stock);
                 }
             });
             return true;
@@ -263,6 +277,23 @@ requirejs([
                 }
             });
             return returnData;
+        },
+        put_change_MM: function (MM, fund) {
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'post',
+                url: '/main/put_myFundStock',
+                data: {
+                    MM: MM,
+                    fund: fund,
+                },
+                success: function (data, status, xhr) {
+                    mData.FUND = null;
+                    mData.FUND = $.extend(true, mData.FUND, data.FUND);
+                }
+            });
+            console.log(mData);
         },
     };
 
@@ -383,12 +414,30 @@ requirejs([
                 ajax.post_myFundStock(stock);
                 ui.fund_myStock();
                 ui.fund();
+                ui.fund_detail();
+                ui.fund_expect();
                 pop.fadeOut(500);
             });
         })();
 
+        // 적용 버튼
+        $('.btn_ckcof').on('click', function () {
+            let fund;
+            let MM = $('select[name="FUND_MM"]').val();
+            let index = $('.box_tbllist:eq(0) tbody tr:not(:eq(0))').index($('.box_tbllist:eq(0) tbody tr.on'));
+            if(index < 0) {
+                alert('펀드를 선택해 주세요');
+                return;
+            }
+            fund = mData.FUND[index];
+
+            ajax.put_change_MM(MM, fund);
+            ui.fund_change_MM();
+        });
+
         // 수익률 보기 클릭
         $('.btn_bview').on('click', function () {
+
             $('.wrap_layerpop:eq(3)').fadeIn(500);
         });
     })();

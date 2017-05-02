@@ -32,8 +32,8 @@
 .box_sbtop .sbleft2{float: left; width: 45%;}
 .box_sbtop .sbleft .ar_btm_dt{margin-top: 30px; padding: 35px 40px 36px 40px; border: 1px solid #d0cbbe;}
 .box_sbtop .sbleft .dtlist li{float: left; width: 48%;}
-.box_sbtop .sbleft .dtlist li strong{float: left; width: 30%; padding-right: 10px; padding-left: 15px; background: url(../images/ico_dt1.png) no-repeat 0 13px; box-sizing: border-box;}
-.box_sbtop .sbleft .dtlist li span{float: left; width: 70%;}
+.box_sbtop .sbleft .dtlist li strong{float: left; width: 40%; padding-right: 10px; padding-left: 15px; background: url(../images/ico_dt1.png) no-repeat 0 13px; box-sizing: border-box;}
+.box_sbtop .sbleft .dtlist li span{float: left; width: 60%;}
 .box_sbtop .sbright{float: right; width: 40%;}
 .box_sbtop .sbright2{float: right; width: 53%;}
 .box_sbtop .bx_tablist .tab{position: relative; height: 63px;}

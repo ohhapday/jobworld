@@ -111,6 +111,19 @@ class Main extends CI_Controller
         echo json_encode($return);
     }
 
+    public function put_myFundStock()
+    {
+        $data = array(
+            'MM' => $this->input->post('MM', true),
+            'fund' => $this->input->post('fund', true),
+        );
+
+        $this->main_m->put_myFundStock($data);
+        $return->FUND = $this->main_m->get_fund();
+
+        echo json_encode($return);
+    }
+
     public function get_custom()
     {
         $key = $this->input->get('FUND_KEY', true);

@@ -160,7 +160,7 @@ class Main_m extends CI_Model
     {
         $query = "
             SELECT
-              FUND_KEY, FUND_NAME, FUND_TOT, FUND_DAY, FUND_ADDPER
+              FUND_KEY, FUND_NAME, FUND_TOT, FUND_DAY, FUND_ADDPER, FUND_MM, FUND_MMPER
             FROM job060
             WHERE
               EMPL_KEY = ?
@@ -280,6 +280,31 @@ class Main_m extends CI_Model
             WHERE FUND_KEY = ?
         ";
         $this->db->query($query, array($benifit, $benifit, $data['FUND_KEY']));
+
+        $this->db->trans_complete();
+    }
+
+    public function put_myFundStock($data)
+    {
+        $this->db->trans_start();
+
+        foreach ($data['fund']['stock'] as $item) {
+            $stock[] = array(
+                'COMP_CODE' => $item['COMP_CODE'],
+                'FUND_PRICE' => $item['FUND_PRICE'],
+            );
+        }
+
+        // 수익률
+        $benifit = $this->get_fund_benifit($stock, $data['MM']);
+
+        $update_data = array(
+            'FUND_MM' => $data['MM'],
+            'FUND_MMPER' => $benifit,
+        );
+
+        $this->db->where('FUND_KEY', $data['fund']['FUND_KEY']);
+        $this->db->update('job060', $update_data);
 
         $this->db->trans_complete();
     }

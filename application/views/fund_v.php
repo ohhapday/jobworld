@@ -89,7 +89,7 @@
 						<li class="mb10"><strong>펀드명</strong><span></span></li>
 						<li class="mb10"><strong>만든 날짜</strong><span></span></li>
 						<li><strong>총 금액</strong><span></span></li>
-						<li><strong>수익률</strong><span></span></li>
+						<li><strong>예상 수익률</strong><span></span></li>
 					</ul>
 				</div>
 			</div>
