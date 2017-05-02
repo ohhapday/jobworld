@@ -173,10 +173,11 @@ requirejs([
         fund_expect: function () {
             let index = $('.box_tbllist:eq(0) tbody tr:not(:eq(0))').index($('.box_tbllist:eq(0) tbody tr.on'));
             let fund = mData.FUND[index];
-            let custom = ajax.get_custom(fund.FUND_KEY);
             let $li = $('.rightar li:not(:eq(0))');
 
-            $.each(custom, function (i) {
+            fund.custom = ajax.get_custom(fund.FUND_KEY);
+
+            $.each(fund.custom, function (i) {
                 let CUSTOM_ADDPER = this.CUSTOM_ADDPER || 0;
                 let benifit = parseInt(this.CUSTOM_PAY) * parseFloat(CUSTOM_ADDPER) / 100;
 
@@ -200,7 +201,36 @@ requirejs([
             });
         },
         fund_result: function () {
+            console.log(mData);
+            $('.box_titpop2 span').text(user.name);
+            $.each(mData.FUND, function (i) {
+                let MM, benifit, tot_price = 0, tot_benifit_pay = 0,
+                    my_benifit, my_benifit_per, str;             // 실제 보유기간이 없으면 최초 보유기간으로
+                $('.pb_tit:eq(' + i + ') span').text(this.FUND_NAME);
 
+                MM = this.MM || this.FUND_DAY;
+                $('.dtts:eq(' + i + ') input:eq(0)').val(MM);
+
+                benifit = parseFloat(this.FUND_MMPER) || parseFloat(this.FUND_ADDPER);
+                $('.dtts:eq(' + i + ') input:eq(1)').val(benifit);
+
+                $.each(this.custom, function (k) {
+                    $('.dtts1:eq(' + i + ') li:eq(' + k + ') input').val(nf.format(this.CUSTOM_PAY));
+                    tot_price += parseInt(this.CUSTOM_PAY);
+
+                    let benifit_pay = parseInt(this.CUSTOM_PAY) + (parseInt(this.CUSTOM_PAY) * benifit / 100);
+                    $('.dtts2:eq(' + i + ') li:eq(' + k + ') input').val(nf.format(benifit_pay));
+                    tot_benifit_pay += parseInt(benifit_pay);
+                });
+                $('.dtts1:eq(' + i + ') li:eq(3) input').val(nf.format(tot_price));
+                $('.dtts2:eq(' + i + ') li:eq(3) input').val(nf.format(tot_benifit_pay));
+
+                my_benifit = (benifit < 0) ? 0 : tot_benifit_pay * 0.01;        // todo 10%
+                my_benifit_per = (benifit < 0) ? 0 : benifit * 0.01;        // todo 10%
+
+                str = '펀드 메니저 수익률 ' + my_benifit_per + '%  수익금 ' + nf.format(my_benifit) + '원';
+                $('.pb_view:eq(' + i + ') p').text(str);
+            });
         },
     };
 
@@ -425,7 +455,7 @@ requirejs([
             let fund;
             let MM = $('select[name="FUND_MM"]').val();
             let index = $('.box_tbllist:eq(0) tbody tr:not(:eq(0))').index($('.box_tbllist:eq(0) tbody tr.on'));
-            if(index < 0) {
+            if (index < 0) {
                 alert('펀드를 선택해 주세요');
                 return;
             }
@@ -437,7 +467,7 @@ requirejs([
 
         // 수익률 보기 클릭
         $('.btn_bview').on('click', function () {
-
+            ui.fund_result();
             $('.wrap_layerpop:eq(3)').fadeIn(500);
         });
     })();

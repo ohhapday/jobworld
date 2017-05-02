@@ -174,6 +174,12 @@ class Main_m extends CI_Model
                 WHERE FUND_KEY = ?
             ";
             $return[$key]->stock = $this->db->query($query, $item->FUND_KEY)->result();
+
+            $query = "
+                SELECT * FROM job062
+                WHERE FUND_KEY = ?
+            ";
+            $return[$key]->custom = $this->db->query($query, $item->FUND_KEY)->result();
         }
 
         return $return;
@@ -263,7 +269,7 @@ class Main_m extends CI_Model
         // 수익률
         $benifit = $this->get_fund_benifit($stock, $fund->FUND_DAY);
 
-        // 임시로 수익금의 10%만
+        // todo 임시로 수익금의 10%만
         $my_benifit_price = ($fund->FUND_TOT * $benifit / 100) * 0.1;
 
         // 펀드 테이블 update
