@@ -385,19 +385,19 @@ class Main_m extends CI_Model
     public function get_bond_cash()
     {
         $query = "
-            SELECT stock_CASH FROM job050
+            SELECT bond_CASH FROM job050
             WHERE
               EMPL_KEY = ?            
         ";
-        $return1 = $this->db->query($query, $_SESSION['EMPL_KEY'])->row()->stock_CASH;
+        $return1 = $this->db->query($query, $_SESSION['EMPL_KEY'])->row()->bond_CASH;
 
         $query = "
-            SELECT SUM(EMPL_BUYTOT) AS BUYTOT FROM job070
+            SELECT SUM(BOND_BUYPAY) AS BUYTOT FROM job070
             WHERE
               EMPL_KEY = ?
             GROUP BY EMPL_KEY
         ";
-        // $return2 = $this->db->query($query, $_SESSION['EMPL_KEY'])->row()->BUYTOT;
+        $return2 = $this->db->query($query, $_SESSION['EMPL_KEY'])->row()->BUYTOT;
 
         $return->cash1 = $return1 + $return2;               // 고객자산
         $return->cash2 = $return2;                          // 투자금액
@@ -462,10 +462,18 @@ class Main_m extends CI_Model
 
     public function post_buyBond($data)
     {
+        $this->db->trans_start();
+
         if ($data['bond']['BOND_TYPE'] === '국채') {
             $rate = $this->get_gold()->GOLD_RATE;
         } else {
-            $rate = $this->get_credit()->CREDIT_SCORE;
+            $aa = $this->get_credit();
+            foreach ($aa as $item) {
+                if ($item->BOND_KEY == $data['bond']['BOND_KEY']) {
+                    $credit = $item;
+                }
+            }
+            $rate = $credit->CREDIT_SCORE;
         }
 
         $insert_data = array(
@@ -477,10 +485,59 @@ class Main_m extends CI_Model
             'BOND_RATE' => $rate,
             'BOND_BUYDATE' => $data['bond']['BOND_CLDATE'],
             'BOND_BUYPER' => $data['bond']['BOND_PER'],
+            'BOND_BUYTOT' => $data['bond']['BOND_PRICE'] * $data['BOND_BUYQTY'] * $data['bond']['BOND_PER'] / 100,
+            'BOND_BENIFIT' => $data['bond']['BOND_PRICE'] * $data['BOND_BUYQTY'] * $data['bond']['BOND_PER'] / 100,
         );
         $this->db->insert('job070', $insert_data);
 
-        return true;
+        $query = "
+            UPDATE job050 SET bond_CASH = bond_CASH - ?
+            WHERE
+              EMPL_KEY = ?
+        ";
+        $this->db->query($query, array($data['bond']['BOND_PRICE'] * $data['BOND_BUYQTY'], $_SESSION['EMPL_KEY']));
+
+        $this->db->trans_complete();
+
+        return $this->db->trans_status();
+    }
+
+    public function put_bond_rownum()
+    {
+        $this->db->trans_start();
+
+        $query = "
+            SELECT a.*, b.BOND_TYPE FROM job070 a, job020 b
+            WHERE
+              a.BOND_KEY = b.BOND_KEY AND a.EMPL_KEY = ?
+        ";
+        $result = $this->db->query($query, $_SESSION['EMPL_KEY'])->result();
+
+        foreach ($result as $value) {
+            if ($value->BOND_TYPE === '01') {
+                $rate = $this->get_gold()->GOLD_RATE;
+            } else {
+                $aa = $this->get_credit();
+                foreach ($aa as $item) {
+                    if ($item->BOND_KEY == $item->BOND_KEY) {
+                        $credit = $item;
+                    }
+                }
+                $rate = $credit->CREDIT_SCORE;
+            }
+            $plus = $rate - $value->BOND_RATE;
+
+            $query = "
+                UPDATE job070 SET BOND_BUYBENIFIT = BOND_BUYTOT + (BOND_BUYTOT *  ? / 100)
+                WHERE
+                  EMPL_KEY = ? AND BOND_KEY = ?
+            ";
+            $this->db->query($query, array($plus, $_SESSION['EMPL_KEY'], $value->BOND_KEY));
+        }
+
+        $this->db->trans_complete();
+
+        return $this->db->trans_status();
     }
 
     /**

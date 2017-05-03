@@ -102,20 +102,17 @@
 								<colgroup>
 									<col style="width: 20%;">
 									<col style="width: 50%;">
-									<col style="width: 30%;">
 								</colgroup>
 								<thead>
 								<tr>
 									<th scope="col">신용도</th>
 									<th scope="col">정의</th>
-									<th scope="col">스코어</th>
 								</tr>
 								</thead>
 								<tbody>
 								<tr>
-									<td class="align-l">A</td>
+									<td>A</td>
 									<td>메모 신용등급에 따른 내용</td>
-									<td>4</td>
 								</tr>
 								</tbody>
 							</table>
@@ -160,7 +157,7 @@
 					</ul>
 				</div>
 
-				<div class="ar_btm_bx clfix">
+				<div class="ar_btm_bx clfix" style="overflow-y: auto; height: 250px;">
 					<div class="box_tbllist">
 						<table>
 							<colgroup>

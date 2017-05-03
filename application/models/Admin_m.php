@@ -57,6 +57,7 @@ class Admin_m extends CI_Model
             'bond_STATUS' => 0,
             'stock_STATUS' => 0,
             'DATA_TYPE' => '30',
+            'bond_rownum' => 10,
             'stock_rownum' => 10,
             'news_que' => 1,
             'anal_que' => 1,
@@ -67,6 +68,7 @@ class Admin_m extends CI_Model
         $this->db->query('truncate job060');
         $this->db->query('truncate job061');
         $this->db->query('truncate job062');
+        $this->db->query('truncate job070');
         $this->db->query('truncate job080');
         $this->db->query('truncate job081');
         $this->db->query('truncate job082');
@@ -90,7 +92,19 @@ class Admin_m extends CI_Model
     public function put_stock_rownum()
     {
         $query = "
+            SELECT tb
+        ";
+
+        $query = "
             UPDATE tb_admin SET stock_rownum = stock_rownum + 1
+        ";
+        $this->db->query($query);
+    }
+
+    public function put_bond_rownum()
+    {
+        $query = "
+            UPDATE tb_admin SET bond_rownum = bond_rownum + 1
         ";
         // $this->db->query($query);
     }

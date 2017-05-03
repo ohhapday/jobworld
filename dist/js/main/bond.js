@@ -27,10 +27,15 @@ requirejs([
     };
 
     let ui = {
+        index: function () {
+            let index = $('.box_tbllist:eq(0) table tbody tr:not(:eq(0))').index($('.box_tbllist:eq(0) table tbody tr.on'));
+            return index;
+        },
         init: function () {
             this.bond();
             this.cashFlow();
             this.buyBondList();
+            this.buyBond_clear();
         },
         bond: function () {
             let $table = $('.box_tbllist:eq(0) table tbody');
@@ -72,6 +77,17 @@ requirejs([
                 $('.ar_btm_dt .mb10:eq(5) span').text(nf.format(buyPrice * bond.BOND_PER / 100));
             });
         },
+        buyBond_clear: function () {
+            $('.ar_btm_dt .dttit span').text('');
+
+            $('.ar_btm_dt .mb10:eq(0) span').text('');
+            $('.ar_btm_dt .mb10:eq(1) input').val(100);
+            $('.ar_btm_dt .mb10:eq(2) span').text('');
+            $('.ar_btm_dt .mb10:eq(3) span').text('');
+            $('.ar_btm_dt .mb10:eq(4) span').text('');
+            $('.ar_btm_dt .mb10:eq(5) span').text('');
+            $('.ar_btm_dt li:last span').text('');
+        },
         cashFlow: function () {
             let li = $('.ar_btm_sel li');
             li.eq(0).find('span').text(nf.format(mData.cashFlow.cash1));
@@ -88,7 +104,6 @@ requirejs([
                 let $clone = $table.find('tr:eq(0)').clone(true);
                 let self = this;
                 let total = parseInt(this.BOND_DANGA) * parseInt(this.BOND_BUYQTY);
-                let benifit = total * parseInt(this.BOND_BUYPER) / 100;
 
                 let bond = mData.BOND.find(function (item) {
                     return item.BOND_KEY === self.BOND_KEY;
@@ -97,10 +112,21 @@ requirejs([
                 $clone.find('td:eq(0)').text(bond.BOND_NAME);
                 $clone.find('td:eq(1)').text(this.BOND_BUYQTY);
                 $clone.find('td:eq(2)').text(nf.format(total));
-                $clone.find('td:eq(3)').text(nf.format(benifit));
+                $clone.find('td:eq(3)').text(nf.format(this.BOND_BUYBENIFIT));
 
                 $table.append($clone.clone(true).fadeIn(500));
             });
+        },
+        credit: function () {
+            let $table = $('.btmtbl:eq(1) table tbody');
+            let index = this.index();
+
+            let credit = mData.credit.find(function (item) {
+                return item.BOND_KEY === mData.BOND[index].BOND_KEY;
+            });
+
+            $table.find('td:eq(0)').text(credit.CREDIT_RANK);
+            $table.find('td:eq(1)').text(credit.CREDIT_MEMO);
         },
     };
 
@@ -111,6 +137,11 @@ requirejs([
         },
         post_buyBond: function () {
             let index = this.index();
+
+            if(index < 0) {
+                alert('채권을 선택해 주세요.');
+                return;
+            }
 
             $.ajax({
                 async: false,
@@ -148,16 +179,6 @@ requirejs([
             }
         }
 
-        // 채권 시황 - 금리변동률
-        $('.tabmenu:eq(0)').on('click', function () {
-            change_tabmenu(0);
-        });
-
-        // 채권 시황 - 금리변동률
-        $('.tabmenu:eq(1)').on('click', function () {
-            change_tabmenu(1);
-        });
-
         // 상세보기
         $('.und').on('click', function () {
             let index = $('.und:not(:eq(0))').index($(this));
@@ -192,12 +213,14 @@ requirejs([
                 change_tabmenu(0);
             } else {
                 change_tabmenu(1);
+                ui.credit();
             }
         });
 
         // 채권 사기
         $('.btn_buyc').on('click', function () {
             ajax.post_buyBond();
+
             ui.init();
         });
     })();
@@ -225,7 +248,7 @@ requirejs([
                 async: false,
                 dataType: 'json',
                 type: 'get',
-                url: '/main/get_bondData',
+                url: '/main/put_bond_rownum',
                 success: function (data, status, xhr) {
                     mData = $.extend(true, mData, data);
                     ui.init();

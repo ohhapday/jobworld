@@ -104,6 +104,10 @@ class Admin extends CI_Controller
         return $this->admin_m->put_stock_rownum();
     }
 
+    public function put_bond_rownum()
+    {
+        return $this->admin_m->put_bond_rownum();
+    }
 
 
 }

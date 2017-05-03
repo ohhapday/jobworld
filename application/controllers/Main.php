@@ -162,7 +162,14 @@ class Main extends CI_Controller
         $data['BOND_BUYQTY'] = $this->input->post('BOND_BUYQTY', true);
         $this->main_m->post_buyBond($data);
 
-        echo json_encode($this->get_bondData());
+        $this->get_bondData();
+    }
+
+    public function put_bond_rownum()
+    {
+        $this->main_m->put_bond_rownum();
+
+        $this->get_bondData();
     }
 
     /**
