@@ -382,6 +382,107 @@ class Main_m extends CI_Model
         return $return;
     }
 
+    public function get_bond_cash()
+    {
+        $query = "
+            SELECT stock_CASH FROM job050
+            WHERE
+              EMPL_KEY = ?            
+        ";
+        $return1 = $this->db->query($query, $_SESSION['EMPL_KEY'])->row()->stock_CASH;
+
+        $query = "
+            SELECT SUM(EMPL_BUYTOT) AS BUYTOT FROM job070
+            WHERE
+              EMPL_KEY = ?
+            GROUP BY EMPL_KEY
+        ";
+        // $return2 = $this->db->query($query, $_SESSION['EMPL_KEY'])->row()->BUYTOT;
+
+        $return->cash1 = $return1 + $return2;               // 고객자산
+        $return->cash2 = $return2;                          // 투자금액
+        $return->cash3 = (int)$return1;   // 잔고
+
+        return $return;
+    }
+
+    public function get_buyBond()
+    {
+        $query = "
+            SELECT 
+              *
+            FROM
+              job070
+            WHERE 
+              EMPL_KEY = ?
+        ";
+        $result = $this->db->query($query, $_SESSION['EMPL_KEY'])->result();
+        return $result;
+    }
+
+    public function get_gold()
+    {
+        $query = "
+            SELECT bond_rownum FROM tb_admin
+        ";
+        $rownum = $this->db->query($query)->row()->bond_rownum;
+
+        $query = "
+            SELECT
+              GOLD_KEY, GOLD_CODE, GOLD_RATE, GOLD_DATE
+            FROM
+              job018
+            WHERE
+              GOLD_DATE = ?
+        ";
+        $return = $this->db->query($query, $rownum)->row();
+
+        return $return;
+    }
+
+    public function get_credit()
+    {
+        $query = "
+            SELECT bond_rownum FROM tb_admin
+        ";
+        $rownum = $this->db->query($query)->row()->bond_rownum;
+
+        $query = "
+            SELECT
+              BOND_KEY, CREDIT_RANK, CREDIT_MEMO, CREDIT_SCORE, CREDIT_DATE
+            FROM job021
+            WHERE CREDIT_DATE = ?
+            GROUP BY BOND_KEY
+            ORDER BY BOND_KEY ASC
+        ";
+        $return = $this->db->query($query, $rownum)->result();
+
+        return $return;
+    }
+
+    public function post_buyBond($data)
+    {
+        if ($data['bond']['BOND_TYPE'] === '국채') {
+            $rate = $this->get_gold()->GOLD_RATE;
+        } else {
+            $rate = $this->get_credit()->CREDIT_SCORE;
+        }
+
+        $insert_data = array(
+            'EMPL_KEY' => $_SESSION['EMPL_KEY'],
+            'BOND_KEY' => $data['bond']['BOND_KEY'],
+            'BOND_BUYQTY' => $data['BOND_BUYQTY'],
+            'BOND_BUYPAY' => $data['bond']['BOND_PRICE'] * $data['BOND_BUYQTY'],
+            'BOND_DANGA' => $data['bond']['BOND_PRICE'],
+            'BOND_RATE' => $rate,
+            'BOND_BUYDATE' => $data['bond']['BOND_CLDATE'],
+            'BOND_BUYPER' => $data['bond']['BOND_PER'],
+        );
+        $this->db->insert('job070', $insert_data);
+
+        return true;
+    }
+
     /**
      * end 채권 투자 체험
      */

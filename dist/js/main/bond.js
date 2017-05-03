@@ -29,6 +29,8 @@ requirejs([
     let ui = {
         init: function () {
             this.bond();
+            this.cashFlow();
+            this.buyBondList();
         },
         bond: function () {
             let $table = $('.box_tbllist:eq(0) table tbody');
@@ -53,7 +55,6 @@ requirejs([
         },
         buyBond: function (index) {
             let bond = mData.BOND[index];
-            console.log(bond[index]);
 
             $('.ar_btm_dt .dttit span').text(bond.BOND_NAME);
 
@@ -70,11 +71,93 @@ requirejs([
                 $('.ar_btm_dt .mb10:eq(2) span').text(nf.format(buyPrice));
                 $('.ar_btm_dt .mb10:eq(5) span').text(nf.format(buyPrice * bond.BOND_PER / 100));
             });
-        }
+        },
+        cashFlow: function () {
+            let li = $('.ar_btm_sel li');
+            li.eq(0).find('span').text(nf.format(mData.cashFlow.cash1));
+            li.eq(1).find('span').text(nf.format(mData.cashFlow.cash2));
+            li.eq(2).find('span').text(nf.format(mData.cashFlow.cash3));
+        },
+        buyBondList: function () {
+            let $table = $('.ar_btm_bx table tbody');
+
+            $table.find('tr:not(:eq(0))').hide(500);
+            $table.find('tr:not(:eq(0))').remove();
+
+            $.each(mData.buyBond, function () {
+                let $clone = $table.find('tr:eq(0)').clone(true);
+                let self = this;
+                let total = parseInt(this.BOND_DANGA) * parseInt(this.BOND_BUYQTY);
+                let benifit = total * parseInt(this.BOND_BUYPER) / 100;
+
+                let bond = mData.BOND.find(function (item) {
+                    return item.BOND_KEY === self.BOND_KEY;
+                });
+
+                $clone.find('td:eq(0)').text(bond.BOND_NAME);
+                $clone.find('td:eq(1)').text(this.BOND_BUYQTY);
+                $clone.find('td:eq(2)').text(nf.format(total));
+                $clone.find('td:eq(3)').text(nf.format(benifit));
+
+                $table.append($clone.clone(true).fadeIn(500));
+            });
+        },
+    };
+
+    let ajax = {
+        index: function () {
+            let index = $('.box_tbllist:eq(0) table tbody tr:not(:eq(0))').index($('.box_tbllist:eq(0) table tbody tr.on'));
+            return index;
+        },
+        post_buyBond: function () {
+            let index = this.index();
+
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'post',
+                url: '/main/post_buyBond',
+                data: {
+                    bond: mData.BOND[index],
+                    BOND_BUYQTY: $('input[type="number"]').val(),
+                },
+                success: function (data, status, xhr) {
+                    mData = null;
+                    mData = $.extend(true, mData, data);
+                }
+            });
+            return true;
+        },
     };
 
     // 기본 event (1회만 처리)
     (function () {
+        var change_tabmenu = function (index) {
+            if (index === 0) {
+                $('.tabmenu').removeClass('on');
+                $('.tabmenu:eq(0)').addClass('on');
+
+                $('.btmtbl:eq(0)').show();
+                $('.btmtbl:eq(1)').hide();
+            } else {
+                $('.tabmenu').removeClass('on');
+                $('.tabmenu:eq(1)').addClass('on');
+
+                $('.btmtbl:eq(1)').show();
+                $('.btmtbl:eq(0)').hide();
+            }
+        }
+
+        // 채권 시황 - 금리변동률
+        $('.tabmenu:eq(0)').on('click', function () {
+            change_tabmenu(0);
+        });
+
+        // 채권 시황 - 금리변동률
+        $('.tabmenu:eq(1)').on('click', function () {
+            change_tabmenu(1);
+        });
+
         // 상세보기
         $('.und').on('click', function () {
             let index = $('.und:not(:eq(0))').index($(this));
@@ -86,7 +169,7 @@ requirejs([
             pop.find('.box_tblwrite:eq(0) td:eq(1)').text(bond.BOND_CODE);
             pop.find('.box_tblwrite:eq(0) td:eq(2)').text(nf.format(bond.BOND_TOT));
             pop.find('.box_tblwrite:eq(0) td:eq(3)').text(nf.format(bond.BOND_PRICE));
-            pop.find('.box_tblwrite:eq(0) td:eq(4)').text(bond.BOND_PER);
+            pop.find('.box_tblwrite:eq(0) td:eq(4)').text(bond.BOND_PER + ' %');
 
             pop.find('.box_tblwrite:eq(1) td:eq(0)').text(bond.BOND_INDATE);
             pop.find('.box_tblwrite:eq(1) td:eq(1)').text(bond.BOND_CLDATE);
@@ -104,6 +187,18 @@ requirejs([
             $(this).addClass('on');
 
             ui.buyBond(index);
+
+            if (mData.BOND[index].BOND_TYPE === "국채") {
+                change_tabmenu(0);
+            } else {
+                change_tabmenu(1);
+            }
+        });
+
+        // 채권 사기
+        $('.btn_buyc').on('click', function () {
+            ajax.post_buyBond();
+            ui.init();
         });
     })();
 
@@ -124,7 +219,21 @@ requirejs([
 
     // 시스템 데이터와 비교하여 변경된 항목만 업데이트 처리
     let get_ajax = function (tmp) {
-
+        // 주식 데이터 변경
+        if (tmp.bond_rownum !== eData.bond_rownum) {
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'get',
+                url: '/main/get_bondData',
+                success: function (data, status, xhr) {
+                    mData = $.extend(true, mData, data);
+                    ui.init();
+                    console.log(mData);
+                }
+            });
+            console.log('채권 변경');
+        }
     };
 
     // eventSource
@@ -133,6 +242,7 @@ requirejs([
         let eventSource = new EventSource('/login/sse_get_system');
         eventSource.onmessage = function (e) {
             if (e.data !== JSON.stringify(eData)) {
+
                 let tmp = $.extend({}, eData);
                 eData = $.extend(true, eData, JSON.parse(e.data));
 

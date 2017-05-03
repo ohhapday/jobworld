@@ -31,8 +31,8 @@
 		<h2>채권 투자</h2>
 		<div>
 			<div class="area_mem">
-				<span class="member"><strong>직원명</strong>님이 로그인하셨습니다.</span>
-				<span class="time">10:10:10</span>
+				<span class="member"><strong></strong>님이 로그인하셨습니다.</span>
+				<span class="time"></span>
 			</div>
 			<h1><a href="#"><img src="/dist/images/logo_r.png" alt="드림증권 투자시스템"></a></h1>
 		</div>
@@ -96,6 +96,31 @@
 					<div class="btmtbl">
 						<div class="chart"><img src="/dist/images/chart_sb1.gif" alt=""></div>
 					</div>
+					<div class="btmtbl" style="display: none;">
+						<div class="box_tbllist">
+							<table>
+								<colgroup>
+									<col style="width: 20%;">
+									<col style="width: 50%;">
+									<col style="width: 30%;">
+								</colgroup>
+								<thead>
+								<tr>
+									<th scope="col">신용도</th>
+									<th scope="col">정의</th>
+									<th scope="col">스코어</th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr>
+									<td class="align-l">A</td>
+									<td>메모 신용등급에 따른 내용</td>
+									<td>4</td>
+								</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -123,54 +148,56 @@
 				</div>
 			</div>
 			<div class="sbrightbt2">
-				<div class="box_bt_rdo clfix">
-					<div class="ar_rdol">
-						<input type="radio" name="chdate" id="chdate1" checked><label for="chdate1">만기</label>
-						<input type="radio" name="chdate" id="chdate2"><label for="chdate2">중도해지</label>
-						<input type="text" value="2017-10-10">
-					</div>
-					<a href="" class="btn_bview"><span>예상 수익률 보기</span></a>
+
+				<div class="sb_tit">
+					<h3 class="ic4">잔고 보유 현황</h3>
 				</div>
+				<div class="ar_btm_sel">
+					<ul class="dtlist clfix">
+						<li><strong>고객자산</strong><span></span></li>
+						<li><strong>투자금액</strong><span></span></li>
+						<li><strong>잔고</strong><span></span></li>
+					</ul>
+				</div>
+
 				<div class="ar_btm_bx clfix">
 					<div class="box_tbllist">
 						<table>
 							<colgroup>
 								<col style="width: 40%;">
-								<col style="width: 30%;">
-								<col style="width: 30%;">
+								<col style="width: 10%;">
+								<col style="width: 25%;">
+								<col style="width: 25%;">
 							</colgroup>
 							<thead>
 							<tr>
-								<th scope="col">보유년수</th>
-								<th scope="col">예상순이익</th>
-								<th scope="col">수익률</th>
+								<th scope="col">채권명</th>
+								<th scope="col">수량</th>
+								<th scope="col">산금액</th>
+								<th scope="col">만기수익금</th>
 							</tr>
 							</thead>
 							<tbody>
-							<tr>
-								<td class="align-l"><span>2017-03-31</span> <span class="ml10">2017-03-31</span></td>
+							<tr style="display: none;">
+								<td class="align-l">국고채</td>
+								<td>00</td>
 								<td>2,000,000</td>
 								<td>100.00%</td>
-							</tr>
-							<tr>
-								<td class="align-l"><span>2017-03-31</span> <span class="ml10">2017-03-31</span></td>
-								<td>2,000,000</td>
-								<td>100.00%</td>
-							</tr>
-							<tr>
-								<td class="align-l"><span>2017-03-31</span> <span class="ml10">2017-03-31</span></td>
-								<td>2,000,000</td>
-								<td>100.00%</td>
-							</tr>
-							<tr class="last">
-								<th scope="row">예상 수익률</th>
-								<td><strong>7,500</strong></td>
-								<td><strong>100.00%</strong></td>
 							</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
+
+				<div class="box_bt_rdo clfix" style="margin-top: 10px;">
+					<div class="ar_rdol">
+						<input type="radio" name="chdate" id="chdate1" checked><label for="chdate1">만기</label>
+						<input type="radio" name="chdate" id="chdate2"><label for="chdate2">중도해지</label>
+						<input type="date" value="" style="width: 180px;">
+					</div>
+					<a href="" class="btn_bview"><span>예상 수익률 보기</span></a>
+				</div>
+
 			</div>
 		</div>
 	</div>
@@ -193,8 +220,8 @@
 			<div class="box_tblwrite col2fl">
 				<table>
 					<colgroup>
-						<col style="width: 35%;">
-						<col style="width: 65%;">
+						<col style="width: 45%;">
+						<col style="width: 55%;">
 					</colgroup>
 					<tbody>
 					<tr>

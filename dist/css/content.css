@@ -114,6 +114,13 @@
 .box_sbbtm .sbrightbt3 .ar_btm_sel .dtlist li strong{float: left; width: 42%; padding-right: 10px; padding-left: 15px; background: url(../images/ico_dt1.png) no-repeat 0 13px; box-sizing: border-box;}
 .box_sbbtm .sbrightbt3 .ar_btm_sel .dtlist li span{float: left; width: 58%;}
 .box_sbbtm .sbrightbt3 .ar_btm_sel .btn_ckcof{display: block; position: absolute; top: 20px; right: 24px; padding: 5px 25px; background:#f34937; font-size: 1em; color: #fff; border-radius: 5px;}
+
+.box_sbbtm .sbrightbt2 .ar_btm_sel{position: relative; padding: 25px 40px 26px 40px; border: 1px solid #d0cbbe;}
+.box_sbbtm .sbrightbt2 .ar_btm_sel .dtlist li{float: left; width: 33.33%;}
+.box_sbbtm .sbrightbt2 .ar_btm_sel .dtlist li strong{float: left; width: 42%; padding-right: 10px; padding-left: 15px; background: url(../images/ico_dt1.png) no-repeat 0 13px; box-sizing: border-box;}
+.box_sbbtm .sbrightbt2 .ar_btm_sel .dtlist li span{float: left; width: 58%;}
+.box_sbbtm .sbrightbt2 .ar_btm_sel .btn_ckcof{display: block; position: absolute; top: 20px; right: 24px; padding: 5px 25px; background:#f34937; font-size: 1em; color: #fff; border-radius: 5px;}
+
 .box_sbbtm .ar_btm_bx{margin-top: 20px;}
 .box_sbbtm .ar_btm_bx .leftar{float: left; width: 48%;}
 .box_sbbtm .ar_btm_bx .btn_bview{display: block; width: 100%; height: 75px; margin-top: 30px; box-sizing: border-box; background:#f34937; font-size: 1.125em; color: #fff; text-align: center;}

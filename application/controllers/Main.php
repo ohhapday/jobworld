@@ -148,8 +148,21 @@ class Main extends CI_Controller
     public function get_bondData()
     {
         $return->BOND = $this->main_m->get_bond();
+        $return->cashFlow = $this->main_m->get_bond_cash();
+        $return->buyBond = $this->main_m->get_buyBond();
+        $return->gold = $this->main_m->get_gold();
+        $return->credit = $this->main_m->get_credit();
 
         echo json_encode($return);
+    }
+
+    public function post_buyBond()
+    {
+        $data['bond'] = $this->input->post('bond', true);
+        $data['BOND_BUYQTY'] = $this->input->post('BOND_BUYQTY', true);
+        $this->main_m->post_buyBond($data);
+
+        echo json_encode($this->get_bondData());
     }
 
     /**
