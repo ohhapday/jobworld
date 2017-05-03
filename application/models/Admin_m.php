@@ -94,10 +94,6 @@ class Admin_m extends CI_Model
     public function put_stock_rownum()
     {
         $query = "
-            SELECT tb
-        ";
-
-        $query = "
             UPDATE tb_admin SET stock_rownum = stock_rownum + 1
         ";
         $this->db->query($query);
@@ -108,7 +104,7 @@ class Admin_m extends CI_Model
         $query = "
             UPDATE tb_admin SET bond_rownum = bond_rownum + 1
         ";
-        // $this->db->query($query);
+        $this->db->query($query);
     }
 
 }

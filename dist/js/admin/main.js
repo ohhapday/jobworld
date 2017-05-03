@@ -98,12 +98,22 @@ requirejs([
     // 카운터 시계
     (function () {
         var timer_update = function () {
-            $.ajax({
-                async: false,
-                dataType: 'json',
-                type: 'get',
-                url: '/admin/put_stock_rownum',
-            });
+            let url = null;
+            if (mdata.STATUS.bond_STATUS == 1) {
+                url = '/admin/put_bond_rownum'
+            }
+
+            if (mdata.STATUS.stock_STATUS == 1) {
+                url = '/admin/put_stock_rownum'
+            }
+            if (url !== null) {
+                $.ajax({
+                    async: false,
+                    dataType: 'json',
+                    type: 'get',
+                    url: url,
+                });
+            }
         }
 
         let timer = 0;
@@ -114,7 +124,7 @@ requirejs([
             // 주식 데이터 rownum 변경
             if (mdata.usabled === 1) {
                 timer += 1;
-                if(timer > mdata.DATA_TYPE) {
+                if (timer > mdata.DATA_TYPE) {
                     timer_update();
                     timer = 0;
                 }
@@ -226,8 +236,19 @@ requirejs([
                 handle_ajax.put_ajax();
             });
 
+            $('.btn_result').on('click', function () {
+                mdata.usabled = 2;
+                handle_ui();
+                handle_ajax.put_ajax();
+            });
+
             $('.btn_stop').on('click', function () {
-                mdata.usabled = 0;
+                mdata.usabled = 3;
+                mdata.STATUS = {
+                    fund_STATUS: 0,
+                    bond_STATUS: 0,
+                    stock_STATUS: 0,
+                }
                 handle_ui();
                 handle_ajax.put_ajax();
             });
