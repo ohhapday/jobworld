@@ -489,7 +489,15 @@ requirejs([
 
     // 시스템 데이터와 비교하여 변경된 항목만 업데이트 처리
     let get_ajax = function (tmp) {
+        if (eData.PG_LOCK == "2") {
+            ui.fund_result();
+            $('.btn_close').remove();
+            $('.wrap_layerpop:eq(3)').fadeIn(500);
+        }
 
+        if (eData.PG_LOCK == "3") {
+            $(location).attr('href', '/main');
+        }
     };
 
     // eventSource
@@ -501,7 +509,7 @@ requirejs([
                 let tmp = $.extend({}, eData);
                 eData = $.extend(true, eData, JSON.parse(e.data));
 
-                if (tmp.PG_LOCK !== null) {
+                if (tmp.PG_LOCK !== '0') {
                     get_ajax(tmp);
                 }
             }

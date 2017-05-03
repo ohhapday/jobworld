@@ -42,6 +42,7 @@ class Admin extends CI_Controller
         $system = $this->admin_m->get_system();
 
         $return->usabled = (int)$system->PG_LOCK;
+        $return->STATUS->survey_STATUS = (int)$system->survey_STATUS;
         $return->STATUS->fund_STATUS = (int)$system->fund_STATUS;
         $return->STATUS->bond_STATUS = (int)$system->bond_STATUS;
         $return->STATUS->stock_STATUS = (int)$system->stock_STATUS;

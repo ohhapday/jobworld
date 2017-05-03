@@ -36,7 +36,7 @@
 	</div>
 	<nav id="gnb">
 		<ul class="clfix">
-			<li class="on"><a href="#">투자성향</a></li>
+			<li><a href="#">투자성향</a></li>
 			<li><a href="#">펀드</a></li>
 			<li><a href="#">채권</a></li>
 			<li><a href="#">주식</a></li>

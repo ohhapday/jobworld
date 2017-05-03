@@ -168,8 +168,8 @@
 .box_sbleft .sbleftdat .btn_refresh a img{padding-right: 5px;}
 .box_sbleft .sbleftdat .box_tbllist.col3{float: left; width: 30%; margin-left: 12px;}
 .box_sbleft .sbleftdat .bx_chk_list{padding: 5px 20px; border: 1px solid #d0cbbe;}
-.box_sbleft .sbleftdat .bx_chk_list ul{float: left; width: 70%; margin-top: 10px;}
-.box_sbleft .sbleftdat .bx_chk_list li{float: left; width: 33%;}
+.box_sbleft .sbleftdat .bx_chk_list ul{float: left; width: 100%; margin-top: 10px; margin-bottom: 10px;}
+.box_sbleft .sbleftdat .bx_chk_list li{float: left; width: 25%;}
 .box_sbleft .sbleftdat .bx_chk_list li button{height: 44px; padding-left: 60px; background: url(../images/ico_chk.gif) no-repeat 0 50%; color: #303030;}
 .box_sbleft .sbleftdat .bx_chk_list li button.on{background: url(../images/ico_chk_on.gif) no-repeat 0 50%;}
 .box_sbleft .sbleftdat .bx_chk_list li button span{padding-left: 5px; color: #555;}
@@ -184,8 +184,9 @@
 .box_sbright .sbrightdat{overflow: hidden; margin-bottom: 40px;}
 .box_sbright .sbrightdat .pro_bt{padding: 20px 20px; border: 1px solid #d0cbbe;}
 .box_sbright .sbrightdat .pro_bt button{display: block; padding: 25px 0; border-radius: 5px;}
-.box_sbright .sbrightdat .pro_bt .btn_use{float: left; width: 49.7%; color: #fff; background: #f34937;}
-.box_sbright .sbrightdat .pro_bt .btn_stop{float: right; width: 49.7%; color: #fff; background: #6e6b6b;}
+.box_sbright .sbrightdat .pro_bt .btn_use{float: left; width: 32%; color: #fff; background: #6e6b6b; margin-left: 4px;}
+.box_sbright .sbrightdat .pro_bt .btn_result{float: left; width: 32%; color: #fff; background: #6e6b6b; margin-left: 4px;}
+.box_sbright .sbrightdat .pro_bt .btn_stop{float: left; width: 32%; color: #fff; background: #6e6b6b; margin-left: 4px;}
 .box_sbright .sbrightdat .da_adt{overflow: hidden;}
 .box_sbright .sbrightdat .da_adt button{display: block; float: left; padding: 25px 0; border-radius: 5px;}
 .box_sbright .sbrightdat .da_adt .btn_adgre{width: 33%; color: #fff; background: #6e6b6b;}

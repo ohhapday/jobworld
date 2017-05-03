@@ -47,7 +47,6 @@ requirejs([
 
     // 기본 UI (1회만 처리)
     (function () {
-        console.log(surveyData);
         // 설문지 생성
         (function () {
             let $clone = q_pop.find('ul.list_qu li:eq(0)').clone(true);             // 질문

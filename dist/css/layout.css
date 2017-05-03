@@ -21,8 +21,8 @@ body{background: #f8f1e1;}
 /* gnb */
 #gnb{position: relative; background: #111; padding: 0 75px; }
 #gnb > ul > li{position: relative; float: left; width: 20%;}
-#gnb > ul > li > a{display: block; padding: 10px 0 10px 0; font-size: 1.250em; color: #fff; font-family: NotoR; text-align: center;}
-#gnb > ul > li.on > a{color: #cfd418;}
+#gnb > ul > li > a{display: block; padding: 10px 0 10px 0; font-size: 1.250em; color: #fff; font-family: NotoR; text-align: center; cursor: not-allowed;}
+#gnb > ul > li.on > a{color: #cfd418; cursor: pointer;}
 
 #container{position: relative; width: 1920px; padding: 0 75px 0 75px;}
 #container.bg{height: 1080px; padding: 0 0; background: url(../images/bg_intro.jpg) no-repeat 0 0; background-size: 100%;}

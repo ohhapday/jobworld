@@ -483,6 +483,14 @@ requirejs([
             });
             console.log('주식 변경');
         }
+
+        if (eData.PG_LOCK == "2") {
+
+        }
+
+        if (eData.PG_LOCK == "3") {
+            $(location).attr('href', '/main');
+        }
     };
 
     // eventSource
@@ -494,7 +502,7 @@ requirejs([
                 let tmp = $.extend({}, eData);
                 eData = $.extend(true, eData, JSON.parse(e.data));
 
-                if (tmp.PG_LOCK !== null) {
+                if (tmp.PG_LOCK !== '0') {
                     get_ajax(tmp);
                 }
             }

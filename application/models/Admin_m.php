@@ -36,6 +36,7 @@ class Admin_m extends CI_Model
 
         $update_data = array(
             'PG_LOCK' => $data['usabled'],
+            'survey_STATUS' => $data['STATUS']['survey_STATUS'],
             'fund_STATUS' => $data['STATUS']['fund_STATUS'],
             'bond_STATUS' => $data['STATUS']['bond_STATUS'],
             'stock_STATUS' => $data['STATUS']['stock_STATUS'],
@@ -53,6 +54,7 @@ class Admin_m extends CI_Model
 
         $update_data = array(
             'PG_LOCK' => 0,
+            'survey_STATUS' => 0,
             'fund_STATUS' => 0,
             'bond_STATUS' => 0,
             'stock_STATUS' => 0,

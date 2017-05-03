@@ -34,6 +34,7 @@ requirejs([
                 url: '/admin/',
                 success: function (data, status, xhr) {
                     mdata = data;
+                    console.log(mdata);
                 }
             });
         })();
@@ -140,17 +141,35 @@ requirejs([
     let handle_ui = function () {
         // 프로그램 사용 제한
         (function () {
-            if (mdata.usabled === 1) {
-                $('.btn_refresh').css('background', '#6e6b6b');
+            if (mdata.usabled === 0) {
                 $('.btn_use').animate({
                     backgroundColor: "#f34937",
+                }, 1000);
+                $('.btn_result').animate({
+                    backgroundColor: "#6e6b6b",
                 }, 1000);
                 $('.btn_stop').animate({
                     backgroundColor: "#6e6b6b",
                 }, 1000);
-            } else {
-                $('.btn_refresh').css('background', '#fdc236');
+            }
+
+            if (mdata.usabled === 1) {
                 $('.btn_use').animate({
+                    backgroundColor: "#6e6b6b",
+                }, 1000);
+                $('.btn_result').animate({
+                    backgroundColor: "#f34937",
+                }, 1000);
+                $('.btn_stop').animate({
+                    backgroundColor: "#f34937",
+                }, 1000);
+            }
+
+            if (mdata.usabled === 2) {
+                $('.btn_use').animate({
+                    backgroundColor: "#6e6b6b",
+                }, 1000);
+                $('.btn_result').animate({
                     backgroundColor: "#6e6b6b",
                 }, 1000);
                 $('.btn_stop').animate({
@@ -161,22 +180,28 @@ requirejs([
 
         // 체험 순서 선택
         (function () {
-            if (mdata.STATUS.fund_STATUS === 1) {
+            if (mdata.STATUS.survey_STATUS === 1) {
                 $('.bx_chk_list:eq(0) button:eq(0)').addClass('on');
             } else {
                 $('.bx_chk_list:eq(0) button:eq(0)').removeClass('on');
             }
 
-            if (mdata.STATUS.bond_STATUS === 1) {
+            if (mdata.STATUS.fund_STATUS === 1) {
                 $('.bx_chk_list:eq(0) button:eq(1)').addClass('on');
             } else {
                 $('.bx_chk_list:eq(0) button:eq(1)').removeClass('on');
             }
 
-            if (mdata.STATUS.stock_STATUS === 1) {
+            if (mdata.STATUS.bond_STATUS === 1) {
                 $('.bx_chk_list:eq(0) button:eq(2)').addClass('on');
             } else {
                 $('.bx_chk_list:eq(0) button:eq(2)').removeClass('on');
+            }
+
+            if (mdata.STATUS.stock_STATUS === 1) {
+                $('.bx_chk_list:eq(0) button:eq(3)').addClass('on');
+            } else {
+                $('.bx_chk_list:eq(0) button:eq(3)').removeClass('on');
             }
         })();
 
@@ -211,22 +236,40 @@ requirejs([
         // 체험 순서 선택
         (function () {
             $('.bx_chk_list:eq(0) button:eq(0)').on('click', function () {
+                mdata.STATUS.survey_STATUS = 1;
+                mdata.STATUS.fund_STATUS = 0;
+                mdata.STATUS.bond_STATUS = 0;
+                mdata.STATUS.stock_STATUS = 0;
+
+                handle_ui();
+                handle_ajax.put_ajax();
+            });
+            $('.bx_chk_list:eq(0) button:eq(1)').on('click', function () {
+                mdata.STATUS.survey_STATUS = 0;
                 mdata.STATUS.fund_STATUS = 1;
                 mdata.STATUS.bond_STATUS = 0;
                 mdata.STATUS.stock_STATUS = 0;
+
                 handle_ui();
+                handle_ajax.put_ajax();
             });
-            $('.bx_chk_list:eq(0) button:eq(1)').on('click', function () {
+            $('.bx_chk_list:eq(0) button:eq(2)').on('click', function () {
+                mdata.STATUS.survey_STATUS = 0;
                 mdata.STATUS.fund_STATUS = 0;
                 mdata.STATUS.bond_STATUS = 1;
                 mdata.STATUS.stock_STATUS = 0;
+
                 handle_ui();
+                handle_ajax.put_ajax();
             });
-            $('.bx_chk_list:eq(0) button:eq(2)').on('click', function () {
+            $('.bx_chk_list:eq(0) button:eq(3)').on('click', function () {
+                mdata.STATUS.survey_STATUS = 0;
                 mdata.STATUS.fund_STATUS = 0;
                 mdata.STATUS.bond_STATUS = 0;
                 mdata.STATUS.stock_STATUS = 1;
+
                 handle_ui();
+                handle_ajax.put_ajax();
             });
         })();
 
@@ -236,6 +279,7 @@ requirejs([
                 $(this).on('click', function () {
                     mdata.DATA_TYPE = $(this).data('value');
                     handle_ui();
+                    handle_ajax.put_ajax();
                 });
             });
         })();
@@ -252,20 +296,12 @@ requirejs([
                 location.reload();
             };
 
-            // todo 어떤거 초기화 해야 할지
             $('.btn_refresh').on('click', function () {
                 if ((confirm('데이터가 초기화됩니다. 실행하시겠습니까?'))) {
                     data_init();
                 }
             });
         })();
-    })();
-
-    // 확정 버튼
-    (function () {
-        $('.btn_conf').on('click', function () {
-            handle_ajax.put_ajax();
-        });
     })();
 
     // 프로그램 사용 제한

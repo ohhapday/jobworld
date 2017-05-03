@@ -10,10 +10,22 @@ requirejs([
 ], function ($, bootstrap, moment, a, session) {
     "use strict";
 
+    let nf = new Intl.NumberFormat(["en-US"]);
     let user = {                            // 사용자 정보
         key: session.EMPL_KEY,              // 기본키
         name: session.EMPL_NAME,            // 사용자 이름
         mf: session.MF_FG,                  // 성별
+    };
+
+    let eData = {                           // 실시간 데이터
+        PG_LOCK: null,                      // 프로그램 중지유무
+        fund_STATUS: null,                  // 펀드 체험
+        bond_STATUS: null,                  // 채권 체험
+        stock_STATUS: null,                 // 주식 체험
+        DATA_TYPE: null,                    // 데이터 변경 속도
+        stock_rownum: null,                 // 주식 데이터 시작 rownum
+        news_que: null,                     // 뉴스 변경 유무
+        anal_que: null,                     // 애널리스트 변경 유무
     };
 
     let mData = {                           // 1회 로딩 데이터
@@ -23,11 +35,14 @@ requirejs([
         COMP: null,
     };
 
-    let nf = new Intl.NumberFormat(["en-US"]);
+    let ui = {
+        init: function () {
+            console.log(eData);
+        },
+    }
 
-    // ajax 처리
+    // 기본 DATA (1회만 처리)
     let handle_ajax = (function () {
-        // 클라이언트 Data 바인드
         (function () {
             $.ajax({
                 async: false,
@@ -36,6 +51,7 @@ requirejs([
                 url: '/main/get_mData',
                 success: function (data, status, xhr) {
                     mData = data;
+                    ui.init();
                 }
             });
         })();
@@ -108,6 +124,64 @@ requirejs([
                 pop.fadeIn(500);
             });
         })();
+    })();
+
+    // 시스템 데이터와 비교하여 변경된 항목만 업데이트 처리
+    let get_ajax = function (tmp) {
+        console.log(eData);
+        if (eData.survey_STATUS == '1') {
+            $('#gnb li:eq(0)').addClass('on');
+
+            $('#gnb li:eq(0)').on('click', function () {
+                $('.wrap_layerpop:eq(1) .layerpop:eq(0)').show();
+                $('.wrap_layerpop:eq(1) .layerpop:eq(1)').hide();
+                $('.wrap_layerpop:eq(1)').fadeIn(500);
+            });
+        } else {
+            $('#gnb li:eq(0)').removeClass('on');
+            $('#gnb li:eq(0)').off('click');
+        }
+
+        if (eData.fund_STATUS == '1') {
+            $('#gnb li:eq(1)').addClass('on');
+            $('#gnb li:eq(1) a').attr('href', '/main/fund');
+        } else {
+            $('#gnb li:eq(1)').removeClass('on');
+            $('#gnb li:eq(1) a').attr('href', '#');
+        }
+
+        if (eData.bond_STATUS == '1') {
+            $('#gnb li:eq(2)').addClass('on');
+            $('#gnb li:eq(2) a').attr('href', '/main/bond');
+        } else {
+            $('#gnb li:eq(2)').removeClass('on');
+            $('#gnb li:eq(2) a').attr('href', '#');
+        }
+
+        if (eData.stock_STATUS == '1') {
+            $('#gnb li:eq(3)').addClass('on');
+            $('#gnb li:eq(3) a').attr('href', '/main/stock');
+        } else {
+            $('#gnb li:eq(3)').removeClass('on');
+            $('#gnb li:eq(3) a').attr('href', '#');
+        }
+    };
+
+    // eventSource
+    (function () {
+        // 시스템 데이터 바인드
+        let eventSource = new EventSource('/login/sse_get_system');
+        eventSource.onmessage = function (e) {
+            if (e.data !== JSON.stringify(eData)) {
+
+                let tmp = $.extend({}, eData);
+                eData = $.extend(true, eData, JSON.parse(e.data));
+
+                if (tmp.PG_LOCK !== '0') {
+                    get_ajax(tmp);
+                }
+            }
+        }
     })();
 });
 

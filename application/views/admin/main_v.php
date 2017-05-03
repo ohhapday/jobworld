@@ -178,6 +178,9 @@
 				<div class="bx_chk_list clfix">
 					<ul>
 						<li>
+							<button type="button">투자 성향</button>
+						</li>
+						<li>
 							<button type="button">펀드 체험</button>
 						</li>
 						<li>
@@ -187,7 +190,6 @@
 							<button type="button">주식 체험</button>
 						</li>
 					</ul>
-					<div class="btn_conf"><a href="#">확정</a></div>
 				</div>
 			</div>
 			<div class="sb_tit">
@@ -206,7 +208,6 @@
 							<button type="button" data-value="30"><span>고수 (30초)</span></button>
 						</li>
 					</ul>
-					<div class="btn_conf"><a href="#">확정</a></div>
 				</div>
 			</div>
 		</div>
@@ -216,8 +217,9 @@
 			</div>
 			<div class="sbrightdat">
 				<div class="pro_bt clfix">
-					<button type="button" class="btn_use">사용하기</button>
-					<button type="button" class="btn_stop">중단하기</button>
+					<button type="button" class="btn_use">시작하기</button>
+					<button type="button" class="btn_result">결과보기</button>
+					<button type="button" class="btn_stop">메인으로</button>
 				</div>
 			</div>
 			<div class="sb_tit">

@@ -29,31 +29,6 @@ define([
             $(this).closest('.wrap_layerpop').fadeOut(500);
         });
         $('.member strong').text(user.name);
-
-        // 메뉴 버튼
-        (function () {
-            // 투자성향
-            $('#gnb li').eq(0).on('click', function () {
-                $('.wrap_layerpop:eq(1) .layerpop:eq(0)').show();
-                $('.wrap_layerpop:eq(1) .layerpop:eq(1)').hide();
-                $('.wrap_layerpop:eq(1)').fadeIn(500);
-            });
-
-            // 펀드
-            $('#gnb li').eq(1).on('click', function () {
-                $(location).attr('href', '/main/fund');
-            });
-
-            // 채권
-            $('#gnb li').eq(2).on('click', function () {
-                $(location).attr('href', '/main/bond');
-            });
-
-            // 주식
-            $('#gnb li').eq(3).on('click', function () {
-                $(location).attr('href', '/main/stock');
-            });
-        })();
     })();
 
     // event 처리 함수
