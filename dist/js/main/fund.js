@@ -78,8 +78,6 @@ requirejs([
                 $table.append($clone.clone(true).fadeIn(500));
             });
 
-            $table.find('tr:eq(' + (index + 1) + ')').addClass('on');
-
             if (mData.FUND.length === 0) {
                 $('.box_tbllist:eq(0) div').fadeIn(500);
             } else {
@@ -89,7 +87,6 @@ requirejs([
         fund_detail: function () {
             let index = $('.box_tbllist:eq(0) tbody tr:not(:eq(0))').index($('.box_tbllist:eq(0) tbody tr.on'));
             let data = mData.FUND[index];
-            let per_benifit = (typeof data.percent === 'undefined') ? '' : data.percent + '%';
             let FUND_ADDPER = (data.FUND_ADDPER === null) ? '' : data.FUND_ADDPER + '%';
 
             $('.ar_btm_dt li:eq(0) span').text(data.FUND_NAME);
@@ -345,7 +342,6 @@ requirejs([
 
         // 펀드 만들기 팝업
         $('.btn_plss:eq(0)').on('click', function () {
-            console.log(mData.FUND.length);
             if (mData.FUND.length > 2) {
                 alert('펀드는 3개만 만들수 있어요.');
                 return;
@@ -389,7 +385,6 @@ requirejs([
                     FUND_TOT: parseInt(table.find('tr:eq(2) input').val().replace(/,/g, '')),
                 };
                 if (ajax.post_myFund(data) === true) {
-                    console.log(mData.FUND);
                     ui.fund();
                     // ui.fund_myStock();
                     pop.fadeOut(500);
@@ -444,8 +439,6 @@ requirejs([
                 ajax.post_myFundStock(stock);
                 ui.fund_myStock();
                 ui.fund();
-                ui.fund_detail();
-                ui.fund_expect();
                 pop.fadeOut(500);
             });
         })();
@@ -470,6 +463,11 @@ requirejs([
             ui.fund_result();
             $('.wrap_layerpop:eq(3)').fadeIn(500);
         });
+
+        // 프린트 버튼
+        $('.btn_print').on('click', function () {
+            window.print();
+        })
     })();
 
     // 기본 DATA (1회만 처리)

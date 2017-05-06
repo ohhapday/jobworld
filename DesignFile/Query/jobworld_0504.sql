@@ -32,89 +32,54 @@ CREATE TABLE `ci_sessions` (
 /*Data for the table `ci_sessions` */
 
 insert  into `ci_sessions`(`id`,`ip_address`,`timestamp`,`data`) values 
-('003e5ebe5a1a2fb58c8ad43b6fc35d51327533f3','::1',1493792459,'__ci_last_regenerate|i:1493792159;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('00ad8a0e5a96e0d48049a935a366713c62470f14','::1',1493794274,'__ci_last_regenerate|i:1493793978;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('088e553358130248d8b5788c5ee9bc40d5c73557','::1',1493794485,'__ci_last_regenerate|i:1493794279;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('0a446bbdc937eb623acabbddde070b0459b4de04','::1',1493787313,'__ci_last_regenerate|i:1493787016;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('0a5575a04b5c4f21b28e322febef8a693234279e','::1',1493792825,'__ci_last_regenerate|i:1493792525;'),
-('0af742e16d334bb66a0ebe194dc7a952c469e763','::1',1493794106,'__ci_last_regenerate|i:1493794079;'),
-('0c8bc47c5bfe6c5497d493cf0c36d0a420518de6','::1',1493797069,'__ci_last_regenerate|i:1493797015;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('0e5eedd2eaa1f979c766013f8d0706245012cb2c','::1',1493790409,'__ci_last_regenerate|i:1493790109;'),
-('128bcd8dc6e78538de087e220b6ce94491c66ebb','::1',1493786106,'__ci_last_regenerate|i:1493785806;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('17f19477f168dca68823101c7301deac99563437','::1',1493786794,'__ci_last_regenerate|i:1493786493;'),
-('18253c7708df76208535727919a2403bf555734c','::1',1493785589,'__ci_last_regenerate|i:1493785289;'),
-('1d6cca5d8305e79082d4d57c0f7a2c1c9403ccc9','::1',1493793429,'__ci_last_regenerate|i:1493793129;'),
-('2027da2a5abbf9ddfc9bd4080924ff11ccad8463','::1',1493795183,'__ci_last_regenerate|i:1493794884;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('22e6fb707c3a2bc8fc153a4116eb74a5e2135f6d','::1',1493791315,'__ci_last_regenerate|i:1493791015;'),
-('231b90108098b7feec3d5edc17ca8a24646d7861','::1',1493785503,'__ci_last_regenerate|i:1493785503;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('25edd6291fd2b9e06ec2eb6a5bf02bb1225802cc','::1',1493789437,'__ci_last_regenerate|i:1493789137;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('2d0fae563d4c558d46caf7cde78546430b11dbc7','::1',1493797992,'__ci_last_regenerate|i:1493797883;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('305ad36e0519d6e8e38579b1a6f7ab9baebc60ef','::1',1493795484,'__ci_last_regenerate|i:1493795188;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('323991653b1d8d2c2b964fc281c6208156f51ff0','::1',1493786409,'__ci_last_regenerate|i:1493786109;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('326032a70d00091d5d7563a490ad8e842f9d9ab4','::1',1493797878,'__ci_last_regenerate|i:1493797582;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('34e93bf69b413fa5efffa0debde2d257ddd450f7','::1',1493787094,'__ci_last_regenerate|i:1493786794;'),
-('38d7915e4d7afcf0ae01f9b4cbb18aa426a44bcc','::1',1493790342,'__ci_last_regenerate|i:1493790044;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('3ff7d74f4d2b2b226874893cedca1eab901f1677','::1',1493789132,'__ci_last_regenerate|i:1493788832;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('40a92e6839f8a86b630650692149c2df875a7bd6','::1',1493793127,'__ci_last_regenerate|i:1493792827;'),
-('48841c451625218318e38e20a435d5f6e9573477','::1',1493793673,'__ci_last_regenerate|i:1493793673;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('4c1535d7a94668acf82a77a4023fde961b11dd88','::1',1493786191,'__ci_last_regenerate|i:1493785891;'),
-('521b7ccab2766c68fa334eb458379f9de2f09837','::1',1493788826,'__ci_last_regenerate|i:1493788528;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('5b558bb4ddf4b8646ed53218c4f6bd765ffc7706','::1',1493793731,'__ci_last_regenerate|i:1493793431;'),
-('5c6766c753098fb2f5d5228a6d1be82590759a43','::1',1493790711,'__ci_last_regenerate|i:1493790411;'),
-('67a13135a6747274ca372d13c74c4e27ae6415db','::1',1493791250,'__ci_last_regenerate|i:1493790950;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('68aa4395e57d861a863e291fd252c14b1dea8405','::1',1493791848,'__ci_last_regenerate|i:1493791552;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('6b3c313a26db12e07c4a98a888d6dcdbae28f4d7','::1',1493796695,'__ci_last_regenerate|i:1493796398;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('748255eca792d2ae6626ee306b5266bf27ecafd6','::1',1493790946,'__ci_last_regenerate|i:1493790649;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('789a7d6583fea4cd8a24e492870c55fa1a07e4cc','::1',1493787013,'__ci_last_regenerate|i:1493786715;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('7c37a193d22c65a1840e3ecff5855151393b53a1','::1',1493789201,'__ci_last_regenerate|i:1493788901;'),
-('82479ac587d6fee0abc94dc979aec99a19b2538f','::1',1493791617,'__ci_last_regenerate|i:1493791317;'),
-('8329bc1fb3d6df7d13e0aa7399840364974a6a19','::1',1493791919,'__ci_last_regenerate|i:1493791619;'),
-('84b5c70cf9cf19d80b9802e031d8e07d25f6f071','::1',1493791853,'__ci_last_regenerate|i:1493791853;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('867bb192c4756b224a2c7b04f4c5d69748e66d64','::1',1493793065,'__ci_last_regenerate|i:1493792765;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('87174dd2b46ccf13095fe09f6321b81c68f38b13','::1',1493793363,'__ci_last_regenerate|i:1493793066;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('8766b8ee0b3d4c814bad98008ea299f726aa59a0','::1',1493790107,'__ci_last_regenerate|i:1493789807;'),
-('89f8212eb23074949ea35870cb69bf2584566c31','::1',1493791013,'__ci_last_regenerate|i:1493790713;'),
-('8aa85371d13479a980c02fc3088228e56d1ae7d1','::1',1493793368,'__ci_last_regenerate|i:1493793368;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('8da19cbd39d1155d25d32140341f4a6b14e861b3','::1',1493795789,'__ci_last_regenerate|i:1493795489;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('974148d3c4460981c6d166cd3e732af2aa926f1f','::1',1493796090,'__ci_last_regenerate|i:1493795794;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('986d5240a39a5c96818a9a8c9881c8875a3474be','::1',1493785806,'__ci_last_regenerate|i:1493785806;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('99e24b76dce1cb59b365e3cfb5b79485427dee0a','::1',1493791552,'__ci_last_regenerate|i:1493791552;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('9bcd85cb83b1a4a844d9d84bf8432dbfcd083ea9','::1',1493785801,'__ci_last_regenerate|i:1493785503;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('9eaff68b561eea29925335b03fc2ef5469fe96e9','::1',1493786492,'__ci_last_regenerate|i:1493786192;'),
-('9ef287a84a73e71396c67329e7d74f6e38a9cd0f','::1',1493787696,'__ci_last_regenerate|i:1493787396;'),
-('9f0d90f38001cde8d95eaef75cd49897d1ab2dc2','::1',1493789738,'__ci_last_regenerate|i:1493789438;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('a019696bb702e682049aef8d6e6da19be9fbd891','::1',1493790347,'__ci_last_regenerate|i:1493790347;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('a7bdda7c7b7b46973c67e0eb70c25ce53eb1a012','::1',1493797015,'__ci_last_regenerate|i:1493796700;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('a7db13053ed105f2308821a29d9578697afbe11c','::1',1493792221,'__ci_last_regenerate|i:1493791921;'),
-('a88c3133efa2157e5c2f0ca0d308dd89cccf32e6','::1',1493789503,'__ci_last_regenerate|i:1493789203;'),
-('abce77e1df4f0d5777a024b2f543aced46e23c5c','::1',1493793668,'__ci_last_regenerate|i:1493793368;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('ac33d01d76212dd3711a51d401ec13b46df9f44e','::1',1493792523,'__ci_last_regenerate|i:1493792223;'),
-('b04d049ea0e380f819400e9c70e1ba6183781d26','::1',1493794033,'__ci_last_regenerate|i:1493793733;'),
-('b3158809a7bc00f5bf0b90ac22c8031c98422815','::1',1493789137,'__ci_last_regenerate|i:1493789137;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('b98bc17c598e48bbc1ed5e7a2ae28d351deccd13','::1',1493788220,'__ci_last_regenerate|i:1493787921;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('bc2d4764d100588094731a4074b97c598612e1f5','::1',1493796393,'__ci_last_regenerate|i:1493796095;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('bcd06a4f6a2a6979f6f624e7e19c28eb2a302019','::1',1493787918,'__ci_last_regenerate|i:1493787618;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('c35d54ef4c6ca6d2b2f31602f1b9abe75b7e23a2','::1',1493788599,'__ci_last_regenerate|i:1493788299;'),
-('c50600d43f54a0ab8590706728c1531d79064e00','::1',1493787617,'__ci_last_regenerate|i:1493787317;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('c5c65c5079c3e25d1c33350f3bd84406c1d97390','::1',1493790647,'__ci_last_regenerate|i:1493790347;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('c68785528d4cd8b258fbb780a38a602087d60106','::1',1493785890,'__ci_last_regenerate|i:1493785590;'),
-('c6c1789786298bff5250e1b5519eb65e0fafdd72','::1',1493786713,'__ci_last_regenerate|i:1493786414;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('c7719010957886d9813c53a2b8836cdaaf268416','::1',1493787395,'__ci_last_regenerate|i:1493787095;'),
-('c965324fc9d7256e4fcba8fb6ebec0b2f64c616c','::1',1493785498,'__ci_last_regenerate|i:1493785202;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('d4df83370825ce58ef58bef800cfe5bbaa897d08','::1',1493788524,'__ci_last_regenerate|i:1493788224;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('dc0fecc86d4e193fef5f3a2823192804358e0c2e','::1',1493787997,'__ci_last_regenerate|i:1493787697;'),
-('e223263cbea9c3b4515dfe6018f95572dc5c843b','::1',1493794879,'__ci_last_regenerate|i:1493794580;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('eb929c711254e5745929826bc07a5c6f8ad47f2f','::1',1493786414,'__ci_last_regenerate|i:1493786414;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('ebc19dc5acb9eeb12bc9da46bb364f3e6b28581d','::1',1493792760,'__ci_last_regenerate|i:1493792463;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('eec395214991c3eaf936551c9d0acde156fc23b4','::1',1493789743,'__ci_last_regenerate|i:1493789743;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('f0ae9ae9f4ad74961fcca28766f3a48947c9ea0c','::1',1493792154,'__ci_last_regenerate|i:1493791854;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('f6881f41f77026b710d51aeb931e2dd667898a38','::1',1493789805,'__ci_last_regenerate|i:1493789505;'),
-('f6ffe79aa27df25719c279fcd78d8a58b27b0771','::1',1493793973,'__ci_last_regenerate|i:1493793673;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('f8b8617fefe62a1a05a159d2638c31c5a75590f9','::1',1493788900,'__ci_last_regenerate|i:1493788600;'),
-('f8ce7d9e89dd3433567be53f1a1eff32fcd23bb5','::1',1493788298,'__ci_last_regenerate|i:1493787998;'),
-('f905cb3f462fc640ecb90edf802484c7751f055d','::1',1493788831,'__ci_last_regenerate|i:1493788831;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('fb46c764cf34d463513f2a88d194567c127ef88a','::1',1493790042,'__ci_last_regenerate|i:1493789743;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
-('fc7db26230143e9b806eb39eeb247a4da6add4bf','::1',1493791547,'__ci_last_regenerate|i:1493791251;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";');
+('06878bef582f38f97e90d1039085877634df38d9','::1',1493809117,'__ci_last_regenerate|i:1493808817;'),
+('09442d0fcdc68c5178c1265e3e5ab234c271377a','::1',1493805463,'__ci_last_regenerate|i:1493805165;'),
+('13c8715108a838b5d57438dfe1b72c103f377980','::1',1493807888,'__ci_last_regenerate|i:1493807591;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
+('181d4d71735957f7ce1e3a3e3fb21f4e108a8c4d','::1',1493805764,'__ci_last_regenerate|i:1493805469;'),
+('1b206769147bb3768a04210acbd74fb6f9569798','::1',1493808492,'__ci_last_regenerate|i:1493808194;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
+('1e37764f55d863c6e22f96367b83cce60762a514','::1',1493812140,'__ci_last_regenerate|i:1493811842;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
+('29295cb08a78b430dda1084b8e520ea457caa511','::1',1493806980,'__ci_last_regenerate|i:1493806682;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"M\";'),
+('34fe149a6330b7418a35c33b8d1cfd5ed00983c3','::1',1493812316,'__ci_last_regenerate|i:1493812016;'),
+('38505197f51f3c962b4a8fcc09854d3507686aba','::1',1493807585,'__ci_last_regenerate|i:1493807288;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
+('39ccd1ae241117896b379e15bbf98d2443c75f59','::1',1493809418,'__ci_last_regenerate|i:1493809118;'),
+('3d728cdcdb4a02a5bb20a51c80b55b6dbec77a90','::1',1493810012,'__ci_last_regenerate|i:1493809713;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
+('3e82be4f697a1103d72bdc38563f55bd4248b353','::1',1493811836,'__ci_last_regenerate|i:1493811536;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
+('3ee06988c5b50cc2d5bc3fdeb3472b5b54eda7f7','::1',1493810926,'__ci_last_regenerate|i:1493810627;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
+('3eed4d651850e23fa645caab1da1fdc881db5eda','::1',1493811712,'__ci_last_regenerate|i:1493811412;'),
+('44cec9f92123199e0436bd2abf5addda21642c99','::1',1493807283,'__ci_last_regenerate|i:1493806985;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
+('45d308901c374b287acfff1aa8afdddf57307089','::1',1493812440,'__ci_last_regenerate|i:1493812145;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
+('4b18f2c3a413df83941e2d0976421354dc559dd2','::1',1493812822,'__ci_last_regenerate|i:1493812618;'),
+('4d0a3679474eb88a0ce065c26a11c8f590ee1f10','::1',1493811530,'__ci_last_regenerate|i:1493811233;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
+('4fd10af46d6e4571f16ffc0eaa2855d675f013ec','::1',1493806418,'__ci_last_regenerate|i:1493806118;'),
+('534029fad52a3f45d1b34ccdd490d7408439dc45','::1',1493812745,'__ci_last_regenerate|i:1493812446;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
+('6c86bc17599cbf78f3a6b5f1bde8f062d165e853','::1',1493805762,'__ci_last_regenerate|i:1493805762;'),
+('6d7e396f426ab0764b1f57d7270e212a6be2b279','::1',1493809404,'__ci_last_regenerate|i:1493809104;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
+('78deb74ed9a294bb990ad337f278672a6ea5e779','::1',1493807911,'__ci_last_regenerate|i:1493807611;'),
+('7a3de9b3fbf4140ac6d560df66dbde6bfda239ad','::1',1493810317,'__ci_last_regenerate|i:1493810017;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
+('7c40ccff99417b823a69a36bb296fcbc2c1a6ccb','::1',1493808514,'__ci_last_regenerate|i:1493808214;'),
+('863facc43859420fa8e7874f063bdc229c9e694c','::1',1493811225,'__ci_last_regenerate|i:1493811225;'),
+('8b9db3c9101079ed4928a2a1b2804e7066e75207','::1',1493807307,'__ci_last_regenerate|i:1493807006;'),
+('8e5fa5babadb745fea922304a57dc1286f4bc501','::1',1493812014,'__ci_last_regenerate|i:1493811714;'),
+('8eee5ede004eafe9cfd95f4a4edd0f320ba66afd','::1',1493809719,'__ci_last_regenerate|i:1493809419;'),
+('91d73bf35a9585bed236d9ea16f8f0630329c5fb','::1',1493808816,'__ci_last_regenerate|i:1493808516;'),
+('922e79e30df3d46dd7463f58b3b268f0946916dc','::1',1493809099,'__ci_last_regenerate|i:1493808803;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
+('9265536a564989b8cb23d38a95751ade099dc8d7','::1',1493810828,'__ci_last_regenerate|i:1493810528;'),
+('948c3c585873c8a542657b76e95496220aa7fc7f','::1',1493810621,'__ci_last_regenerate|i:1493810323;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
+('98a5f56d902bb5f2730e73489188b66cbc218210','::1',1493807307,'__ci_last_regenerate|i:1493807307;'),
+('9c57e1a45bcffb1b6a17c22b0958addb031580b3','::1',1493806719,'__ci_last_regenerate|i:1493806419;'),
+('9cf9c25d92560489cd712a6f8fdda709151241b4','::1',1493808798,'__ci_last_regenerate|i:1493808498;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
+('afe157949348b3b1c6d62ad42d615674543e390c','::1',1493808212,'__ci_last_regenerate|i:1493807913;'),
+('b5e33e190da8e642be4ab49a707a2f896334f574','::1',1493812616,'__ci_last_regenerate|i:1493812317;'),
+('b91a1ac2b6a2b886571f9036d2adb0ca84ad94b4','::1',1493805480,'__ci_last_regenerate|i:1493805180;'),
+('cf516aef7d33cb52b56cd97d4990bfc1b2cdc72a','::1',1493812823,'__ci_last_regenerate|i:1493812751;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
+('d127c6f889529e4c06cd45b1a019bcc4167efe6e','::1',1493807006,'__ci_last_regenerate|i:1493807005;'),
+('d6304e2af6efbcf0bc247de890f0476cc093fb84','::1',1493806070,'__ci_last_regenerate|i:1493805770;'),
+('d8518f9394947bfae95d8cd4f747008e5c1be455','::1',1493809708,'__ci_last_regenerate|i:1493809409;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
+('d881f87234d1f252bc8e696f783f6ba615e8d93d','::1',1493811230,'__ci_last_regenerate|i:1493810931;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";'),
+('e82522797e5446967f8e0a7364f6195188264dd5','::1',1493806676,'__ci_last_regenerate|i:1493806379;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"M\";'),
+('f1540046aa09e7435dac84c644949aa415d81d88','::1',1493806374,'__ci_last_regenerate|i:1493806075;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"M\";'),
+('f73f933fc871d900abb3bea7b0ffc4a74b1fb3c0','::1',1493807609,'__ci_last_regenerate|i:1493807309;'),
+('fa43f2b7b9658ebda407fc5783daa6295a29f5a0','::1',1493808189,'__ci_last_regenerate|i:1493807893;EMPL_KEY|i:1;EMPL_NAME|s:9:\"도봉순\";MF_FG|s:1:\"F\";');
 
 /*Table structure for table `job010` */
 
@@ -2452,7 +2417,7 @@ CREATE TABLE `job050` (
 /*Data for the table `job050` */
 
 insert  into `job050`(`EMPL_KEY`,`EMPL_NAME`,`MF_FG`,`EMPL_CASH`,`bond_CASH`,`stock_CASH`,`INSERT_EMP_NO`,`INSERT_DATE`,`UPDATE_EMP_NO`,`UPDATE_DATE`) values 
-(1,'도봉순','F',10000000,8000000,10000000,'','0000-00-00 00:00:00',NULL,NULL);
+(1,'도봉순','F',10000000,10000000,10000000,'','0000-00-00 00:00:00',NULL,NULL);
 
 /*Table structure for table `job051` */
 
@@ -2539,7 +2504,7 @@ CREATE TABLE `job062` (
 DROP TABLE IF EXISTS `job070`;
 
 CREATE TABLE `job070` (
-  `EMPL_KEY` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '체험자KEY',
+  `EMPL_KEY` int(10) unsigned NOT NULL COMMENT '체험자KEY',
   `BOND_KEY` int(10) unsigned NOT NULL COMMENT '채권마스터정보 KEY 정보',
   `BOND_BUYQTY` int(11) DEFAULT NULL COMMENT '채권매수수량 입력 값',
   `BOND_BUYPAY` int(11) DEFAULT NULL COMMENT '채권매수금액\r\n채권매수금액=매수수량 * JOB020.기준가격',
@@ -2547,19 +2512,16 @@ CREATE TABLE `job070` (
   `BOND_RATE` int(11) DEFAULT NULL,
   `BOND_BUYDATE` date DEFAULT NULL COMMENT '최초에는 만기일자를 입력하고...수익율보기 클릭하면\r\n만기인지/중도해지인지를 확인해서 날짜을 입력(예.20170502)',
   `BOND_BUYPER` int(11) DEFAULT NULL COMMENT '채권수익륳\r\n매수금액 대비 해지일자에 따른 수익금액\r\nJOB022테이블의 해지월의 가격정보와..그때까지의 이자금액을 포함한 금액',
-  `BOND-BUYTOT` int(11) DEFAULT NULL COMMENT '채권수익금\r\nJOB022테이블의 해지월의 가격정보와..그때까지의 이자금액을 포함한 금액',
+  `BOND_BUYTOT` int(11) DEFAULT NULL COMMENT '채권수익금\r\nJOB022테이블의 해지월의 가격정보와..그때까지의 이자금액을 포함한 금액',
+  `BOND_BUYBENIFIT` int(11) DEFAULT NULL COMMENT '이익',
   `INSERT_EMP_NO` varchar(32) NOT NULL,
   `INSERT_DATE` datetime NOT NULL,
   `UPDATE_EMP_NO` varchar(32) DEFAULT NULL,
   `UPDATE_DATE` datetime DEFAULT NULL,
   PRIMARY KEY (`EMPL_KEY`,`BOND_KEY`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `job070` */
-
-insert  into `job070`(`EMPL_KEY`,`BOND_KEY`,`BOND_BUYQTY`,`BOND_BUYPAY`,`BOND_DANGA`,`BOND_RATE`,`BOND_BUYDATE`,`BOND_BUYPER`,`BOND-BUYTOT`,`INSERT_EMP_NO`,`INSERT_DATE`,`UPDATE_EMP_NO`,`UPDATE_DATE`) values 
-(1,4,100,1000000,10000,2,'2024-08-10',10,NULL,'','0000-00-00 00:00:00',NULL,NULL),
-(1,6,100,1000000,10000,4,'2026-02-10',30,NULL,'','0000-00-00 00:00:00',NULL,NULL);
 
 /*Table structure for table `job080` */
 
@@ -2655,6 +2617,7 @@ DROP TABLE IF EXISTS `tb_admin`;
 
 CREATE TABLE `tb_admin` (
   `PG_LOCK` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '사용제한',
+  `survey_STATUS` tinyint(1) NOT NULL DEFAULT '0',
   `fund_STATUS` tinyint(1) NOT NULL DEFAULT '0' COMMENT '펀드 진행',
   `bond_STATUS` tinyint(1) NOT NULL DEFAULT '0' COMMENT '채권 진행',
   `stock_STATUS` tinyint(1) NOT NULL DEFAULT '0' COMMENT '주식 진행',
@@ -2668,8 +2631,8 @@ CREATE TABLE `tb_admin` (
 
 /*Data for the table `tb_admin` */
 
-insert  into `tb_admin`(`PG_LOCK`,`fund_STATUS`,`bond_STATUS`,`stock_STATUS`,`DATA_TYPE`,`bond_rownum`,`stock_rownum`,`news_que`,`anal_que`) values 
-(1,0,0,0,30,10,10,1,1);
+insert  into `tb_admin`(`PG_LOCK`,`survey_STATUS`,`fund_STATUS`,`bond_STATUS`,`stock_STATUS`,`DATA_TYPE`,`bond_rownum`,`stock_rownum`,`news_que`,`anal_que`) values 
+(2,0,1,0,0,30,10,10,1,1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

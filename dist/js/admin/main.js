@@ -11,7 +11,7 @@ requirejs([
 
     let user = null;                        // 사용자 정보
     let mdata = {
-        usabled: 0,                         // 시스템 중지 여부(0, 1)
+        usabled: 0,                         // 중지: 0, 시작: 1, 결과보기: 3, 메인으로: 4
         STATUS: {                           // 체험 순서
             fund_STATUS: 0,
             bond_STATUS: 0,
@@ -257,6 +257,7 @@ requirejs([
         // 체험 순서 선택
         (function () {
             $('.bx_chk_list:eq(0) button:eq(0)').on('click', function () {
+                mdata.usabled = 1;
                 mdata.STATUS.survey_STATUS = 1;
                 mdata.STATUS.fund_STATUS = 0;
                 mdata.STATUS.bond_STATUS = 0;
@@ -266,6 +267,7 @@ requirejs([
                 handle_ajax.put_ajax();
             });
             $('.bx_chk_list:eq(0) button:eq(1)').on('click', function () {
+                mdata.usabled = 1;
                 mdata.STATUS.survey_STATUS = 0;
                 mdata.STATUS.fund_STATUS = 1;
                 mdata.STATUS.bond_STATUS = 0;
@@ -275,6 +277,7 @@ requirejs([
                 handle_ajax.put_ajax();
             });
             $('.bx_chk_list:eq(0) button:eq(2)').on('click', function () {
+                mdata.usabled = 1;
                 mdata.STATUS.survey_STATUS = 0;
                 mdata.STATUS.fund_STATUS = 0;
                 mdata.STATUS.bond_STATUS = 1;
@@ -284,6 +287,7 @@ requirejs([
                 handle_ajax.put_ajax();
             });
             $('.bx_chk_list:eq(0) button:eq(3)').on('click', function () {
+                mdata.usabled = 1;
                 mdata.STATUS.survey_STATUS = 0;
                 mdata.STATUS.fund_STATUS = 0;
                 mdata.STATUS.bond_STATUS = 0;
@@ -674,5 +678,6 @@ requirejs([
     })();
 
     handle_ui();
+
 });
 

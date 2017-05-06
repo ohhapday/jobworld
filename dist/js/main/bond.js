@@ -5,6 +5,7 @@
 requirejs([
     'jquery', 'bootstrap', 'moment', 'jquery-ui', 'session',
     '/dist/js/main/common.js',         // 공통 처리 js
+    '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js'
 ], function ($, bootstrap, moment, a, session, common) {
     "use strict";
 
@@ -90,9 +91,9 @@ requirejs([
         },
         cashFlow: function () {
             let li = $('.ar_btm_sel li');
-            li.eq(0).find('span').text(nf.format(mData.cashFlow.cash1));
-            li.eq(1).find('span').text(nf.format(mData.cashFlow.cash2));
-            li.eq(2).find('span').text(nf.format(mData.cashFlow.cash3));
+            // li.eq(0).find('span').text(nf.format(mData.cashFlow.cash1));
+            li.eq(0).find('span').text(nf.format(mData.cashFlow.cash2));
+            li.eq(1).find('span').text(nf.format(mData.cashFlow.cash3));
         },
         buyBondList: function () {
             let $table = $('.ar_btm_bx table tbody');
@@ -130,6 +131,68 @@ requirejs([
         },
     };
 
+    // 금리 그래프
+    function drawchart(data) {
+        let config1 = {
+            type: 'line',
+            data: {
+                datasets: [{
+                    borderWidth: 3,
+                    borderColor: "#306E92",
+                    // backgroundColor: "rgba(60,141,188,0.5)",
+                    pointBorderColor: "#3b8bba",
+                    pointBorderWidth: 1,
+                    pointRadius: 4,
+                    fill: false,
+                    lineTension: 0.1
+                }]
+            },
+            options: {
+                legend: {
+                    position: null,
+                },
+                title: {
+                    display: true,
+                    text: '금리변동률'
+                },
+                tooltips: {
+                    mode: 'label',
+                    callbacks: {
+                        /*label: function(tooltipItem, data) {
+                         return '' + tooltipItem.yLabel.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                         }*/
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            labelString: '일'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: false,
+                            labelString: '금액',
+                        },
+                        ticks: {
+                            /*userCallback: function(value, index, values) {
+                             return '' + value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                             }*/
+                        }
+                    }]
+                }
+            }
+        };
+        // 매출
+        config1.data.labels = data.labels;
+        config1.data.datasets[0].data = data.sales;
+
+        var ctx1 = $("#chart_01").get(0).getContext("2d");
+        let chart = new Chart(ctx1, config1);
+    }
+
     let ajax = {
         index: function () {
             let index = $('.box_tbllist:eq(0) table tbody tr:not(:eq(0))').index($('.box_tbllist:eq(0) table tbody tr.on'));
@@ -138,8 +201,13 @@ requirejs([
         post_buyBond: function () {
             let index = this.index();
 
-            if(index < 0) {
+            if (index < 0) {
                 alert('채권을 선택해 주세요.');
+                return;
+            }
+
+            if (mData.cashFlow.cash3 <= 0) {
+                alert('잔고가 부족합니다..');
                 return;
             }
 
@@ -159,6 +227,17 @@ requirejs([
             });
             return true;
         },
+        draw_chart: function () {
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'get',
+                url: '/main/get_bond_chart',
+                success: function (data, status, xhr) {
+                    drawchart(data);
+                }
+            });
+        }
     };
 
     // 기본 event (1회만 처리)
@@ -255,6 +334,7 @@ requirejs([
                     console.log(mData);
                 }
             });
+            ajax.draw_chart();
             console.log('채권 변경');
         }
 
@@ -285,4 +365,5 @@ requirejs([
             }
         }
     })();
+
 });

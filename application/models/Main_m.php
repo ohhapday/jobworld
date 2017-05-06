@@ -486,7 +486,7 @@ class Main_m extends CI_Model
             'BOND_BUYDATE' => $data['bond']['BOND_CLDATE'],
             'BOND_BUYPER' => $data['bond']['BOND_PER'],
             'BOND_BUYTOT' => $data['bond']['BOND_PRICE'] * $data['BOND_BUYQTY'] * $data['bond']['BOND_PER'] / 100,
-            'BOND_BENIFIT' => $data['bond']['BOND_PRICE'] * $data['BOND_BUYQTY'] * $data['bond']['BOND_PER'] / 100,
+            'BOND_BUYBENIFIT' => $data['bond']['BOND_PRICE'] * $data['BOND_BUYQTY'] * $data['bond']['BOND_PER'] / 100,
         );
         $this->db->insert('job070', $insert_data);
 
@@ -538,6 +538,19 @@ class Main_m extends CI_Model
         $this->db->trans_complete();
 
         return $this->db->trans_status();
+    }
+
+    public function get_bond_chart()
+    {
+        $query = "
+            SELECT a.* FROM
+              job018 a, tb_admin b
+            WHERE
+              GOLD_DATE <= b.bond_rownum AND GOLD_DATE >= (b.bond_rownum - 10)
+        ";
+        $return = $this->db->query($query)->result();
+
+        return $return;
     }
 
     /**

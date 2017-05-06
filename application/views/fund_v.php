@@ -434,7 +434,7 @@
 			<h2>펀드매니저<span>홍길동</span></h2>
 			<div class="btn_close"><button type="button">닫기</button></div>
 		</div>
-		<div class="box_contpop2">
+		<div class="box_contpop2" style="overflow-y: auto; height: 530px;">
 			<div class="pb_view clfix">
 				<div class="pb_tit">
 					<h3 class="sb_bg bg1">펀드명</h3>
@@ -652,7 +652,7 @@
 			</div>
 		</div>
 		<div class="btn_popbtm mt10 pb0">
-			<span class="btn_print"><a href="">인쇄</a></span>
+			<span class="btn_print"><a href="#">인쇄</a></span>
 		</div>
 		<div class="bg_popbtm">&nbsp;</div>
 	</div>

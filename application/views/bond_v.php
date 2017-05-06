@@ -94,7 +94,9 @@
 						<div class="tabmenu m2"><a href="#" class="btn_tb">기업신용도공지</a></div>
 					</div>
 					<div class="btmtbl">
-						<div class="chart"><img src="/dist/images/chart_sb1.gif" alt=""></div>
+						<div class="chart" style="width: 600px; height: 300px; margin: auto">
+							<canvas id="chart_01"></canvas>
+						</div>
 					</div>
 					<div class="btmtbl" style="display: none;">
 						<div class="box_tbllist">
@@ -128,18 +130,18 @@
 				</div>
 				<div class="ar_btm_dt">
 					<div class="dttit"><strong>채권명</strong><span></span></div>
-					<a href="#" class="btn_buyc">채권사기</a>
+					<a href="#" class="btn_buyc">채권구매</a>
 					<ul class="dtlist clfix">
-						<li class="mb10"><strong>사는단가</strong><span class="align-r">0</span></li>
-						<li class="mb10"><strong>사는수량</strong>
+						<li class="mb10"><strong>구매단가</strong><span>0</span></li>
+						<li class="mb10"><strong>구매수량</strong>
 							<span>
 								<input type="number" style="width: 50%" value="100" step="100" min="0">
 							</span>
 						</li>
-						<li class="mb10"><strong>사는금액</strong><span class="align-r">0</span></li>
+						<li class="mb10"><strong>구매금액</strong><span>0</span></li>
 						<li class="mb10"><strong>만기일자</strong><span></span></li>
-						<li class="mb10"><strong>사는날짜</strong><span></span></li>
-						<li class="mb10"><strong class="colred">수익금</strong><span class="align-r">0</span></li>
+						<li class="mb10"><strong>구매날짜</strong><span></span></li>
+						<li class="mb10"><strong class="colred">수익금</strong><span>0</span></li>
 						<li><strong>만기수익률</strong><span>0%</span></li>
 					</ul>
 				</div>
@@ -151,9 +153,9 @@
 				</div>
 				<div class="ar_btm_sel">
 					<ul class="dtlist clfix">
-						<li><strong>고객자산</strong><span></span></li>
-						<li><strong>투자금액</strong><span></span></li>
-						<li><strong>잔고</strong><span></span></li>
+						<!-- <li><strong>고객자산</strong><span></span></li> -->
+						<li style="width: 50%;"><strong>투자금액</strong><span></span></li>
+						<li style="width: 50%;"><strong>잔고</strong><span></span></li>
 					</ul>
 				</div>
 
@@ -192,7 +194,7 @@
 						<input type="radio" name="chdate" id="chdate2"><label for="chdate2">중도해지</label>
 						<input type="date" value="" style="width: 180px;">
 					</div>
-					<a href="" class="btn_bview"><span>예상 수익률 보기</span></a>
+					<a href="#" class="btn_bview"><span>예상 수익률 보기</span></a>
 				</div>
 
 			</div>
@@ -201,7 +203,7 @@
 </div>
 <!-- //content -->
 
-<!-- layer pop -->
+<!-- 채권 상세보기 pop -->
 <div class="wrap_layerpop" style="display: none;">
 
 	<div class="layerpop pop10">

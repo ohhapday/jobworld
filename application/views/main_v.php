@@ -54,7 +54,7 @@
 				<ul>
 					<li class="newstit">
 						<strong>이 시각<br>주요뉴스</strong>
-						<a href="#" class="btn_pls"><img src="/dist/images/ico_plus.png" alt=""></a>
+						<!-- <a href="#" class="btn_pls"><img src="/dist/images/ico_plus.png" alt=""></a> -->
 					</li>
 					<li class="news">
 						<a href="#">
@@ -138,7 +138,7 @@
 		<div class="box_mnrtg1">
 			<div class="addcpm">
 				<strong>추천종목</strong>
-				<a href="#" class="btn_pls"><img src="/dist/images/ico_plus.png" alt=""></a>
+				<!-- <a href="#" class="btn_pls"><img src="/dist/images/ico_plus.png" alt=""></a> -->
 			</div>
 			<div class="chart_mn">
 				<div class="tit_bt">
@@ -206,7 +206,7 @@
 				<button type="button">닫기</button>
 			</div>
 		</div>
-		<div class="box_contpop">
+		<div class="box_contpop" style="overflow-y: auto; height: 520px;">
 			<ul class="list_qu">
 				<li style="display: none;">
 					<strong>1. 귀하의 나이는 어떻게 되십니까?</strong>

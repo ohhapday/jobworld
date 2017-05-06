@@ -7,6 +7,7 @@ requirejs([
     'jquery', 'bootstrap', 'moment', 'jquery-ui', 'session',
     '/dist/js/main/common.js',         // 공통 처리 js
     '/dist/js/main/survey.js',         // 설문 조사 js
+
 ], function ($, bootstrap, moment, a, session) {
     "use strict";
 
@@ -183,5 +184,6 @@ requirejs([
             }
         }
     })();
+
 });
 

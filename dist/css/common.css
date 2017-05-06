@@ -58,7 +58,7 @@ table{ width:100%; border-spacing:0; border-collapse:collapse; table-layout:fixe
 body, input, textarea, button, select, table{ font:24px/1.4 NotoR, dotum, '돋움', Tahoma, AppleGothic, Sans-serif; color:#555; -webkit-text-size-adjust:none; }
 h1, h2, h3, h4, h5, h6{ font-size:1em; font-family: NotoR,"돋움",Dotum,AppleGothic,Tahoma,Sans-serif; }
 input, button, textarea, select{ font-size:1em; font-family: NotoR,"돋움",Dotum,AppleGothic,Sans-serif; outline: none;}
-code, pre{ font-size:1em; }
+code, pre{ width: 30px; }
 
 article, section, header, footer, div, nav{box-sizing: border-box;-moz-box-sizing: border-box;}
 /* //reset */
@@ -228,3 +228,4 @@ select{ height:24px; padding:3px 2px 3px 2px; font-size:1em; line-height:18px; b
 .btn_whtmar a > span{display: inline-block; margin-top: -1px; padding: 0 0 0 2px; font-size: 12px; vertical-align: middle;}
 .btn_whtmar a{display: block; padding: 5px 15px; font-size: 14px; color: #8e8e8e; font-weight: bold; vertical-align: middle;}
 .btn_whtmar button{display: block; padding: 5px 15px; font-size: 14px; color: #8e8e8e; font-weight: bold; vertical-align: middle;}
+

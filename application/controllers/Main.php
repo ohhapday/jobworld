@@ -172,6 +172,32 @@ class Main extends CI_Controller
         $this->get_bondData();
     }
 
+    public function get_bond_chart()
+    {
+        $data = $this->main_m->get_bond_chart();
+
+        $i = 10;
+        $txt_data = array();
+        $sales = array();
+        foreach ($data as $item) {
+            $datetime = new DateTime();
+            $term = new DateInterval('P' . $i . 'M');
+
+            array_push($txt_data,
+                $datetime->sub($term)->format('y/m')
+            );
+            array_push($sales,
+                (int)$item->GOLD_RATE
+            );
+            $i--;
+        }
+
+        $return->labels = $txt_data;
+        $return->sales = $sales;
+
+        echo json_encode($return);
+    }
+
     /**
      * end 채권 투자 체험
      */
