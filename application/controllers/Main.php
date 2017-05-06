@@ -249,6 +249,32 @@ class Main extends CI_Controller
         echo json_encode($return);
     }
 
+    public function get_stock_chart()
+    {
+        $data = $this->main_m->get_stock_chart($_GET['COMP_CODE']);
+
+        $i = 10;
+        $txt_data = array();
+        $sales = array();
+        foreach ($data as $item) {
+            $datetime = new DateTime();
+            $term = new DateInterval('P' . $i . 'D');
+
+            array_push($txt_data,
+                $datetime->sub($term)->format('m/d')
+            );
+            array_push($sales,
+                (int)$item->COMP_PRICE
+            );
+            $i--;
+        }
+
+        $return->labels = $txt_data;
+        $return->sales = $sales;
+
+        echo json_encode($return);
+    }
+
     /**
      * end 주식 투자 체험
      */

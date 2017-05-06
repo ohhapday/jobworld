@@ -18,6 +18,7 @@ var requirejs = ({
         'datetimepicker': 'eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min',
         'ckeditor': 'ckeditor_no_bower/ckeditor',
         'jquery-slimscroll': 'jquery-slimscroll/jquery.slimscroll.min',
+        'chartjs': 'chart.js/dist/Chart.min',
         /* 사용자 정의 플러그인 */
         'session': '../dist/js/common/session',
         'myFn': '../dist/js/common/myFn',

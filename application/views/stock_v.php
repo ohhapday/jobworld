@@ -294,5 +294,25 @@
 </div>
 <!-- //뉴스정보 pop -->
 
+<!-- 주가 그래프 pop -->
+<div class="wrap_layerpop" style="display: none;">
+
+	<div class="layerpop pop12">
+		<div class="box_titpop">
+			<h2>기업 주식금액 변동 그래프</h2>
+			<div class="btn_close"><button type="button">닫기</button></div>
+		</div>
+		<div class="box_contpop">
+			<div class="contpdd">
+				<div class="chartpd" style="width: 600px; height: 300px; margin: auto">
+					<canvas id="chart_01"></canvas>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- //layer pop -->
+
 </body>
 </html>

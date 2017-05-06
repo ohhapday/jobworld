@@ -5,7 +5,7 @@
 requirejs([
     'jquery', 'bootstrap', 'moment', 'jquery-ui', 'session',
     '/dist/js/main/common.js',         // 공통 처리 js
-    '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js'
+    'chartjs'
 ], function ($, bootstrap, moment, a, session, common) {
     "use strict";
 
@@ -129,69 +129,67 @@ requirejs([
             $table.find('td:eq(0)').text(credit.CREDIT_RANK);
             $table.find('td:eq(1)').text(credit.CREDIT_MEMO);
         },
-    };
-
-    // 금리 그래프
-    function drawchart(data) {
-        let config1 = {
-            type: 'line',
-            data: {
-                datasets: [{
-                    borderWidth: 3,
-                    borderColor: "#306E92",
-                    // backgroundColor: "rgba(60,141,188,0.5)",
-                    pointBorderColor: "#3b8bba",
-                    pointBorderWidth: 1,
-                    pointRadius: 4,
-                    fill: false,
-                    lineTension: 0.1
-                }]
-            },
-            options: {
-                legend: {
-                    position: null,
+        drawchart: function (data) {
+            let config1 = {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        borderWidth: 3,
+                        borderColor: "#306E92",
+                        // backgroundColor: "rgba(60,141,188,0.5)",
+                        pointBorderColor: "#3b8bba",
+                        pointBorderWidth: 1,
+                        pointRadius: 4,
+                        fill: false,
+                        lineTension: 0.1
+                    }]
                 },
-                title: {
-                    display: true,
-                    text: '금리변동률'
-                },
-                tooltips: {
-                    mode: 'label',
-                    callbacks: {
-                        /*label: function(tooltipItem, data) {
-                         return '' + tooltipItem.yLabel.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                         }*/
-                    }
-                },
-                scales: {
-                    xAxes: [{
+                options: {
+                    legend: {
+                        position: null,
+                    },
+                    title: {
                         display: true,
-                        scaleLabel: {
-                            labelString: '일'
-                        }
-                    }],
-                    yAxes: [{
-                        display: true,
-                        scaleLabel: {
-                            display: false,
-                            labelString: '금액',
-                        },
-                        ticks: {
-                            /*userCallback: function(value, index, values) {
-                             return '' + value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        text: '금리변동률'
+                    },
+                    tooltips: {
+                        mode: 'label',
+                        callbacks: {
+                            /*label: function(tooltipItem, data) {
+                             return '' + tooltipItem.yLabel.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                              }*/
                         }
-                    }]
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                labelString: '일'
+                            }
+                        }],
+                        yAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: false,
+                                labelString: '금액',
+                            },
+                            ticks: {
+                                /*userCallback: function(value, index, values) {
+                                 return '' + value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                 }*/
+                            }
+                        }]
+                    }
                 }
-            }
-        };
-        // 매출
-        config1.data.labels = data.labels;
-        config1.data.datasets[0].data = data.sales;
+            };
+            // 매출
+            config1.data.labels = data.labels;
+            config1.data.datasets[0].data = data.sales;
 
-        var ctx1 = $("#chart_01").get(0).getContext("2d");
-        let chart = new Chart(ctx1, config1);
-    }
+            var ctx1 = $("#chart_01").get(0).getContext("2d");
+            let chart = new Chart(ctx1, config1);
+        }
+    };
 
     let ajax = {
         index: function () {
@@ -234,7 +232,7 @@ requirejs([
                 type: 'get',
                 url: '/main/get_bond_chart',
                 success: function (data, status, xhr) {
-                    drawchart(data);
+                    ui.drawchart(data);
                 }
             });
         }

@@ -727,6 +727,19 @@ class Main_m extends CI_Model
         return $this->get_buyStock();
     }
 
+    public function get_stock_chart($code)
+    {
+        $query = "
+            SELECT a.* FROM
+              job015_copy a, tb_admin b
+            WHERE
+              COMP_DATE <= b.stock_rownum AND COMP_DATE >= (b.stock_rownum - 10) AND COMP_CODE = ?
+        ";
+        $return = $this->db->query($query, $code)->result();
+
+        return $return;
+    }
+
     /**
      * end 주식 투자 체험
      */
