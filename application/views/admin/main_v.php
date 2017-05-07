@@ -247,7 +247,7 @@
 					</div>
 				</div>
 				<div class="btmtbl">
-					<div class="box_tbllist">
+					<div class="box_tbllist" style="overflow-y: auto; height: 245px;">
 						<table>
 							<colgroup>
 								<col style="width: 33%;">
@@ -262,27 +262,17 @@
 							</tr>
 							</thead>
 							<tbody>
-							<tr>
+							<tr style="display: none;">
 								<td><a href="#" class="btn_send">전송</a></td>
 								<td>제약</td>
 								<td>오름</td>
-							</tr>
-							<tr>
-								<td><a href="#" class="btn_sendon">전송됨</a></td>
-								<td>제약</td>
-								<td>내림</td>
-							</tr>
-							<tr>
-								<td><a href="#" class="btn_send">전송</a></td>
-								<td>제약</td>
-								<td>내림</td>
 							</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
 				<div class="btmtbl" style="display: none;">
-					<div class="box_tbllist">
+					<div class="box_tbllist" style="overflow-y: auto; height: 245px;">
 						<table>
 							<colgroup>
 								<col style="width: 33%;">
@@ -297,20 +287,10 @@
 							</tr>
 							</thead>
 							<tbody>
-							<tr>
+							<tr style="display: none;">
 								<td><a href="#" class="btn_send">전송</a></td>
 								<td>애널리스트</td>
 								<td>오름</td>
-							</tr>
-							<tr>
-								<td><a href="#" class="btn_sendon">전송됨</a></td>
-								<td>애널리스트</td>
-								<td>내림</td>
-							</tr>
-							<tr>
-								<td><a href="#" class="btn_send">전송</a></td>
-								<td>애널리스트</td>
-								<td>내림</td>
 							</tr>
 							</tbody>
 						</table>
@@ -332,12 +312,11 @@
 				<button type="button">닫기</button>
 			</div>
 		</div>
-		<div class="box_codein" style="padding-top: 3em;">
+		<div class="box_codein" style="padding-top: 1em;">
 			<div class="lcode hidden">
 				<span>종합코드명</span>
 				<input type="text">
 			</div>
-			<a href="#" class="btn_search">조회</a>
 		</div>
 		<div class="box_contpop">
 			<div class="box_tbllist col2fl">
@@ -405,8 +384,11 @@
 				<button type="button">닫기</button>
 			</div>
 		</div>
-		<div class="btn_sl">
-			<a href="" class="btn_search hidden">조회</a>
+		<div class="box_codein" style="padding-top: 1em;">
+			<div class="lcode hidden">
+				<span>종합코드명</span>
+				<input type="text">
+			</div>
 		</div>
 		<div class="box_contpop">
 			<div class="box_tbllist">
@@ -518,7 +500,6 @@
 			</div>
 		</div>
 		<div class="btn_sl">
-			<a href="#" class="btn_search">조회</a>
 		</div>
 		<div class="box_contpop">
 			<div class="box_tbllist col2fl" style="height: 300px; overflow-y: auto;">
@@ -569,7 +550,8 @@
 			</div>
 		</div>
 		<div class="area_per_gx">
-			<strong>전체 가격 정보 조정</strong><input type="number" value="10" required><span>% 반영</span>
+			<strong>전체 가격 정보 조정</strong>
+			<input type="number" value="10" required><span>% 반영</span>
 			<button type="button" class="btn_play">실행</button>
 		</div>
 		<div class="btn_popbtm">

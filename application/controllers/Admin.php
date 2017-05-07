@@ -48,6 +48,9 @@ class Admin extends CI_Controller
         $return->STATUS->stock_STATUS = (int)$system->stock_STATUS;
         $return->DATA_TYPE = (int)$system->DATA_TYPE;
 
+        $return->NEWS = $this->main_m->get_NEWS2();
+        $return->ANAL = $this->main_m->get_ANAL2();
+
         $return->COMP_DATA = $this->admin_m->get_COMP_DATA();
 
         echo json_encode($return);
@@ -110,5 +113,11 @@ class Admin extends CI_Controller
         return $this->admin_m->put_bond_rownum();
     }
 
+    public function put_NEWS()
+    {
+        $key = $this->input->post('NEWS_KEY', true);
+
+        return $this->admin_m->put_NEWS($key);
+    }
 
 }

@@ -1,6 +1,6 @@
 /**
  * Created by 서정석 on 2017/04/13.
- * todo 체험 순서 선택에 "투자성향", "결과보기" 필요할듯
+ *
  */
 
 requirejs([
@@ -20,6 +20,7 @@ requirejs([
         DATA_TYPE: 30,
         COMP_DATA: null,                // 주식종목
     };
+    let eventSource;
 
     let nf = new Intl.NumberFormat(["en-US"]);
 
@@ -55,6 +56,11 @@ requirejs([
                     }
                 }
             });
+
+            // 체험이 시작되면 eventSource 중지
+            if (mdata.usabled !== 1) {
+                // eventSource.close();
+            }
         }
 
         // get 테이블
@@ -136,15 +142,17 @@ requirejs([
 
     // eventSource
     (function () {
-        let eventSource = new EventSource('/admin/sse_get_user');
-        let userCount = 0;
-        eventSource.onmessage = function (e) {
-            let user = JSON.parse(e.data).user;
-            if (userCount !== Object.keys(user).length) {
-                user_insert_dom(user);
-                userCount = Object.keys(user).length;
+        // if (mdata.usabled === 1) {
+            eventSource = new EventSource('/admin/sse_get_user');
+            let userCount = 0;
+            eventSource.onmessage = function (e) {
+                let user = JSON.parse(e.data).user;
+                if (userCount !== Object.keys(user).length) {
+                    user_insert_dom(user);
+                    userCount = Object.keys(user).length;
+                }
             }
-        }
+        // }
     })();
 
     // UI 처리 함수
@@ -366,12 +374,6 @@ requirejs([
 
             // 코드명 선택
             pop.find('.col2fl tbody tr:eq(0)').on('click', function () {
-                pop.find('.col2fl tbody tr').removeClass('on');
-                $(this).addClass('on');
-            });
-
-            // 조회
-            pop.find('.btn_search').on('click', function () {
                 let MKEY = pop.find('tr.on td:eq(0)').text();
                 let job024 = handle_ajax.get_table({
                     table_nm: 'job024',
@@ -394,6 +396,14 @@ requirejs([
                 });
 
                 pop.find('.col2fr').removeClass('hidden');
+
+                pop.find('.col2fl tbody tr').removeClass('on');
+                $(this).addClass('on');
+            });
+
+            // 조회
+            pop.find('.btn_search').on('click', function () {
+
             });
         })();
 
@@ -475,15 +485,9 @@ requirejs([
 
             // 종목명 선택
             pop.find('.col2fl tbody tr:eq(0)').on('click', function () {
-                pop.find('.col2fl tbody tr').removeClass('on');
-                $(this).addClass('on');
-            });
-
-            // 조회
-            pop.find('.btn_search').on('click', function () {
                 let SECT_KEY = pop.find('tr.on td:eq(0)').text();
                 let job015 = handle_ajax.get_table({
-                    table_nm: 'job015',
+                    table_nm: 'job015_copy',
                     where: ['SECT_KEY', SECT_KEY],
                     orderby: ['COMP_DATE', 'ASC']
                 });
@@ -504,10 +508,18 @@ requirejs([
                 });
 
                 pop.find('.col2fr').removeClass('hidden');
+
+                pop.find('.col2fl tbody tr').removeClass('on');
+                $(this).addClass('on');
+            });
+
+            // 조회
+            pop.find('.btn_search').on('click', function () {
+
             });
 
             pop.find('.btn_play').on('click', function () {
-                alert('작업중중');
+                alert('작업중');
             });
         })();
     })();
@@ -550,11 +562,61 @@ requirejs([
 
         // 이 시간 뉴스
         (function () {
+            let $table = $('.btmtbl:eq(0) table:eq(0) tbody');
+
+            $table.find('tr:not(:eq(0))').hide(500);
+            $table.find('tr:not(:eq(0))').remove();
+
+            $.each(mdata.NEWS, function (i) {
+                let $clone = $table.find('tr:eq(0)').clone(true);
+                let self = this;
+
+                if (this.SEND === "1") {
+                    $clone.find('td:eq(0) a').removeClass('btn_send').addClass('btn_sendon').text('전송됨');
+                } else {
+                    $clone.find('td:eq(0) a').removeClass('btn_sendon').addClass('btn_send').text('전송');
+                }
+                $clone.find('td:eq(1)').text(this.NEWS_HEAD);
+
+                if (this.UPDOWN === "1") {
+                    $clone.find('td:eq(2)').text('오름' + '(' + this.PERCENT + '%)');
+                } else {
+                    $clone.find('td:eq(2)').text('내림' + '(' + this.PERCENT + '%)');
+                }
+
+                $table.append($clone.clone(true));
+            });
+
+            $table.find('tr:not(:eq(0))').show(500);
+        })();
+
+        // 이 시간 뉴스 전송
+        (function () {
+            let $table = $('.btmtbl:eq(0) table:eq(0) tbody');
+
+            $table.find('.btn_send').on('click', function () {
+                let index = $('.btmtbl:eq(0) table a:not(:eq(0))').index($(this));
+
+                $.ajax({
+                    async: false,
+                    dataType: 'json',
+                    type: 'post',
+                    data: {
+                        NEWS_KEY: mdata.NEWS[index].NEWS_KEY
+                    },
+                    url: '/admin/put_NEWS',
+                })
+                $(this).removeClass('btn_send').addClass('btn_sendon').text('전송됨');
+            })
+        })();
+
+        // 이 시간 뉴스 팝업
+        (function () {
             let pop = $('.wrap_layerpop:eq(3)');
 
             $('.btn_mod:eq(0)').on('click', function () {
                 let job016 = handle_ajax.get_table({
-                    table_nm: 'job016',
+                    table_nm: 'job016_copy',
                     where: ['1', '1'],
                     // orderby: ['MKEY', 'ASC']
                 });
@@ -586,7 +648,7 @@ requirejs([
             pop.find('.btn_search').on('click', function () {
                 let NEWS_KEY = pop.find('.box_tbllist:eq(0) tr.on td:eq(0)').text();
                 let job016 = handle_ajax.get_table({
-                    table_nm: 'job016',
+                    table_nm: 'job016_copy',
                     where: ['NEWS_KEY', NEWS_KEY],
                     // orderby: ['MKEY', 'ASC']
                 });
@@ -613,6 +675,36 @@ requirejs([
         })();
 
         // 애널리스트 분석
+        (function () {
+            let $table = $('.btmtbl:eq(1) table:eq(0) tbody');
+
+            $table.find('tr:not(:eq(0))').hide(500);
+            $table.find('tr:not(:eq(0))').remove();
+
+            $.each(mdata.ANAL, function (i) {
+                let $clone = $table.find('tr:eq(0)').clone(true);
+                let self = this;
+
+                if (this.SEND === "1") {
+                    $clone.find('td:eq(0) a').addClass('btn_sendon').text('전송됨');
+                } else {
+                    $clone.find('td:eq(0) a').addClass('btn_send').text('전송');
+                }
+                $clone.find('td:eq(1)').text(this.ANAL_HEAD);
+
+                if (this.UPDOWN === "1") {
+                    $clone.find('td:eq(2)').text('오름' + '(' + this.PERCENT + '%)');
+                } else {
+                    $clone.find('td:eq(2)').text('내림' + '(' + this.PERCENT + '%)');
+                }
+
+                $table.append($clone.clone(true));
+            });
+
+            $table.find('tr:not(:eq(0))').show(500);
+        })();
+
+        // 애널리스트 분석 팝업
         (function () {
             let pop = $('.wrap_layerpop:eq(4)');
 

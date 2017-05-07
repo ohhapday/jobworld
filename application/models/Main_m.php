@@ -25,7 +25,7 @@ class Main_m extends CI_Model
     public function get_NEWS()
     {
         $query = "
-            SELECT * FROM job016
+            SELECT * FROM job016_copy
             WHERE SEND = 1
             ORDER BY NEWS_KEY ASC
             LIMIT 4
@@ -34,14 +34,35 @@ class Main_m extends CI_Model
         return $return;
     }
 
+    public function get_NEWS2()
+    {
+        $query = "
+            SELECT * FROM job016_copy
+            ORDER BY NEWS_KEY ASC
+        ";
+        $return = $this->db->query($query)->result();
+        return $return;
+    }
+
     public function get_ANAL()
     {
         $query = "
-            SELECT * FROM job017
+            SELECT * FROM job017_copy
             WHERE SEND = 1
             GROUP BY ANAL_TYPE
             ORDER BY ANAL_KEY ASC
             LIMIT 6
+        ";
+        $return = $this->db->query($query)->result();
+        return $return;
+    }
+
+    public function get_ANAL2()
+    {
+        $query = "
+            SELECT * FROM job017_copy
+            GROUP BY ANAL_TYPE
+            ORDER BY ANAL_KEY ASC
         ";
         $return = $this->db->query($query)->result();
         return $return;
@@ -79,7 +100,7 @@ class Main_m extends CI_Model
             SELECT
               COMP_KEY, SECT_KEY, COMP_CODE, COMP_NAME, COMP_PRICE, COMP_DATE
             FROM
-              job015
+              job015_copy
             WHERE
               COMP_DATE = 10
             GROUP BY SECT_KEY

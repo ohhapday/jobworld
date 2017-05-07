@@ -76,6 +76,24 @@ class Admin_m extends CI_Model
         $this->db->query('truncate job082');
         $this->db->query('truncate job083');
 
+        $this->db->query("DELETE FROM job015_copy");
+        $query = "
+            INSERT INTO job015_copy SELECT * FROM job015
+        ";
+        $this->db->query($query);
+
+        $this->db->query("DELETE FROM job016_copy");
+        $query = "
+            INSERT INTO job016_copy SELECT * FROM job016
+        ";
+        $this->db->query($query);
+
+        $this->db->query("DELETE FROM job017_copy");
+        $query = "
+            INSERT INTO job017_copy SELECT * FROM job017
+        ";
+        $this->db->query($query);
+
         $this->db->trans_complete();
 
         return $this->db->trans_status();
@@ -105,6 +123,21 @@ class Admin_m extends CI_Model
             UPDATE tb_admin SET bond_rownum = IF(bond_rownum = 50, 11, bond_rownum + 1)
         ";
         $this->db->query($query);
+    }
+
+    public function put_NEWS($news_key)
+    {
+        $query = "
+            SELECT * FROM job016_copy
+            WHERE NEWS_KEY = ?
+        ";
+        $result = $this->db->query($query, $news_key)->row();
+
+        $query = "
+            UPDATE job015_copy SET COMP_PRICE = (COMP_PRICE + (COMP_PRICE * ?))
+            WHERE
+              SECT_KEY = ? AND COMP_DATE = ?
+        ";
     }
 
 }
