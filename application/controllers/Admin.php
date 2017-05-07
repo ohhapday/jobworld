@@ -120,4 +120,11 @@ class Admin extends CI_Controller
         return $this->admin_m->put_NEWS($key);
     }
 
+    public function put_ANAL()
+    {
+        $key = $this->input->post('ANAL_KEY', true);
+
+        return $this->admin_m->put_ANAL($key);
+    }
+
 }

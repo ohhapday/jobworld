@@ -125,19 +125,85 @@ class Admin_m extends CI_Model
         $this->db->query($query);
     }
 
-    public function put_NEWS($news_key)
+    public function put_NEWS($key)
     {
+        $this->db->trans_start();
+
+        $query = "SELECT stock_rownum FROM tb_admin";
+        $rownum = $this->db->query($query)->row()->stock_rownum;
+
         $query = "
             SELECT * FROM job016_copy
             WHERE NEWS_KEY = ?
         ";
-        $result = $this->db->query($query, $news_key)->row();
+        $result = $this->db->query($query, $key)->row();
+
+        if ($result->UPDOWN === "1") {
+            $plus = (int)$result->PERCENT / 100;
+        } else {
+            $plus = (int)('-' . $result->PERCENT) / 100;
+        }
 
         $query = "
             UPDATE job015_copy SET COMP_PRICE = (COMP_PRICE + (COMP_PRICE * ?))
             WHERE
-              SECT_KEY = ? AND COMP_DATE = ?
+              SECT_KEY = ? AND COMP_DATE > ?
         ";
+
+        $this->db->query($query, array($plus, $result->NEWS_CODE, $rownum));
+
+        $this->db->query('UPDATE job016_copy SET SEND = 1 WHERE NEWS_KEY = ?', $key);
+
+        $this->db->trans_complete();
+
+        return $this->db->trans_status();
+    }
+
+    public function put_ANAL($key)
+    {
+        var_dump($key);
+        $this->db->trans_start();
+
+        $query = "SELECT stock_rownum FROM tb_admin";
+        $rownum = $this->db->query($query)->row()->stock_rownum;
+
+        $query = "
+            SELECT * FROM job017_copy
+            WHERE ANAL_KEY = ?
+        ";
+        $result = $this->db->query($query, $key)->row();
+
+        if ($result->UPDOWN === "1") {
+            $plus = (int)$result->PERCENT / 100;
+        } else {
+            $plus = (int)('-' . $result->PERCENT) / 100;
+        }
+
+        $query = "
+            SELECT
+              b.COMP_CODE
+            FROM job017_copy a, job014 b
+            WHERE
+              a.ANAL_TYPE = b.SECT_CODE AND
+              a.ANAL_KEY = ?
+        ";
+        $result2 = $this->db->query($query, $key)->result();
+
+        foreach ($result2 as $item) {
+            $query = "
+                UPDATE job015_copy SET COMP_PRICE = (COMP_PRICE + (COMP_PRICE * ?))
+                WHERE
+                  COMP_CODE = ? AND COMP_DATE > ?
+            ";
+
+            $this->db->query($query, array($plus, $item->COMP_CODE, $rownum));
+        }
+
+        $this->db->query('UPDATE job017_copy SET SEND = 1 WHERE ANAL_KEY = ?', $key);
+
+        $this->db->trans_complete();
+
+        return $this->db->trans_status();
     }
 
 }

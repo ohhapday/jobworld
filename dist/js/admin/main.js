@@ -704,6 +704,26 @@ requirejs([
             $table.find('tr:not(:eq(0))').show(500);
         })();
 
+        // 애널리스트 전송
+        (function () {
+            let $table = $('.btmtbl:eq(1) table:eq(0) tbody');
+
+            $table.find('.btn_send').on('click', function () {
+                let index = $('.btmtbl:eq(1) table a:not(:eq(0))').index($(this));
+
+                $.ajax({
+                    async: false,
+                    dataType: 'json',
+                    type: 'post',
+                    data: {
+                        ANAL_KEY: mdata.ANAL[index].ANAL_KEY
+                    },
+                    url: '/admin/put_ANAL',
+                })
+                $(this).removeClass('btn_send').addClass('btn_sendon').text('전송됨');
+            })
+        })();
+
         // 애널리스트 분석 팝업
         (function () {
             let pop = $('.wrap_layerpop:eq(4)');
