@@ -7,7 +7,7 @@ requirejs([
     'jquery', 'bootstrap', 'moment', 'jquery-ui', 'session',
     '/dist/js/main/common.js',         // 공통 처리 js
     '/dist/js/main/survey.js',         // 설문 조사 js
-
+    'chartjs'
 ], function ($, bootstrap, moment, a, session) {
     "use strict";
 
@@ -40,7 +40,84 @@ requirejs([
         init: function () {
             console.log(eData);
         },
+        drawchart: function (data, object) {
+            let config1 = {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        borderWidth: 3,
+                        borderColor: "#92312e",
+                        backgroundColor: "rgba(248,241,255,1)",
+                        pointBorderColor: "#ba0808",
+                        pointBorderWidth: 1,
+                        pointRadius: 4,
+                        fill: false,
+                        lineTension: 0.1
+                    }]
+                },
+                options: {
+                    legend: {
+                        position: null,
+                    },
+                    title: {
+                        display: false,
+                        text: '금리변동률'
+                    },
+                    tooltips: {
+                        mode: 'label',
+                        callbacks: {
+                            /*label: function(tooltipItem, data) {
+                             return '' + tooltipItem.yLabel.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                             }*/
+                        }
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                labelString: '일'
+                            }
+                        }],
+                        yAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: false,
+                                labelString: '금액',
+                            },
+                            ticks: {
+                                /*userCallback: function(value, index, values) {
+                                 return '' + value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                 }*/
+                            }
+                        }]
+                    }
+                }
+            };
+            // 매출
+            config1.data.labels = data.labels;
+            config1.data.datasets[0].data = data.sales;
+
+            var ctx1 = object.get(0).getContext("2d");
+            let chart = new Chart(ctx1, config1);
+        }
     }
+
+    let ajax = {
+        draw_chart: function (COMP_CODE, object) {
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'get',
+                data: {
+                    COMP_CODE: COMP_CODE,
+                },
+                url: '/main/get_stock_chart',
+                success: function (data, status, xhr) {
+                    ui.drawchart(data, object);
+                }
+            });
+        }
+    };
 
     // 기본 DATA (1회만 처리)
     let handle_ajax = (function () {
@@ -125,6 +202,10 @@ requirejs([
                 pop.fadeIn(500);
             });
         })();
+
+        // 그래프
+        ajax.draw_chart('005930', $('#chart_01'));
+        ajax.draw_chart('003490', $('#chart_02'));
     })();
 
     // 시스템 데이터와 비교하여 변경된 항목만 업데이트 처리

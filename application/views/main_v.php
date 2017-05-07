@@ -145,14 +145,28 @@
 					<strong>삼성전자</strong>
 					<a href="#">기업정보 상세보기<img src="/dist/images/ico_dtarr.png" alt=""></a>
 				</div>
-				<div class="chart"><img src="/dist/images/chart_mn1.jpg" alt=""></div>
+				<div class="chart" style="width: 440px; height: 190px; margin: auto">
+					<canvas id="chart_01" width="400" height="170"></canvas>
+				</div>
+				<!--
+				<div class="chart">
+					<img src="/dist/images/chart_mn1.jpg" alt="">
+				</div>
+				-->
 			</div>
 			<div class="chart_mn">
 				<div class="tit_bt">
 					<strong>대한항공</strong>
 					<a href="#">기업정보 상세보기<img src="/dist/images/ico_dtarr.png" alt=""></a>
 				</div>
-				<div class="chart"><img src="/dist/images/chart_mn2.jpg" alt=""></div>
+				<div class="chart" style="width: 440px; height: 190px; margin: auto">
+					<canvas id="chart_02" width="400" height="170"></canvas>
+				</div>
+				<!--
+				<div class="chart">
+					<img src="/dist/images/chart_mn2.jpg" alt="">
+				</div>
+				-->
 			</div>
 		</div>
 		<div class="box_mnrtg2">
