@@ -1,0 +1,78 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* 관심종목 */
+#stock_table_01 {
+	display: block;
+	width: 796px;
+	border-collapse: collapse;
+}
+
+#stock_table_01 tbody {
+	display: block;
+	height: 200px;
+	overflow: auto;
+}
+
+/*
+#stock_table_01 th { border: 1px solid #000;}
+#stock_table_01 td { border: 1px solid #000;}
+*/
+
+#stock_table_01 th:nth-of-type(1), #stock_table_01 td:nth-of-type(1) { width: 320px; }
+#stock_table_01 th:nth-of-type(2), #stock_table_01 td:nth-of-type(2) { width: 150px; }
+#stock_table_01 th:nth-of-type(3), #stock_table_01 td:nth-of-type(3) { width: 150px; }
+#stock_table_01 th:nth-of-type(4), #stock_table_01 td:nth-of-type(4) { width: 150px; }
+/* //관심종목 */
+
+
+/* 관심종목 등록하기*/
+#stock_table_02 {
+	display: block;
+	width: 900px;
+	border-collapse: collapse;
+}
+
+#stock_table_02 tbody {
+	display: block;
+	height: 450px;
+	overflow: auto;
+}
+
+/*
+#stock_table_02 th { border: 1px solid #000;}
+#stock_table_02 td { border: 1px solid #000;}
+*/
+
+#stock_table_02 th:nth-of-type(1), #stock_table_02 td:nth-of-type(1) { width: 75px; }
+#stock_table_02 th:nth-of-type(2), #stock_table_02 td:nth-of-type(2) { width: 320px; }
+#stock_table_02 th:nth-of-type(3), #stock_table_02 td:nth-of-type(3) { width: 160px; }
+#stock_table_02 th:nth-of-type(4), #stock_table_02 td:nth-of-type(4) { width: 160px; }
+#stock_table_02 th:nth-of-type(5), #stock_table_02 td:nth-of-type(5) { width: 160px; }
+/* //관심종목 */
+
+
+/* 잔고 보유 현황 */
+#stock_table_03 {
+	display: block;
+	width: 930px;
+	border-collapse: collapse;
+}
+
+#stock_table_03 tbody {
+	display: block;
+	height: 135px;
+	overflow: auto;
+}
+
+/*
+#stock_table_03 th { border: 1px solid #000;}
+#stock_table_03 td { border: 1px solid #000;}
+*/
+
+#stock_table_03 th:nth-of-type(1), #stock_table_03 td:nth-of-type(1) { width: 264px; }
+#stock_table_03 th:nth-of-type(2), #stock_table_03 td:nth-of-type(2) { width: 160px; }
+#stock_table_03 th:nth-of-type(3), #stock_table_03 td:nth-of-type(3) { width: 160px; }
+#stock_table_03 th:nth-of-type(4), #stock_table_03 td:nth-of-type(4) { width: 160px; }
+#stock_table_03 th:nth-of-type(5), #stock_table_03 td:nth-of-type(5) { width: 160px; }
+/* //잔고 보유 현황 */

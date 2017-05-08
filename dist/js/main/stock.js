@@ -5,7 +5,7 @@
 requirejs([
     'jquery', 'bootstrap', 'moment', 'jquery-ui', 'session',
     '/dist/js/main/common.js',         // 공통 처리 js
-    'chartjs'
+    'chartjs',
 ], function ($, bootstrap, moment, a, session, common) {
     "use strict";
 

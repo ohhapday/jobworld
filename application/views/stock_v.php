@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="/dist/css/common.css"/>
 	<link rel="stylesheet" type="text/css" href="/dist/css/layout.css"/>
 	<link rel="stylesheet" type="text/css" href="/dist/css/content.css"/>
+	<link rel="stylesheet" type="text/css" href="/dist/css/scroll.css"/>
 
 	<!--[if lt IE 9]>
 	<script src="../js/html5shiv.js"></script>
@@ -132,14 +133,8 @@
 					<h3 class="ic5">관심종목</h3>
 					<a href="#" class="btn_plss"><img src="/dist/images/ico_sbpls.gif" alt=""></a>
 				</div>
-				<div class="box_tbllist" style="height: 305px; overflow-y: auto;">
-					<table>
-						<colgroup>
-							<col style="width: 40%;">
-							<col style="width: 20%;">
-							<col style="width: 20%;">
-							<col style="width: 20%;">
-						</colgroup>
+				<div class="box_tbllist">
+					<table id="stock_table_01">
 						<thead>
 						<tr>
 							<th scope="col">종목명</th>
@@ -175,8 +170,9 @@
 					</ul>
 				</div>
 				<div class="ar_btm_bx clfix">
-					<div class="box_tbllist" style="height: 300px; overflow-y: auto;">
-						<table style="height: 299px;">
+					<div class="box_tbllist">
+						<table id="stock_table_03">
+							<!--
 							<colgroup>
 								<col style="width: 28%;">
 								<col style="width: 18%;">
@@ -184,6 +180,7 @@
 								<col style="width: 18%;">
 								<col style="width: 18%;">
 							</colgroup>
+							-->
 							<thead>
 							<tr>
 								<th scope="col">종목명</th>
@@ -205,7 +202,7 @@
 							<tfoot>
 							<tr class="last">
 								<th scope="row">합계</th>
-								<td colspan="4" class="cobg">7,500</td>
+								<td colspan="4" class="cobg" style="width: 640px;">7,500</td>
 							</tr>
 							</tfoot>
 						</table>
@@ -230,7 +227,8 @@
 		<div class="box_contpop">
 			<div class="contpdd">
 				<div class="box_tbllist ovtbl">
-					<table>
+					<table id="stock_table_02">
+						<!--
 						<colgroup>
 							<col style="width: 7%;">
 							<col style="width: 33%;">
@@ -238,6 +236,7 @@
 							<col style="width: 18%;">
 							<col style="width: 18%;">
 						</colgroup>
+						-->
 						<thead>
 						<tr>
 							<th scope="col">선택</th>
