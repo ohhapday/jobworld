@@ -129,6 +129,9 @@ requirejs([
             $table.find('td:eq(0)').text(credit.CREDIT_RANK);
             $table.find('td:eq(1)').text(credit.CREDIT_MEMO);
         },
+        benifit: function () {
+
+        },
         drawchart: function (data) {
             let config1 = {
                 type: 'line',
@@ -299,6 +302,13 @@ requirejs([
             ajax.post_buyBond();
 
             ui.init();
+        });
+
+        // 수익률 보기
+        $('.btn_bview').on('click', function () {
+            ui.benifit();
+
+            $('.wrap_layerpop:eq(1)').fadeIn(500);
         });
     })();
 

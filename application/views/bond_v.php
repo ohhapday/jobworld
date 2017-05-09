@@ -151,7 +151,7 @@
 				<div class="sb_tit">
 					<h3 class="ic4">잔고 보유 현황</h3>
 				</div>
-				<div class="ar_btm_sel">
+				<div class="ar_btm_sel" style="padding: 15px 40px 15px 40px;">
 					<ul class="dtlist clfix">
 						<!-- <li><strong>고객자산</strong><span></span></li> -->
 						<li style="width: 50%;"><strong>투자금액</strong><span></span></li>
@@ -159,7 +159,7 @@
 					</ul>
 				</div>
 
-				<div class="ar_btm_bx clfix" style="overflow-y: auto; height: 250px;">
+				<div class="ar_btm_bx clfix" style="overflow-y: auto; height: 240px;">
 					<div class="box_tbllist">
 						<table>
 							<colgroup>
@@ -178,7 +178,7 @@
 							</thead>
 							<tbody>
 							<tr style="display: none;">
-								<td class="align-l">국고채</td>
+								<td class="align-l" style="overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">국고채</td>
 								<td>00</td>
 								<td>2,000,000</td>
 								<td>100.00%</td>
@@ -188,11 +188,15 @@
 					</div>
 				</div>
 
-				<div class="box_bt_rdo clfix" style="margin-top: 10px;">
+				<div class="box_bt_rdo clfix" style="margin-top: -10px;">
 					<div class="ar_rdol">
 						<input type="radio" name="chdate" id="chdate1" checked><label for="chdate1">만기</label>
 						<input type="radio" name="chdate" id="chdate2"><label for="chdate2">중도해지</label>
-						<input type="date" value="" style="width: 180px;">
+						<select style="width: 180px; height: 40px;">
+							<option>3개월</option>
+							<option>6개월</option>
+							<option>12개월</option>
+						</select>
 					</div>
 					<a href="#" class="btn_bview"><span>예상 수익률 보기</span></a>
 				</div>
@@ -281,6 +285,240 @@
 
 </div>
 <!-- //layer pop -->
+
+<!-- 수익률 보기 pop -->
+<div class="wrap_layerpop" style="display: none;">
+
+	<div class="layerpop pop8">
+		<div class="box_titpop2">
+			<h2>채권투자자<span>홍길동</span></h2>
+			<div class="btn_close"><button type="button">닫기</button></div>
+		</div>
+		<div class="box_contpop2" style="overflow-y: auto; height: 530px;">
+			<div class="pb_view clfix">
+				<div class="pb_tit">
+					<h3 class="sb_bg bg1">채권명</h3>
+					<span>잡 월드 직업 체험 펀드</span>
+				</div>
+				<div class="ar_btm_dtt clfix">
+					<div class="dtts">
+						<h4 class="titpb1">펀드정보</h4>
+						<div class="ar_btm_inp">
+							<ul class="dtlist clfix">
+								<li>
+									<strong>보유기간</strong>
+									<input type="text" value="00" class="align-r"><span>개월</span>
+								</li>
+								<li>
+									<strong>수익률</strong>
+									<input type="text" value="00" class="align-r"><span>%</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="dtts1">
+						<span class="bgdtt1"><img src="/dist/images/ico_pops3.gif" alt=""></span>
+						<h4 class="titpb1">투자원금</h4>
+						<div class="ar_btm_inp">
+							<ul class="dtlist clfix inp100">
+								<li>
+									<strong>투자자A</strong>
+									<input type="text" value="00" class="align-r">
+								</li>
+								<li>
+									<strong>투자자B</strong>
+									<input type="text" value="00" class="align-r">
+								</li>
+								<li>
+									<strong>투자자C</strong>
+									<input type="text" value="00" class="align-r">
+								</li>
+								<li>
+									<strong class="back-non">합계</strong>
+									<input type="text" value="00" class="align-r colred">
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="dtts2">
+						<h4 class="titpb2">수익금액</h4>
+						<div class="ar_btm_inp">
+							<ul class="dtlist clfix inp100">
+								<li>
+									<strong>투자자A</strong>
+									<input type="text" value="00" class="align-r">
+								</li>
+								<li>
+									<strong>투자자B</strong>
+									<input type="text" value="00" class="align-r">
+								</li>
+								<li>
+									<strong>투자자C</strong>
+									<input type="text" value="00" class="align-r">
+								</li>
+								<li>
+									<strong class="back-non">합계</strong>
+									<input type="text" value="00" class="align-r colred">
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<p class="pem">펀드 메니저 수익률 00%  수익금 00,000원</p>
+			</div>
+
+			<div class="pb_view clfix">
+				<div class="pb_tit">
+					<h3 class="sb_bg bg2">채권명</h3>
+					<span>잡 월드 직업 체험 펀드</span>
+				</div>
+				<div class="ar_btm_dtt clfix">
+					<div class="dtts">
+						<h4 class="titpb1">펀드정보</h4>
+						<div class="ar_btm_inp">
+							<ul class="dtlist clfix">
+								<li>
+									<strong>보유기간</strong>
+									<input type="text" value="00" class="align-r"><span>개월</span>
+								</li>
+								<li>
+									<strong>수익률</strong>
+									<input type="text" value="00" class="align-r"><span>%</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="dtts1">
+						<span class="bgdtt1"><img src="/dist/images/ico_pops3.gif" alt=""></span>
+						<h4 class="titpb1">투자원금</h4>
+						<div class="ar_btm_inp">
+							<ul class="dtlist clfix inp100">
+								<li>
+									<strong>투자자A</strong>
+									<input type="text" value="00" class="align-r">
+								</li>
+								<li>
+									<strong>투자자B</strong>
+									<input type="text" value="00" class="align-r">
+								</li>
+								<li>
+									<strong>투자자C</strong>
+									<input type="text" value="00" class="align-r">
+								</li>
+								<li>
+									<strong class="back-non">합계</strong>
+									<input type="text" value="00" class="align-r colred">
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="dtts2">
+						<h4 class="titpb2">수익금액</h4>
+						<div class="ar_btm_inp">
+							<ul class="dtlist clfix inp100">
+								<li>
+									<strong>투자자A</strong>
+									<input type="text" value="00" class="align-r">
+								</li>
+								<li>
+									<strong>투자자B</strong>
+									<input type="text" value="00" class="align-r">
+								</li>
+								<li>
+									<strong>투자자C</strong>
+									<input type="text" value="00" class="align-r">
+								</li>
+								<li>
+									<strong class="back-non">합계</strong>
+									<input type="text" value="00" class="align-r colred">
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<p class="pem">펀드 메니저 수익률 00%  수익금 00,000원</p>
+			</div>
+
+			<div class="pb_view clfix">
+				<div class="pb_tit">
+					<h3 class="sb_bg bg3">채권명</h3>
+					<span>잡 월드 직업 체험 펀드</span>
+				</div>
+				<div class="ar_btm_dtt clfix">
+					<div class="dtts">
+						<h4 class="titpb1">펀드정보</h4>
+						<div class="ar_btm_inp">
+							<ul class="dtlist clfix">
+								<li>
+									<strong>보유기간</strong>
+									<input type="text" value="00" class="align-r"><span>개월</span>
+								</li>
+								<li>
+									<strong>수익률</strong>
+									<input type="text" value="00" class="align-r"><span>%</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="dtts1">
+						<span class="bgdtt1"><img src="/dist/images/ico_pops3.gif" alt=""></span>
+						<h4 class="titpb1">투자원금</h4>
+						<div class="ar_btm_inp">
+							<ul class="dtlist clfix inp100">
+								<li>
+									<strong>투자자A</strong>
+									<input type="text" value="00" class="align-r">
+								</li>
+								<li>
+									<strong>투자자B</strong>
+									<input type="text" value="00" class="align-r">
+								</li>
+								<li>
+									<strong>투자자C</strong>
+									<input type="text" value="00" class="align-r">
+								</li>
+								<li>
+									<strong class="back-non">합계</strong>
+									<input type="text" value="00" class="align-r colred">
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="dtts2">
+						<h4 class="titpb2">수익금액</h4>
+						<div class="ar_btm_inp">
+							<ul class="dtlist clfix inp100">
+								<li>
+									<strong>투자자A</strong>
+									<input type="text" value="00" class="align-r">
+								</li>
+								<li>
+									<strong>투자자B</strong>
+									<input type="text" value="00" class="align-r">
+								</li>
+								<li>
+									<strong>투자자C</strong>
+									<input type="text" value="00" class="align-r">
+								</li>
+								<li>
+									<strong class="back-non">합계</strong>
+									<input type="text" value="00" class="align-r colred">
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<p class="pem">펀드 메니저 수익률 00%  수익금 00,000원</p>
+			</div>
+		</div>
+		<div class="btn_popbtm mt10 pb0">
+			<span class="btn_print"><a href="#">인쇄</a></span>
+		</div>
+		<div class="bg_popbtm">&nbsp;</div>
+	</div>
+
+</div>
+<!-- //수익률 보기 pop -->
 
 </body>
 </html>
