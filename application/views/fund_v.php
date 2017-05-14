@@ -52,18 +52,14 @@
 				<div class="box_tbllist" style="overflow-y: auto; height: 183px;">
 					<table>
 						<colgroup>
+							<col style="width: 50%;">
 							<col style="width: 25%;">
 							<col style="width: 25%;">
-							<col style="width: 17%; background-color: darkgray">
-							<col style="width: 17%; background-color: darkgray">
-							<col style="width: 16%;">
 						</colgroup>
 						<thead>
 						<tr>
 							<th scope="col">펀드명</th>
 							<th scope="col">펀드규모</th>
-							<th scope="col" style="background-color: darkgray">기준가</th>
-							<th scope="col" style="background-color: darkgray">평가금액</th>
 							<th scope="col">예상 수익률</th>
 						</tr>
 						</thead>
@@ -71,8 +67,6 @@
 						<tr style="display: none;">
 							<td class="align-l"><button type="button">잡워드 직업체험 펀드</button></td>
 							<td>10,000,000</td>
-							<td></td>
-							<td></td>
 							<td></td>
 						</tr>
 						</tbody>
@@ -101,11 +95,10 @@
 				<div class="box_tbllist" style="overflow-y: auto; height: 363px;">
 					<table>
 						<colgroup>
-							<col style="width: 22%;">
+							<col style="width: 32%;">
+							<col style="width: 24%;">
+							<col style="width: 24%;">
 							<col style="width: 18%;">
-							<col style="width: 18%;">
-							<col style="width: 18%;">
-							<col style="width: 22%; background-color: darkgray;">
 						</colgroup>
 						<thead>
 						<tr>
@@ -113,7 +106,6 @@
 							<th scope="col">현재가</th>
 							<th scope="col">전일대비</th>
 							<th scope="col">등락율</th>
-							<th scope="col" style="background-color: darkgray;">정정/취소</th>
 						</tr>
 						</thead>
 						<tbody>
@@ -122,7 +114,6 @@
 							<td>5,500</td>
 							<td><img src="/dist/images/ico_mndw.png" alt=""> <span class="pt2">820</span></td>
 							<td><em class="">+2.00%</em></td>
-							<td><a href="#" class="und">클릭하세요</a></td>
 						</tr>
 						</tbody>
 					</table>
@@ -165,8 +156,6 @@
 				</div>
 				<div class="ar_btm_sel">
 					<ul class="dtlist clfix">
-						<li style="background-color: darkgray;"><strong>매수단가</strong><span>10,000</span></li>
-						<li style="background-color: darkgray;"><strong>매수수량</strong><span>200</span></li>
 						<li>
 							<strong class="txtlo">예상보유기간(년)</strong>
 							<select name="FUND_MM">
@@ -180,7 +169,7 @@
 				</div>
 				<div class="ar_btm_bx clfix">
 					<div class="leftar">
-						<div class="box_tbllist">
+						<!-- <div class="box_tbllist">
 							<table style="background-color: darkgray;">
 								<colgroup>
 									<col style="width: 25%;">
@@ -206,6 +195,7 @@
 								</tbody>
 							</table>
 						</div>
+						-->
 						<a href="#" class="btn_bview"><span>전체 수익률 보기</span></a>
 					</div>
 					<div class="rightar">

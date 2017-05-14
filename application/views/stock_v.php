@@ -313,5 +313,98 @@
 </div>
 <!-- //layer pop -->
 
+<!-- 기업정보 pop -->
+<div class="wrap_layerpop" style="display: none;">
+
+	<div class="layerpop pop16">
+		<div class="box_titpop">
+			<h2>기업정보</h2>
+			<div class="btn_close">
+				<button type="button">닫기</button>
+			</div>
+		</div>
+		<div class="box_contpop">
+			<div class="contpdd">
+				<div class="box_tblwrite tblview">
+					<table>
+						<colgroup>
+							<col style="width: 30%;">
+							<col style="width: 70%;">
+						</colgroup>
+						<tbody>
+						<tr>
+							<th scope="row">회사이름</th>
+							<td>삼성전자</td>
+						</tr>
+						<tr>
+							<th scope="row">영문명</th>
+							<td>SAMSUNG ECECTRONICS CO,.LTD</td>
+						</tr>
+						<tr>
+							<th scope="row">공시회사명</th>
+							<td>삼성전자</td>
+						</tr>
+						<tr>
+							<th scope="row">종목코드</th>
+							<td>005930</td>
+						</tr>
+						<tr>
+							<th scope="row">대표자명</th>
+							<td>권오현, 윤부근, 신종균</td>
+						</tr>
+						<tr>
+							<th scope="row">법인구분</th>
+							<td>유가증권시장</td>
+						</tr>
+						<tr>
+							<th scope="row">법인등록번호</th>
+							<td>130111-0006246</td>
+						</tr>
+						<tr>
+							<th scope="row">사업자등록번호</th>
+							<td>124-81-00998</td>
+						</tr>
+						<tr>
+							<th scope="row">주소</th>
+							<td>경기도 수원시 영통구 삼성로 129(매탄동)</td>
+						</tr>
+						<tr>
+							<th scope="row">홈페이지</th>
+							<td>WWW.SEC.CO.KR</td>
+						</tr>
+						<tr>
+							<th scope="row">IR홈페이지</th>
+							<td></td>
+						</tr>
+						<tr>
+							<th scope="row">전화번호</th>
+							<td>031-200-114</td>
+						</tr>
+						<tr>
+							<th scope="row">팩스번호</th>
+							<td>031-200-7538</td>
+						</tr>
+						<tr>
+							<th scope="row">업종명</th>
+							<td>통신 및 방송 장비 제조업</td>
+						</tr>
+						<tr>
+							<th scope="row">설립일</th>
+							<td>1969-01-13</td>
+						</tr>
+						<tr>
+							<th scope="row">결산월</th>
+							<td>12월</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- //기업정보 pop -->
+
 </body>
 </html>

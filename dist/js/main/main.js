@@ -46,7 +46,7 @@ requirejs([
                 data: {
                     datasets: [{
                         borderWidth: 3,
-                        borderColor: "#92312e",
+                        borderColor: "#ba0808",
                         backgroundColor: "rgba(248,241,255,1)",
                         pointBorderColor: "#ba0808",
                         pointBorderWidth: 1,
@@ -99,7 +99,26 @@ requirejs([
 
             var ctx1 = object.get(0).getContext("2d");
             let chart = new Chart(ctx1, config1);
-        }
+        },
+        company_info: function (data) {
+            let table = $('.wrap_layerpop:eq(2) table');
+
+            table.find('td:eq(0)').text(data.COMP_NAME);
+            table.find('td:eq(1)').text(data.COM_01);
+            table.find('td:eq(2)').text(data.COM_02);
+            table.find('td:eq(3)').text(data.COMP_CODE);
+            table.find('td:eq(4)').text(data.COM_03);
+            table.find('td:eq(5)').text(data.COM_04);
+            table.find('td:eq(6)').text(data.COM_05);
+            table.find('td:eq(7)').text(data.COM_06);
+            table.find('td:eq(8)').text(data.COM_07);
+            table.find('td:eq(9)').text(data.COM_08);
+            table.find('td:eq(10)').text(data.COM_09);
+            table.find('td:eq(11)').text(data.COM_10);
+            table.find('td:eq(12)').text(data.COM_11);
+            table.find('td:eq(13)').text(data.COM_12);
+            table.find('td:eq(14)').text(data.COM_13);
+        },
     }
 
     let ajax = {
@@ -114,6 +133,20 @@ requirejs([
                 url: '/main/get_stock_chart',
                 success: function (data, status, xhr) {
                     ui.drawchart(data, object);
+                }
+            });
+        },
+        company_info: function (COMP_CODE) {
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'get',
+                data: {
+                    COMP_CODE: COMP_CODE,
+                },
+                url: '/main/get_company_info',
+                success: function (data, status, xhr) {
+                    ui.company_info(data);
                 }
             });
         }
@@ -137,6 +170,11 @@ requirejs([
 
     // 기본 UI (1회만 처리)
     (function () {
+        // 좌측 화면 생성
+        (function () {
+            let myWindow = window.open("/main/left_main", "MsgWindow", "");
+        })();
+
         // 뉴스 처리
         (function () {
             $.each(mData.NEWS, function (i) {
@@ -206,17 +244,28 @@ requirejs([
         // 그래프
         ajax.draw_chart('005930', $('#chart_01'));
         ajax.draw_chart('003490', $('#chart_02'));
+
+        // 기업정보 상세보기
+        (function () {
+            $('.chart_mn').on('click', function () {
+                let pop = $('.wrap_layerpop:eq(2)');
+                let index = $('.chart_mn').index($(this));
+                let COMP_CODE = (index === 0) ? '005930' : '003490';
+
+                ajax.company_info(COMP_CODE);
+                pop.fadeIn(500);
+            });
+        })();
     })();
 
     // 시스템 데이터와 비교하여 변경된 항목만 업데이트 처리
     let get_ajax = function (tmp) {
-        console.log(eData);
         if (eData.survey_STATUS == '1') {
             $('#gnb li:eq(0)').addClass('on');
 
             $('#gnb li:eq(0)').on('click', function () {
+                $('.wrap_layerpop:eq(1) .layerpop').hide();
                 $('.wrap_layerpop:eq(1) .layerpop:eq(0)').show();
-                $('.wrap_layerpop:eq(1) .layerpop:eq(1)').hide();
                 $('.wrap_layerpop:eq(1)').fadeIn(500);
             });
         } else {

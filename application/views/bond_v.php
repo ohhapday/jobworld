@@ -84,6 +84,7 @@
 					</table>
 				</div>
 			</div>
+			<!--
 			<div class="sbright">
 				<div class="sb_tit">
 					<h3 class="ic2">채권 시황</h3>
@@ -122,6 +123,7 @@
 					</div>
 				</div>
 			</div>
+			-->
 		</div>
 		<div class="box_sbbtm clfix">
 			<div class="sbleftbt2">
@@ -198,7 +200,7 @@
 							<option>12개월</option>
 						</select>
 					</div>
-					<a href="#" class="btn_bview"><span>예상 수익률 보기</span></a>
+					<a href="#" class="btn_bview"><span>수익률 보기</span></a>
 				</div>
 
 			</div>

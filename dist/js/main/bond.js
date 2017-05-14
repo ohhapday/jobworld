@@ -342,7 +342,7 @@ requirejs([
                     console.log(mData);
                 }
             });
-            ajax.draw_chart();
+            // ajax.draw_chart();
             console.log('채권 변경');
         }
 

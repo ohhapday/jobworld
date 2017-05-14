@@ -9,8 +9,7 @@ requirejs([
     "use strict";
 
     let pop = $('.wrap_layerpop:eq(1)'),    // 설문지 팝업
-        q_pop = pop.find('.layerpop').eq(0),// 질문 팝업
-        a_pop = pop.find('.layerpop').eq(1);// 결과 팝업
+        q_pop = pop.find('.layerpop').eq(0);// 질문 팝업
 
     let user = {                            // 사용자 정보
         key: session.EMPL_KEY,              // 기본키
@@ -82,7 +81,6 @@ requirejs([
                 total = 0;
             $.each(radio, function () {
                 total +=  parseInt($(this).val());
-                // todo DB 처리 필요 (토탈 점수만 필요하지 않을지??)
             });
 
             answerData = {
@@ -91,8 +89,15 @@ requirejs([
 
             alert(total + '점입니다.');
 
-            q_pop.fadeOut(500);
-            a_pop.fadeIn(500);
+            pop.find('.layerpop').hide();
+
+            if(total < 10) {
+                pop.find('.layerpop').eq(1).fadeIn(500);
+            } else if(total > 15) {
+                pop.find('.layerpop').eq(3).fadeIn(500);
+            } else {
+                pop.find('.layerpop').eq(2).fadeIn(500);
+            }
         });
     })();
 

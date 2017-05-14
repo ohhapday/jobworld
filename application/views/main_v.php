@@ -148,11 +148,6 @@
 				<div class="chart" style="width: 440px; height: 190px; margin: auto">
 					<canvas id="chart_01" width="400" height="170"></canvas>
 				</div>
-				<!--
-				<div class="chart">
-					<img src="/dist/images/chart_mn1.jpg" alt="">
-				</div>
-				-->
 			</div>
 			<div class="chart_mn">
 				<div class="tit_bt">
@@ -162,11 +157,6 @@
 				<div class="chart" style="width: 440px; height: 190px; margin: auto">
 					<canvas id="chart_02" width="400" height="170"></canvas>
 				</div>
-				<!--
-				<div class="chart">
-					<img src="/dist/images/chart_mn2.jpg" alt="">
-				</div>
-				-->
 			</div>
 		</div>
 		<div class="box_mnrtg2">
@@ -240,7 +230,7 @@
 		</div>
 	</div>
 
-	<!-- 우측 팝 -->
+	<!-- 우측 팝(안정형) -->
 	<div class="layerpop pop1" style="display: none;">
 		<div class="box_titpop">
 			<h2>투자성향 결과</h2>
@@ -259,8 +249,139 @@
 		</div>
 	</div>
 
+	<!-- 우측 팝(중립형) -->
+	<div class="layerpop pop1" style="display: none;">
+		<div class="box_titpop">
+			<h2>투자성향 결과</h2>
+			<div class="btn_close">
+				<button type="button">닫기</button>
+			</div>
+		</div>
+		<div class="box_contpop">
+			<div class="area_res">
+				<div class="type type3">
+					<strong>중립형</strong>
+					<p>매사에 조심조심 </p>
+					<span>당장에 손실을 좀 보더라도 어느 정도 규직적인 수익을 원해 투자한 금액의 일부는 위험성이 있는 상품에 투자할 수 있는 성격</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 우측 팝(공격형) -->
+	<div class="layerpop pop1" style="display: none;">
+		<div class="box_titpop">
+			<h2>투자성향 결과</h2>
+			<div class="btn_close">
+				<button type="button">닫기</button>
+			</div>
+		</div>
+		<div class="box_contpop">
+			<div class="area_res">
+				<div class="type type2">
+					<strong>공격형</strong>
+					<p>모험이 없다면 재미 없지 </p>
+					<span>투자한 돈의 손실을 보는 것 보다 투자로 수익을 얻는 것을 더 중요시 하여 위험한 상품에도 투자하는 성격</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>
 <!-- //설문조사 pop -->
+
+<!-- 기업정보 pop -->
+<div class="wrap_layerpop" style="display: none;">
+
+	<div class="layerpop pop16">
+		<div class="box_titpop">
+			<h2>기업정보</h2>
+			<div class="btn_close">
+				<button type="button">닫기</button>
+			</div>
+		</div>
+		<div class="box_contpop">
+			<div class="contpdd">
+				<div class="box_tblwrite tblview">
+					<table>
+						<colgroup>
+							<col style="width: 30%;">
+							<col style="width: 70%;">
+						</colgroup>
+						<tbody>
+						<tr>
+							<th scope="row">회사이름</th>
+							<td>삼성전자</td>
+						</tr>
+						<tr>
+							<th scope="row">영문명</th>
+							<td>SAMSUNG ECECTRONICS CO,.LTD</td>
+						</tr>
+						<tr>
+							<th scope="row">공시회사명</th>
+							<td>삼성전자</td>
+						</tr>
+						<tr>
+							<th scope="row">종목코드</th>
+							<td>005930</td>
+						</tr>
+						<tr>
+							<th scope="row">대표자명</th>
+							<td>권오현, 윤부근, 신종균</td>
+						</tr>
+						<tr>
+							<th scope="row">법인구분</th>
+							<td>유가증권시장</td>
+						</tr>
+						<tr>
+							<th scope="row">법인등록번호</th>
+							<td>130111-0006246</td>
+						</tr>
+						<tr>
+							<th scope="row">사업자등록번호</th>
+							<td>124-81-00998</td>
+						</tr>
+						<tr>
+							<th scope="row">주소</th>
+							<td>경기도 수원시 영통구 삼성로 129(매탄동)</td>
+						</tr>
+						<tr>
+							<th scope="row">홈페이지</th>
+							<td>WWW.SEC.CO.KR</td>
+						</tr>
+						<tr>
+							<th scope="row">IR홈페이지</th>
+							<td></td>
+						</tr>
+						<tr>
+							<th scope="row">전화번호</th>
+							<td>031-200-114</td>
+						</tr>
+						<tr>
+							<th scope="row">팩스번호</th>
+							<td>031-200-7538</td>
+						</tr>
+						<tr>
+							<th scope="row">업종명</th>
+							<td>통신 및 방송 장비 제조업</td>
+						</tr>
+						<tr>
+							<th scope="row">설립일</th>
+							<td>1969-01-13</td>
+						</tr>
+						<tr>
+							<th scope="row">결산월</th>
+							<td>12월</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- //기업정보 pop -->
 
 </body>
 </html>

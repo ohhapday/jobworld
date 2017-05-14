@@ -35,6 +35,11 @@ class Main extends CI_Controller
         $this->load->view('main_v');
     }
 
+    public function left_main()
+    {
+        $this->load->view('left_main_v');
+    }
+
     public function get_mData()
     {
         $return->NEWS = $this->main_m->get_NEWS();
@@ -271,6 +276,13 @@ class Main extends CI_Controller
 
         $return->labels = $txt_data;
         $return->sales = $sales;
+
+        echo json_encode($return);
+    }
+
+    public function get_company_info()
+    {
+        $return = $this->main_m->get_company_info($_GET['COMP_CODE']);
 
         echo json_encode($return);
     }

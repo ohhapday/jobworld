@@ -189,7 +189,26 @@ requirejs([
 
             var ctx1 = $("#chart_01").get(0).getContext("2d");
             let chart = new Chart(ctx1, config1);
-        }
+        },
+        company_info: function (data) {
+            let table = $('.wrap_layerpop:eq(3) table');
+
+            table.find('td:eq(0)').text(data.COMP_NAME);
+            table.find('td:eq(1)').text(data.COM_01);
+            table.find('td:eq(2)').text(data.COM_02);
+            table.find('td:eq(3)').text(data.COMP_CODE);
+            table.find('td:eq(4)').text(data.COM_03);
+            table.find('td:eq(5)').text(data.COM_04);
+            table.find('td:eq(6)').text(data.COM_05);
+            table.find('td:eq(7)').text(data.COM_06);
+            table.find('td:eq(8)').text(data.COM_07);
+            table.find('td:eq(9)').text(data.COM_08);
+            table.find('td:eq(10)').text(data.COM_09);
+            table.find('td:eq(11)').text(data.COM_10);
+            table.find('td:eq(12)').text(data.COM_11);
+            table.find('td:eq(13)').text(data.COM_12);
+            table.find('td:eq(14)').text(data.COM_13);
+        },
     };
 
     let ajax = {
@@ -208,6 +227,20 @@ requirejs([
                 url: '/main/get_stock_chart',
                 success: function (data, status, xhr) {
                     ui.drawchart(data);
+                }
+            });
+        },
+        company_info: function (COMP_CODE) {
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'get',
+                data: {
+                    COMP_CODE: COMP_CODE,
+                },
+                url: '/main/get_company_info',
+                success: function (data, status, xhr) {
+                    ui.company_info(data);
                 }
             });
         }
@@ -428,7 +461,14 @@ requirejs([
 
         // 공시정보 클릭
         $('.btn_adgre').on('click', function () {
-            alert('공시정보 준비중입니다.');
+            let pop = $('.wrap_layerpop:eq(3)');
+            let index = $('.box_tbllist:eq(0) table tbody tr:not(:eq(0))')
+                .index($('.box_tbllist:eq(0) table tbody tr.on'));
+
+            let COMP_CODE = mData.favor[index];
+
+            ajax.company_info(COMP_CODE);
+            pop.fadeIn(500);
         });
 
         // 주가그래프

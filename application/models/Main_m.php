@@ -761,6 +761,19 @@ class Main_m extends CI_Model
         return $return;
     }
 
+    public function get_company_info($code)
+    {
+        $query = "
+            SELECT * FROM
+              job014
+            WHERE
+              COMP_CODE = ?
+        ";
+        $return = $this->db->query($query, $code)->row();
+
+        return $return;
+    }
+
     /**
      * end 주식 투자 체험
      */

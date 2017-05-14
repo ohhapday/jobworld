@@ -28,7 +28,7 @@
 .box_sbtop .sb_tit h3.ic4{background: url(../images/ico_sb12.gif) no-repeat 0 8px;}
 .box_sbtop .sb_tit h3.ic5{background: url(../images/ico_sb4.gif) no-repeat 0 8px;}
 .box_sbtop .sb_tit .btn_plss{position: absolute; top: 0; right: 0;}
-.box_sbtop .sbleft{float: left; width: 58%;}
+.box_sbtop .sbleft{float: left; width: 100%;}
 .box_sbtop .sbleft2{float: left; width: 45%;}
 .box_sbtop .sbleft .ar_btm_dt{margin-top: 30px; padding: 35px 40px 36px 40px; border: 1px solid #d0cbbe;}
 .box_sbtop .sbleft .dtlist li{float: left; width: 48%;}
@@ -102,8 +102,8 @@
 .box_sbbtm .sbrightbt{float: right; width: 63%;}
 .box_sbbtm .sbrightbt2{float: right; width: 43%;}
 .box_sbbtm .sbrightbt3{float: right; width: 53%;}
-.box_sbbtm .sbrightbt .ar_btm_sel{position: relative; padding: 25px 40px 26px 40px; border: 1px solid #d0cbbe;}
-.box_sbbtm .sbrightbt .ar_btm_sel .dtlist li{float: left; width: 30%;}
+.box_sbbtm .sbrightbt .ar_btm_sel{position: relative; padding: 25px 40px 26px 40px; border: 1px solid #d0cbbe; width: 50%;}
+.box_sbbtm .sbrightbt .ar_btm_sel .dtlist li{float: left; width: 80%;}
 .box_sbbtm .sbrightbt .ar_btm_sel .dtlist li strong{float: left; width: 40%; padding-right: 10px; padding-left: 15px; background: url(../images/ico_dt1.png) no-repeat 0 13px; box-sizing: border-box;}
 .box_sbbtm .sbrightbt .ar_btm_sel .dtlist li strong.txtlo{width: 64%;}
 .box_sbbtm .sbrightbt .ar_btm_sel .dtlist li span{float: left; width: 40%;}
