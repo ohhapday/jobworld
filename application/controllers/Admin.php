@@ -31,6 +31,22 @@ class Admin extends CI_Controller
         );
 
         $this->session->set_userdata($user_data);
+        // $this->load->view('admin/main_v');
+        $this->load->view('admin/main_2_v');
+    }
+
+    public function main2()
+    {
+        $this->session->sess_destroy();
+
+        // 세션 할당
+        $user_data = array(
+            'EMPL_KEY' => '',
+            'EMPL_NAME' => '운영자',
+            'MF_FG' => 'M',
+        );
+
+        $this->session->set_userdata($user_data);
         $this->load->view('admin/main_v');
     }
 
@@ -125,6 +141,22 @@ class Admin extends CI_Controller
         $key = $this->input->post('ANAL_KEY', true);
 
         return $this->admin_m->put_ANAL($key);
+    }
+
+    // 종합환경설정 업데이트
+    public function put_job024()
+    {
+        $return = $this->admin_m->put_job024($_POST);
+
+        echo json_encode($return);
+    }
+
+    // 채권정보 업데이트
+    public function put_job020()
+    {
+        $return = $this->admin_m->put_job020($_POST);
+
+        echo json_encode($return);
     }
 
 }

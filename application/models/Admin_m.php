@@ -161,7 +161,6 @@ class Admin_m extends CI_Model
 
     public function put_ANAL($key)
     {
-        var_dump($key);
         $this->db->trans_start();
 
         $query = "SELECT stock_rownum FROM tb_admin";
@@ -200,6 +199,48 @@ class Admin_m extends CI_Model
         }
 
         $this->db->query('UPDATE job017_copy SET SEND = 1 WHERE ANAL_KEY = ?', $key);
+
+        $this->db->trans_complete();
+
+        return $this->db->trans_status();
+    }
+
+    // 종합환경설정 업데이트
+    public function put_job024($data)
+    {
+        $this->db->trans_start();
+
+        foreach ($data['item'] as $item) {
+            $query = "
+                UPDATE job024 SET MD_NAME = ?
+                WHERE 
+                `KEY` = ?
+            ";
+            $this->db->query($query, array($item['value'], $item['key']));
+        }
+
+        $this->db->trans_complete();
+
+        return $this->db->trans_status();
+    }
+
+    // 채권정보 업데이트
+    public function put_job020($data)
+    {
+        $this->db->trans_start();
+
+        $update_data = array(
+            'BOND_NAME' => $data['item'][0]['value'],
+            'BOND_TOT' => $data['item'][1]['value'],
+            'BOND_CLDATE' => $data['item'][2]['value'],
+            'BOND_PRICE' => $data['item'][3]['value'],
+            'BOND_PER' => $data['item'][4]['value'],
+            'BOND_BOTIME' => $data['item'][5]['value'],
+            'BOND_BANK' => $data['item'][6]['value'],
+        );
+
+        $this->db->where(array('BOND_KEY' => $data['key']));
+        $this->db->update('job020', $update_data);
 
         $this->db->trans_complete();
 
