@@ -171,15 +171,15 @@ requirejs([
     // eventSource
     (function () {
         // if (mdata.usabled === 1) {
-            eventSource = new EventSource('/admin/sse_get_user');
-            let userCount = 0;
-            eventSource.onmessage = function (e) {
-                let user = JSON.parse(e.data).user;
-                if (userCount !== Object.keys(user).length) {
-                    user_insert_dom(user);
-                    userCount = Object.keys(user).length;
-                }
+        eventSource = new EventSource('/admin/sse_get_user');
+        let userCount = 0;
+        eventSource.onmessage = function (e) {
+            let user = JSON.parse(e.data).user;
+            if (userCount !== Object.keys(user).length) {
+                user_insert_dom(user);
+                userCount = Object.keys(user).length;
             }
+        }
         // }
     })();
 
@@ -743,11 +743,11 @@ requirejs([
                     pop.find('input[type="number"]').val(parseInt(this.PERCENT));
 
                     /*
-                    $clone.find('td:eq(0)').html(content).css('text-align', 'left');
-                    $clone.find('td:eq(1)').text(up_down);
+                     $clone.find('td:eq(0)').html(content).css('text-align', 'left');
+                     $clone.find('td:eq(1)').text(up_down);
 
-                    $table.append($clone.clone(true));
-                    */
+                     $table.append($clone.clone(true));
+                     */
                 });
 
                 pop.find('.box_tbllist:eq(1)').removeClass('hidden');
@@ -863,11 +863,11 @@ requirejs([
                     pop.find('input[type="number"]').val(parseInt(this.PERCENT));
 
                     /*
-                    $clone.find('td:eq(0)').html(content).css('text-align', 'left');
-                    $clone.find('td:eq(1)').text(up_down);
+                     $clone.find('td:eq(0)').html(content).css('text-align', 'left');
+                     $clone.find('td:eq(1)').text(up_down);
 
-                    $table.append($clone.clone(true));
-                    */
+                     $table.append($clone.clone(true));
+                     */
                 });
 
                 pop.find('.box_tbllist:eq(1)').removeClass('hidden');
