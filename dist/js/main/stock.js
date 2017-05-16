@@ -11,6 +11,7 @@ requirejs([
 
     let nf = new Intl.NumberFormat(["en-US"]);
     let user = common.user;
+    let eventSource;
 
     let eData = {                           // 실시간 데이터
         PG_LOCK: null,                      // 프로그램 중지유무
@@ -35,8 +36,8 @@ requirejs([
     // ui 생성 함수 모음
     let ui = {
         init: function () {
-            this.news();
-            this.anal();
+            // this.news();
+            // this.anal();
             this.favor();
             this.cashFlow();
             this.buyStock();
@@ -130,14 +131,14 @@ requirejs([
 
             $('.box_sbbtm table:eq(1) tfoot td').text(nf.format(tot_profit));
         },
-        drawchart: function (data) {
+        drawchart: function (data, object) {
             let config1 = {
                 type: 'line',
                 data: {
                     datasets: [{
                         borderWidth: 3,
-                        borderColor: "#92312e",
-                        // backgroundColor: "rgba(60,141,188,0.5)",
+                        borderColor: "#ba0808",
+//                        backgroundColor: "rgba(248,241,255,1)",
                         pointBorderColor: "#ba0808",
                         pointBorderWidth: 1,
                         pointRadius: 4,
@@ -187,11 +188,11 @@ requirejs([
             config1.data.labels = data.labels;
             config1.data.datasets[0].data = data.sales;
 
-            var ctx1 = $("#chart_01").get(0).getContext("2d");
+            var ctx1 = object.get(0).getContext("2d");
             let chart = new Chart(ctx1, config1);
         },
         company_info: function (data) {
-            let table = $('.wrap_layerpop:eq(3) table');
+            let table = $('.wrap_layerpop:eq(2) table');
 
             table.find('td:eq(0)').text(data.COMP_NAME);
             table.find('td:eq(1)').text(data.COM_01);
@@ -209,14 +210,54 @@ requirejs([
             table.find('td:eq(13)').text(data.COM_12);
             table.find('td:eq(14)').text(data.COM_13);
         },
+        stock_result: function () {
+            let pop = $('.wrap_layerpop:eq(3)');
+            let data = ajax.stock_result();
+            let $table = pop.find('.sizhg table');
+            let tot_EMPL_SELPRICE = 0, tot_benifit = 0;
+
+            if (pop.css('display') !== 'none') {
+                return;
+            }
+
+            pop.find('.box_titpop2 span').text(user.name);
+            pop.find('table:eq(0) td:eq(0)').text(nf.format(data.EMPL_CASH) + ' 원');
+            pop.find('table:eq(0) td:eq(1)').text(nf.format(data.stock_CASH) + ' 원');
+
+            $.each(data.history, function () {
+                let $clone = $table.find('tbody tr:eq(0)')
+                    .clone(true).css('display', '');
+                let self = this;
+                let aa;
+
+                let stock = mData.stock.find(function (item) {
+                    return item.COMP_CODE == self.COMP_CODE;
+                });
+
+                $clone.find('td:eq(0)').text(stock.COMP_NAME);
+                $clone.find('td:eq(1)').text(nf.format(this.EMPL_SELQTY));
+                $clone.find('td:eq(2)').text(nf.format(this.EMPL_SELPRICE));
+                $clone.find('td:eq(3)').text(nf.format(this.EMPL_PRICE));
+                aa = (this.EMPL_SELPRICE - this.EMPL_PRICE) * this.EMPL_SELQTY;
+                $clone.find('td:eq(4)').text(nf.format(aa));
+
+                tot_EMPL_SELPRICE += (this.EMPL_SELPRICE * this.EMPL_SELQTY);
+                tot_benifit += aa;
+
+                $table.append($clone.clone(true));
+            });
+
+            pop.find('table:eq(1) td:eq(0)').text(nf.format(tot_EMPL_SELPRICE) + ' 원');
+            let per = ((data.stock_CASH - data.EMPL_CASH) / data.EMPL_CASH * 100).toFixed(2);
+            pop.find('table:eq(1) td:eq(1)').text(nf.format(per) + ' %');
+
+            $('.btn_close').remove();
+            pop.fadeIn(500);
+        },
     };
 
     let ajax = {
-        draw_chart: function () {
-            let index = $('.box_tbllist:eq(0) table tbody tr:not(:eq(0))')
-                .index($('.box_tbllist:eq(0) table tbody tr.on'));
-            let COMP_CODE = mData.favor[index];
-
+        draw_chart: function (COMP_CODE, object) {
             $.ajax({
                 async: false,
                 dataType: 'json',
@@ -226,7 +267,7 @@ requirejs([
                 },
                 url: '/main/get_stock_chart',
                 success: function (data, status, xhr) {
-                    ui.drawchart(data);
+                    ui.drawchart(data, object);
                 }
             });
         },
@@ -243,7 +284,23 @@ requirejs([
                     ui.company_info(data);
                 }
             });
-        }
+        },
+        stock_result: function () {
+            let returnData;
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'get',
+                data: {
+                    EMPL_KEY: user.key,
+                },
+                url: '/main/get_stock_result',
+                success: function (data, status, xhr) {
+                    returnData = data;
+                }
+            });
+            return returnData;
+        },
     };
 
     // 기본 event (1회만 처리)
@@ -256,19 +313,32 @@ requirejs([
 
         // 관심종목 클릭 처리 (매수)
         $('.box_tbllist:eq(0) tbody tr').on('click', function () {
-            $('.bx_tablist:eq(1) .tabmenu:eq(0)').addClass('on');
-            $('.bx_tablist:eq(1) .tabmenu:eq(1)').removeClass('on');
-            $('.bx_tablist:eq(1) .btmtbl:eq(0)').removeClass('off').addClass('on');
-            $('.bx_tablist:eq(1) .btmtbl:eq(1)').removeClass('on').addClass('off');
+            console.log($(this));
+            $('.bx_tablist:eq(0) .tabmenu:eq(0)').addClass('on');
+            $('.bx_tablist:eq(0) .tabmenu:eq(1)').removeClass('on');
+            $('.bx_tablist:eq(0) .btmtbl:eq(0)').removeClass('off').addClass('on');
+            $('.bx_tablist:eq(0) .btmtbl:eq(1)').removeClass('on').addClass('off');
 
             $('.box_tbllist tbody tr').removeClass('on');
             $(this).addClass('on');
 
-            $('.bx_tablist:eq(1) .btmtbl:eq(0) span').text($(this).find('.align-l').text());
-            $('.bx_tablist:eq(1) .btmtbl:eq(0) input[name="ea"]').val(0);
-            $('.bx_tablist:eq(1) .btmtbl:eq(0) .numchk:eq(1)')
+            $('.bx_tablist:eq(0) .btmtbl:eq(0) span').text($(this).find('.align-l').text());
+            $('.bx_tablist:eq(0) .btmtbl:eq(0) input[name="ea"]').val(0);
+            $('.bx_tablist:eq(0) .btmtbl:eq(0) .numchk:eq(1)')
                 .text($(this).find('td:eq(1)').text());
-            $('.bx_tablist:eq(1) .btmtbl:eq(0) input[name="ea"]').focus();
+            $('.bx_tablist:eq(0) .btmtbl:eq(0) input[name="ea"]').focus();
+        });
+
+        // 관심종목 기업정보 (매수)
+        $('.box_tbllist:eq(0) tbody tr').on('dblclick', function () {
+            let pop = $('.wrap_layerpop:eq(2)');
+            let index = $('.box_tbllist:eq(0) tbody tr:not(:eq(0))').index($(this));
+            let COMP_CODE = mData.favor[index];
+
+            ajax.company_info(mData.favor[index]);
+            ajax.draw_chart(COMP_CODE, $('#chart_10'));
+
+            pop.fadeIn(500);
         });
 
         // 보유현황 종목 클릭 처리 (매도)
@@ -279,21 +349,21 @@ requirejs([
                 return item.COMP_CODE == mData.buyStock[index].COMP_CODE;
             });
 
-            $('.bx_tablist:eq(1) .tabmenu:eq(1)').addClass('on');
-            $('.bx_tablist:eq(1) .tabmenu:eq(0)').removeClass('on');
-            $('.bx_tablist:eq(1) .btmtbl:eq(1)').removeClass('off').addClass('on');
-            $('.bx_tablist:eq(1) .btmtbl:eq(0)').removeClass('on').addClass('off');
+            $('.bx_tablist:eq(0) .tabmenu:eq(1)').addClass('on');
+            $('.bx_tablist:eq(0) .tabmenu:eq(0)').removeClass('on');
+            $('.bx_tablist:eq(0) .btmtbl:eq(1)').removeClass('off').addClass('on');
+            $('.bx_tablist:eq(0) .btmtbl:eq(0)').removeClass('on').addClass('off');
 
             $('.box_tbllist tbody tr').removeClass('on');
             $(this).addClass('on');
 
-            $('.bx_tablist:eq(1) .btmtbl:eq(1) span').text($(this).find('.align-l').text());
-            $('.bx_tablist:eq(1) .btmtbl:eq(1) input[name="ea"]').val(mData.buyStock[index].EMPL_BALQTY);
-            $('.bx_tablist:eq(1) .btmtbl:eq(1) input[name="ea"]').attr('max', mData.buyStock[index].EMPL_BALQTY);
-            $('.bx_tablist:eq(1) .btmtbl:eq(1) input[name="ea"]').data('BUY_KEY', mData.buyStock[index].BUY_KEY);
-            $('.bx_tablist:eq(1) .btmtbl:eq(1) .numchk:eq(1)')
+            $('.bx_tablist:eq(0) .btmtbl:eq(1) span').text($(this).find('.align-l').text());
+            $('.bx_tablist:eq(0) .btmtbl:eq(1) input[name="ea"]').val(mData.buyStock[index].EMPL_BALQTY);
+            $('.bx_tablist:eq(0) .btmtbl:eq(1) input[name="ea"]').attr('max', mData.buyStock[index].EMPL_BALQTY);
+            $('.bx_tablist:eq(0) .btmtbl:eq(1) input[name="ea"]').data('BUY_KEY', mData.buyStock[index].BUY_KEY);
+            $('.bx_tablist:eq(0) .btmtbl:eq(1) .numchk:eq(1)')
                 .text(nf.format(mData.buyStock[index].EMPL_BALQTY * stock.COMP_PRICE));
-            $('.bx_tablist:eq(1) .btmtbl:eq(1) input[name="ea"]').focus();
+            $('.bx_tablist:eq(0) .btmtbl:eq(1) input[name="ea"]').focus();
         });
 
         // 뉴스 팝업 생성
@@ -425,7 +495,7 @@ requirejs([
 
             // 매수
             if (aa === 1) {
-                let BUY_KEY = $('.bx_tablist:eq(1) .btmtbl:eq(1) input[name="ea"]').data('BUY_KEY');
+                let BUY_KEY = $('.bx_tablist:eq(0) .btmtbl:eq(1) input[name="ea"]').data('BUY_KEY');
 
                 if (index !== null) {
                     stock = mData.stock.find(function (item) {
@@ -483,6 +553,11 @@ requirejs([
 
             ajax.draw_chart();
             $('.wrap_layerpop:eq(2)').fadeIn(500);
+        });
+
+        // 인쇄
+        $('.btn_print').on('click', function () {
+            print();
         });
     })();
 
@@ -548,6 +623,18 @@ requirejs([
 
             ui.favor();
         });
+
+        // 관심종목 기업정보 처리
+        pop.find('.ovtbl tbody tr').on('dblclick', function () {
+            let pop2 = $('.wrap_layerpop:eq(2)');
+            let index = $('.box_tbllist:eq(2) tbody tr:not(:eq(0))').index($(this));
+            let COMP_CODE = mData.stock[index].COMP_CODE;
+
+            ajax.company_info(COMP_CODE);
+            ajax.draw_chart(COMP_CODE, $('#chart_10'));
+
+            pop2.fadeIn(500);
+        });
     })();
 
     // 기본 DATA (1회만 처리)
@@ -580,11 +667,11 @@ requirejs([
                     console.log(mData);
                 }
             });
-            console.log('주식 변경');
         }
 
         if (eData.PG_LOCK == "2") {
-
+            ui.stock_result();
+            // eventSource.close();
         }
 
         if (eData.PG_LOCK == "3") {
@@ -595,7 +682,7 @@ requirejs([
     // eventSource
     (function () {
         // 시스템 데이터 바인드
-        let eventSource = new EventSource('/login/sse_get_system');
+        eventSource = new EventSource('/login/sse_get_system');
         eventSource.onmessage = function (e) {
             if (e.data !== JSON.stringify(eData)) {
                 let tmp = $.extend({}, eData);

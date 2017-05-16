@@ -756,11 +756,19 @@ class Main_m extends CI_Model
         ";
         $COMP_PRICE = $this->db->query($query, $data['COMP_CODE'])->row()->COMP_PRICE;
 
+        $query = "
+            SELECT EMPL_BUYPRICE FROM job081
+            WHERE
+              BUY_KEY = ?
+        ";
+        $buy_price = $this->db->query($query, $data['BUY_KEY'])->row()->EMPL_BUYPRICE;
+
         $insert_data = array(
             'BUY_KEY' => $data['BUY_KEY'],
             'EMPL_KEY' => $_SESSION['EMPL_KEY'],
             'COMP_CODE' => $data['COMP_CODE'],
             'EMPL_SELQTY' => $data['EMPL_SELQTY'],
+            'EMPL_PRICE' => $buy_price,
             'EMPL_SELPRICE' => $COMP_PRICE,
             'EMPL_SELTOT' => $COMP_PRICE * $data['EMPL_SELQTY'],
         );
@@ -806,6 +814,28 @@ class Main_m extends CI_Model
               COMP_CODE = ?
         ";
         $return = $this->db->query($query, $code)->row();
+
+        return $return;
+    }
+
+    public function get_stock_result($key)
+    {
+        $query = "
+            SELECT EMPL_CASH, stock_CASH FROM job050
+            WHERE
+              EMPL_KEY = ?
+        ";
+        $result = $this->db->query($query, $key)->row();
+        $return->EMPL_CASH = $result->EMPL_CASH;
+        $return->stock_CASH = $result->stock_CASH;
+
+        $query = "
+            SELECT * FROM job082
+            WHERE
+              EMPL_KEY = ?
+            LIMIT 7
+        ";
+        $return->history = $this->db->query($query, $key)->result();
 
         return $return;
     }

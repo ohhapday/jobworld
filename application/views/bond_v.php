@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="/dist/css/common.css" />
 	<link rel="stylesheet" type="text/css" href="/dist/css/layout.css" />
 	<link rel="stylesheet" type="text/css" href="/dist/css/content.css" />
+	<link rel="stylesheet" type="text/css" href="/dist/css/print.css"/>
 
 	<!--[if lt IE 9]>
 	<script src="../js/html5shiv.js"></script>
@@ -444,7 +445,7 @@
 			</div>
 		</div>
 		<div class="btn_popbtm mt10 pb0">
-			<span class="btn_print"><a href="">인쇄</a></span>
+			<span class="btn_print"><a href="#">인쇄</a></span>
 		</div>
 		<div class="bg_popbtm">&nbsp;</div>
 	</div>

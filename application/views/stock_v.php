@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="/dist/css/layout.css"/>
 	<link rel="stylesheet" type="text/css" href="/dist/css/content.css"/>
 	<link rel="stylesheet" type="text/css" href="/dist/css/scroll.css"/>
+	<link rel="stylesheet" type="text/css" href="/dist/css/print.css"/>
 
 	<!--[if lt IE 9]>
 	<script src="../js/html5shiv.js"></script>
@@ -45,6 +46,7 @@
 <div id="container">
 	<div id="content" class="clfix">
 		<div class="box_sbtop clfix">
+			<!--
 			<div class="sbleft2">
 				<div class="sb_tit">
 					<h3 class="ic2">실시간 증권 정보</h3>
@@ -80,6 +82,7 @@
 					</div>
 				</div>
 			</div>
+			-->
 			<div class="sbright2">
 				<div class="sb_tit">
 					<h3 class="ic3">주식 매매</h3>
@@ -128,7 +131,7 @@
 			</div>
 		</div>
 		<div class="box_sbbtm clfix">
-			<div class="sbleftbt3">
+			<div class="sbleftbt4">
 				<div class="sb_tit">
 					<h3 class="ic5">관심종목</h3>
 					<a href="#" class="btn_plss"><img src="/dist/images/ico_sbpls.gif" alt=""></a>
@@ -153,10 +156,12 @@
 						</tbody>
 					</table>
 				</div>
+				<!--
 				<div class="da_add clfix">
 					<button type="button" class="btn_adgre">공시정보</button>
 					<button type="button" class="btn_adgre2">주가그래프</button>
 				</div>
+				-->
 			</div>
 			<div class="sbrightbt3">
 				<div class="sb_tit">
@@ -227,7 +232,7 @@
 		<div class="box_contpop">
 			<div class="contpdd">
 				<div class="box_tbllist ovtbl">
-					<table id="stock_table_02">
+					<table id="">
 						<!--
 						<colgroup>
 							<col style="width: 7%;">
@@ -293,30 +298,10 @@
 </div>
 <!-- //뉴스정보 pop -->
 
-<!-- 주가 그래프 pop -->
-<div class="wrap_layerpop" style="display: none;">
-
-	<div class="layerpop pop12">
-		<div class="box_titpop">
-			<h2>기업 주식금액 변동 그래프</h2>
-			<div class="btn_close"><button type="button">닫기</button></div>
-		</div>
-		<div class="box_contpop">
-			<div class="contpdd">
-				<div class="chartpd" style="width: 600px; height: 300px; margin: auto">
-					<canvas id="chart_01"></canvas>
-				</div>
-			</div>
-		</div>
-	</div>
-
-</div>
-<!-- //layer pop -->
-
 <!-- 기업정보 pop -->
 <div class="wrap_layerpop" style="display: none;">
 
-	<div class="layerpop pop16">
+	<div class="layerpop pop21">
 		<div class="box_titpop">
 			<h2>기업정보</h2>
 			<div class="btn_close">
@@ -403,8 +388,122 @@
 		</div>
 	</div>
 
+	<div class="layerpop pop22">
+		<div class="box_titpop">
+			<h2>기업 주식금액 변동 그래프</h2>
+			<div class="btn_close"><button type="button">닫기</button></div>
+		</div>
+		<div class="box_contpop">
+			<div class="contpdd">
+				<div class="chartpd" style="width: 600px; height: 300px; margin: auto">
+					<canvas id="chart_10"></canvas>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>
 <!-- //기업정보 pop -->
+
+<!-- 결과보기 pop -->
+<div class="wrap_layerpop prt" style="display: none;">
+
+	<div class="layerpop pop8">
+		<div class="box_titpop2">
+			<h2>주식투자자<span>홍길동</span></h2>
+			<div class="btn_close"><button type="button">닫기</button></div>
+		</div>
+		<div class="box_contpop2">
+			<div class="pb_view clfix">
+				<div class="pb_tit">
+					<h3 class="sb_bg bg1" style="width: 30%;">종합현황</h3>
+				</div>
+				<div class="bx2col clfix">
+					<div class="box_tblwrite tblview fl">
+						<table>
+							<colgroup>
+								<col style="width: 35%;">
+								<col style="width: 65%;">
+							</colgroup>
+							<tbody>
+							<tr>
+								<th scope="row">처음자산</th>
+								<td>10,000,000원</td>
+							</tr>
+							<tr>
+								<th scope="row">현재금액</th>
+								<td>8,800,000원</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="box_tblwrite tblview fr">
+						<table>
+							<colgroup>
+								<col style="width: 35%;">
+								<col style="width: 65%;">
+							</colgroup>
+							<tbody>
+							<tr>
+								<th scope="row">투자금액</th>
+								<td>8,800,000원</td>
+							</tr>
+							<tr>
+								<th scope="row">수익률</th>
+								<td>10%</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="pb_view clfix">
+				<div class="pb_tit">
+					<h3 class="sb_bg bg2" style="width: 30%;">상세현황</h3>
+				</div>
+				<div class="bx2col sizhg clfix">
+					<div class="box_tbllist">
+						<table>
+							<colgroup>
+								<col style="width: 20%;">
+								<col style="width: 20%;">
+								<col style="width: 20%;">
+								<col style="width: 20%;">
+								<col style="width: 20%;">
+							</colgroup>
+							<thead>
+							<tr>
+								<th scope="col">종목명</th>
+								<th scope="col">수량</th>
+								<th scope="col">산 금액</th>
+								<th scope="col">판 금액</th>
+								<th scope="col">수익금</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr style="display: none;">
+								<td>삼성전자</td>
+								<td>10,000</td>
+								<td>10,000</td>
+								<td>10,000</td>
+								<td>10,000</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="btn_popbtm mt10 pb0">
+			<span class="btn_print"><a href="#">인쇄</a></span>
+		</div>
+		<div class="bg_popbtm">&nbsp;</div>
+	</div>
+
+</div>
+<!-- //결과보기 pop -->
 
 </body>
 </html>

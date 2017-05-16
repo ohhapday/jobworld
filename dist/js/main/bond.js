@@ -343,6 +343,11 @@ requirejs([
 
             $('.wrap_layerpop:eq(1)').fadeIn(500);
         });
+
+        // 프린트 버튼
+        $('.btn_print').on('click', function () {
+            print();
+        })
     })();
 
     // 기본 DATA (1회만 처리)
@@ -377,9 +382,9 @@ requirejs([
         }
 
         if (eData.PG_LOCK == "2") {
-            ui.fund_result();
+            ui.benifit();
             $('.btn_close').remove();
-            $('.wrap_layerpop:eq(3)').fadeIn(500);
+            $('.wrap_layerpop:eq(1)').fadeIn(500);
         }
 
         if (eData.PG_LOCK == "3") {

@@ -135,7 +135,7 @@
 			<div class="sbrightdat">
 				<div class="pro_bt clfix">
 					<button type="button" class="btn_use">시작하기</button>
-					<button type="button" class="btn_stop">결과보기</button>
+					<button type="button" class="btn_result">결과보기</button>
 					<button type="button" class="btn_stop">메인으로</button>
 				</div>
 			</div>

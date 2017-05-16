@@ -15,6 +15,8 @@ requirejs([
 
     let nf = new Intl.NumberFormat(["en-US"]);
 
+    sessionStorage.removeItem('session_data');
+
     // eventSource
     (function () {
         let eventSource = new EventSource('/login/sse_get_system');

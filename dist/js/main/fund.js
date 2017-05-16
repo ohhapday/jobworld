@@ -584,7 +584,7 @@ requirejs([
 
         // 프린트 버튼
         $('.btn_print').on('click', function () {
-            window.print();
+            print();
         })
     })();
 

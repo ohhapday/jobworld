@@ -313,6 +313,13 @@ class Main extends CI_Controller
         echo json_encode($return);
     }
 
+    public function get_stock_result()
+    {
+        $return = $this->main_m->get_stock_result($_GET['EMPL_KEY']);
+
+        echo json_encode($return);
+    }
+
     /**
      * end 주식 투자 체험
      */

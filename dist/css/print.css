@@ -1,0 +1,11 @@
+@media print {
+	#container, #header, .btn_popbtm {
+		display: none;
+	}
+	.layerpop.pop8 {
+		top: 0px; left: 62.5%; width: 100%;
+	}
+	.wrap_layerpop {
+		background-image: none;
+	}
+}

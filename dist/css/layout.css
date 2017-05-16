@@ -117,11 +117,11 @@ body{background: #f8f1e1;}
 .layerpop.pop2{top: 30px; left: 1%; width: 49%;}
 .layerpop.pop3{top: 220px; left: 50.5%; width: 45%;}
 .layerpop.pop4{width: 600px; margin-left: -300px;}
-.layerpop.pop5{top: 138px; left: 50%; width: 60%; margin-left: -30%;}
+.layerpop.pop5{top: 10px; left: 50%; width: 60%; margin-left: -30%;}
 .layerpop.pop6{top: 220px; left: 30%; width: 30%; margin-left: -17%;}
 .layerpop.pop7{top: 220px; left: 44%; width: 45%;}
 .layerpop.pop8{top: 0px; left: 50%; width: 900px; margin-left: -450px;}
-.layerpop.pop9{top: 158px; left: 50%; width: 60%; margin-left: -25%;}
+.layerpop.pop9{top: 10px; left: 50%; width: 60%; margin-left: -25%;}
 .layerpop.pop10{top: 238px; left: 50%; width: 80%; margin-left: -40%;}
 .layerpop.pop11{top: 50px; left: 50%; width: 555px; margin-left: -272px;}
 .layerpop.pop12{top: 230px; left: 50%; width: 50%; margin-left: -25%;}
@@ -176,7 +176,7 @@ body{background: #f8f1e1;}
 .layerpop .box_contpop .area_res .type.type3{background: url(../images/ico_pop3.png) no-repeat 0 50%;}
 .layerpop .box_contpop .area_res .type strong{display: block; font-size: 2.75em; font-weight: normal}
 .layerpop .box_contpop .area_res .type p{padding: 10px 0 10px 0; color: #fdc236; font-size: 1.250em;}
-.layerpop .box_contpop .ovtbl{height: 480px; overflow-y: scroll;}
+/*.layerpop .box_contpop .ovtbl{height: 480px; overflow-y: scroll;}*/
 .layerpop .box_contpop .contpdd{padding: 30px 0;}
 .layerpop .box_contpop .contpdd .chartpd{text-align: center;}
 .layerpop .box_contpop2 .pb_view{padding-top: 10px;}

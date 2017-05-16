@@ -10,7 +10,7 @@
 
 #stock_table_01 tbody {
 	display: block;
-	height: 200px;
+	height: 750px;
 	overflow: auto;
 }
 
@@ -61,7 +61,7 @@
 
 #stock_table_03 tbody {
 	display: block;
-	height: 135px;
+	height: 207px;
 	overflow: auto;
 }
 

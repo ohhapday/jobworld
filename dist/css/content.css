@@ -81,6 +81,7 @@
 .box_sbbtm .sbleftbt{float: left; width: 35%;}
 .box_sbbtm .sbleftbt2{float: left; width: 55%;}
 .box_sbbtm .sbleftbt3{float: left; width: 45%;}
+.box_sbbtm .sbleftbt4{float: left; width: 45%; margin-top: -345px;}
 .box_sbbtm h4.sb_bg{float: left; width: 20%; margin-right: 20px; box-sizing: border-box; padding-top: 15px; background: url(../images/ico_bgtit.png) no-repeat 0 0; font-size: 1.125em;}
 .box_sbbtm .ar_btm_news{overflow: hidden; min-height: 160px; padding: 20px 30px 20px 30px; border: 1px solid #d0cbbe;}
 .box_sbbtm .ar_btm_news .dtlist{float: left; width: 75%;}

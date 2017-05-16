@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="/dist/css/common.css" />
 	<link rel="stylesheet" type="text/css" href="/dist/css/layout.css" />
 	<link rel="stylesheet" type="text/css" href="/dist/css/content.css" />
+	<link rel="stylesheet" type="text/css" href="/dist/css/print_fund.css"/>
 
 	<!--[if lt IE 9]>
 	<script src="../js/html5shiv.js"></script>
@@ -403,7 +404,7 @@
 			<h2>펀드매니저<span>홍길동</span></h2>
 			<div class="btn_close"><button type="button">닫기</button></div>
 		</div>
-		<div class="box_contpop2" style="overflow-y: auto; height: 530px;">
+		<div class="box_contpop2" style="overflow-y: auto; height: 670px;">
 			<div class="pb_view clfix">
 				<div class="pb_tit">
 					<h3 class="sb_bg bg1">펀드명</h3>

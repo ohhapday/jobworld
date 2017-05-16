@@ -44,6 +44,10 @@ class Admin_m extends CI_Model
         );
         $this->db->update('tb_admin', $update_data);
 
+        if ($data['STATUS']['stock_STATUS'] == 1 && $data['usabled'] == 2) {
+            $this->stock_result();
+        }
+
         $this->db->trans_complete();
         return true;
     }
@@ -247,4 +251,47 @@ class Admin_m extends CI_Model
         return $this->db->trans_status();
     }
 
+    // 주식 데이터 처리
+    public function stock_result()
+    {
+        $query = "
+            SELECT
+              (a.EMPL_BUYPRICE - b.COMP_PRICE) AS benifit,
+              (a.EMPL_BUYPRICE - b.COMP_PRICE) * a.EMPL_BALQTY AS tot_benifit,
+              a.*, b.COMP_PRICE
+            FROM
+              job083 a, job015_copy b, tb_admin c
+            WHERE
+              b.COMP_DATE = c.stock_rownum AND a.COMP_CODE = b.COMP_CODE AND a.EMPL_BALQTY <> 0
+        ";
+        $result = $this->db->query($query)->result_array();
+
+        foreach ($result as $item) {
+            $insert_data[] = array(
+                'BUY_KEY' => $item['BUY_KEY'],
+                'EMPL_KEY' => $item['EMPL_KEY'],
+                'COMP_CODE' => $item['COMP_CODE'],
+                'EMPL_SELQTY' => $item['EMPL_BALQTY'],
+                'EMPL_PRICE' => $item['EMPL_BUYPRICE'],
+                'EMPL_SELPRICE' => $item['COMP_PRICE'],
+                'EMPL_SELTOT' => $item['COMP_PRICE'] * $item['EMPL_BALQTY'],
+            );
+
+            $query = "
+                UPDATE job083 SET EMPL_BALQTY = EMPL_BALQTY - ?, EMPL_BUYTOT = EMPL_BUYTOT - (EMPL_BUYPRICE * ?)
+                WHERE BUY_KEY = ?
+            ";
+            $this->db->query($query, array($item['EMPL_BALQTY'], $item['EMPL_BALQTY'], $item['BUY_KEY']));
+
+            $query = "
+                UPDATE job050 SET stock_CASH = stock_CASH + ?
+                WHERE
+                  EMPL_KEY = ?
+            ";
+            $this->db->query($query, array($item['COMP_PRICE'] * $item['EMPL_BALQTY'], $item['EMPL_KEY']));
+        }
+        $this->db->insert_batch('job082', $insert_data);
+
+        var_dump($insert_data);
+    }
 }
