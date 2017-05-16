@@ -293,7 +293,7 @@
 <!-- 기업정보 pop -->
 <div class="wrap_layerpop" style="display: none;">
 
-	<div class="layerpop pop16">
+	<div class="layerpop pop21">
 		<div class="box_titpop">
 			<h2>기업정보</h2>
 			<div class="btn_close">
@@ -375,6 +375,20 @@
 						</tr>
 						</tbody>
 					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="layerpop pop22">
+		<div class="box_titpop">
+			<h2>기업 주식금액 변동 그래프</h2>
+			<div class="btn_close"><button type="button">닫기</button></div>
+		</div>
+		<div class="box_contpop">
+			<div class="contpdd">
+				<div class="chartpd" style="width: 600px; height: 300px; margin: auto">
+					<canvas id="chart_10"></canvas>
 				</div>
 			</div>
 		</div>

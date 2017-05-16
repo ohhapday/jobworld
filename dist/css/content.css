@@ -30,6 +30,7 @@
 .box_sbtop .sb_tit .btn_plss{position: absolute; top: 0; right: 0;}
 .box_sbtop .sbleft{float: left; width: 100%;}
 .box_sbtop .sbleft2{float: left; width: 45%;}
+.box_sbtop .sbleft{float: left; width: 58%;}
 .box_sbtop .sbleft .ar_btm_dt{margin-top: 30px; padding: 35px 40px 36px 40px; border: 1px solid #d0cbbe;}
 .box_sbtop .sbleft .dtlist li{float: left; width: 48%;}
 .box_sbtop .sbleft .dtlist li strong{float: left; width: 40%; padding-right: 10px; padding-left: 15px; background: url(../images/ico_dt1.png) no-repeat 0 13px; box-sizing: border-box;}
@@ -86,7 +87,7 @@
 .box_sbbtm .ar_btm_news .dtlist li:first-child{margin-top: 0;}
 .box_sbbtm .ar_btm_news .dtlist li strong{float: left; width: 70%; padding-right: 10px; padding-left: 15px; background: url(../images/ico_dt1.png) no-repeat 0 13px; box-sizing: border-box; font-weight: normal;}
 .box_sbbtm .ar_btm_news .dtlist li span{float: left; width: 30%;}
-.box_sbbtm .ar_btm_pt{overflow: hidden; min-height: 160px; margin-top: 15px; padding: 16px 30px 15px 30px; border: 1px solid #d0cbbe;}
+.box_sbbtm .ar_btm_pt{overflow: hidden; min-height: 180px; margin-top: 15px; padding: 16px 30px 15px 30px; border: 1px solid #d0cbbe;}
 .box_sbbtm .ar_btm_pt .pt_list{float: left; width: 75%; margin-top: 10px; }
 .box_sbbtm .ar_btm_pt .pt_list li{overflow: hidden; margin-top: 10px;}
 .box_sbbtm .ar_btm_pt .pt_list li:first-child{margin-top: 0;}
@@ -125,6 +126,10 @@
 .box_sbbtm .ar_btm_bx .leftar{float: left; width: 48%;}
 .box_sbbtm .ar_btm_bx .btn_bview{display: block; width: 100%; height: 75px; margin-top: 30px; box-sizing: border-box; background:#f34937; font-size: 1.125em; color: #fff; text-align: center;}
 .box_sbbtm .ar_btm_bx .btn_bview span{display: inline-block; padding: 20px 0 20px 50px; background:url(../images/ico_sbplsb.png) no-repeat 0 50%;}
+
+.btn_bview{display: block; width: 100%; height: 75px; margin-top: 30px; box-sizing: border-box; background:#f34937; font-size: 1.125em; color: #fff; text-align: center;}
+.btn_bview span{display: inline-block; padding: 20px 0 20px 50px; background:url(../images/ico_sbplsb.png) no-repeat 0 50%;}
+
 .box_sbbtm .ar_btm_bx .rightar{float: right; width: 49%; padding: 25px 20px 26px 20px; border: 1px solid #d0cbbe;}
 .box_sbbtm .ar_btm_bx .rightar h4.sb_bg{width: 25%;}
 .box_sbbtm .ar_btm_bx .rightar .ar_btm_inp{float: left; width: 70%;}

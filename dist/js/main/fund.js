@@ -5,6 +5,7 @@
 requirejs([
     'jquery', 'bootstrap', 'moment', 'jquery-ui', 'session',
     '/dist/js/main/common.js',         // 공통 처리 js
+    'chartjs'
 ], function ($, bootstrap, moment, a, session, common) {
     "use strict";
 
@@ -31,7 +32,7 @@ requirejs([
 
     let ui = {
         init: function () {
-            this.news();
+            // this.news();
             this.kos();
             this.fund();
         },
@@ -73,7 +74,7 @@ requirejs([
 
                 $clone.find('td:eq(0) button').text(this.FUND_NAME);
                 $clone.find('td:eq(1)').text(nf.format(this.FUND_TOT));
-                $clone.find('td:eq(4)').text(FUND_ADDPER);
+                $clone.find('td:eq(2)').text(FUND_ADDPER);
 
                 $table.append($clone.clone(true).fadeIn(500));
             });
@@ -100,8 +101,6 @@ requirejs([
 
             $table.find('tr:not(:eq(0))').hide(500);
             $table.find('tr:not(:eq(0))').remove();
-
-            console.log(mData.FUND[index].stock);
 
             $.each(mData.FUND[index].stock, function (i) {
                 let $clone = $table.find('tr:eq(0)').clone(true);
@@ -198,7 +197,6 @@ requirejs([
             });
         },
         fund_result: function () {
-            console.log(mData);
             $('.box_titpop2 span').text(user.name);
             $.each(mData.FUND, function (i) {
                 let MM, benifit, tot_price = 0, tot_benifit_pay = 0,
@@ -225,9 +223,91 @@ requirejs([
                 my_benifit = (benifit < 0) ? 0 : tot_benifit_pay * 0.01;        // todo 10%
                 my_benifit_per = (benifit < 0) ? 0 : benifit * 0.01;        // todo 10%
 
-                str = '펀드 메니저 수익률 ' + my_benifit_per + '%  수익금 ' + nf.format(my_benifit) + '원';
+                // todo 펀드 매니저 수익률 임시
+                let txt_benifit = '10';
+
+                str = '펀드 매니저 수익률 ' + txt_benifit + '%  수익금 ' + nf.format(my_benifit) + '원';
                 $('.pb_view:eq(' + i + ') p').text(str);
             });
+        },
+        drawchart: function (data, object) {
+            let config1 = {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        borderWidth: 3,
+                        borderColor: "#ba0808",
+                        backgroundColor: "rgba(248,241,255,1)",
+                        pointBorderColor: "#ba0808",
+                        pointBorderWidth: 1,
+                        pointRadius: 4,
+                        fill: false,
+                        lineTension: 0.1
+                    }]
+                },
+                options: {
+                    legend: {
+                        position: null,
+                    },
+                    title: {
+                        display: false,
+                        text: '금리변동률'
+                    },
+                    tooltips: {
+                        mode: 'label',
+                        callbacks: {
+                            /*label: function(tooltipItem, data) {
+                             return '' + tooltipItem.yLabel.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                             }*/
+                        }
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                labelString: '일'
+                            }
+                        }],
+                        yAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: false,
+                                labelString: '금액',
+                            },
+                            ticks: {
+                                /*userCallback: function(value, index, values) {
+                                 return '' + value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                 }*/
+                            }
+                        }]
+                    }
+                }
+            };
+            // 매출
+            config1.data.labels = data.labels;
+            config1.data.datasets[0].data = data.sales;
+
+            var ctx1 = object.get(0).getContext("2d");
+            let chart = new Chart(ctx1, config1);
+        },
+        company_info: function (data) {
+            let table = $('.wrap_layerpop:eq(4) table');
+
+            table.find('td:eq(0)').text(data.COMP_NAME);
+            table.find('td:eq(1)').text(data.COM_01);
+            table.find('td:eq(2)').text(data.COM_02);
+            table.find('td:eq(3)').text(data.COMP_CODE);
+            table.find('td:eq(4)').text(data.COM_03);
+            table.find('td:eq(5)').text(data.COM_04);
+            table.find('td:eq(6)').text(data.COM_05);
+            table.find('td:eq(7)').text(data.COM_06);
+            table.find('td:eq(8)').text(data.COM_07);
+            table.find('td:eq(9)').text(data.COM_08);
+            table.find('td:eq(10)').text(data.COM_09);
+            table.find('td:eq(11)').text(data.COM_10);
+            table.find('td:eq(12)').text(data.COM_11);
+            table.find('td:eq(13)').text(data.COM_12);
+            table.find('td:eq(14)').text(data.COM_13);
         },
     };
 
@@ -320,8 +400,35 @@ requirejs([
                     mData.FUND = $.extend(true, mData.FUND, data.FUND);
                 }
             });
-            console.log(mData);
         },
+        draw_chart: function (COMP_CODE, object) {
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'get',
+                data: {
+                    COMP_CODE: COMP_CODE,
+                },
+                url: '/main/get_stock_chart',
+                success: function (data, status, xhr) {
+                    ui.drawchart(data, object);
+                }
+            });
+        },
+        company_info: function (COMP_CODE) {
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'get',
+                data: {
+                    COMP_CODE: COMP_CODE,
+                },
+                url: '/main/get_company_info',
+                success: function (data, status, xhr) {
+                    ui.company_info(data);
+                }
+            });
+        }
     };
 
     // 기본 event (1회만 처리)
@@ -441,6 +548,15 @@ requirejs([
                 ui.fund();
                 pop.fadeOut(500);
             });
+
+            // 종목명에 재무재표 생성
+            $('.pop5 a').on('dblclick', function () {
+                let COMP_CODE = $(this).closest('tr').find('input[type="checkbox"]').val();
+
+                ajax.company_info(COMP_CODE);
+                ajax.draw_chart(COMP_CODE, $('#chart_10'));
+                $('.wrap_layerpop:eq(4)').fadeIn(500);
+            });
         })();
 
         // 적용 버튼
@@ -456,6 +572,8 @@ requirejs([
 
             ajax.put_change_MM(MM, fund);
             ui.fund_change_MM();
+
+            alert('수익률이 변경 되었습니다.\n\n 전체 수익률을 확인해 보세요.')
         });
 
         // 수익률 보기 클릭

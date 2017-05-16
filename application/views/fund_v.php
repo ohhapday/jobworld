@@ -44,12 +44,12 @@
 <div id="container">
 	<div id="content" class="clfix">
 		<div class="box_sbtop clfix">
-			<div class="sbleft">
+			<div class="sbleft sbleft3">
 				<div class="sb_tit">
 					<h3 class="ic1">내가 만든 펀드</h3>
 					<a href="#" class="btn_plss"><img src="/dist/images/ico_sbpls.gif" alt=""></a>
 				</div>
-				<div class="box_tbllist" style="overflow-y: auto; height: 183px;">
+				<div class="box_tbllist" style="overflow-y: auto; height: 330px;">
 					<table>
 						<colgroup>
 							<col style="width: 50%;">
@@ -92,7 +92,7 @@
 					<h3 class="ic2">펀드 투자 종목</h3>
 					<a href="#" class="btn_plss"><img src="/dist/images/ico_sbpls.gif" alt=""></a>
 				</div>
-				<div class="box_tbllist" style="overflow-y: auto; height: 363px;">
+				<div class="box_tbllist" style="overflow-y: auto; height: 508px; border: 1px solid #CCC; border-top: 1px solid #000000">
 					<table>
 						<colgroup>
 							<col style="width: 32%;">
@@ -131,6 +131,7 @@
 				<div class="sb_tit">
 					<h3 class="ic3">이시각 증시</h3>
 				</div>
+				<!--
 				<div class="ar_btm_news">
 					<h4 class="sb_bg">이 시각<br>주요뉴스</h4>
 					<ul class="dtlist">
@@ -139,7 +140,8 @@
 						<li><a href="#"><strong></strong><span></span></a></li>
 					</ul>
 				</div>
-				<div class="ar_btm_pt">
+				-->
+				<div class="ar_btm_pt" style="margin-top: 0px;">
 					<h4 class="sb_bg">종합지수</h4>
 					<div class="pt_list">
 						<ul>
@@ -167,37 +169,12 @@
 					</ul>
 					<a href="#" class="btn_ckcof">적용</a>
 				</div>
+				<div class="ar_btm_sel" style="border: 0px; padding: 0px 40px;">
+					<a href="#" class="btn_bview" style=" margin-top: 10px;"><span>전체 수익률 보기</span></a>
+				</div>
+			</div>
+			<div class="sbrightbt" style="margin-top: -245px;">
 				<div class="ar_btm_bx clfix">
-					<div class="leftar">
-						<!-- <div class="box_tbllist">
-							<table style="background-color: darkgray;">
-								<colgroup>
-									<col style="width: 25%;">
-									<col style="width: 25%;">
-									<col style="width: 25%;">
-									<col style="width: 25%;">
-								</colgroup>
-								<thead>
-								<tr>
-									<th scope="col" style="background-color: darkgray;">보유기간</th>
-									<th scope="col" style="background-color: darkgray;">매도금액</th>
-									<th scope="col" style="background-color: darkgray;">순이익</th>
-									<th scope="col" style="background-color: darkgray;">수익률</th>
-								</tr>
-								</thead>
-								<tbody>
-								<tr>
-									<td class="align-l">36 개월</td>
-									<td>2,000,000</td>
-									<td>2,000,000</td>
-									<td>100.00%</td>
-								</tr>
-								</tbody>
-							</table>
-						</div>
-						-->
-						<a href="#" class="btn_bview"><span>전체 수익률 보기</span></a>
-					</div>
 					<div class="rightar">
 						<h4 class="sb_bg">펀드 투자<br>정보</h4>
 						<div class="ar_btm_inp">
@@ -303,7 +280,9 @@
 		<form>
 			<div class="box_titpop">
 				<h2>펀드 만들기</h2>
-				<div class="btn_close"><button type="button">닫기</button></div>
+				<div class="btn_close">
+					<button type="button">닫기</button>
+				</div>
 			</div>
 			<div class="box_contpop">
 				<div class="contpdd">
@@ -354,8 +333,8 @@
 			<div class="btn_popbtm">
 				<span class="btn_blk"><button type="submit">저장</button></span>
 			</div>
-	</div>
 		</form>
+	</div>
 </div>
 <!-- // 펀드 만들기 pop -->
 
@@ -494,7 +473,7 @@
 						</div>
 					</div>
 				</div>
-				<p class="pem">펀드 메니저 수익률 00%  수익금 00,000원</p>
+				<p class="pem">펀드 매니저 수익률 00%  수익금 00,000원</p>
 			</div>
 
 			<div class="pb_view clfix">
@@ -566,13 +545,13 @@
 						</div>
 					</div>
 				</div>
-				<p class="pem">펀드 메니저 수익률 00%  수익금 00,000원</p>
+				<p class="pem">펀드 매니저 수익률 00%  수익금 00,000원</p>
 			</div>
 
 			<div class="pb_view clfix">
 				<div class="pb_tit">
 					<h3 class="sb_bg bg3">펀드명</h3>
-					<span>잡 월드 직업 체험 펀드</span>
+					<span></span>
 				</div>
 				<div class="ar_btm_dtt clfix">
 					<div class="dtts">
@@ -581,11 +560,11 @@
 							<ul class="dtlist clfix">
 								<li>
 									<strong>보유기간</strong>
-									<input type="text" value="00" class="align-r"><span>개월</span>
+									<input type="text" value="" class="align-r"><span>개월</span>
 								</li>
 								<li>
 									<strong>수익률</strong>
-									<input type="text" value="00" class="align-r"><span>%</span>
+									<input type="text" value="" class="align-r"><span>%</span>
 								</li>
 							</ul>
 						</div>
@@ -597,19 +576,19 @@
 							<ul class="dtlist clfix inp100">
 								<li>
 									<strong>투자자A</strong>
-									<input type="text" value="00" class="align-r">
+									<input type="text" value="" class="align-r">
 								</li>
 								<li>
 									<strong>투자자B</strong>
-									<input type="text" value="00" class="align-r">
+									<input type="text" value="" class="align-r">
 								</li>
 								<li>
 									<strong>투자자C</strong>
-									<input type="text" value="00" class="align-r">
+									<input type="text" value="" class="align-r">
 								</li>
 								<li>
 									<strong class="back-non">합계</strong>
-									<input type="text" value="00" class="align-r colred">
+									<input type="text" value="" class="align-r colred">
 								</li>
 							</ul>
 						</div>
@@ -620,25 +599,25 @@
 							<ul class="dtlist clfix inp100">
 								<li>
 									<strong>투자자A</strong>
-									<input type="text" value="00" class="align-r">
+									<input type="text" value="" class="align-r">
 								</li>
 								<li>
 									<strong>투자자B</strong>
-									<input type="text" value="00" class="align-r">
+									<input type="text" value="" class="align-r">
 								</li>
 								<li>
 									<strong>투자자C</strong>
-									<input type="text" value="00" class="align-r">
+									<input type="text" value="" class="align-r">
 								</li>
 								<li>
 									<strong class="back-non">합계</strong>
-									<input type="text" value="00" class="align-r colred">
+									<input type="text" value="" class="align-r colred">
 								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
-				<p class="pem">펀드 메니저 수익률 00%  수익금 00,000원</p>
+				<p class="pem">펀드 매니저 수익률 0%  수익금 0원</p>
 			</div>
 		</div>
 		<div class="btn_popbtm mt10 pb0">
@@ -649,6 +628,113 @@
 
 </div>
 <!-- //수익률 보기 pop -->
+
+<!-- 기업정보 pop -->
+<div class="wrap_layerpop" style="display: none;">
+
+	<div class="layerpop pop21">
+		<div class="box_titpop">
+			<h2>기업정보</h2>
+			<div class="btn_close">
+				<button type="button">닫기</button>
+			</div>
+		</div>
+		<div class="box_contpop">
+			<div class="contpdd">
+				<div class="box_tblwrite tblview">
+					<table>
+						<colgroup>
+							<col style="width: 30%;">
+							<col style="width: 70%;">
+						</colgroup>
+						<tbody>
+						<tr>
+							<th scope="row">회사이름</th>
+							<td>삼성전자</td>
+						</tr>
+						<tr>
+							<th scope="row">영문명</th>
+							<td>SAMSUNG ECECTRONICS CO,.LTD</td>
+						</tr>
+						<tr>
+							<th scope="row">공시회사명</th>
+							<td>삼성전자</td>
+						</tr>
+						<tr>
+							<th scope="row">종목코드</th>
+							<td>005930</td>
+						</tr>
+						<tr>
+							<th scope="row">대표자명</th>
+							<td>권오현, 윤부근, 신종균</td>
+						</tr>
+						<tr>
+							<th scope="row">법인구분</th>
+							<td>유가증권시장</td>
+						</tr>
+						<tr>
+							<th scope="row">법인등록번호</th>
+							<td>130111-0006246</td>
+						</tr>
+						<tr>
+							<th scope="row">사업자등록번호</th>
+							<td>124-81-00998</td>
+						</tr>
+						<tr>
+							<th scope="row">주소</th>
+							<td>경기도 수원시 영통구 삼성로 129(매탄동)</td>
+						</tr>
+						<tr>
+							<th scope="row">홈페이지</th>
+							<td>WWW.SEC.CO.KR</td>
+						</tr>
+						<tr>
+							<th scope="row">IR홈페이지</th>
+							<td></td>
+						</tr>
+						<tr>
+							<th scope="row">전화번호</th>
+							<td>031-200-114</td>
+						</tr>
+						<tr>
+							<th scope="row">팩스번호</th>
+							<td>031-200-7538</td>
+						</tr>
+						<tr>
+							<th scope="row">업종명</th>
+							<td>통신 및 방송 장비 제조업</td>
+						</tr>
+						<tr>
+							<th scope="row">설립일</th>
+							<td>1969-01-13</td>
+						</tr>
+						<tr>
+							<th scope="row">결산월</th>
+							<td>12월</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="layerpop pop22">
+		<div class="box_titpop">
+			<h2>기업 주식금액 변동 그래프</h2>
+			<div class="btn_close"><button type="button">닫기</button></div>
+		</div>
+		<div class="box_contpop">
+			<div class="contpdd">
+				<div class="chartpd" style="width: 600px; height: 300px; margin: auto">
+					<canvas id="chart_10"></canvas>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- //기업정보 pop -->
 
 </body>
 </html>

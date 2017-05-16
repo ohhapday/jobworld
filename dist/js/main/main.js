@@ -253,6 +253,8 @@ requirejs([
                 let COMP_CODE = (index === 0) ? '005930' : '003490';
 
                 ajax.company_info(COMP_CODE);
+                ajax.draw_chart(COMP_CODE, $('#chart_10'));
+
                 pop.fadeIn(500);
             });
         })();
