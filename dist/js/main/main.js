@@ -172,7 +172,7 @@ requirejs([
     (function () {
         // 좌측 화면 생성
         (function () {
-            // let myWindow = window.open("/main/left_main", "MsgWindow", "");
+            let myWindow = window.open("/main/left_main", "MsgWindow", "");
         })();
 
         // 뉴스 처리

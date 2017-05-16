@@ -177,7 +177,7 @@ body{background: #f8f1e1;}
 .layerpop .box_contpop .area_res .type strong{display: block; font-size: 2.75em; font-weight: normal}
 .layerpop .box_contpop .area_res .type p{padding: 10px 0 10px 0; color: #fdc236; font-size: 1.250em;}
 /*.layerpop .box_contpop .ovtbl{height: 480px; overflow-y: scroll;}*/
-.layerpop .box_contpop .contpdd{padding: 30px 0;}
+.layerpop .box_contpop .contpdd{padding: 10px 0;}
 .layerpop .box_contpop .contpdd .chartpd{text-align: center;}
 .layerpop .box_contpop2 .pb_view{padding-top: 10px;}
 .layerpop .box_contpop2 .pb_view .pb_tit{overflow: hidden; margin-bottom: 10px; padding: 8px 30px; background: #f8f1e1;}
@@ -226,7 +226,7 @@ body{background: #f8f1e1;}
 .layerpop .area_sbptit2 h3.poph3bg2{float: left; width: 40%; margin-right: 10px; box-sizing: border-box; padding-top: 15px; background: url(../images/ico_bgtit.png) no-repeat 0 0; font-size: 1.125em;}
 .layerpop .area_sbptit2 > span{float: left; width: 50%; padding-top: 15px;}
 
-.layerpop .btn_popbtm{padding: 10px 0; border-top: 1px solid #ccc; text-align: center; margin-top: 2em; margin-bottom: 2em;}
+.layerpop .btn_popbtm{padding: 10px 0; border-top: 1px solid #ccc; text-align: center; margin-top: 1em; margin-bottom: 2em;}
 .layerpop .bg_popbtm{width: 100%; height: 45px; background: url(../images/bg_popbtm.gif) no-repeat 0 0;}
 .layerpop .bg_popbtm2{width: 100%; height: 45px; background: url(../images/bg_popbtm_m.gif) no-repeat 0 0;}
 .layerpop .box_codein{position: relative; margin-top: 40px; padding: 0 30px 10px 30px;}
