@@ -152,7 +152,7 @@ class Main extends CI_Controller
 
     public function get_bondData()
     {
-        $return->BOND = $this->main_m->get_bond();
+        $return->BOND = $this->main_m->get_bond2();
         $return->cashFlow = $this->main_m->get_bond_cash();
         $return->buyBond = $this->main_m->get_buyBond();
         $return->gold = $this->main_m->get_gold();
@@ -193,6 +193,32 @@ class Main extends CI_Controller
             );
             array_push($sales,
                 (int)$item->GOLD_RATE
+            );
+            $i--;
+        }
+
+        $return->labels = $txt_data;
+        $return->sales = $sales;
+
+        echo json_encode($return);
+    }
+
+    public function get_bond_chart2()
+    {
+        $data = $this->main_m->get_bond_chart2($_GET['BOND_KEY']);
+
+        $i = 10;
+        $txt_data = array();
+        $sales = array();
+        foreach ($data as $item) {
+            $datetime = new DateTime();
+            $term = new DateInterval('PT' . ($i * 30) . 'S');
+
+            array_push($txt_data,
+                $datetime->sub($term)->format('i:s')
+            );
+            array_push($sales,
+                (int)$item->BOND_NOWPRICE
             );
             $i--;
         }

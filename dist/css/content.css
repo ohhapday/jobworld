@@ -30,7 +30,8 @@
 .box_sbtop .sb_tit .btn_plss{position: absolute; top: 0; right: 0;}
 .box_sbtop .sbleft{float: left; width: 100%;}
 .box_sbtop .sbleft2{float: left; width: 45%;}
-.box_sbtop .sbleft{float: left; width: 58%;}
+.box_sbtop .sbleft3{float: left; width: 58%;}
+
 .box_sbtop .sbleft .ar_btm_dt{margin-top: 30px; padding: 35px 40px 36px 40px; border: 1px solid #d0cbbe;}
 .box_sbtop .sbleft .dtlist li{float: left; width: 48%;}
 .box_sbtop .sbleft .dtlist li strong{float: left; width: 40%; padding-right: 10px; padding-left: 15px; background: url(../images/ico_dt1.png) no-repeat 0 13px; box-sizing: border-box;}
@@ -144,7 +145,7 @@
 .box_sbbtm .ar_btm_dt .dttit > strong{float: left; width: 15%; box-sizing: border-box; padding-top: 15px; background: url(../images/ico_bgtit.png) no-repeat 0 0; font-size: 1.125em;}
 .box_sbbtm .ar_btm_dt .dttit > span{float: left; width: 50%; padding-top: 18px;}
 .box_sbbtm .ar_btm_dt .btn_buyc{position: absolute; top: 121px; right: 50px; padding: 5px 10px; padding: 5px 20px 5px 40px; border-radius: 5px; background:#fdc236 url(../images/ico_bt1.png) no-repeat 15px 10px; color: #fff;}
-.box_sbbtm .ar_btm_dt .dtlist{padding: 35px 40px 36px 40px;}
+.box_sbbtm .ar_btm_dt .dtlist{padding: 35px 40px 36px 40px; min-height: 240px;}
 .box_sbbtm .ar_btm_dt .dtlist li{float: left; width: 48%;}
 .box_sbbtm .ar_btm_dt .dtlist li strong{float: left; width: 40%; padding-right: 10px; padding-left: 15px; background: url(../images/ico_dt1.png) no-repeat 0 13px; box-sizing: border-box;}
 .box_sbbtm .ar_btm_dt .dtlist li span{float: left; width: 45%;}

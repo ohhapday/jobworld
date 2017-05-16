@@ -51,7 +51,7 @@ requirejs([
                 $clone.find('td:eq(0)').text(this.BOND_NAME);
                 $clone.find('td:eq(0)').attr('title', this.BOND_NAME);
                 $clone.find('td:eq(1)').text(nf.format(this.BOND_TOT));
-                $clone.find('td:eq(2)').text(nf.format(this.BOND_PRICE));
+                $clone.find('td:eq(2)').text(nf.format(this.BOND_NOWPRICE));
                 $clone.find('td:eq(3)').text(this.BOND_PER);
                 $clone.find('td:eq(4)').text(this.BOND_TYPE);
 
@@ -64,29 +64,29 @@ requirejs([
 
             $('.ar_btm_dt .dttit span').text(bond.BOND_NAME);
 
-            $('.ar_btm_dt .mb10:eq(0) span').text(nf.format(bond.BOND_PRICE));
-            $('.ar_btm_dt .mb10:eq(1) input').val(100);
-            $('.ar_btm_dt .mb10:eq(2) span').text(nf.format(bond.BOND_PRICE * 100));
-            $('.ar_btm_dt .mb10:eq(3) span').text(bond.BOND_CLDATE);
-            $('.ar_btm_dt .mb10:eq(4) span').text(bond.BOND_INDATE);
-            $('.ar_btm_dt .mb10:eq(5) span').text(nf.format(bond.BOND_PRICE * 100 * bond.BOND_PER / 100));
+            $('.ar_btm_dt li:eq(0) span').text(nf.format(bond.BOND_NOWPRICE));
+            $('.ar_btm_dt li:eq(1) input').val(100);
+            $('.ar_btm_dt li:eq(2) span').text(nf.format(bond.BOND_NOWPRICE * 100));
+            $('.ar_btm_dt li:eq(3) span').text(bond.BOND_CLDATE);
+            $('.ar_btm_dt li:eq(4) span').text(bond.BOND_INDATE);
+            $('.ar_btm_dt li:eq(5) span').text(nf.format(bond.BOND_NOWPRICE * 100 * bond.BOND_PER / 100));
             $('.ar_btm_dt li:last span').text(bond.BOND_PER + ' %');
 
-            $('.ar_btm_dt .mb10:eq(1) input').on('change', function () {
-                let buyPrice = bond.BOND_PRICE * $(this).val();
-                $('.ar_btm_dt .mb10:eq(2) span').text(nf.format(buyPrice));
-                $('.ar_btm_dt .mb10:eq(5) span').text(nf.format(buyPrice * bond.BOND_PER / 100));
+            $('.ar_btm_dt li:eq(1) input').on('change', function () {
+                let buyPrice = bond.BOND_NOWPRICE * $(this).val();
+                $('.ar_btm_dt li:eq(2) span').text(nf.format(buyPrice));
+                $('.ar_btm_dt li:eq(5) span').text(nf.format(buyPrice * bond.BOND_PER / 100));
             });
         },
         buyBond_clear: function () {
             $('.ar_btm_dt .dttit span').text('');
 
-            $('.ar_btm_dt .mb10:eq(0) span').text('');
-            $('.ar_btm_dt .mb10:eq(1) input').val(100);
-            $('.ar_btm_dt .mb10:eq(2) span').text('');
-            $('.ar_btm_dt .mb10:eq(3) span').text('');
-            $('.ar_btm_dt .mb10:eq(4) span').text('');
-            $('.ar_btm_dt .mb10:eq(5) span').text('');
+            $('.ar_btm_dt li:eq(0) span').text('');
+            $('.ar_btm_dt li:eq(1) input').val(100);
+            $('.ar_btm_dt li:eq(2) span').text('');
+            $('.ar_btm_dt li:eq(3) span').text('');
+            $('.ar_btm_dt li:eq(4) span').text('');
+            $('.ar_btm_dt li:eq(5) span').text('');
             $('.ar_btm_dt li:last span').text('');
         },
         cashFlow: function () {
@@ -130,7 +130,30 @@ requirejs([
             $table.find('td:eq(1)').text(credit.CREDIT_MEMO);
         },
         benifit: function () {
+            let pop = $('.wrap_layerpop:eq(1)');
+            let tot_benifit, tot_buy_cost = 0, tot_price = 0;
 
+            $('.box_titpop2 span').text(user.name);
+
+            $.each(mData.buyBond, function (i) {
+                let self = this;
+                let bond = mData.BOND.find(function (item) {
+                    return item.BOND_KEY === self.BOND_KEY;
+                });
+
+                pop.find('.pb_view:eq(' + i + ') .pb_tit span').text(bond.BOND_NAME);
+
+                pop.find('.pb_view:eq(' + i + ') td:eq(0)').text(this.BOND_BUYDATE);
+                pop.find('.pb_view:eq(' + i + ') td:eq(1)').text(nf.format((this.BOND_BUYBENIFIT / this.BOND_BUYPAY * 100).toFixed(2)) + '%');
+                pop.find('.pb_view:eq(' + i + ') td:eq(2)').text(nf.format(this.BOND_BUYPAY));
+                pop.find('.pb_view:eq(' + i + ') td:eq(3)').text(nf.format(this.BOND_BUYBENIFIT));
+
+                tot_price += parseInt(this.BOND_BUYBENIFIT);
+                tot_buy_cost += parseInt(this.BOND_BUYPAY);
+            });
+
+            pop.find('.box_btcc .fl span').text(nf.format((tot_price / tot_buy_cost * 100).toFixed(2)) + '%');
+            pop.find('.box_btcc .fr span').text(nf.format(tot_price));
         },
         drawchart: function (data) {
             let config1 = {
@@ -152,7 +175,7 @@ requirejs([
                         position: null,
                     },
                     title: {
-                        display: true,
+                        display: false,
                         text: '금리변동률'
                     },
                     tooltips: {
@@ -189,7 +212,7 @@ requirejs([
             config1.data.labels = data.labels;
             config1.data.datasets[0].data = data.sales;
 
-            var ctx1 = $("#chart_01").get(0).getContext("2d");
+            var ctx1 = $("#chart_10").get(0).getContext("2d");
             let chart = new Chart(ctx1, config1);
         }
     };
@@ -228,15 +251,18 @@ requirejs([
             });
             return true;
         },
-        draw_chart: function () {
+        draw_chart: function (BOND_KEY) {
             $.ajax({
                 async: false,
                 dataType: 'json',
                 type: 'get',
-                url: '/main/get_bond_chart',
+                data: {
+                    BOND_KEY: BOND_KEY,
+                },
+                url: '/main/get_bond_chart2',
                 success: function (data, status, xhr) {
                     ui.drawchart(data);
-                }
+                },
             });
         }
     };
@@ -269,14 +295,17 @@ requirejs([
             pop.find('.box_tblwrite:eq(0) td:eq(0)').text(bond.BOND_TYPE);
             pop.find('.box_tblwrite:eq(0) td:eq(1)').text(bond.BOND_CODE);
             pop.find('.box_tblwrite:eq(0) td:eq(2)').text(nf.format(bond.BOND_TOT));
-            pop.find('.box_tblwrite:eq(0) td:eq(3)').text(nf.format(bond.BOND_PRICE));
+            pop.find('.box_tblwrite:eq(0) td:eq(3)').text(nf.format(bond.BOND_NOWPRICE));
             pop.find('.box_tblwrite:eq(0) td:eq(4)').text(bond.BOND_PER + ' %');
 
-            pop.find('.box_tblwrite:eq(1) td:eq(0)').text(bond.BOND_INDATE);
-            pop.find('.box_tblwrite:eq(1) td:eq(1)').text(bond.BOND_CLDATE);
-            pop.find('.box_tblwrite:eq(1) td:eq(2)').text(bond.BOND_BOTIME + ' 개월');
-            pop.find('.box_tblwrite:eq(1) td:eq(3)').text(bond.BOND_BANK);
-            pop.find('.box_tblwrite:eq(1) td:eq(4)').text(bond.BOND_PROD);
+            pop.find('.box_tblwrite:eq(0) td:eq(5)').text(bond.BOND_INDATE);
+            pop.find('.box_tblwrite:eq(0) td:eq(6)').text(bond.BOND_CLDATE);
+            pop.find('.box_tblwrite:eq(0) td:eq(7)').text(bond.BOND_BOTIME + ' 개월');
+            pop.find('.box_tblwrite:eq(0) td:eq(8)').text(bond.BOND_BANK);
+            pop.find('.box_tblwrite:eq(0) td:eq(9)').text(bond.BOND_PROD);
+
+            let BOND_KEY = 1;
+            ajax.draw_chart(BOND_KEY);
 
             $('.wrap_layerpop:eq(0)').fadeIn(500);
         });
@@ -299,6 +328,10 @@ requirejs([
 
         // 채권 사기
         $('.btn_buyc').on('click', function () {
+            if(mData.buyBond.length >= 3) {
+                alert('채권투자는 3개만 가능합니다.')
+                return;
+            }
             ajax.post_buyBond();
 
             ui.init();
@@ -322,7 +355,6 @@ requirejs([
             success: function (data, status, xhr) {
                 mData = $.extend(true, mData, data);
                 ui.init();
-                console.log(mData);
             }
         });
     })();
@@ -339,11 +371,9 @@ requirejs([
                 success: function (data, status, xhr) {
                     mData = $.extend(true, mData, data);
                     ui.init();
-                    console.log(mData);
                 }
             });
             // ajax.draw_chart();
-            console.log('채권 변경');
         }
 
         if (eData.PG_LOCK == "2") {

@@ -403,6 +403,23 @@ class Main_m extends CI_Model
         return $return;
     }
 
+    public function get_bond2()
+    {
+        $query = "
+            SELECT a.*,
+              b.BOND_NOWPRICE,
+              IF(BOND_TYPE = '01', '국채', '회사채') AS BOND_TYPE
+            FROM job020 a, job022 b, tb_admin c
+            WHERE
+                a.BOND_KEY = b.BOND_KEY AND b.BOND_DATE = c.bond_rownum
+            ORDER BY
+              BOND_KEY
+        ";
+        $return = $this->db->query($query)->result();
+
+        return $return;
+    }
+
     public function get_bond_cash()
     {
         $query = "
@@ -501,13 +518,13 @@ class Main_m extends CI_Model
             'EMPL_KEY' => $_SESSION['EMPL_KEY'],
             'BOND_KEY' => $data['bond']['BOND_KEY'],
             'BOND_BUYQTY' => $data['BOND_BUYQTY'],
-            'BOND_BUYPAY' => $data['bond']['BOND_PRICE'] * $data['BOND_BUYQTY'],
-            'BOND_DANGA' => $data['bond']['BOND_PRICE'],
+            'BOND_BUYPAY' => $data['bond']['BOND_NOWPRICE'] * $data['BOND_BUYQTY'],
+            'BOND_DANGA' => $data['bond']['BOND_NOWPRICE'],
             'BOND_RATE' => $rate,
             'BOND_BUYDATE' => $data['bond']['BOND_CLDATE'],
             'BOND_BUYPER' => $data['bond']['BOND_PER'],
-            'BOND_BUYTOT' => $data['bond']['BOND_PRICE'] * $data['BOND_BUYQTY'] * $data['bond']['BOND_PER'] / 100,
-            'BOND_BUYBENIFIT' => $data['bond']['BOND_PRICE'] * $data['BOND_BUYQTY'] * $data['bond']['BOND_PER'] / 100,
+            'BOND_BUYTOT' => $data['bond']['BOND_NOWPRICE'] * $data['BOND_BUYQTY'] * $data['bond']['BOND_PER'] / 100,
+            'BOND_BUYBENIFIT' => $data['bond']['BOND_NOWPRICE'] * $data['BOND_BUYQTY'] * $data['bond']['BOND_PER'] / 100,
         );
         $this->db->insert('job070', $insert_data);
 
@@ -516,7 +533,7 @@ class Main_m extends CI_Model
             WHERE
               EMPL_KEY = ?
         ";
-        $this->db->query($query, array($data['bond']['BOND_PRICE'] * $data['BOND_BUYQTY'], $_SESSION['EMPL_KEY']));
+        $this->db->query($query, array($data['bond']['BOND_NOWPRICE'] * $data['BOND_BUYQTY'], $_SESSION['EMPL_KEY']));
 
         $this->db->trans_complete();
 
@@ -528,9 +545,11 @@ class Main_m extends CI_Model
         $this->db->trans_start();
 
         $query = "
-            SELECT a.*, b.BOND_TYPE FROM job070 a, job020 b
+            SELECT a.*, b.BOND_TYPE, c.BOND_NOWPRICE
+            FROM job070 a, job020 b, job022 c, tb_admin d
             WHERE
-              a.BOND_KEY = b.BOND_KEY AND a.EMPL_KEY = ?
+              a.BOND_KEY = b.BOND_KEY AND a.EMPL_KEY = ? AND
+              b.BOND_KEY = c.BOND_KEY AND c.BOND_DATE = d.bond_rownum
         ";
         $result = $this->db->query($query, $_SESSION['EMPL_KEY'])->result();
 
@@ -546,14 +565,18 @@ class Main_m extends CI_Model
                 }
                 $rate = $credit->CREDIT_SCORE;
             }
-            $plus = $rate - $value->BOND_RATE;
+            $plus = ($rate - $value->BOND_RATE) / 100;
+            $charge = ($value->BOND_NOWPRICE - $value->BOND_DANGA) / $value->BOND_DANGA;
+
+            $bb = $plus + $charge;
 
             $query = "
-                UPDATE job070 SET BOND_BUYBENIFIT = BOND_BUYTOT + (BOND_BUYTOT *  ? / 100)
+                UPDATE job070 SET 
+                  BOND_BUYBENIFIT = BOND_DANGA *  ? * BOND_BUYQTY
                 WHERE
                   EMPL_KEY = ? AND BOND_KEY = ?
             ";
-            $this->db->query($query, array($plus, $_SESSION['EMPL_KEY'], $value->BOND_KEY));
+            $this->db->query($query, array($bb, $_SESSION['EMPL_KEY'], $value->BOND_KEY));
         }
 
         $this->db->trans_complete();
@@ -570,6 +593,19 @@ class Main_m extends CI_Model
               GOLD_DATE <= b.bond_rownum AND GOLD_DATE >= (b.bond_rownum - 10)
         ";
         $return = $this->db->query($query)->result();
+
+        return $return;
+    }
+
+    public function get_bond_chart2($key)
+    {
+        $query = "
+            SELECT a.* FROM
+              job022 a, tb_admin b
+            WHERE
+              BOND_DATE <= b.bond_rownum AND BOND_DATE >= (b.bond_rownum - 10) AND BOND_KEY = ?
+        ";
+        $return = $this->db->query($query, $key)->result();
 
         return $return;
     }
