@@ -30,6 +30,18 @@ class Admin_m extends CI_Model
         return $result;
     }
 
+    public function get_speed()
+    {
+        $query = "
+            SELECT MD_NAME FROM job024
+            WHERE
+              MKEY = 4
+            ORDER BY `KEY` DESC
+        ";
+        $result = $this->db->query($query)->result();
+        return $result;
+    }
+
     public function put_admin_status($data)
     {
         $this->db->trans_start();
@@ -56,13 +68,23 @@ class Admin_m extends CI_Model
     {
         $this->db->trans_start();
 
+        // 난이도 조절
+        $query = "
+            SELECT MD_NAME FROM job023 a, job024 b
+            WHERE
+              a.MKEY = b.MKEY AND a.MKEY = 4
+            GROUP BY a.MKEY
+            ORDER BY b.KEY ASC
+        ";
+        $MD_NAME = $this->db->query($query)->row()->MD_NAME;
+
         $update_data = array(
             'PG_LOCK' => 0,
             'survey_STATUS' => 0,
             'fund_STATUS' => 0,
             'bond_STATUS' => 0,
             'stock_STATUS' => 0,
-            'DATA_TYPE' => '30',
+            'DATA_TYPE' => $MD_NAME,
             'bond_rownum' => 10,
             'stock_rownum' => 10,
             'news_que' => 1,
@@ -91,15 +113,16 @@ class Admin_m extends CI_Model
             INSERT INTO job016_copy SELECT * FROM job016
         ";
         $this->db->query($query);
+        $this->db->query("UPDATE job016_copy SET INSERT_DATE = NOW()");
 
         $this->db->query("DELETE FROM job017_copy");
         $query = "
             INSERT INTO job017_copy SELECT * FROM job017
         ";
         $this->db->query($query);
+        $this->db->query("UPDATE job017_copy SET INSERT_DATE = NOW()");
 
         $this->db->trans_complete();
-
         return $this->db->trans_status();
     }
 
@@ -153,10 +176,11 @@ class Admin_m extends CI_Model
             WHERE
               SECT_KEY = ? AND COMP_DATE > ?
         ";
-
         $this->db->query($query, array($plus, $result->NEWS_CODE, $rownum));
 
-        $this->db->query('UPDATE job016_copy SET SEND = 1 WHERE NEWS_KEY = ?', $key);
+        $query = 'UPDATE job016_copy SET SEND = 1, INSERT_DATE = INSERT_DATE + INTERVAL ? DAY WHERE NEWS_KEY = ?';
+        $this->db->query($query, array($rownum - 10, $key));
+        $this->db->query('UPDATE tb_admin SET news_que = news_que + 1');
 
         $this->db->trans_complete();
 
@@ -201,8 +225,10 @@ class Admin_m extends CI_Model
 
             $this->db->query($query, array($plus, $item->COMP_CODE, $rownum));
         }
+        $query = 'UPDATE job017_copy SET SEND = 1, INSERT_DATE = INSERT_DATE + INTERVAL ? DAY WHERE ANAL_KEY = ?';
+        $this->db->query($query, array($rownum - 10, $key));
 
-        $this->db->query('UPDATE job017_copy SET SEND = 1 WHERE ANAL_KEY = ?', $key);
+        $this->db->query('UPDATE tb_admin SET anal_que = anal_que + 1');
 
         $this->db->trans_complete();
 

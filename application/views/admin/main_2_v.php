@@ -170,13 +170,13 @@
 				<div class="bx_chk_list clfix">
 					<ul>
 						<li class="bg0_copy">
-							<button type="button" data-value="60" class="on">초보 (60초)</button>
+							<button type="button" class="on">초보 (60초)</button>
 						</li>
 						<li class="bg1_copy">
-							<button type="button" data-value="50">중간 ( 50초)</button>
+							<button type="button">중간 ( 50초)</button>
 						</li>
 						<li class="bg2_copy">
-							<button type="button" data-value="30">고수 (30초)</button>
+							<button type="button">고수 (30초)</button>
 						</li>
 					</ul>
 				</div>

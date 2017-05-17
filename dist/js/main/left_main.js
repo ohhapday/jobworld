@@ -34,17 +34,43 @@ requirejs([
 
     let ui = {
         init: function () {
-            console.log(eData);
+            this.news();
+            this.anal();
         },
-    }
+        news: function () {
+            let ul = $('.wrap_layerpop:eq(0) .layerpop:eq(0) .dtlist');
+            let li = $('.wrap_layerpop:eq(0) .layerpop:eq(0) .dtlist li:eq(0)');
 
-    let ajax = {
+            $('.wrap_layerpop:eq(0) .layerpop:eq(0) .dtlist li:not(:eq(0))').remove();
 
+            $.each(mData.NEWS, function () {
+                let $clone = li.clone(true).css('display', '');
+
+                $clone.find('a').text(this.NEWS_HEAD);
+                $clone.find('span').text(moment(this.INSERT_DATE).format('YYYY.MM.DD'));
+
+                ul.append($clone.clone(true));
+            });
+        },
+        anal: function () {
+            let ul = $('.wrap_layerpop:eq(0) .layerpop:eq(1) .dtlist');
+            let li = $('.wrap_layerpop:eq(0) .layerpop:eq(1) .dtlist li:eq(0)');
+
+            $('.wrap_layerpop:eq(0) .layerpop:eq(1) .dtlist li:not(:eq(0))').remove();
+
+            $.each(mData.ANAL, function () {
+                let $clone = li.clone(true).css('display', '');
+
+                $clone.find('a').text(this.ANAL_HEAD);
+                $clone.find('span').text(moment(this.INSERT_DATE).format('YYYY.MM.DD'));
+
+                ul.append($clone);
+            });
+        },
     };
 
-    // 기본 DATA (1회만 처리)
-    let handle_ajax = (function () {
-        (function () {
+    let ajax = {
+        init: function () {
             $.ajax({
                 async: false,
                 dataType: 'json',
@@ -52,36 +78,26 @@ requirejs([
                 url: '/main/get_mData',
                 success: function (data, status, xhr) {
                     mData = data;
-                    ui.init();
                 }
             });
-        })();
-    })();
+            ui.init();
+        },
+    };
 
-    // 기본 UI (1회만 처리)
+    // 기본 Event
     (function () {
-        // 좌측 화면 생성
-        (function () {
-            // let myWindow = window.open("/main/left_main", "MsgWindow", "");
-        })();
-
         // 뉴스 처리
         (function () {
-            $.each(mData.NEWS, function (i) {
-                let $li = $('.news').eq(i);
-                $li.find('span').text(moment().format('YYYY.MM.DD'));
-                $li.find('em').text(this.NEWS_HEAD);
-            });
+            let li = $('.wrap_layerpop:eq(0) .layerpop:eq(0) .dtlist li');
+            li.on('click', function () {
+                let index = $('.wrap_layerpop:eq(0) .layerpop:eq(0) .dtlist li:not(:eq(0))').index($(this));
+                let news = mData.NEWS[index];
+                let pop = $('.wrap_layerpop:eq(1)');
 
-            $('.news').on('click', function () {
-                let index = $('.news').index(this);
-                let pop = $('.wrap_layerpop:eq(0)');
-
-                pop.find('.box_titpop h2').text('이 시각 뉴스');
-                pop.find('.news_tit').text(mData.NEWS[index].NEWS_HEAD);
-                pop.find('.box_contpop p').html(mData.NEWS[index].NEWS_FILE);
+                pop.find('.box_titpop h2').text(news.NEWS_HEAD);
+                pop.find('.box_contpop p').html(news.NEWS_FILE.replace(/\n/gi, '<br>'));
                 pop.find('.date em').text('잡월드 뉴스');
-                pop.find('.date span:eq(1)').text(moment().format('YYYY.MM.DD'));
+                pop.find('.date span:eq(1)').text(moment(news.INSERT_DATE).format('YYYY.MM.DD'));
 
                 pop.fadeIn(500);
             });
@@ -89,15 +105,16 @@ requirejs([
 
         // 애널리스트 처리
         (function () {
-            $('.box_mnrtg2 li').on('click', function () {
-                let index = $('.box_mnrtg2 li').index(this);
-                let pop = $('.wrap_layerpop:eq(0)');
+            let li = $('.wrap_layerpop:eq(0) .layerpop:eq(1) .dtlist li');
+            li.on('click', function () {
+                let index = $('.wrap_layerpop:eq(0) .layerpop:eq(1) .dtlist li:not(:eq(0))').index($(this));
+                let news = mData.ANAL[index];
+                let pop = $('.wrap_layerpop:eq(1)');
 
-                pop.find('.box_titpop h2').text('애널리스트 보고서');
-                pop.find('.news_tit').text(mData.ANAL[index].ANAL_HEAD);
-                pop.find('.box_contpop p').html(mData.ANAL[index].ANAL_FILE);
-                pop.find('.date em').text('잡월드 애널리스트');
-                pop.find('.date span:eq(1)').text(moment().format('YYYY.MM.DD'));
+                pop.find('.box_titpop h2').text(news.ANAL_HEAD);
+                pop.find('.box_contpop p').html(news.ANAL_FILE.replace(/\n/gi, '<br>'));
+                pop.find('.date em').text('잡월드 뉴스');
+                pop.find('.date span:eq(1)').text(moment(news.INSERT_DATE).format('YYYY.MM.DD'));
 
                 pop.fadeIn(500);
             });
@@ -106,41 +123,18 @@ requirejs([
 
     // 시스템 데이터와 비교하여 변경된 항목만 업데이트 처리
     let get_ajax = function (tmp) {
-        if (eData.survey_STATUS == '1') {
-            $('#gnb li:eq(0)').addClass('on');
-
-            $('#gnb li:eq(0)').on('click', function () {
-                $('.wrap_layerpop:eq(1) .layerpop').hide();
-                $('.wrap_layerpop:eq(1) .layerpop:eq(0)').show();
-                $('.wrap_layerpop:eq(1)').fadeIn(500);
+        // 뉴스 데이터 변경
+        if (tmp.news_que !== eData.news_que || tmp.anal_que !== eData.anal_que) {
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'get',
+                url: '/main/get_stockData',
+                success: function (data, status, xhr) {
+                    mData = $.extend(true, mData, data);
+                    ui.init();
+                }
             });
-        } else {
-            $('#gnb li:eq(0)').removeClass('on');
-            $('#gnb li:eq(0)').off('click');
-        }
-
-        if (eData.fund_STATUS == '1') {
-            $('#gnb li:eq(1)').addClass('on');
-            $('#gnb li:eq(1) a').attr('href', '/main/fund');
-        } else {
-            $('#gnb li:eq(1)').removeClass('on');
-            $('#gnb li:eq(1) a').attr('href', '#');
-        }
-
-        if (eData.bond_STATUS == '1') {
-            $('#gnb li:eq(2)').addClass('on');
-            $('#gnb li:eq(2) a').attr('href', '/main/bond');
-        } else {
-            $('#gnb li:eq(2)').removeClass('on');
-            $('#gnb li:eq(2) a').attr('href', '#');
-        }
-
-        if (eData.stock_STATUS == '1') {
-            $('#gnb li:eq(3)').addClass('on');
-            $('#gnb li:eq(3) a').attr('href', '/main/stock');
-        } else {
-            $('#gnb li:eq(3)').removeClass('on');
-            $('#gnb li:eq(3) a').attr('href', '#');
         }
     };
 
@@ -161,5 +155,6 @@ requirejs([
         }
     })();
 
+    ajax.init();
 });
 

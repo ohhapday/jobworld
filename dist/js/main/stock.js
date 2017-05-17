@@ -313,7 +313,6 @@ requirejs([
 
         // 관심종목 클릭 처리 (매수)
         $('.box_tbllist:eq(0) tbody tr').on('click', function () {
-            console.log($(this));
             $('.bx_tablist:eq(0) .tabmenu:eq(0)').addClass('on');
             $('.bx_tablist:eq(0) .tabmenu:eq(1)').removeClass('on');
             $('.bx_tablist:eq(0) .btmtbl:eq(0)').removeClass('off').addClass('on');

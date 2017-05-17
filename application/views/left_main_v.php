@@ -4,9 +4,9 @@
 	<meta charset="UTF-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>드림증권 투자시스템</title>
-	<link rel="stylesheet" type="text/css" href="/dist/css/common.css"/>
-	<link rel="stylesheet" type="text/css" href="/dist/css/layout.css"/>
-	<link rel="stylesheet" type="text/css" href="/dist/css/content.css"/>
+	<link rel="stylesheet" type="text/css" href="/dist/css/common2.css"/>
+	<link rel="stylesheet" type="text/css" href="/dist/css/layout2.css"/>
+	<link rel="stylesheet" type="text/css" href="/dist/css/content2.css"/>
 
 	<script src="/dist/js/require-config.js"></script>
 	<script src="/bower_components/requirejs/require.js" data-main="/dist/js/main/left_main.js"></script>
@@ -42,10 +42,12 @@
 			<div class="contpdd">
 				<div class="ar_btm_selpo">
 					<ul class="dtlist clfix">
-						<li><strong><a href="">코스피 23.6P 하락 마감</a></strong><span>2017-03-10</span></li>
-						<li><strong><a href="">코스피 23.6P 하락 마감</a></strong><span>2017-03-10</span></li>
-						<li><strong><a href="">코스피 23.6P 하락 마감</a></strong><span>2017-03-10</span></li>
-						<li><strong><a href="">코스피 23.6P 하락 마감</a></strong><span>2017-03-10</span></li>
+						<li style="display: none;">
+							<strong>
+								<a href="#"></a>
+							</strong>
+							<span></span>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -66,10 +68,12 @@
 			<div class="contpdd">
 				<div class="ar_btm_selpo">
 					<ul class="dtlist clfix">
-						<li><strong><a href="">코스피 23.6P 하락 마감</a></strong><span>2017-03-10</span></li>
-						<li><strong><a href="">코스피 23.6P 하락 마감</a></strong><span>2017-03-10</span></li>
-						<li><strong><a href="">코스피 23.6P 하락 마감</a></strong><span>2017-03-10</span></li>
-						<li><strong><a href="">코스피 23.6P 하락 마감</a></strong><span>2017-03-10</span></li>
+						<li style="display: none;">
+							<strong>
+								<a href="#"></a>
+							</strong>
+							<span></span>
+						</li>
 					</ul>
 				</div>
 			</div>

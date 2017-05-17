@@ -27,7 +27,7 @@ class Main_m extends CI_Model
         $query = "
             SELECT * FROM job016_copy
             WHERE SEND = 1
-            ORDER BY NEWS_KEY ASC
+            ORDER BY INSERT_DATE, NEWS_KEY DESC
             LIMIT 4
         ";
         $return = $this->db->query($query)->result();
@@ -49,9 +49,8 @@ class Main_m extends CI_Model
         $query = "
             SELECT * FROM job017_copy
             WHERE SEND = 1
-            GROUP BY ANAL_TYPE
-            ORDER BY ANAL_KEY ASC
-            LIMIT 6
+            ORDER BY INSERT_DATE, ANAL_KEY DESC
+            LIMIT 4
         ";
         $return = $this->db->query($query)->result();
         return $return;
@@ -61,7 +60,6 @@ class Main_m extends CI_Model
     {
         $query = "
             SELECT * FROM job017_copy
-            GROUP BY ANAL_TYPE
             ORDER BY ANAL_KEY ASC
         ";
         $return = $this->db->query($query)->result();

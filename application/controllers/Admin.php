@@ -64,10 +64,12 @@ class Admin extends CI_Controller
         $return->STATUS->stock_STATUS = (int)$system->stock_STATUS;
         $return->DATA_TYPE = (int)$system->DATA_TYPE;
 
+
         $return->NEWS = $this->main_m->get_NEWS2();
         $return->ANAL = $this->main_m->get_ANAL2();
 
         $return->COMP_DATA = $this->admin_m->get_COMP_DATA();
+        $return->speed = $this->admin_m->get_speed();           // 체험 속도
 
         echo json_encode($return);
     }

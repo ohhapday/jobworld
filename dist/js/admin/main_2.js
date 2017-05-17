@@ -253,9 +253,22 @@ requirejs([
 
         // 주식 데이터 선택
         (function () {
+
+        })();
+
+        // 체험 주식 데이터 선택 (속도)
+        (function () {
+            $('.bx_chk_list:eq(1) button:eq(0)').data('value', mdata.speed[0].MD_NAME);
+            $('.bx_chk_list:eq(1) button:eq(1)').data('value', mdata.speed[1].MD_NAME);
+            $('.bx_chk_list:eq(1) button:eq(2)').data('value', mdata.speed[2].MD_NAME);
+
+            $('.bx_chk_list:eq(1) button:eq(0)').text('초보 (' + mdata.speed[0].MD_NAME + '초)');
+            $('.bx_chk_list:eq(1) button:eq(1)').data('중간 (' + mdata.speed[0].MD_NAME + '초)');
+            $('.bx_chk_list:eq(1) button:eq(2)').data('고수 (' + mdata.speed[0].MD_NAME + '초)');
+
             $('.bx_chk_list:eq(1) button').removeClass('on');
             $.each($('.bx_chk_list:eq(1) button'), function () {
-                if (mdata.DATA_TYPE === $(this).data('value')) {
+                if (mdata.DATA_TYPE == $(this).data('value')) {
                     $(this).addClass('on');
                 }
             })
