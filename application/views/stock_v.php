@@ -422,8 +422,8 @@
 					<div class="box_tblwrite tblview fl">
 						<table>
 							<colgroup>
-								<col style="width: 35%;">
-								<col style="width: 65%;">
+								<col style="width: 40%;">
+								<col style="width: 60%;">
 							</colgroup>
 							<tbody>
 							<tr>
@@ -440,8 +440,8 @@
 					<div class="box_tblwrite tblview fr">
 						<table>
 							<colgroup>
-								<col style="width: 35%;">
-								<col style="width: 65%;">
+								<col style="width: 40%;">
+								<col style="width: 60%;">
 							</colgroup>
 							<tbody>
 							<tr>

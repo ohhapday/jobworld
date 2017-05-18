@@ -311,8 +311,8 @@
 					<div class="box_tblwrite tblview fl">
 						<table>
 							<colgroup>
-								<col style="width: 35%;">
-								<col style="width: 65%;">
+								<col style="width: 40%;">
+								<col style="width: 60%;">
 							</colgroup>
 							<tbody>
 							<tr>
@@ -329,8 +329,8 @@
 					<div class="box_tblwrite tblview fr">
 						<table>
 							<colgroup>
-								<col style="width: 35%;">
-								<col style="width: 65%;">
+								<col style="width: 40%;">
+								<col style="width: 60%;">
 							</colgroup>
 							<tbody>
 							<tr>
@@ -356,8 +356,8 @@
 					<div class="box_tblwrite tblview fl">
 						<table>
 							<colgroup>
-								<col style="width: 35%;">
-								<col style="width: 65%;">
+								<col style="width: 40%;">
+								<col style="width: 66%;">
 							</colgroup>
 							<tbody>
 							<tr>
@@ -374,8 +374,8 @@
 					<div class="box_tblwrite tblview fr">
 						<table>
 							<colgroup>
-								<col style="width: 35%;">
-								<col style="width: 65%;">
+								<col style="width: 40%;">
+								<col style="width: 60%;">
 							</colgroup>
 							<tbody>
 							<tr>
@@ -401,8 +401,8 @@
 					<div class="box_tblwrite tblview fl">
 						<table>
 							<colgroup>
-								<col style="width: 35%;">
-								<col style="width: 65%;">
+								<col style="width: 40%;">
+								<col style="width: 60%;">
 							</colgroup>
 							<tbody>
 							<tr>
@@ -419,8 +419,8 @@
 					<div class="box_tblwrite tblview fr">
 						<table>
 							<colgroup>
-								<col style="width: 35%;">
-								<col style="width: 65%;">
+								<col style="width: 40%;">
+								<col style="width: 60%;">
 							</colgroup>
 							<tbody>
 							<tr>
@@ -439,8 +439,8 @@
 			<div class="box_btcc">
 				<h3>채권투자</h3>
 				<div class="bxlls clfix">
-					<div class="fl"><strong>총수익률</strong><span>00%</span></div>
-					<div class="fr"><strong>총수익금</strong><span>00%</span></div>
+					<div class="fl"><strong style="width: 35%">총수익률</strong><span style="width: 15%">00%</span></div>
+					<div class="fr"><strong style="width: 35%">총수익금</strong><span style="width: 15%">00%</span></div>
 				</div>
 			</div>
 		</div>

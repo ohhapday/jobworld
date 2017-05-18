@@ -119,11 +119,6 @@
 						<td></td>
 						<td></td>
 					</tr>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
 					</tbody>
 				</table>
 			</div>
@@ -219,7 +214,7 @@
 					<div class="tabmenu m2"><a href="#" class="btn_tb">애널리스트 분석</a></div>
 				</div>
 				<div class="btmtbl">
-					<div class="box_tbllist" style="height: 600px; overflow-y: auto;">
+					<div class="box_tbllist" style="height: 400px; overflow-y: auto;">
 						<table>
 							<colgroup>
 								<col style="width: 33%;">
@@ -244,7 +239,7 @@
 					</div>
 				</div>
 				<div class="btmtbl" style="display: none;">
-					<div class="box_tbllist" style="height: 600px; overflow-y: auto;">
+					<div class="box_tbllist" style="height: 400px; overflow-y: auto;">
 						<table>
 							<colgroup>
 								<col style="width: 33%;">

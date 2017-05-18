@@ -164,7 +164,8 @@ class Main_m extends CI_Model
                WHERE
                  COMP_DATE IN (@COMP_DATE - 1, @COMP_DATE)
                GROUP BY SECT_KEY
-               ORDER BY SECT_KEY ASC) aa;
+               ORDER BY SECT_KEY ASC) aa
+            ORDER BY SECT_KEY ASC;
         ";
         $return = $this->db->query($query, $rownum)->result();
 
@@ -641,10 +642,12 @@ class Main_m extends CI_Model
     public function get_favor()
     {
         $query = "
-            SELECT COMP_KEY
-            FROM job080
+            SELECT a.COMP_KEY
+            FROM job080 a, job015_copy b
             WHERE
-              EMPL_KEY = ?
+              a.COMP_KEY = b.COMP_CODE AND a.EMPL_KEY = ?
+            GROUP BY b.COMP_CODE
+            ORDER BY b.SECT_KEY ASC
         ";
         $result = $this->db->query($query, $_SESSION['EMPL_KEY'])->result();
 

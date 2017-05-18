@@ -8,4 +8,18 @@
 	.wrap_layerpop {
 		background-image: none;
 	}
+	.box_titpop2 {
+		font-size: 20px;
+	}
+	table {
+		font-size: 20px;
+	}
+
+	.layerpop .box_contpop2 .pb_view .pb_tit h3.sb_bg {
+		width: 30%;
+	}
+
+	.box_titpop2 {
+		font-size: 20px;
+	}
 }

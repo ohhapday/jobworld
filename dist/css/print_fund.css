@@ -3,7 +3,7 @@
 		display: none;
 	}
 	.layerpop.pop8 {
-		top: 0px; left: 62.5%; width: 100%;
+		top: 0px; left: 62.5%; width: 100%; /*left: 62.5%;*/
 	}
 	.wrap_layerpop {
 		background-image: none;
@@ -12,5 +12,26 @@
 	.box_contpop2 {
 		overflow-y: hidden;
 		min-height: 1000px;
+	}
+
+	.layerpop .box_contpop2 .ar_btm_dtt .dtts {
+		float: left;
+		width: 30%;
+		margin-right: 4px;
+	}
+
+	.layerpop .box_contpop2 .ar_btm_inp .dtlist li strong {
+		width: 40%;
+	}
+
+	.layerpop .box_contpop2 .ar_btm_dtt .dtts2 {
+		width: 30%;
+	}
+	.layerpop .box_contpop2 .pb_view .pb_tit h3.sb_bg {
+		width: 30%;
+	}
+
+	.box_titpop2 {
+		font-size: 20px;
 	}
 }

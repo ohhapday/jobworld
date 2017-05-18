@@ -353,7 +353,7 @@
 		</div>
 		<div class="box_contpop">
 			<div class="contpdd">
-				<div class="box_tbllist ovtbl">
+				<div class="box_tbllist ovtbl" style="height: 500px; overflow-y: auto;">
 					<table>
 						<colgroup>
 							<col style="width: 7%;">

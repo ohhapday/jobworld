@@ -136,6 +136,10 @@ requirejs([
         },
         fund_add_stock: function () {
             let $table = $('.wrap_layerpop:eq(2) table:eq(0) tbody');
+            let index = $('.box_tbllist:eq(0) tbody tr:not(:eq(0))').index($('.box_tbllist:eq(0) tbody tr.on'));
+
+            $('.area_sbptit span').text(mData.FUND[index].FUND_NAME);
+
             mData.fund_stock = ajax.get_stock();
 
             $table.find('tr:not(:eq(0))').hide(500);
