@@ -161,4 +161,18 @@ class Admin extends CI_Controller
         echo json_encode($return);
     }
 
+    // 주식종목 가격 조정
+    public function put_adjust()
+    {
+        $return = $this->admin_m->put_adjust($_POST);
+
+        $data = array(
+            'table_nm' => 'job015_copy',
+            'where' => array('COMP_CODE' => $_POST['COMP_CODE']),
+        );
+
+        $return = $this->main_m->get_table($data);
+        echo json_encode($return);
+    }
+
 }

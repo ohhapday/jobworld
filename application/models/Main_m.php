@@ -276,7 +276,6 @@ class Main_m extends CI_Model
                 'COMP_CODE' => $item['COMP_CODE'],
                 'FUND_PRICE' => $item['COMP_PRICE'],
             );
-            // $tot_price += $item['FUND_PRICE'];
         }
         $this->db->insert_batch('job061', $job061_data);
 
@@ -289,8 +288,15 @@ class Main_m extends CI_Model
         // 수익률
         $benifit = $this->get_fund_benifit($stock, $fund->FUND_DAY);
 
-        // todo 임시로 수익금의 10%만
-        $my_benifit_price = ($fund->FUND_TOT * $benifit / 100) * 0.1;
+        // 수익률
+        $query = "
+            SELECT MD_NAME FROM job024
+            WHERE MKEY = 5
+        ";
+        $benifit_per = $this->db->query($query)->row()->MD_NAME / 100;
+
+        // 수익금
+        $my_benifit_price = ($fund->FUND_TOT * $benifit / 100) * $benifit_per;
 
         // 펀드 테이블 update
         $update_data = array(

@@ -287,6 +287,16 @@ class Admin_m extends CI_Model
         return $this->db->trans_status();
     }
 
+    public function put_adjust($data)
+    {
+        $query = "
+            UPDATE job015_copy SET COMP_PRICE = (COMP_PRICE + (COMP_PRICE * ?))
+            WHERE
+              COMP_CODE = ?
+        ";
+        $this->db->query($query, array($data['adjust'] / 100, $data['COMP_CODE']));
+    }
+
     // 주식 데이터 처리
     public function stock_result()
     {
@@ -327,7 +337,5 @@ class Admin_m extends CI_Model
             $this->db->query($query, array($item['COMP_PRICE'] * $item['EMPL_BALQTY'], $item['EMPL_KEY']));
         }
         $this->db->insert_batch('job082', $insert_data);
-
-        var_dump($insert_data);
     }
 }

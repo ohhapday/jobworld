@@ -600,13 +600,48 @@ requirejs([
                 pop.find('.col2fr').removeClass('hidden');
             });
 
-            // 조회
-            pop.find('.btn_search').on('click', function () {
-
-            });
-
+            // 주식종목 가격 조정
             pop.find('.btn_play').on('click', function () {
-                alert('작업중');
+                let index = pop.find('.col2fl tbody tr:not(:eq(0))').index(pop.find('.col2fl tbody tr.on'));
+                let job015;
+
+                if(index < 0) {
+                    alert('종목을 선택해 주세요.');
+                    return;
+                }
+
+                $.ajax({
+                    async: false,
+                    dataType: 'json',
+                    type: 'post',
+                    data: {
+                        COMP_CODE: mdata.COMP_DATA[index].COMP_CODE,
+                        adjust: $('input[name="adjust"]').val()
+                    },
+                    url: '/admin/put_adjust',
+                    success: function (data, status, xhr) {
+                        job015 = data;
+                    }
+                });
+
+                let $table = pop.find('.col2fr table tbody');
+                let $clone = pop.find('.col2fr tbody tr:eq(0)')
+                    .clone(true)
+                    .removeClass('hidden');
+
+                pop.find('.col2fr tbody tr:not(:eq(0))').remove();
+
+                let now = moment().subtract(10, 'day');
+                $.each(job015, function (i) {
+                    let date = moment(now).add(i, 'day').format('YYYY-MM-DD')
+                    $clone.find('td:eq(0)').text(this.COMP_DATE);
+                    $clone.find('td:eq(1)').text(date);
+                    $clone.find('td:eq(2)').text(nf.format(this.COMP_PRICE));
+
+                    $table.append($clone.clone(true));
+                });
+
+                alert('가격 정보 조정 완료');
             });
         })();
     })();
@@ -649,7 +684,7 @@ requirejs([
 
         // 이 시간 뉴스
         (function () {
-            let $table = $('.btmtbl:eq(0) table:eq(0) tbody');
+            let $table = $('.btmtbl:eq(0) table:eq(1) tbody');
 
             $table.find('tr:not(:eq(0))').hide(500);
             $table.find('tr:not(:eq(0))').remove();
@@ -679,7 +714,7 @@ requirejs([
 
         // 이 시간 뉴스 전송
         (function () {
-            let $table = $('.btmtbl:eq(0) table:eq(0) tbody');
+            let $table = $('.btmtbl:eq(0) table:eq(1) tbody');
 
             $table.find('.btn_send').on('click', function () {
                 let index = $('.btmtbl:eq(0) table a:not(:eq(0))').index($(this));
@@ -692,7 +727,7 @@ requirejs([
                         NEWS_KEY: mdata.NEWS[index].NEWS_KEY
                     },
                     url: '/admin/put_NEWS',
-                })
+                });
                 $(this).removeClass('btn_send').addClass('btn_sendon').text('전송됨');
             })
         })();
@@ -769,7 +804,7 @@ requirejs([
 
         // 애널리스트 분석
         (function () {
-            let $table = $('.btmtbl:eq(1) table:eq(0) tbody');
+            let $table = $('.btmtbl:eq(1) table:eq(1) tbody');
 
             $table.find('tr:not(:eq(0))').hide(500);
             $table.find('tr:not(:eq(0))').remove();
@@ -799,7 +834,7 @@ requirejs([
 
         // 애널리스트 전송
         (function () {
-            let $table = $('.btmtbl:eq(1) table:eq(0) tbody');
+            let $table = $('.btmtbl:eq(1) table:eq(1) tbody');
 
             $table.find('.btn_send').on('click', function () {
                 let index = $('.btmtbl:eq(1) table a:not(:eq(0))').index($(this));
@@ -812,7 +847,7 @@ requirejs([
                         ANAL_KEY: mdata.ANAL[index].ANAL_KEY
                     },
                     url: '/admin/put_ANAL',
-                })
+                });
                 $(this).removeClass('btn_send').addClass('btn_sendon').text('전송됨');
             })
         })();

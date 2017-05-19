@@ -214,7 +214,7 @@
 					<div class="tabmenu m2"><a href="#" class="btn_tb">애널리스트 분석</a></div>
 				</div>
 				<div class="btmtbl">
-					<div class="box_tbllist" style="height: 400px; overflow-y: auto;">
+					<div class="box_tbllist">
 						<table>
 							<colgroup>
 								<col style="width: 33%;">
@@ -228,14 +228,23 @@
 								<th scope="col">등락 반영</th>
 							</tr>
 							</thead>
-							<tbody>
-							<tr style="display: none;">
-								<td><a href="#" class="btn_send">전송</a></td>
-								<td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">제약</td>
-								<td>오름</td>
-							</tr>
-							</tbody>
 						</table>
+						<div style="height: 330px; overflow-y: auto;">
+							<table>
+								<colgroup>
+									<col style="width: 35%;">
+									<col style="width: 35%;">
+									<col style="width: 30%;">
+								</colgroup>
+								<tbody>
+								<tr style="display: none;">
+									<td><a href="#" class="btn_send">전송</a></td>
+									<td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">제약</td>
+									<td>오름</td>
+								</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 				<div class="btmtbl" style="display: none;">
@@ -253,14 +262,23 @@
 								<th scope="col">등락 반영</th>
 							</tr>
 							</thead>
-							<tbody>
-							<tr style="display: none;">
-								<td><a href="#" class="btn_send">전송</a></td>
-								<td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">제약</td>
-								<td>오름</td>
-							</tr>
-							</tbody>
 						</table>
+						<div style="height: 330px; overflow-y: auto;">
+							<table>
+								<colgroup>
+									<col style="width: 35%;">
+									<col style="width: 35%;">
+									<col style="width: 30%;">
+								</colgroup>
+								<tbody>
+								<tr style="display: none;">
+									<td><a href="#" class="btn_send">전송</a></td>
+									<td style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">제약</td>
+									<td>오름</td>
+								</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -426,7 +444,7 @@
 		<div class="btn_sl">
 		</div>
 		<div class="box_contpop">
-			<div class="box_tbllist col2fl" style="height: 300px; overflow-y: auto;">
+			<div class="box_tbllist col2fl">
 				<table>
 					<colgroup>
 						<col style="width: 20%;">
@@ -440,16 +458,25 @@
 						<th scope="col">종목명</th>
 					</tr>
 					</thead>
-					<tbody>
-					<tr class="hidden">
-						<td>1</td>
-						<td>23456</td>
-						<td>삼성전자</td>
-					</tr>
-					</tbody>
 				</table>
+				<div style="height: 250px; overflow-y: auto;">
+					<table>
+						<colgroup>
+							<col style="width: 22%;">
+							<col style="width: 33%;">
+							<col style="width: 50%;">
+						</colgroup>
+						<tbody>
+						<tr class="hidden">
+							<td>1</td>
+							<td>23456</td>
+							<td>삼성전자</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
-			<div class="box_tbllist col2fr hidden" style="height: 300px; overflow-y: auto;">
+			<div class="box_tbllist col2fr hidden">
 				<table>
 					<colgroup>
 						<col style="width: 20%;">
@@ -463,19 +490,28 @@
 						<th scope="col">현재가격</th>
 					</tr>
 					</thead>
-					<tbody>
-					<tr class="hidden">
-						<td>1</td>
-						<td></td>
-						<td>100,000</td>
-					</tr>
-					</tbody>
 				</table>
+				<div style="height: 250px; overflow-y: auto;">
+					<table>
+						<colgroup>
+							<col style="width: 20%;">
+							<col style="width: 40%;">
+							<col style="width: 40%;">
+						</colgroup>
+						<tbody>
+						<tr class="hidden">
+							<td>1</td>
+							<td></td>
+							<td>100,000</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 		<div class="area_per_gx">
 			<strong>전체 가격 정보 조정</strong>
-			<input type="number" value="10" required><span>% 반영</span>
+			<input type="number" name="adjust" value="10" required><span>% 반영</span>
 			<button type="button" class="btn_play">실행</button>
 		</div>
 		<div class="btn_popbtm">
