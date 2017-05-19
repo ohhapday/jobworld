@@ -87,8 +87,6 @@ requirejs([
 
             }
 
-            alert(total + '점입니다.');
-
             pop.find('.layerpop').hide();
 
             if(total < 10) {

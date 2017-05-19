@@ -133,6 +133,16 @@ class Admin_m extends CI_Model
         ";
         $return = $this->db->query($query)->row();
 
+        $query = "
+            SELECT COUNT(*) AS CNT FROM job050
+        ";
+        $cnt = $this->db->query($query)->row()->CNT;
+
+        $return->login_status = 1;
+        if($cnt === '0') {
+            $return->login_status = null;
+        }
+
         return $return;
     }
 

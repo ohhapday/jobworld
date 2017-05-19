@@ -67,6 +67,34 @@ requirejs([
                 ul.append($clone);
             });
         },
+        news_pop: function () {
+            if (eData.news_que > 1) {
+                let index = 0;
+                let news = mData.NEWS[index];
+                let pop = $('.wrap_layerpop:eq(1)');
+
+                pop.find('.box_titpop h2').text(news.NEWS_HEAD);
+                pop.find('.box_contpop p').html(news.NEWS_FILE.replace(/\n/gi, '<br>'));
+                pop.find('.date em').text('잡월드 뉴스');
+                pop.find('.date span:eq(1)').text(moment(news.INSERT_DATE).format('YYYY.MM.DD'));
+
+                pop.fadeIn(500);
+            }
+        },
+        anal_pop: function () {
+            if (eData.anal_que > 1) {
+                let index = 0;
+                let news = mData.ANAL[index];
+                let pop = $('.wrap_layerpop:eq(1)');
+
+                pop.find('.box_titpop h2').text(news.ANAL_HEAD);
+                pop.find('.box_contpop p').html(news.ANAL_FILE.replace(/\n/gi, '<br>'));
+                pop.find('.date em').text('잡월드 뉴스');
+                pop.find('.date span:eq(1)').text(moment(news.INSERT_DATE).format('YYYY.MM.DD'));
+
+                pop.fadeIn(500);
+            }
+        },
     };
 
     let ajax = {
@@ -135,6 +163,22 @@ requirejs([
                     ui.init();
                 }
             });
+
+            // 뉴스 팝업
+            if (tmp.news_que !== eData.news_que) {
+                ui.news_pop();
+            }
+
+            // 애널 팝업
+            if (tmp.anal_que !== eData.anal_que) {
+                ui.anal_pop();
+            }
+        }
+
+        if (eData.PG_LOCK !== '0') {
+            $('.wrap_layerpop:eq(0)').fadeIn(500);
+        } else {
+            $('.wrap_layerpop:eq(0)').fadeOut(500);
         }
     };
 

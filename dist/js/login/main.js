@@ -39,6 +39,11 @@ requirejs([
         }
     };
 
+    // 좌측 화면 생성
+    (function () {
+        let myWindow = window.open("/main/left_main", "MsgWindo w", "");
+    })();
+
     handle_ui();
 });
 

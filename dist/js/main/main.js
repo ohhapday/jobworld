@@ -170,11 +170,6 @@ requirejs([
 
     // 기본 UI (1회만 처리)
     (function () {
-        // 좌측 화면 생성
-        (function () {
-            let myWindow = window.open("/main/left_main", "MsgWindow", "");
-        })();
-
         // 뉴스 처리
         (function () {
             $.each(mData.NEWS, function (i) {
@@ -306,9 +301,12 @@ requirejs([
         let eventSource = new EventSource('/login/sse_get_system');
         eventSource.onmessage = function (e) {
             if (e.data !== JSON.stringify(eData)) {
-
                 let tmp = $.extend({}, eData);
                 eData = $.extend(true, eData, JSON.parse(e.data));
+
+                if(eData.login_status == null) {
+                    $(location).attr('href', '/login/main');
+                }
 
                 if (tmp.PG_LOCK !== '0') {
                     get_ajax(tmp);

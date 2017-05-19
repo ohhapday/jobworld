@@ -26,7 +26,7 @@
 <!-- //content -->
 
 <!-- 리스트 pop -->
-<div class="wrap_layerpop">
+<div class="wrap_layerpop" style="display: none;">
 
 	<div class="layerpop pop14">
 		<div class="box_titpop">
