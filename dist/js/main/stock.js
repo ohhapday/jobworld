@@ -663,7 +663,6 @@ requirejs([
                 success: function (data, status, xhr) {
                     mData = $.extend(true, mData, data);
                     ui.init();
-                    console.log(mData);
                 }
             });
         }

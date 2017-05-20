@@ -76,6 +76,7 @@ class Main extends CI_Controller
         $return->NEWS = $this->main_m->get_NEWS();
         $return->KOS = $this->main_m->get_KOS();
         $return->fund_stock = $this->main_m->get_stock();
+        $return->benifit = $this->main_m->get_benifit();
 
         echo json_encode($return);
     }

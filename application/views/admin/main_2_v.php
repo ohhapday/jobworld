@@ -533,10 +533,10 @@
 			</div>
 		</div>
 		<div class="btn_sl">
-			<a href="#" class="btn_search">조회</a>
+
 		</div>
 		<div class="box_contpop">
-			<div class="box_tbllist" style="height: 300px; overflow-y: auto;">
+			<div class="box_tbllist">
 				<table>
 					<colgroup>
 						<col style="width: 10%;">
@@ -550,14 +550,24 @@
 						<th scope="col">헤드라인</th>
 					</tr>
 					</thead>
-					<tbody>
-					<tr class="hidden">
-						<td>1</td>
-						<td>&nbsp;</td>
-						<td>&nbsp;</td>
-					</tr>
-					</tbody>
 				</table>
+				<div style="height: 260px; overflow-y: auto;">
+					<table>
+						<colgroup>
+							<col style="width: 10%;">
+							<col style="width: 30%;">
+							<col style="width: 60%;">
+						</colgroup>
+						<thead>
+						<tbody>
+						<tr class="hidden">
+							<td>1</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 
 			<div class="box_tbllist mt30">
@@ -579,11 +589,9 @@
 							<textarea style="width: 100%; height: 200px; margin-top: 10px;" placeholder="내용"></textarea>
 						</td>
 						<td>
-							<!--
-							<label><input type="radio" name="updown" value="2" checked> 오름 </label>
-							<label><input type="radio" name="updown" value="1"> 내림 </label>
-							-->
-							<input type="number" style="width: 95%" placeholder="증감률">
+							<label><input type="radio" name="up_down" value="1"> 오름 </label>
+							<label><input type="radio" name="up_down" value="2"> 내림 </label>
+							<input type="number" style="width: 95%" placeholder="증감률" min="0">
 						</td>
 					</tr>
 					</tbody>
@@ -605,14 +613,14 @@
 		<div class="box_titpop">
 			<h2>애널리스트 정보</h2>
 			<div class="btn_close">
-				<button type="button">닫기</button>
+
 			</div>
 		</div>
 		<div class="btn_sl">
-			<a href="#" class="btn_search">조회</a>
+
 		</div>
 		<div class="box_contpop">
-			<div class="box_tbllist" style="height: 300px; overflow-y: auto;">
+			<div class="box_tbllist">
 				<table>
 					<colgroup>
 						<col style="width: 10%;">
@@ -626,14 +634,23 @@
 						<th scope="col">헤드라인</th>
 					</tr>
 					</thead>
-					<tbody>
-					<tr class="hidden">
-						<td>1</td>
-						<td>&nbsp;</td>
-						<td>&nbsp;</td>
-					</tr>
-					</tbody>
 				</table>
+				<div style="height: 260px; overflow-y: auto;">
+					<table>
+						<colgroup>
+							<col style="width: 10%;">
+							<col style="width: 30%;">
+							<col style="width: 60%;">
+						</colgroup>
+						<tbody>
+						<tr class="hidden">
+							<td>1</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 
 			<div class="box_tbllist mt30">
@@ -655,10 +672,8 @@
 							<textarea style="width: 100%; height: 200px; margin-top: 10px;" placeholder="내용"></textarea>
 						</td>
 						<td>
-							<!--
-							<label><input type="radio" name="updown" value="2" checked> 오름 </label>
-							<label><input type="radio" name="updown" value="1"> 내림 </label>
-							-->
+							<label><input type="radio" name="up_down" value="1" checked> 오름 </label>
+							<label><input type="radio" name="up_down" value="2"> 내림 </label>
 							<input type="number" style="width: 95%" placeholder="증감률">
 						</td>
 					</tr>

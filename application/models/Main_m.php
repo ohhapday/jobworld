@@ -388,6 +388,18 @@ class Main_m extends CI_Model
         return $return;
     }
 
+    public function get_benifit()
+    {
+        // 수익률
+        $query = "
+            SELECT MD_NAME FROM job024
+            WHERE MKEY = 5
+        ";
+        $return = $this->db->query($query)->row()->MD_NAME;
+
+        return $return;
+    }
+
     /**
      * end 펀드 투자 체험
      */

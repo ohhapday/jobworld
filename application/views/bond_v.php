@@ -49,7 +49,7 @@
 				<div class="sb_tit">
 					<h3 class="ic1">채권 상품 목록</h3>
 				</div>
-				<div class="box_tbllist" style="overflow-y: auto; height: 300px;">
+				<div class="box_tbllist">
 					<table>
 						<colgroup>
 							<col style="width: 25%;">
@@ -69,62 +69,34 @@
 							<th scope="col">보기</th>
 						</tr>
 						</thead>
-						<tbody>
-						<tr style="display: none;">
-							<td class="align-l" style="overflow:hidden; white-space:nowrap; text-overflow:ellipsis;"
-								title="">
-								<button type="button">국고채(1년)</button>
-							</td>
-							<td>10,000,000</td>
-							<td>10,000</td>
-							<td>3%</td>
-							<td>국채</td>
-							<td><a href="#" class="und">상세보기</a></td>
-						</tr>
-						</tbody>
 					</table>
-				</div>
-			</div>
-			<!--
-			<div class="sbright">
-				<div class="sb_tit">
-					<h3 class="ic2">채권 시황</h3>
-				</div>
-				<div class="bx_tablist">
-					<div class="tab">
-						<div class="tabmenu m1 on"><a href="#" class="btn_tb">금리변동률</a></div>
-						<div class="tabmenu m2"><a href="#" class="btn_tb">기업신용도공지</a></div>
-					</div>
-					<div class="btmtbl">
-						<div class="chart" style="width: 600px; height: 300px; margin: auto">
-							<canvas id="chart_01"></canvas>
-						</div>
-					</div>
-					<div class="btmtbl" style="display: none;">
-						<div class="box_tbllist">
-							<table>
-								<colgroup>
-									<col style="width: 20%;">
-									<col style="width: 50%;">
-								</colgroup>
-								<thead>
-								<tr>
-									<th scope="col">신용도</th>
-									<th scope="col">정의</th>
-								</tr>
-								</thead>
-								<tbody>
-								<tr>
-									<td>A</td>
-									<td>메모 신용등급에 따른 내용</td>
-								</tr>
-								</tbody>
-							</table>
-						</div>
+					<div style="overflow-y: auto; height: 260px;">
+						<table>
+							<colgroup>
+								<col style="width: 25%;">
+								<col style="width: 20%;">
+								<col style="width: 15%;">
+								<col style="width: 15%;">
+								<col style="width: 13%;">
+								<col style="width: 12%;">
+							</colgroup>
+							<tbody>
+							<tr style="display: none;">
+								<td class="align-l" style="overflow:hidden; white-space:nowrap; text-overflow:ellipsis;"
+									title="">
+									<button type="button">국고채(1년)</button>
+								</td>
+								<td>10,000,000</td>
+								<td>10,000</td>
+								<td>3%</td>
+								<td>국채</td>
+								<td><a href="#" class="und">상세보기</a></td>
+							</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
-			-->
 		</div>
 		<div class="box_sbbtm clfix">
 			<div class="sbleftbt2">
@@ -439,8 +411,8 @@
 			<div class="box_btcc">
 				<h3>채권투자</h3>
 				<div class="bxlls clfix">
-					<div class="fl"><strong style="width: 35%">총수익률</strong><span style="width: 15%">00%</span></div>
-					<div class="fr"><strong style="width: 35%">총수익금</strong><span style="width: 15%">00%</span></div>
+					<div class="fl"><strong style="width: 40%">총수익률</strong><span style="width: 10%">00%</span></div>
+					<div class="fr"><strong style="width: 40%">총수익금</strong><span style="width: 10%">00%</span></div>
 				</div>
 			</div>
 		</div>

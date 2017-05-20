@@ -353,7 +353,7 @@
 		</div>
 		<div class="box_contpop">
 			<div class="contpdd">
-				<div class="box_tbllist ovtbl" style="height: 500px; overflow-y: auto;">
+				<div class="box_tbllist ovtbl">
 					<table>
 						<colgroup>
 							<col style="width: 7%;">
@@ -371,20 +371,31 @@
 							<th scope="col">등락율</th>
 						</tr>
 						</thead>
-						<tbody>
-						<tr style="display: none;">
-							<td><input type="checkbox" name="favor"></td>
-							<td class="align-l"><a href="#"><label for="">삼성전자</label></a></td>
-							<td>5,500</td>
-							<td>
-								<img src="/dist/images/ico_mndw.png" alt=""> <span class="pt2">820</span>
-							</td>
-							<td>
-								<em class="">+2.00%</em>
-							</td>
-						</tr>
-						</tbody>
 					</table>
+					<div style="height: 460px; overflow-y: auto;">
+						<table>
+							<colgroup>
+								<col style="width: 7%;">
+								<col style="width: 33%;">
+								<col style="width: 18%;">
+								<col style="width: 18%;">
+								<col style="width: 18%;">
+							</colgroup>
+							<tbody>
+							<tr style="display: none;">
+								<td><input type="checkbox" name="favor"></td>
+								<td class="align-l"><a href="#"><label for="">삼성전자</label></a></td>
+								<td>5,500</td>
+								<td>
+									<img src="/dist/images/ico_mndw.png" alt=""> <span class="pt2">820</span>
+								</td>
+								<td>
+									<em class="">+2.00%</em>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>

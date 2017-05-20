@@ -51,9 +51,6 @@ requirejs([
                 },
                 url: '/admin/',
                 success: function (data, status, xhr) {
-                    if (data) {
-                        alert('저장 완료')
-                    }
                 }
             });
 
@@ -283,12 +280,14 @@ requirejs([
                 mdata.usabled = 1;
                 handle_ui();
                 handle_ajax.put_ajax();
+                alert('프로그램을 시작합니다.');
             });
 
             $('.btn_result').on('click', function () {
                 mdata.usabled = 2;
                 handle_ui();
                 handle_ajax.put_ajax();
+                alert('결과보기를 시작합니다.');
             });
 
             $('.btn_stop').on('click', function () {
@@ -300,6 +299,7 @@ requirejs([
                 }
                 handle_ui();
                 handle_ajax.put_ajax();
+                alert('메인페이지로 이동합니다.');
             });
         })();
 
@@ -605,7 +605,7 @@ requirejs([
                 let index = pop.find('.col2fl tbody tr:not(:eq(0))').index(pop.find('.col2fl tbody tr.on'));
                 let job015;
 
-                if(index < 0) {
+                if (index < 0) {
                     alert('종목을 선택해 주세요.');
                     return;
                 }
@@ -764,10 +764,7 @@ requirejs([
             pop.find('.box_tbllist:eq(0) tbody tr:eq(0)').on('click', function () {
                 pop.find('.box_tbllist:eq(0) tbody tr').removeClass('on');
                 $(this).addClass('on');
-            });
 
-            // 조회
-            pop.find('.btn_search').on('click', function () {
                 let NEWS_KEY = pop.find('.box_tbllist:eq(0) tr.on td:eq(0)').text();
                 let job016 = handle_ajax.get_table({
                     table_nm: 'job016_copy',
@@ -784,18 +781,12 @@ requirejs([
 
                 $.each(job016, function (i) {
                     let content = this.NEWS_FILE.replace(/\r\n/g, '<br>');
-                    let up_down = (this.UPDOWN === '2') ? '오름' : '내림';
 
                     pop.find('input:eq(0)').val(this.NEWS_HEAD);
                     pop.find('textarea').val(this.NEWS_FILE);
                     pop.find('input[type="number"]').val(parseInt(this.PERCENT));
 
-                    /*
-                     $clone.find('td:eq(0)').html(content).css('text-align', 'left');
-                     $clone.find('td:eq(1)').text(up_down);
-
-                     $table.append($clone.clone(true));
-                     */
+                    pop.find('input[value=' + this.UPDOWN + ']').attr('checked', true);
                 });
 
                 pop.find('.box_tbllist:eq(1)').removeClass('hidden');
@@ -884,10 +875,7 @@ requirejs([
             pop.find('.box_tbllist:eq(0) tbody tr:eq(0)').on('click', function () {
                 pop.find('.box_tbllist:eq(0) tbody tr').removeClass('on');
                 $(this).addClass('on');
-            });
 
-            // 조회
-            pop.find('.btn_search').on('click', function () {
                 let ANAL_KEY = pop.find('.box_tbllist:eq(0) tr.on td:eq(0)').text();
                 let job017 = handle_ajax.get_table({
                     table_nm: 'job017',
@@ -904,18 +892,12 @@ requirejs([
 
                 $.each(job017, function (i) {
                     let content = this.ANAL_FILE.replace(/\r\n/g, '<br>');
-                    let up_down = (this.UPDOWN === '2') ? '오름' : '내림';
+                    let up_down = (this.UPDOWN === '1') ? '오름' : '내림';
 
                     pop.find('input:eq(0)').val(this.ANAL_HEAD);
                     pop.find('textarea').val(this.ANAL_FILE);
                     pop.find('input[type="number"]').val(parseInt(this.PERCENT));
-
-                    /*
-                     $clone.find('td:eq(0)').html(content).css('text-align', 'left');
-                     $clone.find('td:eq(1)').text(up_down);
-
-                     $table.append($clone.clone(true));
-                     */
+                    pop.find('input[value=' + up_down + ']').attr('checked', true);
                 });
 
                 pop.find('.box_tbllist:eq(1)').removeClass('hidden');

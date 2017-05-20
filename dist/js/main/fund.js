@@ -135,7 +135,7 @@ requirejs([
             }
         },
         fund_add_stock: function () {
-            let $table = $('.wrap_layerpop:eq(2) table:eq(0) tbody');
+            let $table = $('.wrap_layerpop:eq(2) table tbody');
             let index = $('.box_tbllist:eq(0) tbody tr:not(:eq(0))').index($('.box_tbllist:eq(0) tbody tr.on'));
 
             $('.area_sbptit span').text(mData.FUND[index].FUND_NAME);
@@ -227,8 +227,8 @@ requirejs([
                 my_benifit = (benifit < 0) ? 0 : tot_benifit_pay * 0.01;        // todo 10%
                 my_benifit_per = (benifit < 0) ? 0 : benifit * 0.01;        // todo 10%
 
-                // todo 펀드 매니저 수익률 임시
-                let txt_benifit = '10';
+                // 펀드 매니저 수익률
+                let txt_benifit = mData.benifit;
 
                 str = '펀드 매니저 수익률 ' + txt_benifit + '%  수익금 ' + nf.format(my_benifit) + '원';
                 $('.pb_view:eq(' + i + ') p').text(str);

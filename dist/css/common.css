@@ -97,7 +97,7 @@ select{ height:24px; padding:3px 2px 3px 2px; font-size:1em; line-height:18px; b
 
 /*float*/
 .fl{ float:left !important;}
-.fr{ float:right !important;}
+.fr{ float:right !important; margin-right : 20px;}
 .flnon{ float:none !important;}
 
 /* align */
