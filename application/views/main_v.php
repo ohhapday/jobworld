@@ -397,5 +397,47 @@
 </div>
 <!-- //기업정보 pop -->
 
+<!-- 등수보기 pop -->
+<div class="wrap_layerpop" style="display: none;">
+
+	<div class="layerpop pop13">
+		<div class="box_titpop">
+			<h2>이 시각 뉴스</h2>
+			<div class="btn_close"><button type="button">닫기</button></div>
+		</div>
+		<div class="box_contpop">
+			<div class="contpdd">
+				<div class="box_tbllist ovtbl">
+					<table>
+						<colgroup>
+							<col style="width: 15%;">
+							<col style="width: 35%;">
+						</colgroup>
+						<thead>
+						<tr>
+							<th scope="col">순위</th>
+							<th scope="col">직원명</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td>1</td>
+							<td>홍길동</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="endbtm">
+			<span><img src="../images/ico_e1.png" alt=""></span>
+			<em> 모두 수고 하셨습니다 </em>
+			<span><img src="../images/ico_e2.png" alt=""></span>
+		</div>
+	</div>
+
+</div>
+<!-- //등수보기 pop -->
+
 </body>
 </html>

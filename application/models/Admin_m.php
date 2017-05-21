@@ -52,6 +52,7 @@ class Admin_m extends CI_Model
             'fund_STATUS' => $data['STATUS']['fund_STATUS'],
             'bond_STATUS' => $data['STATUS']['bond_STATUS'],
             'stock_STATUS' => $data['STATUS']['stock_STATUS'],
+            'result_STATUS' => $data['STATUS']['result_STATUS'],
             'DATA_TYPE' => $data['DATA_TYPE'],
         );
         $this->db->update('tb_admin', $update_data);

@@ -151,8 +151,13 @@
 								<button type="button">채권 체험</button>
 							</div>
 						</li>
-						<li class="bg2">
-							<button type="button">주식 체험</button>
+						<li class="bg1">
+							<div>
+								<button type="button">주식 체험</button>
+							</div>
+							<div>
+								<button type="button">결과 보기</button>
+							</div>
 						</li>
 					</ul>
 				</div>
@@ -199,7 +204,7 @@
 					<button type="button" class="btn_adyee">주식종목관리</button>
 				</div>
 				<div class="da_adt clfix mt3">
-					<button type="button" class="btn_adyee ml0">뉴스관리</button>
+					<button type="button" class="btn_adyee2">뉴스관리</button>
 					<button type="button" class="btn_adyee2">애널리스트 분석 관리</button>
 				</div>
 			</div>

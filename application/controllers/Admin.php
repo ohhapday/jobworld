@@ -62,6 +62,7 @@ class Admin extends CI_Controller
         $return->STATUS->fund_STATUS = (int)$system->fund_STATUS;
         $return->STATUS->bond_STATUS = (int)$system->bond_STATUS;
         $return->STATUS->stock_STATUS = (int)$system->stock_STATUS;
+        $return->STATUS->result_STATUS = (int)$system->result_STATUS;
         $return->DATA_TYPE = (int)$system->DATA_TYPE;
 
 

@@ -41,18 +41,23 @@ requirejs([
             console.log(eData);
         },
         drawchart: function (data, object) {
+            let suggestedMin, suggestedMax;
+
+            suggestedMin = Math.min.apply(null, data.sales)  - 5000;
+            suggestedMax = Math.max.apply(null, data.sales)  + 5000;
+
             let config1 = {
                 type: 'line',
                 data: {
                     datasets: [{
                         borderWidth: 3,
                         borderColor: "#ba0808",
-                        backgroundColor: "rgba(248,241,255,1)",
+                        backgroundColor: "rgba(255,198,198,0.7)",
                         pointBorderColor: "#ba0808",
                         pointBorderWidth: 1,
                         pointRadius: 4,
-                        fill: false,
-                        lineTension: 0.1
+                        fill: true,
+                        lineTension: 0.2
                     }]
                 },
                 options: {
@@ -76,7 +81,7 @@ requirejs([
                             display: true,
                             scaleLabel: {
                                 labelString: '일'
-                            }
+                            },
                         }],
                         yAxes: [{
                             display: true,
@@ -85,9 +90,11 @@ requirejs([
                                 labelString: '금액',
                             },
                             ticks: {
-                                /*userCallback: function(value, index, values) {
-                                 return '' + value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                                 }*/
+                                suggestedMin: suggestedMin,
+                                suggestedMax: suggestedMax,
+                                userCallback: function (value, index, values) {
+                                    return '' + value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                }
                             }
                         }]
                     }
@@ -293,6 +300,17 @@ requirejs([
             $('#gnb li:eq(3)').removeClass('on');
             $('#gnb li:eq(3) a').attr('href', '#');
         }
+
+        if (eData.result_STATUS == '1') {
+            $('#gnb li:eq(4)').addClass('on');
+
+            $('#gnb li:eq(4)').on('click', function () {
+                $('.wrap_layerpop:eq(3)').fadeIn(500);
+            });
+        } else {
+            $('#gnb li:eq(4)').removeClass('on');
+            $('#gnb li:eq(4)').off('click');
+        }
     };
 
     // eventSource
@@ -304,7 +322,7 @@ requirejs([
                 let tmp = $.extend({}, eData);
                 eData = $.extend(true, eData, JSON.parse(e.data));
 
-                if(eData.login_status == null) {
+                if (eData.login_status == null) {
                     $(location).attr('href', '/login/main');
                 }
 

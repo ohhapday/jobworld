@@ -246,6 +246,13 @@ requirejs([
             } else {
                 $('.bx_chk_list:eq(0) button:eq(3)').removeClass('on');
             }
+
+            console.log($('.bx_chk_list:eq(0) button:eq(4)'));
+            if (mdata.STATUS.result_STATUS === 1) {
+                $('.bx_chk_list:eq(0) button:eq(4)').addClass('on');
+            } else {
+                $('.bx_chk_list:eq(0) button:eq(4)').removeClass('on');
+            }
         })();
 
         // 주식 데이터 선택
@@ -296,6 +303,7 @@ requirejs([
                     fund_STATUS: 0,
                     bond_STATUS: 0,
                     stock_STATUS: 0,
+                    result_STATUS: 0,
                 }
                 handle_ui();
                 handle_ajax.put_ajax();
@@ -311,6 +319,7 @@ requirejs([
                 mdata.STATUS.fund_STATUS = 0;
                 mdata.STATUS.bond_STATUS = 0;
                 mdata.STATUS.stock_STATUS = 0;
+                mdata.STATUS.result_STATUS = 0;
 
                 handle_ui();
                 handle_ajax.put_ajax();
@@ -321,6 +330,7 @@ requirejs([
                 mdata.STATUS.fund_STATUS = 1;
                 mdata.STATUS.bond_STATUS = 0;
                 mdata.STATUS.stock_STATUS = 0;
+                mdata.STATUS.result_STATUS = 0;
 
                 handle_ui();
                 handle_ajax.put_ajax();
@@ -331,6 +341,7 @@ requirejs([
                 mdata.STATUS.fund_STATUS = 0;
                 mdata.STATUS.bond_STATUS = 1;
                 mdata.STATUS.stock_STATUS = 0;
+                mdata.STATUS.result_STATUS = 0;
 
                 handle_ui();
                 handle_ajax.put_ajax();
@@ -341,6 +352,18 @@ requirejs([
                 mdata.STATUS.fund_STATUS = 0;
                 mdata.STATUS.bond_STATUS = 0;
                 mdata.STATUS.stock_STATUS = 1;
+                mdata.STATUS.result_STATUS = 0;
+
+                handle_ui();
+                handle_ajax.put_ajax();
+            });
+            $('.bx_chk_list:eq(0) button:eq(4)').on('click', function () {
+                mdata.usabled = 1;
+                mdata.STATUS.survey_STATUS = 0;
+                mdata.STATUS.fund_STATUS = 0;
+                mdata.STATUS.bond_STATUS = 0;
+                mdata.STATUS.stock_STATUS = 0;
+                mdata.STATUS.result_STATUS = 1;
 
                 handle_ui();
                 handle_ajax.put_ajax();
