@@ -331,12 +331,19 @@ class Main_m extends CI_Model
         $benifit = $this->get_fund_benifit($stock, $data['MM']);
 
         $update_data = array(
-            'FUND_MM' => $data['MM'],
-            'FUND_MMPER' => $benifit,
+            'FUND_DAY' => $data['MM'],
+            'FUND_ADDPER' => $benifit,
         );
 
         $this->db->where('FUND_KEY', $data['fund']['FUND_KEY']);
         $this->db->update('job060', $update_data);
+
+        // 투자자 테이블 update
+        $query = "
+            UPDATE job062 SET CUSTOM_ADDPER = ?, CUSTOM_ADDPAY = CUSTOM_PAY + (CUSTOM_PAY * ? / 100)
+            WHERE FUND_KEY = ?
+        ";
+        $this->db->query($query, array($benifit, $benifit, $data['fund']['FUND_KEY']));
 
         $this->db->trans_complete();
     }
@@ -396,6 +403,18 @@ class Main_m extends CI_Model
             WHERE MKEY = 5
         ";
         $return = $this->db->query($query)->row()->MD_NAME;
+
+        return $return;
+    }
+
+    public function fund_own_month()
+    {
+        // 수익률
+        $query = "
+            SELECT MD_NAME FROM job024
+            WHERE MKEY = 2
+        ";
+        $return = $this->db->query($query)->result();
 
         return $return;
     }

@@ -134,16 +134,28 @@
 			<div class="sbleftbt4">
 				<div class="sb_tit">
 					<h3 class="ic5">관심종목</h3>
+					<div style="position: absolute; top: 3px; right: 0;">
+						<span>0초</span>
+						<span>(변경 예정 시각)</span>
+					</div>
 					<!-- <a href="#" class="btn_plss"><img src="/dist/images/ico_sbpls.gif" alt=""></a> -->
 				</div>
 				<div class="box_tbllist">
 					<table id="stock_table_01">
+						<colgroup>
+							<col style="width: 28%;">
+							<col style="width: 18%;">
+							<col style="width: 18%;">
+							<col style="width: 18%;">
+							<col style="width: 18%;">
+						</colgroup>
 						<thead>
 						<tr>
 							<th scope="col">종목명</th>
 							<th scope="col">현재가</th>
 							<th scope="col">직전가</th>
 							<th scope="col">등락율</th>
+							<th scope="col">상세보기</th>
 						</tr>
 						</thead>
 						<tbody>
@@ -152,6 +164,7 @@
 							<td>15,500</td>
 							<td><img src="/dist/images/ico_mndw.png" alt=""> <span class="pt2">820</span></td>
 							<td><em class="">+2.00%</em></td>
+							<td><a href="#" class="und">상세보기</a></td>
 						</tr>
 						</tbody>
 					</table>

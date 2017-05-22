@@ -11,6 +11,7 @@ requirejs([
 
     let nf = new Intl.NumberFormat(["en-US"]);
     let user = common.user;
+    let chart = null;
 
     let eData = {                           // 실시간 데이터
         PG_LOCK: null,                      // 프로그램 중지유무
@@ -76,7 +77,15 @@ requirejs([
                 $clone.find('td:eq(1)').text(nf.format(this.FUND_TOT));
                 $clone.find('td:eq(2)').text(FUND_ADDPER);
 
-                $table.append($clone.clone(true).fadeIn(500));
+                let select = $clone.find('select');
+
+                $.each(mData.fund_own_month, function () {
+                    select.append('<option value="' + this.MD_NAME + '">' + this.MD_NAME + '</option>')
+                });
+                select.val(this.FUND_DAY);
+
+                $table.append($clone.fadeIn(500));
+                // $table.append($clone.clone(true).fadeIn(500));
             });
 
             if (mData.FUND.length === 0) {
@@ -175,6 +184,8 @@ requirejs([
             let fund = mData.FUND[index];
             let $li = $('.rightar li:not(:eq(0))');
 
+            console.log(fund);
+
             fund.custom = ajax.get_custom(fund.FUND_KEY);
 
             $.each(fund.custom, function (i) {
@@ -193,6 +204,8 @@ requirejs([
             let custom = ajax.get_custom(fund.FUND_KEY);
             let $li = $('.rightar li:not(:eq(0))');
 
+            console.log($li);
+
             $.each(custom, function (i) {
                 let benifit = parseInt(this.CUSTOM_PAY) * parseFloat(fund.FUND_MMPER) / 100;
 
@@ -201,6 +214,9 @@ requirejs([
             });
         },
         fund_result: function () {
+            let txt_benifit;
+            let txt_my_benifit = 0;
+
             $('.box_titpop2 span').text(user.name);
             $.each(mData.FUND, function (i) {
                 let MM, benifit, tot_price = 0, tot_benifit_pay = 0,
@@ -224,29 +240,39 @@ requirejs([
                 $('.dtts1:eq(' + i + ') li:eq(3) input').val(nf.format(tot_price));
                 $('.dtts2:eq(' + i + ') li:eq(3) input').val(nf.format(tot_benifit_pay));
 
-                my_benifit = (benifit < 0) ? 0 : tot_benifit_pay * 0.01;        // todo 10%
-                my_benifit_per = (benifit < 0) ? 0 : benifit * 0.01;        // todo 10%
-
                 // 펀드 매니저 수익률
-                let txt_benifit = mData.benifit;
+                txt_benifit = mData.benifit;
+
+                my_benifit = (benifit < 0) ? 0 : tot_benifit_pay * txt_benifit / 100;
+                my_benifit_per = (benifit < 0) ? 0 : benifit * txt_benifit / 100;
 
                 str = '펀드 매니저 수익률 ' + txt_benifit + '%  수익금 ' + nf.format(my_benifit) + '원';
                 $('.pb_view:eq(' + i + ') p').text(str);
+
+                txt_my_benifit += my_benifit;
             });
+
+            $('.box_btcc .fl span').text(txt_benifit + '%');
+            $('.box_btcc .fr span').text(nf.format(txt_my_benifit) + '원');
         },
-        drawchart: function (data, object) {
+        drawchart: function (origin_data, object) {
+            let suggestedMin, suggestedMax;
+            let data = $.extend({}, origin_data);
+
+            suggestedMin = Math.min.apply(null, data.sales) - 1000;
+            suggestedMax = Math.max.apply(null, data.sales) + 1000;
             let config1 = {
                 type: 'line',
                 data: {
                     datasets: [{
                         borderWidth: 3,
                         borderColor: "#ba0808",
-                        backgroundColor: "rgba(248,241,255,1)",
+                        backgroundColor: "rgba(255,198,198,0.7)",
                         pointBorderColor: "#ba0808",
                         pointBorderWidth: 1,
                         pointRadius: 4,
-                        fill: false,
-                        lineTension: 0.1
+                        fill: true,
+                        lineTension: 0.2
                     }]
                 },
                 options: {
@@ -279,9 +305,11 @@ requirejs([
                                 labelString: '금액',
                             },
                             ticks: {
-                                /*userCallback: function(value, index, values) {
-                                 return '' + value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                                 }*/
+                                suggestedMin: suggestedMin,
+                                suggestedMax: suggestedMax,
+                                userCallback: function (value, index, values) {
+                                    return '' + value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                }
                             }
                         }]
                     }
@@ -292,7 +320,13 @@ requirejs([
             config1.data.datasets[0].data = data.sales;
 
             var ctx1 = object.get(0).getContext("2d");
-            let chart = new Chart(ctx1, config1);
+
+            if (chart === null) {
+                chart = new Chart(ctx1, config1);
+            } else {
+                chart.destroy();
+                chart = new Chart(ctx1, config1);
+            }
         },
         company_info: function (data) {
             let table = $('.wrap_layerpop:eq(4) table');
@@ -467,11 +501,20 @@ requirejs([
                 tr.find('input').val(nf.format(this.balance));
                 total += parseInt(this.balance);
             });
+
             pop.find('table:eq(0) tr:last input').val(nf.format(total));
             pop.find('table:eq(1) tr:eq(1) input').val(nf.format(total));
 
             pop.find('table:eq(1) tr:eq(0) input').val('');
             pop.find('table:eq(1) tr:eq(2) input').val('');
+
+            let select = pop.find('select:eq(0)');
+
+            select.find('option').remove();
+            $.each(mData.fund_own_month, function () {
+                select.append('<option value="' + this.MD_NAME + '">' + this.MD_NAME + '</option>');
+            });
+
             pop.find('table:eq(1) tr:eq(2) select option:not(:eq(0))').remove();
             for (let i = 1; i <= 10; i++) {
                 pop.find('table:eq(1) tr:eq(2) select').append('<option>' + (i * 10) + '</option>');
@@ -518,6 +561,21 @@ requirejs([
 
             ui.fund_detail();
             ui.fund_myStock();
+            ui.fund_expect();
+        });
+
+        // 보유기간 변경
+        $('.box_tbllist:eq(0) tbody tr select').on('change', function () {
+            let index = $('.box_tbllist:eq(0) tbody tr:not(:eq(0))').index($('.box_tbllist:eq(0) tbody tr.on'));
+            let fund = mData.FUND[index];
+
+            ajax.put_change_MM($(this).val(), fund);
+
+            ui.fund();
+            $('.box_tbllist:eq(0) tbody tr:not(:eq(0))').eq(index).addClass('on');
+
+            ui.fund_detail();
+            ui.fund_change_MM();
             ui.fund_expect();
         });
 
@@ -582,8 +640,10 @@ requirejs([
 
         // 수익률 보기 클릭
         $('.btn_bview').on('click', function () {
-            ui.fund_result();
-            $('.wrap_layerpop:eq(3)').fadeIn(500);
+            if ($(this).css('cursor') !== 'not-allowed') {
+                ui.fund_result();
+                $('.wrap_layerpop:eq(3)').fadeIn(500);
+            }
         });
 
         // 프린트 버튼

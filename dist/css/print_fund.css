@@ -2,16 +2,20 @@
 	#container, #header, .btn_popbtm {
 		display: none;
 	}
+
 	.layerpop.pop8 {
-		top: 0px; left: 62.5%; width: 100%; /*left: 62.5%;*/
+		top: 0px;
+		left: 62.5%;
+		width: 100%; /*left: 62.5%;*/
 	}
+
 	.wrap_layerpop {
 		background-image: none;
 	}
 
 	.box_contpop2 {
 		overflow-y: hidden;
-		min-height: 1000px;
+		min-height: 900px;
 	}
 
 	.layerpop .box_contpop2 .ar_btm_dtt .dtts {
@@ -27,11 +31,21 @@
 	.layerpop .box_contpop2 .ar_btm_dtt .dtts2 {
 		width: 30%;
 	}
+
 	.layerpop .box_contpop2 .pb_view .pb_tit h3.sb_bg {
 		width: 30%;
 	}
 
 	.box_titpop2 {
 		font-size: 20px;
+	}
+
+	.layerpop .box_btcc {
+		margin-top: 0px !important;
+	}
+
+	.layerpop .box_btcc .bxlls {
+		padding: 0px 0 0 0;
+		margin-top: -60px;
 	}
 }

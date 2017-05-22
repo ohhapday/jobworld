@@ -13,6 +13,8 @@ requirejs([
     let user = common.user;
     let eventSource;
     let chart = null;
+    let chart_COMP_CODE;
+    let selected_index;
 
     let eData = {                           // 실시간 데이터
         PG_LOCK: null,                      // 프로그램 중지유무
@@ -42,6 +44,7 @@ requirejs([
             this.favor();
             this.cashFlow();
             this.buyStock();
+            this.company_pop();
         },
         news: function () {
             $.each(mData.NEWS, function (i) {
@@ -89,6 +92,11 @@ requirejs([
                 $table.append($clone.clone(true));
             });
             $table.find('tr:not(:eq(0))').show(500);
+            
+            // 기존에 선택된 라인 선택
+            if(selected_index > -1) {
+                $('.box_tbllist:eq(0) tbody tr:not(:eq(0))').eq(selected_index).addClass('on');
+            }
         },
         cashFlow: function () {
             let li = $('.ar_btm_sel li');
@@ -224,6 +232,17 @@ requirejs([
             table.find('td:eq(12)').text(data.COM_11);
             table.find('td:eq(13)').text(data.COM_12);
             table.find('td:eq(14)').text(data.COM_13);
+
+            chart_COMP_CODE = data.COMP_CODE;
+        },
+        company_pop: function () {
+            let pop2 = $('.wrap_layerpop:eq(2)');
+
+            if(pop2.css('display') !== 'none') {
+                let COMP_CODE = chart_COMP_CODE;
+                ajax.company_info(COMP_CODE);
+                ajax.draw_chart(COMP_CODE, $('#chart_10'));
+            }
         },
         stock_result: function () {
             let pop = $('.wrap_layerpop:eq(3)');
@@ -336,6 +355,8 @@ requirejs([
             $('.box_tbllist tbody tr').removeClass('on');
             $(this).addClass('on');
 
+            selected_index = $('.box_tbllist:eq(0) tbody tr:not(:eq(0))').index($(this));
+
             $('.bx_tablist:eq(0) .btmtbl:eq(0) span').text($(this).find('.align-l').text());
             $('.bx_tablist:eq(0) .btmtbl:eq(0) input[name="ea"]').val(0);
             $('.bx_tablist:eq(0) .btmtbl:eq(0) .numchk:eq(1)')
@@ -344,9 +365,9 @@ requirejs([
         });
 
         // 관심종목 기업정보 (매수)
-        $('.box_tbllist:eq(0) tbody tr').on('dblclick', function () {
+        $('.box_tbllist:eq(0) tbody tr .und').on('click', function () {
             let pop = $('.wrap_layerpop:eq(2)');
-            let index = $('.box_tbllist:eq(0) tbody tr:not(:eq(0))').index($(this));
+            let index = $('.box_tbllist:eq(0) tbody tr:not(:eq(0)) .und').index($(this));
             let COMP_CODE = mData.favor[index];
 
             ajax.company_info(mData.favor[index]);
@@ -671,6 +692,19 @@ requirejs([
         });
     })();
 
+    // 주식 데이터 변경 카운터
+    let stock_timer;
+    let stock_change_count = function () {
+        let count = eData.DATA_TYPE;
+
+        clearInterval(stock_timer);
+
+        stock_timer = window.setInterval(function () {
+            count = count - 1;
+            $('.box_sbbtm .sb_tit div span:eq(0)').text(count + '초');
+        }, 1000);
+    };
+
     // 시스템 데이터와 비교하여 변경된 항목만 업데이트 처리
     let get_ajax = function (tmp) {
         // 주식 데이터 변경
@@ -683,6 +717,7 @@ requirejs([
                 success: function (data, status, xhr) {
                     mData = $.extend(true, mData, data);
                     ui.init();
+                    stock_change_count();
                 }
             });
         }
