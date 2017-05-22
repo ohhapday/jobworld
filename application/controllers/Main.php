@@ -285,20 +285,19 @@ class Main extends CI_Controller
     {
         $data = $this->main_m->get_stock_chart($_GET['COMP_CODE']);
 
-        $i = 10;
         $txt_data = array();
         $sales = array();
+        $datetime = new DateTime(date('Y-m-d') . '10:50');
+
         foreach ($data as $item) {
-            $datetime = new DateTime();
-            $term = new DateInterval('P' . $i . 'D');
+            $term = new DateInterval('PT600S');     // 10분단위
 
             array_push($txt_data,
-                $datetime->sub($term)->format('m/d')
+                $datetime->add($term)->format('H:i')
             );
             array_push($sales,
                 (int)$item->COMP_PRICE
             );
-            $i--;
         }
 
         $return->labels = $txt_data;

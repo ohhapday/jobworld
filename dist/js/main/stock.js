@@ -12,6 +12,7 @@ requirejs([
     let nf = new Intl.NumberFormat(["en-US"]);
     let user = common.user;
     let eventSource;
+    let chart = null;
 
     let eData = {                           // 실시간 데이터
         PG_LOCK: null,                      // 프로그램 중지유무
@@ -131,19 +132,25 @@ requirejs([
 
             $('.box_sbbtm table:eq(1) tfoot td').text(nf.format(tot_profit));
         },
-        drawchart: function (data, object) {
+        drawchart: function (origin_data, object) {
+            let suggestedMin, suggestedMax;
+            let data = $.extend({}, origin_data);
+
+            suggestedMin = Math.min.apply(null, data.sales) - 1000;
+            suggestedMax = Math.max.apply(null, data.sales) + 1000;
+
             let config1 = {
                 type: 'line',
                 data: {
                     datasets: [{
                         borderWidth: 3,
                         borderColor: "#ba0808",
-//                        backgroundColor: "rgba(248,241,255,1)",
+                        backgroundColor: "rgba(255,198,198,0.7)",
                         pointBorderColor: "#ba0808",
                         pointBorderWidth: 1,
                         pointRadius: 4,
-                        fill: false,
-                        lineTension: 0.1
+                        fill: true,
+                        lineTension: 0.2
                     }]
                 },
                 options: {
@@ -176,9 +183,11 @@ requirejs([
                                 labelString: '금액',
                             },
                             ticks: {
-                                /*userCallback: function(value, index, values) {
-                                 return '' + value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                                 }*/
+                                suggestedMin: suggestedMin,
+                                suggestedMax: suggestedMax,
+                                userCallback: function (value, index, values) {
+                                    return '' + value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                }
                             }
                         }]
                     }
@@ -189,7 +198,13 @@ requirejs([
             config1.data.datasets[0].data = data.sales;
 
             var ctx1 = object.get(0).getContext("2d");
-            let chart = new Chart(ctx1, config1);
+
+            if (chart === null) {
+                chart = new Chart(ctx1, config1);
+            } else {
+                chart.destroy();
+                chart = new Chart(ctx1, config1);
+            }
         },
         company_info: function (data) {
             let table = $('.wrap_layerpop:eq(2) table');
@@ -647,6 +662,11 @@ requirejs([
                 mData = $.extend(true, mData, data);
                 ui.init();
                 console.log(mData);
+
+                // 관심종목 자동 추가
+                $.each(mData.stock, function (i) {
+                    mData.favor[i] = this.COMP_CODE;
+                });
             }
         });
     })();

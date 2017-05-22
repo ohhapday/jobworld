@@ -85,9 +85,10 @@ class Admin_m extends CI_Model
             'fund_STATUS' => 0,
             'bond_STATUS' => 0,
             'stock_STATUS' => 0,
+            'result_STATUS' => 0,
             'DATA_TYPE' => $MD_NAME,
             'bond_rownum' => 10,
-            'stock_rownum' => 10,
+            'stock_rownum' => 13,
             'news_que' => 1,
             'anal_que' => 1,
         );
@@ -150,7 +151,7 @@ class Admin_m extends CI_Model
     public function put_stock_rownum()
     {
         $query = "
-            UPDATE tb_admin SET stock_rownum = IF(stock_rownum = 50, 11, stock_rownum + 1)
+            UPDATE tb_admin SET stock_rownum = IF(stock_rownum = 49, 13, stock_rownum + 1)
         ";
         $this->db->query($query);
     }

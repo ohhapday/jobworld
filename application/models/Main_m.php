@@ -817,7 +817,7 @@ class Main_m extends CI_Model
             SELECT a.* FROM
               job015_copy a, tb_admin b
             WHERE
-              COMP_DATE <= b.stock_rownum AND COMP_DATE >= (b.stock_rownum - 10) AND COMP_CODE = ?
+              COMP_DATE <= b.stock_rownum AND COMP_DATE >= 1 AND COMP_CODE = ?
         ";
         $return = $this->db->query($query, $code)->result();
 

@@ -43,8 +43,8 @@ requirejs([
         drawchart: function (data, object) {
             let suggestedMin, suggestedMax;
 
-            suggestedMin = Math.min.apply(null, data.sales)  - 5000;
-            suggestedMax = Math.max.apply(null, data.sales)  + 5000;
+            suggestedMin = Math.min.apply(null, data.sales)  - 1000;
+            suggestedMax = Math.max.apply(null, data.sales)  + 1000;
 
             let config1 = {
                 type: 'line',

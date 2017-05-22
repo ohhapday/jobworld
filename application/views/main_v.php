@@ -430,9 +430,9 @@
 			</div>
 		</div>
 		<div class="endbtm">
-			<span><img src="../images/ico_e1.png" alt=""></span>
+			<span><img src="/dist/images/ico_e1.png" alt=""></span>
 			<em> 모두 수고 하셨습니다 </em>
-			<span><img src="../images/ico_e2.png" alt=""></span>
+			<span><img src="/dist/images/ico_e2.png" alt=""></span>
 		</div>
 	</div>
 

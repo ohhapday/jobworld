@@ -134,7 +134,7 @@
 			<div class="sbleftbt4">
 				<div class="sb_tit">
 					<h3 class="ic5">관심종목</h3>
-					<a href="#" class="btn_plss"><img src="/dist/images/ico_sbpls.gif" alt=""></a>
+					<!-- <a href="#" class="btn_plss"><img src="/dist/images/ico_sbpls.gif" alt=""></a> -->
 				</div>
 				<div class="box_tbllist">
 					<table id="stock_table_01">
@@ -142,7 +142,7 @@
 						<tr>
 							<th scope="col">종목명</th>
 							<th scope="col">현재가</th>
-							<th scope="col">전일대비</th>
+							<th scope="col">직전가</th>
 							<th scope="col">등락율</th>
 						</tr>
 						</thead>
@@ -191,13 +191,13 @@
 								<th scope="col">종목명</th>
 								<th scope="col">구매수량</th>
 								<th scope="col">산금액</th>
-								<th scope="col">주당가격</th>
+								<th scope="col">현재가격</th>
 								<th scope="col">수익금</th>
 							</tr>
 							</thead>
 							<tbody>
 							<tr style="display: none;">
-								<td class="align-l">엘지전자</td>
+								<td>엘지전자</td>
 								<td>2,000</td>
 								<td>3,000</td>
 								<td>2,000</td>
@@ -247,7 +247,7 @@
 							<th scope="col">선택</th>
 							<th scope="col">종목명</th>
 							<th scope="col">현재가</th>
-							<th scope="col">전일대비</th>
+							<th scope="col">직전가</th>
 							<th scope="col">등락율</th>
 						</tr>
 						</thead>
