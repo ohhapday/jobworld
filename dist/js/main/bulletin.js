@@ -101,10 +101,13 @@ requirejs([
 
             clearInterval(stock_timer);
             stock_timer = window.setInterval(function () {
+                if(count > 10) {
+                    count = 0;
+                }
                 count = count + 1;
                 ajax.draw_chart2(mData.stock[count].COMP_CODE, $('#chart_11'));
                 $('.pt_tit').text(mData.stock[count].COMP_NAME);
-            }, 10000);
+            }, 5000);
         },
         drawchart2: function (data, object) {
             let suggestedMin, suggestedMax;
@@ -171,7 +174,12 @@ requirejs([
             config1.data.datasets[0].data = data.sales;
 
             var ctx1 = object.get(0).getContext("2d");
-            let chart = new Chart(ctx1, config1);
+            if (chart === null) {
+                chart = new Chart(ctx1, config1);
+            } else {
+                chart.destroy();
+                chart = new Chart(ctx1, config1);
+            }
         },
     }
 
