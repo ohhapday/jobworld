@@ -43,9 +43,10 @@ class Main extends CI_Controller
     public function get_mData()
     {
         $return->NEWS = $this->main_m->get_NEWS();
-        $return->ANAL = $this->main_m->get_ANAL();
+        $return->ANAL = $this->main_m->get_ANAL2();
         $return->KOS = $this->main_m->get_KOS();
         $return->COMP = $this->main_m->get_COMP();
+        $return->STOCK_POP = $this->main_m->get_stock();
 
         echo json_encode($return);
     }
@@ -78,6 +79,7 @@ class Main extends CI_Controller
         $return->fund_stock = $this->main_m->get_stock();
         $return->benifit = $this->main_m->get_benifit();
         $return->fund_own_month = $this->main_m->fund_own_month();
+        $return->STOCK_POP = $return->fund_stock;
 
         echo json_encode($return);
     }
@@ -252,6 +254,7 @@ class Main extends CI_Controller
         $return->favor = $this->main_m->get_favor();
         $return->cashFlow = $this->main_m->get_cash();
         $return->buyStock = $this->main_m->get_buyStock();
+        $return->STOCK_POP = $return->stock;
 
         echo json_encode($return);
     }

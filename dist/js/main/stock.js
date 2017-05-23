@@ -215,25 +215,39 @@ requirejs([
             }
         },
         company_info: function (data) {
-            let table = $('.wrap_layerpop:eq(2) table');
+            let table = $('.wrap_layerpop:eq(4)');
 
-            table.find('td:eq(0)').text(data.COMP_NAME);
-            table.find('td:eq(1)').text(data.COM_01);
-            table.find('td:eq(2)').text(data.COM_02);
-            table.find('td:eq(3)').text(data.COMP_CODE);
-            table.find('td:eq(4)').text(data.COM_03);
-            table.find('td:eq(5)').text(data.COM_04);
-            table.find('td:eq(6)').text(data.COM_05);
-            table.find('td:eq(7)').text(data.COM_06);
-            table.find('td:eq(8)').text(data.COM_07);
-            table.find('td:eq(9)').text(data.COM_08);
-            table.find('td:eq(10)').text(data.COM_09);
-            table.find('td:eq(11)').text(data.COM_10);
-            table.find('td:eq(12)').text(data.COM_11);
-            table.find('td:eq(13)').text(data.COM_12);
-            table.find('td:eq(14)').text(data.COM_13);
+            table.find('.box_titpop h2').text(data.COMP_NAME);
+            table.find('.bx_innm .clfix:eq(0) span').text(data.COMP_CODE);
+            table.find('.bx_innm .clfix:eq(1) span').text(nf.format(data.STOCK.max));
+            table.find('.bx_innm .clfix:eq(2) span').text(nf.format(data.STOCK.min));
+            table.find('.bx_innm .clfix:eq(3) span').text(data.CREDIT);
 
-            chart_COMP_CODE = data.COMP_CODE;
+            table.find('.bx_innm1 li:eq(0) a').text(data.NEWS_01);
+            table.find('.bx_innm1 li:eq(1) a').text(data.NEWS_02);
+            table.find('.bx_innm1 li:eq(2) a').text(data.NEWS_03);
+            table.find('.bx_innm1 li:eq(3) a').text(data.NEWS_04);
+            table.find('.bx_innm1 li:eq(4) a').text(data.NEWS_05);
+
+            let STOCK = mData.STOCK_POP.find(function(item){
+                return item.COMP_CODE == data.COMP_CODE;
+            });
+
+            console.log(STOCK);
+
+            if (parseInt(STOCK.MEASURE) >= 0) {
+                table.find('.lftpols2 img').attr('src', '/dist/images/ico_mnup.png');
+                table.find('.lftpols2 span').addClass('colred');
+                table.find('.lftpols2 em').addClass('colred');
+            } else {
+                table.find('.lftpols2 img').attr('src', '/dist/images/ico_mndw.png');
+                table.find('.lftpols2 span').addClass('colblu');
+                table.find('.lftpols2 em').addClass('colblu');
+            }
+
+            table.find('.lftpols2 strong').text(nf.format(STOCK.COMP_PRICE));
+            table.find('.lftpols2 span:eq(1)').text(nf.format(STOCK.MEASURE));
+            table.find('.lftpols2 em').text(parseFloat(STOCK.PER_MEASURE * 100).toFixed(2) + '%');
         },
         company_pop: function () {
             let pop2 = $('.wrap_layerpop:eq(2)');
@@ -364,14 +378,14 @@ requirejs([
             $('.bx_tablist:eq(0) .btmtbl:eq(0) input[name="ea"]').focus();
         });
 
-        // 관심종목 기업정보 (매수)
+        // 관심종목 기업정보
         $('.box_tbllist:eq(0) tbody tr .und').on('click', function () {
-            let pop = $('.wrap_layerpop:eq(2)');
+            let pop = $('.wrap_layerpop:eq(4)');
             let index = $('.box_tbllist:eq(0) tbody tr:not(:eq(0)) .und').index($(this));
             let COMP_CODE = mData.favor[index];
 
             ajax.company_info(mData.favor[index]);
-            ajax.draw_chart(COMP_CODE, $('#chart_10'));
+            ajax.draw_chart(COMP_CODE, $('#chart_11'));
 
             pop.fadeIn(500);
         });
@@ -564,9 +578,9 @@ requirejs([
             }
         });
 
-        // 공시정보 클릭
+        // 살세보기 클릭
         $('.btn_adgre').on('click', function () {
-            let pop = $('.wrap_layerpop:eq(3)');
+            let pop = $('.wrap_layerpop:eq(4)');
             let index = $('.box_tbllist:eq(0) table tbody tr:not(:eq(0))')
                 .index($('.box_tbllist:eq(0) table tbody tr.on'));
 

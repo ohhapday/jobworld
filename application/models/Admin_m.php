@@ -55,6 +55,11 @@ class Admin_m extends CI_Model
             'result_STATUS' => $data['STATUS']['result_STATUS'],
             'DATA_TYPE' => $data['DATA_TYPE'],
         );
+
+        if ($data['usabled'] == '3') {
+            $update_data['bond_rownum'] = 10;
+            $update_data['stock_rownum'] = 13;
+        }
         $this->db->update('tb_admin', $update_data);
 
         if ($data['STATUS']['stock_STATUS'] == 1 && $data['usabled'] == 2) {
@@ -190,8 +195,8 @@ class Admin_m extends CI_Model
         ";
         $this->db->query($query, array($plus, $result->NEWS_CODE, $rownum));
 
-        $query = 'UPDATE job016_copy SET SEND = 1, INSERT_DATE = INSERT_DATE + INTERVAL ? DAY WHERE NEWS_KEY = ?';
-        $this->db->query($query, array($rownum - 10, $key));
+        $query = 'UPDATE job016_copy SET SEND = 1, INSERT_DATE = NOW() WHERE NEWS_KEY = ?';
+        $this->db->query($query, array($key));
         $this->db->query('UPDATE tb_admin SET news_que = news_que + 1');
 
         $this->db->trans_complete();
@@ -237,8 +242,8 @@ class Admin_m extends CI_Model
 
             $this->db->query($query, array($plus, $item->COMP_CODE, $rownum));
         }
-        $query = 'UPDATE job017_copy SET SEND = 1, INSERT_DATE = INSERT_DATE + INTERVAL ? DAY WHERE ANAL_KEY = ?';
-        $this->db->query($query, array($rownum - 10, $key));
+        $query = 'UPDATE job017_copy SET SEND = 1, INSERT_DATE = NOW() WHERE ANAL_KEY = ?';
+        $this->db->query($query, array($key));
 
         $this->db->query('UPDATE tb_admin SET anal_que = anal_que + 1');
 

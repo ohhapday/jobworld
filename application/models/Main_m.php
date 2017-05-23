@@ -27,7 +27,7 @@ class Main_m extends CI_Model
         $query = "
             SELECT * FROM job016_copy
             WHERE SEND = 1
-            ORDER BY INSERT_DATE, NEWS_KEY DESC
+            ORDER BY INSERT_DATE DESC, NEWS_KEY DESC
             LIMIT 4
         ";
         $return = $this->db->query($query)->result();
@@ -49,7 +49,7 @@ class Main_m extends CI_Model
         $query = "
             SELECT * FROM job017_copy
             WHERE SEND = 1
-            ORDER BY INSERT_DATE, ANAL_KEY DESC
+            ORDER BY INSERT_DATE DESC, ANAL_KEY DESC
             LIMIT 4
         ";
         $return = $this->db->query($query)->result();
@@ -852,7 +852,21 @@ class Main_m extends CI_Model
               COMP_CODE = ?
         ";
         $return = $this->db->query($query, $code)->row();
+        $return->STOCK = $this->get_company_stock($code);
 
+        return $return;
+    }
+
+    public function get_company_stock($code)
+    {
+        $query = "
+            SELECT MAX(a.COMP_PRICE) AS max, MIN(a.COMP_PRICE) AS min FROM
+              job015_copy a, tb_admin b
+            WHERE
+              COMP_DATE <= b.stock_rownum AND COMP_DATE >= 1 AND COMP_CODE = ?
+        ";
+
+        $return = $this->db->query($query, $code)->row();
         return $return;
     }
 

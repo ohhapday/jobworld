@@ -72,7 +72,7 @@
 							<td>10,000,000</td>
 							<td></td>
 							<td>
-								<select style="height: 40px; width: 100%;">
+								<select style="height: 40px; width: 60%; background-color: #F8F1E1; float: right;">
 								</select>
 							</td>
 						</tr>
@@ -99,7 +99,7 @@
 					<h3 class="ic2">펀드 투자 종목</h3>
 					<a href="#" class="btn_plss"><img src="/dist/images/ico_sbpls.gif" alt=""></a>
 				</div>
-				<div class="box_tbllist" style="overflow-y: auto; height: 508px; border: 1px solid #CCC; border-top: 1px solid #000000">
+				<div class="box_tbllist" style="border: 1px solid #CCC; border-top: 1px solid #000000">
 					<table>
 						<colgroup>
 							<col style="width: 32%;">
@@ -111,20 +111,30 @@
 						<tr>
 							<th scope="col">종목명</th>
 							<th scope="col">현재가</th>
-							<th scope="col">전일대비</th>
+							<th scope="col">전월대비</th>
 							<th scope="col">등락율</th>
 						</tr>
 						</thead>
-						<tbody>
-						<tr style="display: none;">
-							<td class="align-l">삼성전자</td>
-							<td>5,500</td>
-							<td><img src="/dist/images/ico_mndw.png" alt=""> <span class="pt2">820</span></td>
-							<td><em class="">+2.00%</em></td>
-						</tr>
-						</tbody>
 					</table>
-					<div style="margin-top: 20px; display: none;">
+					<div style="overflow-y: auto; height: 442px;">
+						<table>
+							<colgroup>
+								<col style="width: 32%;">
+								<col style="width: 24%;">
+								<col style="width: 24%;">
+								<col style="width: 18%;">
+							</colgroup>
+							<tbody>
+							<tr style="display: none;">
+								<td class="align-l">삼성전자</td>
+								<td>5,500</td>
+								<td><img src="/dist/images/ico_mndw.png" alt=""> <span class="pt2">820</span></td>
+								<td><em class="">+2.00%</em></td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+					<div style="margin-top: -320px; display: none; height: 320px;">
 						<h3 class="ic4" style="text-align: center; font-size: 30px; color: #0000ff">
 							아직 선택된 종목이 없어요. <br>
 							위에 [+] 버튼을 눌러 종목을 선택해 주세요.
@@ -187,9 +197,9 @@
 			<div class="sbrightbt" style="margin-top: -220px;">
 				<div class="ar_btm_bx clfix">
 					<div class="rightar">
-						<h4 class="sb_bg">펀드 투자<br>정보</h4>
+						<h4 class="sb_bg" style="margin-right: 0px;">펀드 투자<br>정보</h4>
 						<div class="ar_btm_inp">
-							<ul class="dtlist clfix">
+							<ul class="dtlist clfix" style="width: 110%;">
 								<li>
 									<strong class="non">&nbsp;</strong>
 									<span>투자금</span>
@@ -197,18 +207,18 @@
 								</li>
 								<li>
 									<strong>투자자 A</strong>
-									<input type="text">
-									<input type="text">
+									<input type="text" style="width: 32%">
+									<input type="text" style="width: 32%">
 								</li>
 								<li>
 									<strong>투자자 B</strong>
-									<input type="text">
-									<input type="text">
+									<input type="text" style="width: 32%">
+									<input type="text" style="width: 32%">
 								</li>
 								<li>
 									<strong>투자자 C</strong>
-									<input type="text">
-									<input type="text">
+									<input type="text" style="width: 32%">
+									<input type="text" style="width: 32%">
 								</li>
 							</ul>
 						</div>
@@ -365,18 +375,20 @@
 					<table>
 						<colgroup>
 							<col style="width: 7%;">
-							<col style="width: 33%;">
 							<col style="width: 18%;">
 							<col style="width: 18%;">
 							<col style="width: 18%;">
+							<col style="width: 18%;">
+							<col style="width: 15%;">
 						</colgroup>
 						<thead>
 						<tr>
 							<th scope="col">선택</th>
 							<th scope="col">종목명</th>
 							<th scope="col">현재가</th>
-							<th scope="col">전일대비</th>
+							<th scope="col">전월대비</th>
 							<th scope="col">등락율</th>
+							<th scope="col">상세보기</th>
 						</tr>
 						</thead>
 					</table>
@@ -384,10 +396,11 @@
 						<table>
 							<colgroup>
 								<col style="width: 7%;">
-								<col style="width: 33%;">
 								<col style="width: 18%;">
 								<col style="width: 18%;">
 								<col style="width: 18%;">
+								<col style="width: 18%;">
+								<col style="width: 15%;">
 							</colgroup>
 							<tbody>
 							<tr style="display: none;">
@@ -400,6 +413,7 @@
 								<td>
 									<em class="">+2.00%</em>
 								</td>
+								<td><a href="#" class="und">상세보기</a></td>
 							</tr>
 							</tbody>
 						</table>
@@ -770,6 +784,57 @@
 
 </div>
 <!-- //기업정보 pop -->
+
+<!-- 신규 기업정보 pop -->
+<div class="wrap_layerpop" style="display: none;">
+
+	<div class="layerpop pop18">
+		<div class="box_titpop">
+			<h2>삼성전자</h2>
+			<div class="btn_close"><button type="button">닫기</button></div>
+		</div>
+		<div class="box_contpop">
+			<div class="contpdd">
+				<div class="lftpols1">
+					<div class="bx_innm clfix">
+						<ul>
+							<li class="clfix"><strong>- 종목코드 :</strong><span>009863</span></li>
+							<li class="clfix"><strong>- 최고가 :</strong><span>129,000</span></li>
+							<li class="clfix"><strong>- 최저가 :</strong><span>129,000</span></li>
+							<li class="clfix"><strong>- 신용정보 :</strong><span>BBB</span></li>
+						</ul>
+					</div>
+					<div class="bx_innm1">
+						<ul>
+							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
+							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
+							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
+							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
+							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="lftpols2">
+					<div class="numkk">
+						<strong>125,000</strong>
+						<span class="pt2 colblu">
+							<img src="/dist/images/ico_mndw.png" alt="">
+						</span>
+						<span style="margin-left: -20px;">82000</span>
+						<em>-8.88%</em>
+					</div>
+					<div class="chrt">
+						<div class="chartpd" style="width: 650px; height: 800px; margin: auto">
+							<canvas id="chart_11" width="400" height="250"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- //신규 기업정보 pop -->
 
 </body>
 </html>

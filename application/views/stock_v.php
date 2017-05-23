@@ -518,5 +518,56 @@
 </div>
 <!-- //결과보기 pop -->
 
+<!-- 신규 기업정보 pop -->
+<div class="wrap_layerpop" style="display: none;">
+
+	<div class="layerpop pop18">
+		<div class="box_titpop">
+			<h2>삼성전자</h2>
+			<div class="btn_close"><button type="button">닫기</button></div>
+		</div>
+		<div class="box_contpop">
+			<div class="contpdd">
+				<div class="lftpols1">
+					<div class="bx_innm clfix">
+						<ul>
+							<li class="clfix"><strong>- 종목코드 :</strong><span>009863</span></li>
+							<li class="clfix"><strong>- 최고가 :</strong><span>129,000</span></li>
+							<li class="clfix"><strong>- 최저가 :</strong><span>129,000</span></li>
+							<li class="clfix"><strong>- 신용정보 :</strong><span>BBB</span></li>
+						</ul>
+					</div>
+					<div class="bx_innm1">
+						<ul>
+							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
+							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
+							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
+							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
+							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="lftpols2">
+					<div class="numkk">
+						<strong>125,000</strong>
+						<span class="pt2 colblu">
+							<img src="/dist/images/ico_mndw.png" alt="">
+						</span>
+						<span style="margin-left: -20px;">82000</span>
+						<em>-8.88%</em>
+					</div>
+					<div class="chrt">
+						<div class="chartpd" style="width: 650px; height: 800px; margin: auto">
+							<canvas id="chart_11" width="400" height="250"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- //신규 기업정보 pop -->
+
 </body>
 </html>

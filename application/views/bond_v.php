@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="/dist/css/layout.css" />
 	<link rel="stylesheet" type="text/css" href="/dist/css/content.css" />
 	<link rel="stylesheet" type="text/css" href="/dist/css/print.css"/>
+	<link rel="stylesheet" type="text/css" href="/dist/css/content3.css" />
 
 	<!--[if lt IE 9]>
 	<script src="../js/html5shiv.js"></script>

@@ -759,7 +759,7 @@ requirejs([
         (function () {
             let pop = $('.wrap_layerpop:eq(3)');
 
-            $('.btn_adyee:eq(2)').on('click', function () {
+            $('.btn_adyee2:eq(0)').on('click', function () {
                 let job016 = handle_ajax.get_table({
                     table_nm: 'job016_copy',
                     where: ['1', '1'],
@@ -870,7 +870,7 @@ requirejs([
         (function () {
             let pop = $('.wrap_layerpop:eq(4)');
 
-            $('.btn_adyee2').on('click', function () {
+            $('.btn_adyee2:eq(1)').on('click', function () {
                 let job017 = handle_ajax.get_table({
                     table_nm: 'job017',
                     where: ['1', '1'],
