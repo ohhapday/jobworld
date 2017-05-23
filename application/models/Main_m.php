@@ -172,6 +172,17 @@ class Main_m extends CI_Model
         return $return;
     }
 
+    public function get_user_info()
+    {
+        $query = "
+            SELECT * FROM job050
+            ORDER BY rand();
+        ";
+        $return = $this->db->query($query)->result();
+
+        return $return;
+    }
+
     /**
      * begin 펀드 투자 체험
      */

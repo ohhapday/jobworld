@@ -215,6 +215,22 @@ requirejs([
             table.find('.lftpols2 span:eq(1)').text(nf.format(STOCK.MEASURE));
             table.find('.lftpols2 em').text(parseFloat(STOCK.PER_MEASURE * 100).toFixed(2) + '%');
         },
+        result_pop: function () {
+            let data = ajax.result_pop();
+            let pop = $('.wrap_layerpop:eq(3)');
+
+            console.log(data);
+
+            console.log(pop.find('tbody'));
+            $.each(data, function (i) {
+                let $clone = pop.find('tbody tr:eq(0)')
+                    .clone(true).css('display', '');
+
+                $clone.find('td:eq(0)').text(i + 1);
+                $clone.find('td:eq(1)').text(this.EMPL_NAME);
+                pop.find('tbody').append($clone);
+            });
+        },
     }
 
     let ajax = {
@@ -259,6 +275,19 @@ requirejs([
                     ui.company_info(data);
                 }
             });
+        },
+        result_pop: function () {
+            let returnData;
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'get',
+                url: '/main/get_user_info',
+                success: function (data, status, xhr) {
+                    returnData = data;
+                }
+            });
+            return returnData;
         },
     };
 
@@ -427,6 +456,7 @@ requirejs([
             $('#gnb li:eq(4)').addClass('on');
 
             $('#gnb li:eq(4)').on('click', function () {
+                ui.result_pop();
                 $('.wrap_layerpop:eq(3)').fadeIn(500);
             });
         } else {

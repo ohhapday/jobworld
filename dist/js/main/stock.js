@@ -233,8 +233,6 @@ requirejs([
                 return item.COMP_CODE == data.COMP_CODE;
             });
 
-            console.log(STOCK);
-
             if (parseInt(STOCK.MEASURE) >= 0) {
                 table.find('.lftpols2 img').attr('src', '/dist/images/ico_mnup.png');
                 table.find('.lftpols2 span').addClass('colred');
@@ -259,6 +257,7 @@ requirejs([
             }
         },
         stock_result: function () {
+            console.log('aaaa');
             let pop = $('.wrap_layerpop:eq(3)');
             let data = ajax.stock_result();
             let $table = pop.find('.sizhg table');
@@ -578,7 +577,7 @@ requirejs([
             }
         });
 
-        // 살세보기 클릭
+        // 상세보기 클릭
         $('.btn_adgre').on('click', function () {
             let pop = $('.wrap_layerpop:eq(4)');
             let index = $('.box_tbllist:eq(0) table tbody tr:not(:eq(0))')

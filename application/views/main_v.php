@@ -402,7 +402,7 @@
 
 	<div class="layerpop pop13">
 		<div class="box_titpop">
-			<h2>이 시각 뉴스</h2>
+			<h2>결과 보기</h2>
 			<div class="btn_close"><button type="button">닫기</button></div>
 		</div>
 		<div class="box_contpop">
@@ -420,7 +420,7 @@
 						</tr>
 						</thead>
 						<tbody>
-						<tr>
+						<tr style="display: none;">
 							<td>1</td>
 							<td>홍길동</td>
 						</tr>

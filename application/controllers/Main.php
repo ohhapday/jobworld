@@ -26,6 +26,15 @@ class Main extends CI_Controller
 
     }
 
+    public function get_bulletinData()
+    {
+        $return->stock = $this->main_m->get_stock();
+        $return->STOCK_POP = $return->stock;
+        $return->KOS = $this->main_m->get_KOS();
+
+        echo json_encode($return);
+    }
+
     /**
      * begin 메인 페이지
      */
@@ -38,6 +47,11 @@ class Main extends CI_Controller
     public function left_main()
     {
         $this->load->view('left_main_v');
+    }
+
+    public function bulletin()
+    {
+        $this->load->view('bulletin_v');
     }
 
     public function get_mData()
@@ -54,6 +68,13 @@ class Main extends CI_Controller
     public function get_survey()
     {
         $return->SURVEY = $this->main_m->get_survey();
+
+        echo json_encode($return);
+    }
+
+    public function get_user_info()
+    {
+        $return = $this->main_m->get_user_info();
 
         echo json_encode($return);
     }
