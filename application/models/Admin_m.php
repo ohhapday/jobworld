@@ -146,7 +146,7 @@ class Admin_m extends CI_Model
         $cnt = $this->db->query($query)->row()->CNT;
 
         $return->login_status = 1;
-        if($cnt === '0') {
+        if ($cnt === '0') {
             $return->login_status = null;
         }
 
@@ -343,6 +343,8 @@ class Admin_m extends CI_Model
             ";
             $this->db->query($query, array($item['COMP_PRICE'] * $item['EMPL_BALQTY'], $item['EMPL_KEY']));
         }
-        $this->db->insert_batch('job082', $insert_data);
+        if (count($result) > 0) {
+            $this->db->insert_batch('job082', $insert_data);
+        }
     }
 }

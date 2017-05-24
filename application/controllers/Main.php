@@ -182,11 +182,57 @@ class Main extends CI_Controller
         $return->buyBond = $this->main_m->get_buyBond();
         $return->gold = $this->main_m->get_gold();
         $return->credit = $this->main_m->get_credit();
+        $return->gold_chart = $this->get_gold_chart();
 
         echo json_encode($return);
     }
 
+    public function get_gold_chart()
+    {
+        $data = $this->main_m->get_gold_chart();
+
+        $txt_data = array();
+        $sales = array();
+        $datetime = new DateTime();
+        $datetime->sub(new DateInterval('P3M'));
+
+        $i = 0;
+        foreach ($data as $item) {
+            $term = new DateInterval('P3M');
+            $label = $datetime->add($term)->format('y/m');
+
+            if ($i % 4 === 0) {
+                $label = $label;
+            } else {
+                $label = '';
+            }
+
+            array_push($txt_data,
+                $label
+            );
+            array_push($sales,
+                (float)$item->GOLD_RATE
+            );
+            $i++;
+        }
+
+        $return->labels = $txt_data;
+        $return->sales = $sales;
+
+        return $return;
+    }
+
     public function post_buyBond()
+    {
+        $data['bond'] = $this->input->post('bond', true);
+        $data['BOND_BUYQTY'] = $this->input->post('BOND_BUYQTY', true);
+        $this->main_m->post_buyBond($data);
+
+        $this->get_bondData();
+    }
+
+    // todo
+    public function cancel_buyBond()
     {
         $data['bond'] = $this->input->post('bond', true);
         $data['BOND_BUYQTY'] = $this->input->post('BOND_BUYQTY', true);
@@ -237,10 +283,10 @@ class Main extends CI_Controller
         $sales = array();
         foreach ($data as $item) {
             $datetime = new DateTime();
-            $term = new DateInterval('PT' . ($i * 30) . 'S');
+            $term = new DateInterval('P' . $i . 'M');
 
             array_push($txt_data,
-                $datetime->sub($term)->format('i:s')
+                $datetime->sub($term)->format('Y/m')
             );
             array_push($sales,
                 (int)$item->BOND_NOWPRICE

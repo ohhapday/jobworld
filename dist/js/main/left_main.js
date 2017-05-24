@@ -103,7 +103,7 @@ requirejs([
                 async: false,
                 dataType: 'json',
                 type: 'get',
-                url: '/main/get_mData',
+                url: '/main/get_stockData',
                 success: function (data, status, xhr) {
                     mData = data;
                 }

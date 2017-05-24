@@ -130,9 +130,11 @@ requirejs([
     (function () {
         var timer_update = function () {
             let url = null;
+            /*
             if (mdata.STATUS.bond_STATUS == 1) {
                 url = '/admin/put_bond_rownum'
             }
+            */
 
             if (mdata.STATUS.stock_STATUS == 1) {
                 url = '/admin/put_stock_rownum'

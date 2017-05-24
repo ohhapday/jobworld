@@ -11,6 +11,7 @@ requirejs([
 
     let nf = new Intl.NumberFormat(["en-US"]);
     let user = common.user;
+    let chart = null;
 
     let eData = {                           // 실시간 데이터
         PG_LOCK: null,                      // 프로그램 중지유무
@@ -37,6 +38,9 @@ requirejs([
             this.cashFlow();
             this.buyBondList();
             this.buyBond_clear();
+
+            console.log(mData);
+            this.gold_chart(mData.gold_chart, $('#chart_11'));
         },
         bond: function () {
             let $table = $('.box_tbllist:eq(0) table tbody');
@@ -155,18 +159,23 @@ requirejs([
             pop.find('.box_btcc .fl span').text(nf.format((tot_price / tot_buy_cost * 100).toFixed(2)) + '%');
             pop.find('.box_btcc .fr span').text(nf.format(tot_price));
         },
-        drawchart: function (data) {
+        drawchart: function (data, object) {
+            let suggestedMin, suggestedMax;
+
+            suggestedMin = Math.min.apply(null, data.sales) - 50;
+            suggestedMax = Math.max.apply(null, data.sales) + 50;
+
             let config1 = {
                 type: 'line',
                 data: {
                     datasets: [{
                         borderWidth: 3,
                         borderColor: "#306E92",
-                        // backgroundColor: "rgba(60,141,188,0.5)",
+                        backgroundColor: "rgba(60,141,188,0.5)",
                         pointBorderColor: "#3b8bba",
                         pointBorderWidth: 1,
                         pointRadius: 4,
-                        fill: false,
+                        fill: true,
                         lineTension: 0.1
                     }]
                 },
@@ -191,7 +200,7 @@ requirejs([
                             display: true,
                             scaleLabel: {
                                 labelString: '일'
-                            }
+                            },
                         }],
                         yAxes: [{
                             display: true,
@@ -200,9 +209,11 @@ requirejs([
                                 labelString: '금액',
                             },
                             ticks: {
-                                /*userCallback: function(value, index, values) {
-                                 return '' + value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                                 }*/
+                                suggestedMin: suggestedMin,
+                                suggestedMax: suggestedMax,
+                                userCallback: function (value, index, values) {
+                                    return '' + value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                }
                             }
                         }]
                     }
@@ -212,9 +223,75 @@ requirejs([
             config1.data.labels = data.labels;
             config1.data.datasets[0].data = data.sales;
 
-            var ctx1 = $("#chart_10").get(0).getContext("2d");
+            var ctx1 = object.get(0).getContext("2d");
+
+            if (chart === null) {
+                chart = new Chart(ctx1, config1);
+            } else {
+                chart.destroy();
+                chart = new Chart(ctx1, config1);
+            }
+        },
+        gold_chart: function (data, object) {
+            let config1 = {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        borderWidth: 3,
+                        borderColor: "#306E92",
+                        backgroundColor: "rgba(60,141,188,0.5)",
+                        pointBorderColor: "#3b8bba",
+                        pointBorderWidth: 1,
+                        pointRadius: 4,
+                        fill: true,
+                        lineTension: 0.1
+                    }]
+                },
+                options: {
+                    legend: {
+                        position: null,
+                    },
+                    title: {
+                        display: false,
+                        text: '금리변동률'
+                    },
+                    tooltips: {
+                        mode: 'label',
+                        callbacks: {
+                            /*label: function(tooltipItem, data) {
+                             return '' + tooltipItem.yLabel.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                             }*/
+                        }
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                labelString: '일'
+                            },
+                        }],
+                        yAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: false,
+                                labelString: '금액',
+                            },
+                            ticks: {
+                                beginAtZero: true,
+                                min: 0,
+                                max: 5
+                            }
+                        }]
+                    }
+                }
+            };
+            // 매출
+            config1.data.labels = data.labels;
+            config1.data.datasets[0].data = data.sales;
+
+            var ctx1 = object.get(0).getContext("2d");
             let chart = new Chart(ctx1, config1);
-        }
+        },
     };
 
     let ajax = {
@@ -231,7 +308,7 @@ requirejs([
             }
 
             if (mData.cashFlow.cash3 <= 0) {
-                alert('잔고가 부족합니다..');
+                alert('잔고가 부족합니다.');
                 return;
             }
 
@@ -251,6 +328,24 @@ requirejs([
             });
             return true;
         },
+        cancel_buyBond: function (key) {
+            alert('취소 프로세스 예정');
+            return;
+            console.log(key);
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'post',
+                url: '/main/cancel_buyBond',
+                data: {
+                    BOND_KEY: key,
+                },
+                success: function (data, status, xhr) {
+                    mData = null;
+                    mData = $.extend(true, mData, data);
+                }
+            });
+        },
         draw_chart: function (BOND_KEY) {
             $.ajax({
                 async: false,
@@ -261,10 +356,11 @@ requirejs([
                 },
                 url: '/main/get_bond_chart2',
                 success: function (data, status, xhr) {
-                    ui.drawchart(data);
+                    ui.drawchart(data, $('#chart_10'));
+                    console.log(data);
                 },
             });
-        }
+        },
     };
 
     // 기본 event (1회만 처리)
@@ -286,7 +382,7 @@ requirejs([
         }
 
         // 상세보기
-        $('.und').on('click', function () {
+        $('.box_sbtop .und').on('click', function () {
             let index = $('.und:not(:eq(0))').index($(this));
             let bond = mData.BOND[index];
             let pop = $('.wrap_layerpop:eq(0)');
@@ -304,8 +400,7 @@ requirejs([
             pop.find('.box_tblwrite:eq(0) td:eq(8)').text(bond.BOND_BANK);
             pop.find('.box_tblwrite:eq(0) td:eq(9)').text(bond.BOND_PROD);
 
-            let BOND_KEY = 1;
-            ajax.draw_chart(BOND_KEY);
+            ajax.draw_chart(bond.BOND_KEY);
 
             $('.wrap_layerpop:eq(0)').fadeIn(500);
         });
@@ -317,23 +412,24 @@ requirejs([
             $(this).addClass('on');
 
             ui.buyBond(index);
-
-            if (mData.BOND[index].BOND_TYPE === "국채") {
-                change_tabmenu(0);
-            } else {
-                change_tabmenu(1);
-                ui.credit();
-            }
         });
 
         // 채권 사기
         $('.btn_buyc').on('click', function () {
-            if(mData.buyBond.length >= 3) {
+            if (mData.buyBond.length >= 3) {
                 alert('채권투자는 3개만 가능합니다.')
                 return;
             }
             ajax.post_buyBond();
 
+            ui.init();
+        });
+
+        // 채권 취소
+        $('.ar_btm_bx .und').on('click', function () {
+            let index = $('.ar_btm_bx .und:not(:eq(0))').index($(this));
+
+            ajax.cancel_buyBond(mData.buyBond[index].BOND_KEY);
             ui.init();
         });
 
@@ -347,7 +443,7 @@ requirejs([
         // 프린트 버튼
         $('.btn_print').on('click', function () {
             print();
-        })
+        });
     })();
 
     // 기본 DATA (1회만 처리)
@@ -366,21 +462,6 @@ requirejs([
 
     // 시스템 데이터와 비교하여 변경된 항목만 업데이트 처리
     let get_ajax = function (tmp) {
-        // 주식 데이터 변경
-        if (tmp.bond_rownum !== eData.bond_rownum) {
-            $.ajax({
-                async: false,
-                dataType: 'json',
-                type: 'get',
-                url: '/main/put_bond_rownum',
-                success: function (data, status, xhr) {
-                    mData = $.extend(true, mData, data);
-                    ui.init();
-                }
-            });
-            // ajax.draw_chart();
-        }
-
         if (eData.PG_LOCK == "2") {
             ui.benifit();
             $('.btn_close').remove();

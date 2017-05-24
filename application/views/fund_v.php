@@ -162,9 +162,9 @@
 					<h4 class="sb_bg">종합지수</h4>
 					<div class="pt_list">
 						<ul>
-							<li class="down"><strong>KOSDAQ</strong><div><span class="pt1">600.73</span><span class="pt2"><img src="/dist/images/ico_mndw.png" alt="">820</span></div><em class="per">1.35%</em></li>
-							<li class="down"><strong>KOSPI</strong><div><span class="pt1">2000.77</span><span class="pt2"><img src="/dist/images/ico_mndw.png" alt="">22.22</span></div><em class="per">1.35%</em></li>
-							<li class="up"><strong>KOSPI200</strong><div><span class="pt1">270.77</span><span class="pt2"><img src="/dist/images/ico_mnup.png" alt="">2.88</span></div><em class="per">1.35%</em></li>
+							<li class="down"><strong>KOSDAQ</strong><div><span class="pt1">600.73</span><span class="pt2"><img src="/dist/images/ico_mndw.png" alt="">820</span></div><em class="per" style="padding-left: 0px; text-align: right;">1.35%</em></li>
+							<li class="down"><strong>KOSPI</strong><div><span class="pt1">2000.77</span><span class="pt2"><img src="/dist/images/ico_mndw.png" alt="">22.22</span></div><em class="per" style="padding-left: 0px; text-align: right;">1.35%</em></li>
+							<li class="up"><strong>KOSPI200</strong><div><span class="pt1">270.77</span><span class="pt2"><img src="/dist/images/ico_mnup.png" alt="">2.88</span></div><em class="per" style="padding-left: 0px; text-align: right;">1.35%</em></li>
 						</ul>
 					</div>
 				</div>
@@ -207,18 +207,18 @@
 								</li>
 								<li>
 									<strong>투자자 A</strong>
-									<input type="text" style="width: 32%">
-									<input type="text" style="width: 32%">
+									<input type="text" style="width: 35%; font-size: 0.9em; text-align: right">
+									<input type="text" style="width: 29%; font-size: 0.9em; text-align: right">
 								</li>
 								<li>
 									<strong>투자자 B</strong>
-									<input type="text" style="width: 32%">
-									<input type="text" style="width: 32%">
+									<input type="text" style="width: 35%; font-size: 0.9em; text-align: right">
+									<input type="text" style="width: 29%; font-size: 0.9em; text-align: right">
 								</li>
 								<li>
 									<strong>투자자 C</strong>
-									<input type="text" style="width: 32%">
-									<input type="text" style="width: 32%">
+									<input type="text" style="width: 35%; font-size: 0.9em; text-align: right">
+									<input type="text" style="width: 29%; font-size: 0.9em; text-align: right">
 								</li>
 							</ul>
 						</div>
