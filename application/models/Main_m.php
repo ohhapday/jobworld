@@ -28,7 +28,7 @@ class Main_m extends CI_Model
             SELECT * FROM job016_copy
             WHERE SEND = 1
             ORDER BY INSERT_DATE DESC, NEWS_KEY DESC
-            LIMIT 4
+            LIMIT 10
         ";
         $return = $this->db->query($query)->result();
         return $return;
@@ -50,7 +50,7 @@ class Main_m extends CI_Model
             SELECT * FROM job017_copy
             WHERE SEND = 1
             ORDER BY INSERT_DATE DESC, ANAL_KEY DESC
-            LIMIT 4
+            LIMIT 10
         ";
         $return = $this->db->query($query)->result();
         return $return;
@@ -657,6 +657,19 @@ class Main_m extends CI_Model
         return $return;
     }
 
+    public function get_gold_chart()
+    {
+        $query = "
+            SELECT a.* FROM
+              job018 a
+            ORDER BY GOLD_KEY ASC
+            LIMIT 48
+        ";
+        $return = $this->db->query($query)->result();
+
+        return $return;
+    }
+
     /**
      * end 채권 투자 체험
      */
@@ -848,6 +861,19 @@ class Main_m extends CI_Model
               job015_copy a, tb_admin b
             WHERE
               COMP_DATE <= b.stock_rownum AND COMP_DATE >= 1 AND COMP_CODE = ?
+        ";
+        $return = $this->db->query($query, $code)->result();
+
+        return $return;
+    }
+
+    public function get_stock_chart_mm($code)
+    {
+        $query = "
+            SELECT a.* FROM
+              job015_mm a
+            WHERE
+              COMP_CODE = ?
         ";
         $return = $this->db->query($query, $code)->result();
 

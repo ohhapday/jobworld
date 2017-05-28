@@ -58,7 +58,7 @@
 							<col style="width: 15%;">
 							<col style="width: 15%;">
 							<col style="width: 13%;">
-							<col style="width: 12%;">
+							<col style="width: 16%;">
 						</colgroup>
 						<thead>
 						<tr>
@@ -98,6 +98,23 @@
 					</div>
 				</div>
 			</div>
+			<div class="sbright">
+				<div class="sb_tit">
+					<h3 class="ic2">금리 전망</h3>
+				</div>
+				<div class="bx_tablist">
+					<!-- <div class="tab">
+						<div class="tabmenu m1"><a href="#" class="btn_tb">금리 전망</a></div>
+						<!-- <div class="tabmenu m2"><a href="#" class="btn_tb">기업신용도공지</a></div>
+					</div>
+					-->
+					<div class="btmtbl" style="border-top: 1px solid #dbd5c6;">
+						<div class="chart" style="width: 670px; height: 320px; margin: auto">
+							<canvas id="chart_11" width="630" height="260" style="padding-top: 15px;"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="box_sbbtm clfix">
 			<div class="sbleftbt2">
@@ -106,7 +123,7 @@
 				</div>
 				<div class="ar_btm_dt">
 					<div class="dttit"><strong>채권명</strong><span></span></div>
-					<a href="#" class="btn_buyc">채권구매</a>
+					<a href="#" class="btn_buyc" style="margin-top: 15px;">채권구매</a>
 					<ul class="dtlist clfix">
 						<li class="mb30"><strong>구매단가</strong><span>0</span></li>
 						<li class="mb30"><strong>구매수량</strong>
@@ -139,10 +156,11 @@
 					<div class="box_tbllist">
 						<table>
 							<colgroup>
-								<col style="width: 40%;">
+								<col style="width: 30%;">
 								<col style="width: 10%;">
 								<col style="width: 25%;">
 								<col style="width: 25%;">
+								<col style="width: 10%;">
 							</colgroup>
 							<thead>
 							<tr>
@@ -150,6 +168,7 @@
 								<th scope="col">수량</th>
 								<th scope="col">산금액</th>
 								<th scope="col">만기수익금</th>
+								<th scope="col">취소</th>
 							</tr>
 							</thead>
 							<tbody>
@@ -158,6 +177,9 @@
 								<td>00</td>
 								<td>2,000,000</td>
 								<td>100.00%</td>
+								<td>
+									<a href="#" class="und">취소</a>
+								</td>
 							</tr>
 							</tbody>
 						</table>
@@ -278,7 +300,7 @@
 			<div class="pb_view clfix">
 				<div class="pb_tit">
 					<h3 class="sb_bg bg1">채권명</h3>
-					<span>국고채(3년)</span>
+					<span></span>
 				</div>
 				<div class="bx2col clfix">
 					<div class="box_tblwrite tblview fl">
@@ -290,11 +312,11 @@
 							<tbody>
 							<tr>
 								<th scope="row">보유기간</th>
-								<td>00개월</td>
+								<td></td>
 							</tr>
 							<tr>
 								<th scope="row">수익률</th>
-								<td>00개월</td>
+								<td></td>
 							</tr>
 							</tbody>
 						</table>
@@ -308,11 +330,11 @@
 							<tbody>
 							<tr>
 								<th scope="row">산 금액</th>
-								<td>0원</td>
+								<td></td>
 							</tr>
 							<tr>
 								<th scope="row">수익금</th>
-								<td>0원</td>
+								<td></td>
 							</tr>
 							</tbody>
 						</table>
@@ -323,7 +345,7 @@
 			<div class="pb_view clfix">
 				<div class="pb_tit">
 					<h3 class="sb_bg bg2">채권명</h3>
-					<span>회사채(3년)</span>
+					<span></span>
 				</div>
 				<div class="bx2col clfix">
 					<div class="box_tblwrite tblview fl">
@@ -335,11 +357,11 @@
 							<tbody>
 							<tr>
 								<th scope="row">보유기간</th>
-								<td>00개월</td>
+								<td></td>
 							</tr>
 							<tr>
 								<th scope="row">수익률</th>
-								<td>00개월</td>
+								<td></td>
 							</tr>
 							</tbody>
 						</table>
@@ -353,11 +375,11 @@
 							<tbody>
 							<tr>
 								<th scope="row">산 금액</th>
-								<td>0원</td>
+								<td></td>
 							</tr>
 							<tr>
 								<th scope="row">수익금</th>
-								<td>0원</td>
+								<td></td>
 							</tr>
 							</tbody>
 						</table>
@@ -368,7 +390,7 @@
 			<div class="pb_view clfix">
 				<div class="pb_tit">
 					<h3 class="sb_bg bg3">채권명</h3>
-					<span>국고채(1년)</span>
+					<span></span>
 				</div>
 				<div class="bx2col clfix">
 					<div class="box_tblwrite tblview fl">
@@ -380,11 +402,11 @@
 							<tbody>
 							<tr>
 								<th scope="row">보유기간</th>
-								<td>00개월</td>
+								<td></td>
 							</tr>
 							<tr>
 								<th scope="row">수익금</th>
-								<td>00개월</td>
+								<td></td>
 							</tr>
 							</tbody>
 						</table>
@@ -398,11 +420,11 @@
 							<tbody>
 							<tr>
 								<th scope="row">산 금액</th>
-								<td>0원</td>
+								<td></td>
 							</tr>
 							<tr>
 								<th scope="row">수익률</th>
-								<td>0원</td>
+								<td></td>
 							</tr>
 							</tbody>
 						</table>
@@ -413,7 +435,7 @@
 				<h3>채권투자</h3>
 				<div class="bxlls clfix">
 					<div class="fl"><strong style="width: 40%">총수익률</strong><span style="width: 10%">00%</span></div>
-					<div class="fr"><strong style="width: 40%">총수익금</strong><span style="width: 10%">00%</span></div>
+					<div class="fr"><strong style="width: 40%">총수익금</strong><span style="width: 20%">00%</span></div>
 				</div>
 			</div>
 		</div>

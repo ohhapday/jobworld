@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<meta charset="UTF-8" />
+	<meta charset="UTF-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>드림증권 투자시스템</title>
-	<link rel="stylesheet" type="text/css" href="/dist/css/common.css" />
-	<link rel="stylesheet" type="text/css" href="/dist/css/layout.css" />
-	<link rel="stylesheet" type="text/css" href="/dist/css/content.css" />
+	<link rel="stylesheet" type="text/css" href="/dist/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/dist/css/layout.css"/>
+	<link rel="stylesheet" type="text/css" href="/dist/css/content.css"/>
 	<link rel="stylesheet" type="text/css" href="/dist/css/print_fund.css"/>
 
 	<!--[if lt IE 9]>
@@ -68,7 +68,9 @@
 						</thead>
 						<tbody>
 						<tr style="display: none;">
-							<td class="align-l"><button type="button">잡워드 직업체험 펀드</button></td>
+							<td class="align-l">
+								<button type="button">잡워드 직업체험 펀드</button>
+							</td>
 							<td>10,000,000</td>
 							<td></td>
 							<td>
@@ -162,9 +164,18 @@
 					<h4 class="sb_bg">종합지수</h4>
 					<div class="pt_list">
 						<ul>
-							<li class="down"><strong>KOSDAQ</strong><div><span class="pt1">600.73</span><span class="pt2"><img src="/dist/images/ico_mndw.png" alt="">820</span></div><em class="per">1.35%</em></li>
-							<li class="down"><strong>KOSPI</strong><div><span class="pt1">2000.77</span><span class="pt2"><img src="/dist/images/ico_mndw.png" alt="">22.22</span></div><em class="per">1.35%</em></li>
-							<li class="up"><strong>KOSPI200</strong><div><span class="pt1">270.77</span><span class="pt2"><img src="/dist/images/ico_mnup.png" alt="">2.88</span></div><em class="per">1.35%</em></li>
+							<li class="down"><strong>KOSDAQ</strong>
+								<div><span class="pt1">600.73</span><span class="pt2"><img
+												src="/dist/images/ico_mndw.png" alt="">820</span></div>
+								<em class="per" style="padding-left: 0px; text-align: right;">1.35%</em></li>
+							<li class="down"><strong>KOSPI</strong>
+								<div><span class="pt1">2000.77</span><span class="pt2"><img
+												src="/dist/images/ico_mndw.png" alt="">22.22</span></div>
+								<em class="per" style="padding-left: 0px; text-align: right;">1.35%</em></li>
+							<li class="up"><strong>KOSPI200</strong>
+								<div><span class="pt1">270.77</span><span class="pt2"><img
+												src="/dist/images/ico_mnup.png" alt="">2.88</span></div>
+								<em class="per" style="padding-left: 0px; text-align: right;">1.35%</em></li>
 						</ul>
 					</div>
 				</div>
@@ -207,18 +218,18 @@
 								</li>
 								<li>
 									<strong>투자자 A</strong>
-									<input type="text" style="width: 32%">
-									<input type="text" style="width: 32%">
+									<input type="text" style="width: 35%; font-size: 0.9em; text-align: right;">
+									<input type="text" style="width: 29%; font-size: 0.9em; text-align: right;">
 								</li>
 								<li>
 									<strong>투자자 B</strong>
-									<input type="text" style="width: 32%">
-									<input type="text" style="width: 32%">
+									<input type="text" style="width: 35%; font-size: 0.9em; text-align: right;">
+									<input type="text" style="width: 29%; font-size: 0.9em; text-align: right;">
 								</li>
 								<li>
 									<strong>투자자 C</strong>
-									<input type="text" style="width: 32%">
-									<input type="text" style="width: 32%">
+									<input type="text" style="width: 35%; font-size: 0.9em; text-align: right;">
+									<input type="text" style="width: 29%; font-size: 0.9em; text-align: right;">
 								</li>
 							</ul>
 						</div>
@@ -260,7 +271,9 @@
 	<div class="layerpop pop6">
 		<div class="box_titpop">
 			<h2>펀드 투자금 확인</h2>
-			<div class="btn_close"><button type="button">닫기</button></div>
+			<div class="btn_close">
+				<button type="button">닫기</button>
+			</div>
 		</div>
 		<div class="box_contpop">
 			<div class="contpdd">
@@ -363,7 +376,9 @@
 	<div class="layerpop pop5">
 		<div class="box_titpop">
 			<h2>펀드 투자 종목 구성</h2>
-			<div class="btn_close"><button type="button">닫기</button></div>
+			<div class="btn_close">
+				<button type="button">닫기</button>
+			</div>
 		</div>
 		<div class="area_sbptit clfix">
 			<h3 class="poph3bg">펀드명</h3>
@@ -434,8 +449,13 @@
 
 	<div class="layerpop pop8">
 		<div class="box_titpop2">
+			<div  style="text-align: right; padding: 30px;">
+				testat
+			</div>
 			<h2>펀드매니저<span>홍길동</span></h2>
-			<div class="btn_close"><button type="button">닫기</button></div>
+			<div class="btn_close">
+				<button type="button">닫기</button>
+			</div>
 		</div>
 		<div class="box_contpop2" style="overflow-y: auto; height: 670px;">
 			<div class="pb_view clfix">
@@ -450,12 +470,13 @@
 							<ul class="dtlist clfix">
 								<li>
 									<strong style="width: 50%;">보유기간</strong>
-									<input type="text" value="00" class="align-r" style="width: 20%;">
+									<input type="text" value="" class="align-r"
+										   style="width: 20%; background-color: #FFFFFF">
 									<span style="width: 20%;">개월</span>
 								</li>
 								<li>
 									<strong style="width: 50%;">수익률</strong>
-									<input type="text" value="00" class="align-r" style="width: 20%;"><span>%</span>
+									<input type="text" value="" class="align-r" style="width: 20%;"><span>%</span>
 								</li>
 							</ul>
 						</div>
@@ -467,19 +488,19 @@
 							<ul class="dtlist clfix inp100">
 								<li>
 									<strong style="width: 45%">투자자A</strong>
-									<input type="text" value="00" class="align-r" style="width: 45%">
+									<input type="text" value="" class="align-r" style="width: 45%">
 								</li>
 								<li>
 									<strong style="width: 45%">투자자B</strong>
-									<input type="text" value="00" class="align-r" style="width: 45%">
+									<input type="text" value="" class="align-r" style="width: 45%">
 								</li>
 								<li>
 									<strong style="width: 45%">투자자C</strong>
-									<input type="text" value="00" class="align-r" style="width: 45%">
+									<input type="text" value="" class="align-r" style="width: 45%">
 								</li>
 								<li>
 									<strong class="back-non" style="width: 45%">합계</strong>
-									<input type="text" value="00" class="align-r colred" style="width: 45%">
+									<input type="text" value="" class="align-r colred" style="width: 45%">
 								</li>
 							</ul>
 						</div>
@@ -490,25 +511,25 @@
 							<ul class="dtlist clfix inp100">
 								<li>
 									<strong style="width: 45%">투자자A</strong>
-									<input type="text" value="00" class="align-r" style="width: 45%">
+									<input type="text" value="" class="align-r" style="width: 45%">
 								</li>
 								<li>
 									<strong style="width: 45%">투자자B</strong>
-									<input type="text" value="00" class="align-r" style="width: 45%">
+									<input type="text" value="" class="align-r" style="width: 45%">
 								</li>
 								<li>
 									<strong style="width: 45%">투자자C</strong>
-									<input type="text" value="00" class="align-r" style="width: 45%">
+									<input type="text" value="" class="align-r" style="width: 45%">
 								</li>
 								<li>
 									<strong style="width: 45%" class="back-non">합계</strong>
-									<input type="text" value="00" class="align-r colred" style="width: 45%">
+									<input type="text" value="" class="align-r colred" style="width: 45%">
 								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
-				<p class="pem">펀드 매니저 수익률 00%  수익금 00,000원</p>
+				<p class="pem">펀드 매니저 수익률 00% 수익금 00,000원</p>
 			</div>
 
 			<div class="pb_view clfix">
@@ -523,12 +544,12 @@
 							<ul class="dtlist clfix">
 								<li>
 									<strong style="width: 50%;">보유기간</strong>
-									<input type="text" value="00" class="align-r" style="width: 20%;">
+									<input type="text" value="" class="align-r" style="width: 20%;">
 									<span style="width: 20%;">개월</span>
 								</li>
 								<li>
 									<strong style="width: 50%;">수익률</strong>
-									<input type="text" value="00" class="align-r" style="width: 20%;"><span>%</span>
+									<input type="text" value="" class="align-r" style="width: 20%;"><span>%</span>
 								</li>
 							</ul>
 						</div>
@@ -540,19 +561,19 @@
 							<ul class="dtlist clfix inp100">
 								<li>
 									<strong style="width: 45%">투자자A</strong>
-									<input type="text" value="00" class="align-r" style="width: 45%">
+									<input type="text" value="" class="align-r" style="width: 45%">
 								</li>
 								<li>
 									<strong style="width: 45%">투자자B</strong>
-									<input type="text" value="00" class="align-r" style="width: 45%">
+									<input type="text" value="" class="align-r" style="width: 45%">
 								</li>
 								<li>
 									<strong style="width: 45%">투자자C</strong>
-									<input type="text" value="00" class="align-r" style="width: 35%">
+									<input type="text" value="" class="align-r" style="width: 35%">
 								</li>
 								<li>
 									<strong class="back-non" style="width: 45%">합계</strong>
-									<input type="text" value="00" class="align-r colred" style="width: 45%">
+									<input type="text" value="" class="align-r colred" style="width: 45%">
 								</li>
 							</ul>
 						</div>
@@ -563,25 +584,25 @@
 							<ul class="dtlist clfix inp100">
 								<li>
 									<strong style="width: 45%">투자자A</strong>
-									<input type="text" value="00" class="align-r" style="width: 45%">
+									<input type="text" value="" class="align-r" style="width: 45%">
 								</li>
 								<li>
 									<strong style="width: 45%">투자자B</strong>
-									<input type="text" value="00" class="align-r" style="width: 45%">
+									<input type="text" value="" class="align-r" style="width: 45%">
 								</li>
 								<li>
 									<strong style="width: 45%">투자자C</strong>
-									<input type="text" value="00" class="align-r" style="width: 45%">
+									<input type="text" value="" class="align-r" style="width: 45%">
 								</li>
 								<li>
 									<strong style="width: 45%" class="back-non">합계</strong>
-									<input type="text" value="00" class="align-r colred" style="width: 45%">
+									<input type="text" value="" class="align-r colred" style="width: 45%">
 								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
-				<p class="pem">펀드 매니저 수익률 00%  수익금 00,000원</p>
+				<p class="pem">펀드 매니저 수익률 00% 수익금 00,000원</p>
 			</div>
 
 			<div class="pb_view clfix">
@@ -596,12 +617,12 @@
 							<ul class="dtlist clfix">
 								<li>
 									<strong style="width: 50%;">보유기간</strong>
-									<input type="text" value="00" class="align-r" style="width: 20%;">
+									<input type="text" value="" class="align-r" style="width: 20%;">
 									<span style="width: 20%;">개월</span>
 								</li>
 								<li>
 									<strong style="width: 50%;">수익률</strong>
-									<input type="text" value="00" class="align-r" style="width: 20%;"><span>%</span>
+									<input type="text" value="" class="align-r" style="width: 20%;"><span>%</span>
 								</li>
 							</ul>
 						</div>
@@ -613,19 +634,19 @@
 							<ul class="dtlist clfix inp100">
 								<li>
 									<strong style="width: 45%">투자자A</strong>
-									<input type="text" value="00" class="align-r" style="width: 45%">
+									<input type="text" value="" class="align-r" style="width: 45%">
 								</li>
 								<li>
 									<strong style="width: 45%">투자자B</strong>
-									<input type="text" value="00" class="align-r" style="width: 45%">
+									<input type="text" value="" class="align-r" style="width: 45%">
 								</li>
 								<li>
 									<strong style="width: 45%">투자자C</strong>
-									<input type="text" value="00" class="align-r" style="width: 45%">
+									<input type="text" value="" class="align-r" style="width: 45%">
 								</li>
 								<li>
 									<strong class="back-non" style="width: 45%">합계</strong>
-									<input type="text" value="00" class="align-r colred" style="width: 45%">
+									<input type="text" value="" class="align-r colred" style="width: 45%">
 								</li>
 							</ul>
 						</div>
@@ -636,25 +657,25 @@
 							<ul class="dtlist clfix inp100">
 								<li>
 									<strong style="width: 45%">투자자A</strong>
-									<input type="text" value="00" class="align-r" style="width: 45%">
+									<input type="text" value="" class="align-r" style="width: 45%">
 								</li>
 								<li>
 									<strong style="width: 45%">투자자B</strong>
-									<input type="text" value="00" class="align-r" style="width: 45%">
+									<input type="text" value="" class="align-r" style="width: 45%">
 								</li>
 								<li>
 									<strong style="width: 45%">투자자C</strong>
-									<input type="text" value="00" class="align-r" style="width: 45%">
+									<input type="text" value="" class="align-r" style="width: 45%">
 								</li>
 								<li>
 									<strong style="width: 45%" class="back-non">합계</strong>
-									<input type="text" value="00" class="align-r colred" style="width: 45%">
+									<input type="text" value="" class="align-r colred" style="width: 45%">
 								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
-				<p class="pem">펀드 매니저 수익률 0%  수익금 0원</p>
+				<p class="pem">펀드 매니저 수익률 0% 수익금 0원</p>
 			</div>
 		</div>
 		<div class="box_btcc">
@@ -771,7 +792,9 @@
 	<div class="layerpop pop22">
 		<div class="box_titpop">
 			<h2>기업 주식금액 변동 그래프</h2>
-			<div class="btn_close"><button type="button">닫기</button></div>
+			<div class="btn_close">
+				<button type="button">닫기</button>
+			</div>
 		</div>
 		<div class="box_contpop">
 			<div class="contpdd">
@@ -791,11 +814,21 @@
 	<div class="layerpop pop18">
 		<div class="box_titpop">
 			<h2>삼성전자</h2>
-			<div class="btn_close"><button type="button">닫기</button></div>
+			<div class="btn_close">
+				<button type="button">닫기</button>
+			</div>
 		</div>
 		<div class="box_contpop">
 			<div class="contpdd">
 				<div class="lftpols1">
+					<div class="numkk">
+						<strong>125,000</strong>
+						<span class="pt2 colblu">
+							<img src="/dist/images/ico_mndw.png" alt="">
+						</span>
+						<span style="margin-left: -20px;">82000</span>
+						<em>-8.88%</em>
+					</div>
 					<div class="bx_innm clfix">
 						<ul>
 							<li class="clfix"><strong>- 종목코드 :</strong><span>009863</span></li>
@@ -804,6 +837,14 @@
 							<li class="clfix"><strong>- 신용정보 :</strong><span>BBB</span></li>
 						</ul>
 					</div>
+					<div class="chrt" style="margin-top: 50px;">
+						<div class="chartpd" style="width: 540px; height: 350px; margin: auto">
+							<canvas id="chart_12" width="540" height="350"></canvas>
+						</div>
+						<div style="text-align: center;">월간 그래프(1달간)</div>
+					</div>
+				</div>
+				<div class="lftpols2">
 					<div class="bx_innm1">
 						<ul>
 							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
@@ -813,20 +854,11 @@
 							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
 						</ul>
 					</div>
-				</div>
-				<div class="lftpols2">
-					<div class="numkk">
-						<strong>125,000</strong>
-						<span class="pt2 colblu">
-							<img src="/dist/images/ico_mndw.png" alt="">
-						</span>
-						<span style="margin-left: -20px;">82000</span>
-						<em>-8.88%</em>
-					</div>
-					<div class="chrt">
-						<div class="chartpd" style="width: 650px; height: 800px; margin: auto">
-							<canvas id="chart_11" width="400" height="250"></canvas>
+					<div class="chrt" style="margin-top: 40px;">
+						<div class="chartpd" style="width: 540px; height: 350px; margin: auto">
+							<canvas id="chart_11" width="540" height="350"></canvas>
 						</div>
+						<div style="text-align: center;">1일 그래프</div>
 					</div>
 				</div>
 			</div>

@@ -57,7 +57,7 @@ class Main extends CI_Controller
     public function get_mData()
     {
         $return->NEWS = $this->main_m->get_NEWS();
-        $return->ANAL = $this->main_m->get_ANAL2();
+        $return->ANAL = $this->main_m->get_ANAL();
         $return->KOS = $this->main_m->get_KOS();
         $return->COMP = $this->main_m->get_COMP();
         $return->STOCK_POP = $this->main_m->get_stock();
@@ -182,8 +182,44 @@ class Main extends CI_Controller
         $return->buyBond = $this->main_m->get_buyBond();
         $return->gold = $this->main_m->get_gold();
         $return->credit = $this->main_m->get_credit();
+        $return->gold_chart = $this->get_gold_chart();
 
         echo json_encode($return);
+    }
+
+    public function get_gold_chart()
+    {
+        $data = $this->main_m->get_gold_chart();
+
+        $txt_data = array();
+        $sales = array();
+        $datetime = new DateTime();
+        $datetime->sub(new DateInterval('P3M'));
+
+        $i = 0;
+        foreach ($data as $item) {
+            $term = new DateInterval('P3M');
+            $label = $datetime->add($term)->format('y/m');
+
+            if ($i % 4 === 0) {
+                $label = $label;
+            } else {
+                $label = '';
+            }
+
+            array_push($txt_data,
+                $label
+            );
+            array_push($sales,
+                (float)$item->GOLD_RATE
+            );
+            $i++;
+        }
+
+        $return->labels = $txt_data;
+        $return->sales = $sales;
+
+        return $return;
     }
 
     public function post_buyBond()
@@ -319,6 +355,34 @@ class Main extends CI_Controller
 
             array_push($txt_data,
                 $datetime->add($term)->format('H:i')
+            );
+            array_push($sales,
+                (int)$item->COMP_PRICE
+            );
+        }
+
+        $return->labels = $txt_data;
+        $return->sales = $sales;
+
+        echo json_encode($return);
+    }
+
+    public function get_stock_chart_mm()
+    {
+        $data = $this->main_m->get_stock_chart_mm($_GET['COMP_CODE']);
+
+        $txt_data = array();
+        $sales = array();
+
+        $term = new DateInterval('P31D');     // 31일 전
+        $datetime = new DateTime(date('Y-m-d') . '10:50');
+        $datetime->sub($term);
+
+        foreach ($data as $item) {
+            $term = new DateInterval('P01D');     // 10분단위
+
+            array_push($txt_data,
+                $datetime->add($term)->format('m/d')
             );
             array_push($sales,
                 (int)$item->COMP_PRICE
