@@ -30,3 +30,5 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /bower.json
 bower.json
 
+/bower_components/highcharts/
+dist/html/
