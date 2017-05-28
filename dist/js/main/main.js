@@ -12,7 +12,7 @@ requirejs([
     "use strict";
 
     let nf = new Intl.NumberFormat(["en-US"]);
-    let chart = null;
+    let chart = null, chart_mm = null;
 
     let user = {                            // 사용자 정보
         key: session.EMPL_KEY,              // 기본키
@@ -115,6 +115,79 @@ requirejs([
                 chart = new Chart(ctx1, config1);
             }
         },
+        drawchart_mm: function (data, object) {
+            let suggestedMin, suggestedMax;
+
+            suggestedMin = Math.min.apply(null, data.sales)  - 1000;
+            suggestedMax = Math.max.apply(null, data.sales)  + 1000;
+
+            let config1 = {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        borderWidth: 3,
+                        borderColor: "#ba0808",
+                        backgroundColor: "rgba(255,198,198,0.7)",
+                        pointBorderColor: "#ba0808",
+                        pointBorderWidth: 1,
+                        pointRadius: 4,
+                        fill: true,
+                        lineTension: 0.2
+                    }]
+                },
+                options: {
+                    legend: {
+                        position: null,
+                    },
+                    title: {
+                        display: false,
+                        text: '금리변동률'
+                    },
+                    tooltips: {
+                        mode: 'label',
+                        callbacks: {
+                            /*label: function(tooltipItem, data) {
+                             return '' + tooltipItem.yLabel.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                             }*/
+                        }
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                labelString: '일'
+                            },
+                        }],
+                        yAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: false,
+                                labelString: '금액',
+                            },
+                            ticks: {
+                                suggestedMin: suggestedMin,
+                                suggestedMax: suggestedMax,
+                                userCallback: function (value, index, values) {
+                                    return '' + value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                }
+                            }
+                        }]
+                    }
+                }
+            };
+            // 매출
+            config1.data.labels = data.labels;
+            config1.data.datasets[0].data = data.sales;
+
+            var ctx1 = object.get(0).getContext("2d");
+
+            if (chart_mm === null) {
+                chart_mm = new Chart(ctx1, config1);
+            } else {
+                chart_mm.destroy();
+                chart_mm = new Chart(ctx1, config1);
+            }
+        },
         drawchart2: function (data, object) {
             let suggestedMin, suggestedMax;
 
@@ -202,26 +275,23 @@ requirejs([
             });
 
             if (parseInt(STOCK.MEASURE) >= 0) {
-                table.find('.lftpols2 img').attr('src', '/dist/images/ico_mnup.png');
-                table.find('.lftpols2 span').addClass('colred');
-                table.find('.lftpols2 em').addClass('colred');
+                table.find('.lftpols1 .numkk img').attr('src', '/dist/images/ico_mnup.png');
+                table.find('.lftpols1 .numkk span').addClass('colred');
+                table.find('.lftpols1 em').addClass('colred');
             } else {
-                table.find('.lftpols2 img').attr('src', '/dist/images/ico_mndw.png');
-                table.find('.lftpols2 span').addClass('colblu');
-                table.find('.lftpols2 em').addClass('colblu');
+                table.find('.lftpols1 .numkk img').attr('src', '/dist/images/ico_mndw.png');
+                table.find('.lftpols1 .numkk span').addClass('colblu');
+                table.find('.lftpols1 .numkk em').addClass('colblu');
             }
 
-            table.find('.lftpols2 strong').text(nf.format(STOCK.COMP_PRICE));
-            table.find('.lftpols2 span:eq(1)').text(nf.format(STOCK.MEASURE));
-            table.find('.lftpols2 em').text(parseFloat(STOCK.PER_MEASURE * 100).toFixed(2) + '%');
+            table.find('.lftpols1 .numkk strong').text(nf.format(STOCK.COMP_PRICE));
+            table.find('.lftpols1 .numkk span:eq(1)').text(nf.format(STOCK.MEASURE));
+            table.find('.lftpols1 em').text(parseFloat(STOCK.PER_MEASURE * 100).toFixed(2) + '%');
         },
         result_pop: function () {
             let data = ajax.result_pop();
             let pop = $('.wrap_layerpop:eq(3)');
 
-            console.log(data);
-
-            console.log(pop.find('tbody'));
             $.each(data, function (i) {
                 let $clone = pop.find('tbody tr:eq(0)')
                     .clone(true).css('display', '');
@@ -245,6 +315,20 @@ requirejs([
                 url: '/main/get_stock_chart',
                 success: function (data, status, xhr) {
                     ui.drawchart(data, object);
+                }
+            });
+        },
+        draw_chart_mm: function (COMP_CODE, object) {
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'get',
+                data: {
+                    COMP_CODE: COMP_CODE,
+                },
+                url: '/main/get_stock_chart_mm',
+                success: function (data, status, xhr) {
+                    ui.drawchart_mm(data, object);
                 }
             });
         },
@@ -407,6 +491,7 @@ requirejs([
 
                 ajax.company_info(COMP_CODE);
                 ajax.draw_chart(COMP_CODE, $('#chart_11'));
+                ajax.draw_chart_mm(COMP_CODE, $('#chart_12'));
 
                 pop.fadeIn(500);
             });

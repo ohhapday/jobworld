@@ -89,7 +89,7 @@ requirejs([
 
                 pop.find('.box_titpop h2').text(news.ANAL_HEAD);
                 pop.find('.box_contpop p').html(news.ANAL_FILE.replace(/\n/gi, '<br>'));
-                pop.find('.date em').text('잡월드 뉴스');
+                pop.find('.date em').text('');
                 pop.find('.date span:eq(1)').text(moment(news.INSERT_DATE).format('YYYY.MM.DD'));
 
                 pop.fadeIn(500);
@@ -192,7 +192,7 @@ requirejs([
                 let tmp = $.extend({}, eData);
                 eData = $.extend(true, eData, JSON.parse(e.data));
 
-                if (tmp.PG_LOCK !== '0') {
+                if (tmp.PG_LOCK !== '0' && tmp.PG_LOCK !== null) {
                     get_ajax(tmp);
                 }
             }

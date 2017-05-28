@@ -122,8 +122,32 @@ requirejs([
                 success: function (data, status, xhr) {
                     alert('저장되었습니다.');
                 }
+            });
+        },
+        put_NEWS_CONTENTS: function (data) {
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'post',
+                data: data,
+                url: '/admin/put_NEWS_CONTENTS',
+                success: function (data, status, xhr) {
+                    alert('변경되었습니다.');
+                }
             })
         },
+        put_ANAL_CONTENTS: function (data) {
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'post',
+                data: data,
+                url: '/admin/put_ANAL_CONTENTS',
+                success: function (data, status, xhr) {
+                    alert('변경되었습니다.');
+                }
+            })
+        }
     };
 
     // 카운터 시계
@@ -249,7 +273,6 @@ requirejs([
                 $('.bx_chk_list:eq(0) button:eq(3)').removeClass('on');
             }
 
-            console.log($('.bx_chk_list:eq(0) button:eq(4)'));
             if (mdata.STATUS.result_STATUS === 1) {
                 $('.bx_chk_list:eq(0) button:eq(4)').addClass('on');
             } else {
@@ -269,8 +292,8 @@ requirejs([
             $('.bx_chk_list:eq(1) button:eq(2)').data('value', mdata.speed[2].MD_NAME);
 
             $('.bx_chk_list:eq(1) button:eq(0)').text('초보 (' + mdata.speed[0].MD_NAME + '초)');
-            $('.bx_chk_list:eq(1) button:eq(1)').data('중간 (' + mdata.speed[0].MD_NAME + '초)');
-            $('.bx_chk_list:eq(1) button:eq(2)').data('고수 (' + mdata.speed[0].MD_NAME + '초)');
+            $('.bx_chk_list:eq(1) button:eq(1)').text('중간 (' + mdata.speed[1].MD_NAME + '초)');
+            $('.bx_chk_list:eq(1) button:eq(2)').text('고수 (' + mdata.speed[2].MD_NAME + '초)');
 
             $('.bx_chk_list:eq(1) button').removeClass('on');
             $.each($('.bx_chk_list:eq(1) button'), function () {
@@ -485,6 +508,18 @@ requirejs([
                 });
 
                 ajax.put_job024(data);
+
+                $.ajax({
+                    async: false,
+                    dataType: 'json',
+                    type: 'get',
+                    url: '/admin/',
+                    success: function (data, status, xhr) {
+                        mdata = data;
+                    }
+                });
+
+                handle_ui();
             });
         })();
 
@@ -564,8 +599,6 @@ requirejs([
                     };
                 });
 
-                console.log(data);
-
                 ajax.put_job020(data);
             });
         })();
@@ -617,13 +650,65 @@ requirejs([
                     let date = moment(now).add(i, 'day').format('YYYY-MM-DD')
                     $clone.find('td:eq(0)').text(this.COMP_DATE);
                     $clone.find('td:eq(1)').text(date);
-                    $clone.find('td:eq(2)').text(nf.format(this.COMP_PRICE));
+                    $clone.find('td:eq(2) div').text(nf.format(this.COMP_PRICE));
 
                     $table.append($clone.clone(true));
                 });
 
                 pop.find('.col2fr').removeClass('hidden');
             });
+
+            // 주식종목 개별 가격 조정
+            pop.find('.col2fr tbody tr').on('click', function () {
+                if ($(this).hasClass('on')) {
+                    return;
+                }
+                let val = $(this).find('td:eq(2) div').text();
+                pop.find('.col2fr tbody tr').removeClass('on');
+
+                $.each(pop.find('.col2fr tbody tr'), function () {
+                    let val = $(this).find('input').val();
+                    $(this).find('td:eq(2) div').text(val);
+                });
+
+                $(this).find('td:eq(2) div').html('' +
+                    '<input type="text" style="width: 95%" value="' + val + '" />' +
+                    '');
+
+                $(this).addClass('on');
+                input_event();
+            });
+
+            // 주식종목 개별 가격 저장
+            let input_event = function () {
+                pop.find('.col2fr tbody tr input').on('blur', function () {
+                    let index1 = pop.find('.col2fl tbody tr:not(:eq(0))').index(pop.find('.col2fl tbody tr.on'));
+                    let index2 = pop.find('.col2fr tbody tr.on td:eq(0)').text();
+                    let job015, COMP_PRICE;
+
+                    if (index1 < 0 || index2 < 0) {
+                        alert('종목 및 변경데이터 선택해 주세요.');
+                        return;
+                    }
+
+                    COMP_PRICE = pop.find('.col2fr tbody tr.on input').val().replace(/,/gi, '');
+
+                    $.ajax({
+                        async: false,
+                        dataType: 'json',
+                        type: 'post',
+                        data: {
+                            COMP_CODE: mdata.COMP_DATA[index1].COMP_CODE,
+                            COMP_DATE: index2,
+                            COMP_PRICE: COMP_PRICE,
+                        },
+                        url: '/admin/put_COMP_PRICE',
+                        success: function (data, status, xhr) {
+                            job015 = data;
+                        }
+                    });
+                });
+            };
 
             // 주식종목 가격 조정
             pop.find('.btn_play').on('click', function () {
@@ -805,16 +890,30 @@ requirejs([
                 pop.find('.box_tbllist:eq(1) tbody tr:not(:eq(0))').remove();
 
                 $.each(job016, function (i) {
-                    let content = this.NEWS_FILE.replace(/\r\n/g, '<br>');
-
                     pop.find('input:eq(0)').val(this.NEWS_HEAD);
                     pop.find('textarea').val(this.NEWS_FILE);
                     pop.find('input[type="number"]').val(parseInt(this.PERCENT));
 
-                    pop.find('input[value=' + this.UPDOWN + ']').attr('checked', true);
+                    pop.find('input[value=' + this.UPDOWN + ']').prop('checked', true);
                 });
 
                 pop.find('.box_tbllist:eq(1)').removeClass('hidden');
+            });
+
+            // 뉴스 수정
+            pop.find('.btn_blk').on('click', function () {
+                let NEWS_KEY = pop.find('.box_tbllist:eq(0) tr.on td:eq(0)').text() || null;
+
+                if (NEWS_KEY !== null) {
+                    let data = {
+                        KEY: NEWS_KEY,
+                        NEWS_HEAD: pop.find('input:eq(0)').val(),
+                        NEWS_FILE: pop.find('textarea').val(),
+                        PERCENT: pop.find('input[type="number"]').val(),
+                        UPDOWN: pop.find('input[type="radio"]:checked').val(),
+                    };
+                    ajax.put_NEWS_CONTENTS(data);
+                }
             });
         })();
 
@@ -903,7 +1002,7 @@ requirejs([
 
                 let ANAL_KEY = pop.find('.box_tbllist:eq(0) tr.on td:eq(0)').text();
                 let job017 = handle_ajax.get_table({
-                    table_nm: 'job017',
+                    table_nm: 'job017_copy',
                     where: ['ANAL_KEY', ANAL_KEY],
                     // orderby: ['MKEY', 'ASC']
                 });
@@ -922,10 +1021,26 @@ requirejs([
                     pop.find('input:eq(0)').val(this.ANAL_HEAD);
                     pop.find('textarea').val(this.ANAL_FILE);
                     pop.find('input[type="number"]').val(parseInt(this.PERCENT));
-                    pop.find('input[value=' + up_down + ']').attr('checked', true);
+                    pop.find('input[value=' + up_down + ']').prop('checked', true);
                 });
 
                 pop.find('.box_tbllist:eq(1)').removeClass('hidden');
+            });
+
+            // 뉴스 수정
+            pop.find('.btn_blk').on('click', function () {
+                let ANAL_KEY = pop.find('.box_tbllist:eq(0) tr.on td:eq(0)').text() || null;
+
+                if (ANAL_KEY !== null) {
+                    let data = {
+                        KEY: ANAL_KEY,
+                        ANAL_HEAD: pop.find('input:eq(0)').val(),
+                        ANAL_FILE: pop.find('textarea').val(),
+                        PERCENT: pop.find('input[type="number"]').val(),
+                        UPDOWN: pop.find('input[type="radio"]:checked').val(),
+                    };
+                    ajax.put_ANAL_CONTENTS(data);
+                }
             });
         })();
     })();

@@ -146,6 +146,16 @@ class Admin extends CI_Controller
         return $this->admin_m->put_ANAL($key);
     }
 
+    public function put_NEWS_CONTENTS()
+    {
+        echo json_encode($this->admin_m->put_NEWS_CONTENTS($_POST));
+    }
+
+    public function put_ANAL_CONTENTS()
+    {
+        echo json_encode($this->admin_m->put_ANAL_CONTENTS($_POST));
+    }
+
     // 종합환경설정 업데이트
     public function put_job024()
     {
@@ -166,6 +176,20 @@ class Admin extends CI_Controller
     public function put_adjust()
     {
         $return = $this->admin_m->put_adjust($_POST);
+
+        $data = array(
+            'table_nm' => 'job015_copy',
+            'where' => array('COMP_CODE' => $_POST['COMP_CODE']),
+        );
+
+        $return = $this->main_m->get_table($data);
+        echo json_encode($return);
+    }
+
+    // 주식종목 개별 가격 조정
+    public function put_COMP_PRICE()
+    {
+        $this->admin_m->put_COMP_PRICE($_POST);
 
         $data = array(
             'table_nm' => 'job015_copy',

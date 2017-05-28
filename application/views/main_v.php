@@ -450,6 +450,14 @@
 		<div class="box_contpop">
 			<div class="contpdd">
 				<div class="lftpols1">
+					<div class="numkk">
+						<strong>125,000</strong>
+						<span class="pt2 colblu">
+							<img src="/dist/images/ico_mndw.png" alt="">
+						</span>
+						<span style="margin-left: -20px;">82000</span>
+						<em>-8.88%</em>
+					</div>
 					<div class="bx_innm clfix">
 						<ul>
 							<li class="clfix"><strong>- 종목코드 :</strong><span>009863</span></li>
@@ -458,6 +466,14 @@
 							<li class="clfix"><strong>- 신용정보 :</strong><span>BBB</span></li>
 						</ul>
 					</div>
+					<div class="chrt" style="margin-top: 50px;">
+						<div class="chartpd" style="width: 540px; height: 350px; margin: auto">
+							<canvas id="chart_12" width="540" height="350"></canvas>
+						</div>
+						<div style="text-align: center;">월간 그래프(1달간)</div>
+					</div>
+				</div>
+				<div class="lftpols2">
 					<div class="bx_innm1">
 						<ul>
 							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
@@ -467,20 +483,11 @@
 							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
 						</ul>
 					</div>
-				</div>
-				<div class="lftpols2">
-					<div class="numkk">
-						<strong>125,000</strong>
-						<span class="pt2 colblu">
-							<img src="/dist/images/ico_mndw.png" alt="">
-						</span>
-						<span style="margin-left: -20px;">82000</span>
-						<em>-8.88%</em>
-					</div>
-					<div class="chrt">
-						<div class="chartpd" style="width: 650px; height: 800px; margin: auto">
-							<canvas id="chart_11" width="400" height="250"></canvas>
+					<div class="chrt" style="margin-top: 40px;">
+						<div class="chartpd" style="width: 540px; height: 350px; margin: auto">
+							<canvas id="chart_11" width="540" height="350"></canvas>
 						</div>
+						<div style="text-align: center;">1일 그래프</div>
 					</div>
 				</div>
 			</div>

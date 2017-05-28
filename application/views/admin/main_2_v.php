@@ -507,7 +507,7 @@
 						<tr class="hidden">
 							<td>1</td>
 							<td></td>
-							<td>100,000</td>
+							<td><div></div></td>
 						</tr>
 						</tbody>
 					</table>

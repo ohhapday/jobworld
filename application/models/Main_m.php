@@ -867,6 +867,19 @@ class Main_m extends CI_Model
         return $return;
     }
 
+    public function get_stock_chart_mm($code)
+    {
+        $query = "
+            SELECT a.* FROM
+              job015_mm a
+            WHERE
+              COMP_CODE = ?
+        ";
+        $return = $this->db->query($query, $code)->result();
+
+        return $return;
+    }
+
     public function get_company_info($code)
     {
         $query = "

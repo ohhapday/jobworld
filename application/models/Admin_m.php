@@ -252,6 +252,34 @@ class Admin_m extends CI_Model
         return $this->db->trans_status();
     }
 
+    // 뉴스 컨텐츠 변경
+    public function put_NEWS_CONTENTS($data)
+    {
+        $update_data = array(
+            'NEWS_HEAD' => $data['NEWS_HEAD'],
+            'NEWS_FILE' => $data['NEWS_FILE'],
+            'UPDOWN' => $data['UPDOWN'],
+            'PERCENT' => $data['PERCENT'],
+        );
+        $this->db->where('NEWS_KEY', $data['KEY']);
+
+        return $this->db->update('job016_copy', $update_data);
+    }
+
+    // 애널 컨텐츠 변경
+    public function put_ANAL_CONTENTS($data)
+    {
+        $update_data = array(
+            'ANAL_HEAD' => $data['ANAL_HEAD'],
+            'ANAL_FILE' => $data['ANAL_FILE'],
+            'UPDOWN' => $data['UPDOWN'],
+            'PERCENT' => $data['PERCENT'],
+        );
+        $this->db->where('ANAL_KEY', $data['KEY']);
+
+        return $this->db->update('job017_copy', $update_data);
+    }
+
     // 종합환경설정 업데이트
     public function put_job024($data)
     {
@@ -302,6 +330,16 @@ class Admin_m extends CI_Model
               COMP_CODE = ?
         ";
         $this->db->query($query, array($data['adjust'] / 100, $data['COMP_CODE']));
+    }
+
+    // 주식 가격 개별 조정
+    public function put_COMP_PRICE($data)
+    {
+        $update_data = array(
+            'COMP_PRICE' => $data['COMP_PRICE']
+        );
+        $this->db->where(array('COMP_CODE' => $data['COMP_CODE'], 'COMP_DATE' => $data['COMP_DATE']));
+        return $this->db->update('job015_copy', $update_data);
     }
 
     // 주식 데이터 처리

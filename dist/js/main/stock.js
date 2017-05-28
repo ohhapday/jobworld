@@ -12,7 +12,7 @@ requirejs([
     let nf = new Intl.NumberFormat(["en-US"]);
     let user = common.user;
     let eventSource;
-    let chart = null;
+    let chart = null, chart_mm = null;
     let chart_COMP_CODE;
     let selected_index;
 
@@ -214,6 +214,79 @@ requirejs([
                 chart = new Chart(ctx1, config1);
             }
         },
+        drawchart_mm: function (data, object) {
+            let suggestedMin, suggestedMax;
+
+            suggestedMin = Math.min.apply(null, data.sales)  - 1000;
+            suggestedMax = Math.max.apply(null, data.sales)  + 1000;
+
+            let config1 = {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        borderWidth: 3,
+                        borderColor: "#ba0808",
+                        backgroundColor: "rgba(255,198,198,0.7)",
+                        pointBorderColor: "#ba0808",
+                        pointBorderWidth: 1,
+                        pointRadius: 4,
+                        fill: true,
+                        lineTension: 0.2
+                    }]
+                },
+                options: {
+                    legend: {
+                        position: null,
+                    },
+                    title: {
+                        display: false,
+                        text: '금리변동률'
+                    },
+                    tooltips: {
+                        mode: 'label',
+                        callbacks: {
+                            /*label: function(tooltipItem, data) {
+                             return '' + tooltipItem.yLabel.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                             }*/
+                        }
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                labelString: '일'
+                            },
+                        }],
+                        yAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: false,
+                                labelString: '금액',
+                            },
+                            ticks: {
+                                suggestedMin: suggestedMin,
+                                suggestedMax: suggestedMax,
+                                userCallback: function (value, index, values) {
+                                    return '' + value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                }
+                            }
+                        }]
+                    }
+                }
+            };
+            // 매출
+            config1.data.labels = data.labels;
+            config1.data.datasets[0].data = data.sales;
+
+            var ctx1 = object.get(0).getContext("2d");
+
+            if (chart_mm === null) {
+                chart_mm = new Chart(ctx1, config1);
+            } else {
+                chart_mm.destroy();
+                chart_mm = new Chart(ctx1, config1);
+            }
+        },
         company_info: function (data) {
             let table = $('.wrap_layerpop:eq(4)');
 
@@ -268,6 +341,7 @@ requirejs([
             }
 
             pop.find('.box_titpop2 span').text(user.name);
+            pop.find('.box_titpop2 div').text(moment().format('YYYY년 MM월 DD일'));
             pop.find('table:eq(0) td:eq(0)').text(nf.format(data.EMPL_CASH) + ' 원');
             pop.find('table:eq(0) td:eq(1)').text(nf.format(data.stock_CASH) + ' 원');
 
@@ -315,6 +389,20 @@ requirejs([
                 url: '/main/get_stock_chart',
                 success: function (data, status, xhr) {
                     ui.drawchart(data, object);
+                }
+            });
+        },
+        draw_chart_mm: function (COMP_CODE, object) {
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'get',
+                data: {
+                    COMP_CODE: COMP_CODE,
+                },
+                url: '/main/get_stock_chart_mm',
+                success: function (data, status, xhr) {
+                    ui.drawchart_mm(data, object);
                 }
             });
         },
@@ -385,6 +473,7 @@ requirejs([
 
             ajax.company_info(mData.favor[index]);
             ajax.draw_chart(COMP_CODE, $('#chart_11'));
+            ajax.draw_chart_mm(COMP_CODE, $('#chart_12'));
 
             pop.fadeIn(500);
         });
