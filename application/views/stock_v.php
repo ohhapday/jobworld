@@ -423,6 +423,9 @@
 
 	<div class="layerpop pop8">
 		<div class="box_titpop2">
+			<div style="text-align: right; padding: 30px;">
+				testat
+			</div>
 			<h2>주식투자자<span>홍길동</span></h2>
 			<div class="btn_close"><button type="button">닫기</button></div>
 		</div>

@@ -138,6 +138,7 @@ requirejs([
             let tot_benifit, tot_buy_cost = 0, tot_price = 0;
 
             $('.box_titpop2 span').text(user.name);
+            $('.box_titpop2 div').text(moment().format('YYYY년 MM월 DD일'));
 
             $.each(mData.buyBond, function (i) {
                 let self = this;

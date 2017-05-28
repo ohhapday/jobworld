@@ -381,6 +381,8 @@ class Admin_m extends CI_Model
             ";
             $this->db->query($query, array($item['COMP_PRICE'] * $item['EMPL_BALQTY'], $item['EMPL_KEY']));
         }
-        $this->db->insert_batch('job082', $insert_data);
+        if (count($result) > 0) {
+            $this->db->insert_batch('job082', $insert_data);
+        }
     }
 }

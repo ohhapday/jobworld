@@ -449,7 +449,7 @@
 
 	<div class="layerpop pop8">
 		<div class="box_titpop2">
-			<div  style="text-align: right; padding: 30px;">
+			<div style="text-align: right; padding: 30px;">
 				testat
 			</div>
 			<h2>펀드매니저<span>홍길동</span></h2>

@@ -341,6 +341,7 @@ requirejs([
             }
 
             pop.find('.box_titpop2 span').text(user.name);
+            pop.find('.box_titpop2 div').text(moment().format('YYYY년 MM월 DD일'));
             pop.find('table:eq(0) td:eq(0)').text(nf.format(data.EMPL_CASH) + ' 원');
             pop.find('table:eq(0) td:eq(1)').text(nf.format(data.stock_CASH) + ' 원');
 

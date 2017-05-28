@@ -214,7 +214,7 @@ requirejs([
             let txt_my_benifit = 0;
 
             $('.box_titpop2 span').text(user.name);
-            $('.box_titpop2 div').text(moment().format('YYYY-MM-DD'));
+            $('.box_titpop2 div').text(moment().format('YYYY년 MM월 DD일'));
             $.each(mData.FUND, function (i) {
                 let MM, benifit, tot_price = 0, tot_benifit_pay = 0,
                     my_benifit, my_benifit_per, str;             // 실제 보유기간이 없으면 최초 보유기간으로
