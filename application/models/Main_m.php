@@ -183,6 +183,17 @@ class Main_m extends CI_Model
         return $return;
     }
 
+    public function get_youtube()
+    {
+        $query = "
+            SELECT MD_NAME FROM job024
+            WHERE MKEY = 6
+        ";
+        $return = $this->db->query($query)->row()->MD_NAME;
+
+        return $return;
+    }
+
     /**
      * begin 펀드 투자 체험
      */

@@ -345,3 +345,7 @@ body{background: #f8f1e1;}
 @media print{
 
 }
+
+
+.layerpop .box_titpop .my_h5{position: absolute; top: 35px; left: 320px; width: 150px; height: 37px;}
+.layerpop .box_titpop .my_h5_02{position: absolute; top: 35px; left: 470px; width: 150px; height: 37px;}

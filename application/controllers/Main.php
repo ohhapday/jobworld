@@ -49,6 +49,18 @@ class Main extends CI_Controller
         $this->load->view('left_main_v');
     }
 
+    public function youtube()
+    {
+        $this->load->view('youtube_v');
+    }
+
+    public function get_youtube()
+    {
+        $return = $this->main_m->get_youtube();
+
+        echo json_encode($return);
+    }
+
     public function bulletin()
     {
         $this->load->view('bulletin_v');
@@ -318,7 +330,7 @@ class Main extends CI_Controller
         $return->NEWS = $this->main_m->get_NEWS();
         $return->ANAL = $this->main_m->get_ANAL();
         $return->stock = $this->main_m->get_stock();
-        $return->favor = $this->main_m->get_favor();
+        // $return->favor = $this->main_m->get_favor();
         $return->cashFlow = $this->main_m->get_cash();
         $return->buyStock = $this->main_m->get_buyStock();
         $return->STOCK_POP = $return->stock;
