@@ -372,6 +372,7 @@ requirejs([
                 url: '/main/get_user_info',
                 success: function (data, status, xhr) {
                     returnData = data;
+                    console.log(data);
                 }
             });
             return returnData;

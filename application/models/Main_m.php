@@ -175,8 +175,11 @@ class Main_m extends CI_Model
     public function get_user_info()
     {
         $query = "
-            SELECT * FROM job050
-            ORDER BY rand();
+            SELECT
+              EMPL_NAME, SUM(fund_CASH) +SUM(bond_CASH)+ SUM(stock_CASH) as aaa
+            FROM job050
+            GROUP BY EMPL_KEY
+            ORDER BY aaa DESC
         ";
         $return = $this->db->query($query)->result();
 
