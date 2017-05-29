@@ -180,6 +180,8 @@
 .box_sbbtm .sbleftbt3 .da_add .btn_adgre{width: 32%; color: #fff; background: #6e6b6b;}
 .box_sbbtm .sbleftbt3 .da_add .btn_adgre2{float: right; width: 67%; color: #fff; background: #6e6b6b;}
 
+.box_bt_rdo .btn_buyc{position: absolute; top: 873px; right: 250px; padding: 5px 10px; padding: 5px 20px 5px 40px; border-radius: 5px; background:#fdc236 url(../images/ico_bt1.png) no-repeat 15px 10px; color: #fff;}
+
 .box_sbleft{width: 58%; float: left; padding-top: 40px;}
 .box_sbleft .sb_tit{position: relative; padding-bottom: 10px;}
 .box_sbleft .sb_tit h3{padding-left: 45px; font-size: 1.5em;}

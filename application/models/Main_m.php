@@ -536,12 +536,46 @@ class Main_m extends CI_Model
         return $return;
     }
 
+    public function get_gold2($DATE)
+    {
+        $rownum = $DATE;
+
+        $query = "
+            SELECT
+              GOLD_KEY, GOLD_CODE, GOLD_RATE, GOLD_DATE
+            FROM
+              job018
+            WHERE
+              GOLD_DATE = ?
+        ";
+        $return = $this->db->query($query, $rownum)->row();
+
+        return $return;
+    }
+
     public function get_credit()
     {
         $query = "
             SELECT bond_rownum FROM tb_admin
         ";
         $rownum = $this->db->query($query)->row()->bond_rownum;
+
+        $query = "
+            SELECT
+              BOND_KEY, CREDIT_RANK, CREDIT_MEMO, CREDIT_SCORE, CREDIT_DATE
+            FROM job021
+            WHERE CREDIT_DATE = ?
+            GROUP BY BOND_KEY
+            ORDER BY BOND_KEY ASC
+        ";
+        $return = $this->db->query($query, $rownum)->result();
+
+        return $return;
+    }
+
+    public function get_credit2($DATE)
+    {
+        $rownum = $DATE;
 
         $query = "
             SELECT
@@ -593,12 +627,39 @@ class Main_m extends CI_Model
         ";
         $this->db->query($query, array($data['bond']['BOND_NOWPRICE'] * $data['BOND_BUYQTY'], $_SESSION['EMPL_KEY']));
 
+        // 수익금액 다시 계산
+        $this->put_bond_rownum($data['bond']['BOND_KEY']);
+
         $this->db->trans_complete();
 
         return $this->db->trans_status();
     }
 
-    public function put_bond_rownum()
+    public function cancel_buyBond($data)
+    {
+        $this->db->trans_start();
+        $query = "
+            SELECT * FROM job070
+            WHERE EMPL_KEY = ? AND BOND_KEY = ?
+        ";
+        $result = $this->db->query($query, array($data['EMPL_KEY'], $data['BOND_KEY']))->row();
+        $BOND_BUYPAY = $result->BOND_BUYPAY;
+
+        $query = "
+            UPDATE job050 SET bond_CASH = bond_CASH + ? 
+            WHERE EMPL_KEY = ?
+        ";
+        $this->db->query($query, array($BOND_BUYPAY, $data['EMPL_KEY']));
+
+        $this->db->where(array('EMPL_KEY' => $data['EMPL_KEY'], 'BOND_KEY' => $data['BOND_KEY']));
+        $this->db->delete('job070');
+
+        $this->db->trans_complete();
+
+        return $this->db->trans_status();
+    }
+
+    public function put_bond_rownum($BOND_KEY, $DATE = 48)
     {
         $this->db->trans_start();
 
@@ -607,15 +668,15 @@ class Main_m extends CI_Model
             FROM job070 a, job020 b, job022 c, tb_admin d
             WHERE
               a.BOND_KEY = b.BOND_KEY AND a.EMPL_KEY = ? AND
-              b.BOND_KEY = c.BOND_KEY AND c.BOND_DATE = d.bond_rownum
+              b.BOND_KEY = c.BOND_KEY AND a.BOND_KEY = ? AND c.BOND_DATE = ?
         ";
-        $result = $this->db->query($query, $_SESSION['EMPL_KEY'])->result();
+        $result = $this->db->query($query, array($_SESSION['EMPL_KEY'], $BOND_KEY, $DATE))->result();
 
         foreach ($result as $value) {
             if ($value->BOND_TYPE === '01') {
-                $rate = $this->get_gold()->GOLD_RATE;
+                $rate = $this->get_gold2($DATE)->GOLD_RATE;
             } else {
-                $aa = $this->get_credit();
+                $aa = $this->get_credit2($DATE);
                 foreach ($aa as $item) {
                     if ($item->BOND_KEY == $item->BOND_KEY) {
                         $credit = $item;
@@ -626,15 +687,15 @@ class Main_m extends CI_Model
             $plus = ($rate - $value->BOND_RATE) / 100;
             $charge = ($value->BOND_NOWPRICE - $value->BOND_DANGA) / $value->BOND_DANGA;
 
-            $bb = $plus + $charge;
+            $bb = ($value->BOND_BUYPER/100) + $plus + $charge;
 
             $query = "
                 UPDATE job070 SET 
-                  BOND_BUYBENIFIT = BOND_DANGA *  ? * BOND_BUYQTY
+                  BOND_BUYBENIFIT = BOND_DANGA *  ? * BOND_BUYQTY, BOND_MM = ?
                 WHERE
                   EMPL_KEY = ? AND BOND_KEY = ?
             ";
-            $this->db->query($query, array($bb, $_SESSION['EMPL_KEY'], $value->BOND_KEY));
+            $this->db->query($query, array($bb, $DATE, $_SESSION['EMPL_KEY'], $value->BOND_KEY));
         }
 
         $this->db->trans_complete();
@@ -659,9 +720,10 @@ class Main_m extends CI_Model
     {
         $query = "
             SELECT a.* FROM
-              job022 a, tb_admin b
+              job022 a
             WHERE
-              BOND_DATE <= b.bond_rownum AND BOND_DATE >= (b.bond_rownum - 10) AND BOND_KEY = ?
+              BOND_KEY = ?
+            LIMIT 48
         ";
         $return = $this->db->query($query, $key)->result();
 

@@ -243,12 +243,18 @@ class Main extends CI_Controller
         $this->get_bondData();
     }
 
-    // todo
     public function cancel_buyBond()
     {
-        $data['bond'] = $this->input->post('bond', true);
-        $data['BOND_BUYQTY'] = $this->input->post('BOND_BUYQTY', true);
-        $this->main_m->post_buyBond($data);
+        $data['BOND_KEY'] = $this->input->post('BOND_KEY', true);
+        $data['EMPL_KEY'] = $_SESSION['EMPL_KEY'];
+        $this->main_m->cancel_buyBond($data);
+
+        $this->get_bondData();
+    }
+
+    public function put_buyBond()
+    {
+        $this->main_m->put_bond_rownum($_POST['BOND_KEY'], $_POST['BOND_MM']);
 
         $this->get_bondData();
     }
@@ -290,20 +296,29 @@ class Main extends CI_Controller
     {
         $data = $this->main_m->get_bond_chart2($_GET['BOND_KEY']);
 
-        $i = 10;
         $txt_data = array();
         $sales = array();
+        $datetime = new DateTime();
+        $datetime->sub(new DateInterval('P3M'));
+
+        $i = 0;
         foreach ($data as $item) {
-            $datetime = new DateTime();
-            $term = new DateInterval('P' . $i . 'M');
+            $term = new DateInterval('P3M');
+            $label = $datetime->add($term)->format('y/m');
+
+            if ($i % 4 === 0) {
+                $label = $label;
+            } else {
+                $label = '';
+            }
 
             array_push($txt_data,
-                $datetime->sub($term)->format('Y/m')
+                $label
             );
             array_push($sales,
                 (int)$item->BOND_NOWPRICE
             );
-            $i--;
+            $i++;
         }
 
         $return->labels = $txt_data;

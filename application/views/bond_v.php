@@ -152,20 +152,22 @@
 					</ul>
 				</div>
 
-				<div class="ar_btm_bx clfix" style="overflow-y: hidden; height: 240px;">
+				<div class="ar_btm_bx clfix" style="overflow-y: hidden; height: 250px;">
 					<div class="box_tbllist">
 						<table>
 							<colgroup>
 								<col style="width: 30%;">
 								<col style="width: 10%;">
-								<col style="width: 25%;">
-								<col style="width: 25%;">
+								<col style="width: 10%;">
+								<col style="width: 20%;">
+								<col style="width: 20%;">
 								<col style="width: 10%;">
 							</colgroup>
 							<thead>
 							<tr>
 								<th scope="col">채권명</th>
 								<th scope="col">수량</th>
+								<th scope="col">만기(년)</th>
 								<th scope="col">산금액</th>
 								<th scope="col">만기수익금</th>
 								<th scope="col">취소</th>
@@ -174,6 +176,7 @@
 							<tbody>
 							<tr style="display: none;">
 								<td class="align-l" style="overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">국고채</td>
+								<td>00</td>
 								<td>00</td>
 								<td>2,000,000</td>
 								<td>100.00%</td>
@@ -187,16 +190,17 @@
 				</div>
 
 				<div class="box_bt_rdo clfix" style="margin-top: -10px;">
-					<div class="ar_rdol">
-						<input type="radio" name="chdate" id="chdate1" checked><label for="chdate1">만기</label>
-						<input type="radio" name="chdate" id="chdate2"><label for="chdate2">중도해지</label>
-						<select style="width: 180px; height: 40px;">
-							<option>3년</option>
-							<option>6년</option>
-							<option>12년</option>
+					<div class="ar_rdol" style="width: 100%; padding-top: 50px;">
+						만기변경
+						<select style="width: 180px; height: 40px; margin-left: 15px;">
+							<option value="4">1년</option>
+							<option value="12">3년</option>
+							<option value="24">6년</option>
+							<option value="48">만기</option>
 						</select>
+						<a href="#" class="btn_buyc" style="margin-top: 15px;">만기 변경</a>
 					</div>
-					<a href="#" class="btn_bview"><span>수익률 보기</span></a>
+					<!-- <a href="#" class="btn_bview"><span>수익률 보기</span></a> -->
 				</div>
 
 			</div>
@@ -273,7 +277,7 @@
 
 	<div class="layerpop pop22">
 		<div class="box_titpop">
-			<h2>채권 가격 변동 그래프</h2>
+			<h2>채권 가격 변동(예상) 그래프</h2>
 			<div class="btn_close"><button type="button">닫기</button></div>
 		</div>
 		<div class="box_contpop">

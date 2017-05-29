@@ -92,7 +92,7 @@ class Admin_m extends CI_Model
             'stock_STATUS' => 0,
             'result_STATUS' => 0,
             'DATA_TYPE' => $MD_NAME,
-            'bond_rownum' => 10,
+            'bond_rownum' => 1,
             'stock_rownum' => 13,
             'news_que' => 1,
             'anal_que' => 1,

@@ -109,15 +109,19 @@ requirejs([
                 let $clone = $table.find('tr:eq(0)').clone(true);
                 let self = this;
                 let total = parseInt(this.BOND_DANGA) * parseInt(this.BOND_BUYQTY);
+                let MM_txt;
 
                 let bond = mData.BOND.find(function (item) {
                     return item.BOND_KEY === self.BOND_KEY;
                 });
 
+                (this.BOND_MM == '48') ? MM_txt = '만기' : MM_txt = this.BOND_MM/4;
+
                 $clone.find('td:eq(0)').text(bond.BOND_NAME);
                 $clone.find('td:eq(1)').text(this.BOND_BUYQTY);
-                $clone.find('td:eq(2)').text(nf.format(total));
-                $clone.find('td:eq(3)').text(nf.format(this.BOND_BUYBENIFIT));
+                $clone.find('td:eq(2)').text(MM_txt);
+                $clone.find('td:eq(3)').text(nf.format(total));
+                $clone.find('td:eq(4)').text(nf.format(this.BOND_BUYBENIFIT));
 
                 $table.append($clone.clone(true).fadeIn(500));
             });
@@ -138,7 +142,7 @@ requirejs([
             let tot_benifit, tot_buy_cost = 0, tot_price = 0;
 
             $('.box_titpop2 span').text(user.name);
-            $('.box_titpop2 div').text(moment().format('YYYY년 MM월 DD일'));
+            $('.box_titpop2 div:eq(0)').text(moment().format('YYYY년 MM월 DD일'));
 
             $.each(mData.buyBond, function (i) {
                 let self = this;
@@ -330,9 +334,6 @@ requirejs([
             return true;
         },
         cancel_buyBond: function (key) {
-            alert('취소 프로세스 예정');
-            return;
-            console.log(key);
             $.ajax({
                 async: false,
                 dataType: 'json',
@@ -362,6 +363,22 @@ requirejs([
                 },
             });
         },
+        put_buyBond: function (BOND_KEY) {
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'post',
+                url: '/main/put_buyBond',
+                data: {
+                    BOND_KEY: BOND_KEY,
+                    BOND_MM: $('.box_bt_rdo select').val(),
+                },
+                success: function (data, status, xhr) {
+                    mData = null;
+                    mData = $.extend(true, mData, data);
+                }
+            });
+        }
     };
 
     // 기본 event (1회만 처리)
@@ -416,7 +433,7 @@ requirejs([
         });
 
         // 채권 사기
-        $('.btn_buyc').on('click', function () {
+        $('.btn_buyc:eq(0)').on('click', function () {
             if (mData.buyBond.length >= 3) {
                 alert('채권투자는 3개만 가능합니다.')
                 return;
@@ -431,6 +448,25 @@ requirejs([
             let index = $('.ar_btm_bx .und:not(:eq(0))').index($(this));
 
             ajax.cancel_buyBond(mData.buyBond[index].BOND_KEY);
+            ui.init();
+        });
+
+        // 구매한 채권 클릭
+        $('.box_tbllist:eq(1) table tbody tr').on('click', function () {
+            let index = $('.box_tbllist:eq(1) table tbody tr:not(:eq(0))').index($(this));
+            $('.box_tbllist:eq(1) table tbody tr').removeClass('on');
+            $(this).addClass('on');
+        });
+
+        // 만기 일자 변경
+        $('.btn_buyc:eq(1)').on('click', function () {
+            let index = $('.box_tbllist:eq(1) table tbody tr:not(:eq(0))').index($('.box_tbllist:eq(1) table tbody tr.on'));
+
+            if (index < 0) {
+                alert('구매한 채권을 선택해 주세요.');
+            }
+
+            ajax.put_buyBond(mData.buyBond[index].BOND_KEY);
             ui.init();
         });
 
