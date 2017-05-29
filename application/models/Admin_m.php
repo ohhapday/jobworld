@@ -56,15 +56,24 @@ class Admin_m extends CI_Model
             'DATA_TYPE' => $data['DATA_TYPE'],
         );
 
-        if ($data['usabled'] == '3') {
-            $update_data['bond_rownum'] = 10;
-            $update_data['stock_rownum'] = 13;
+        if ($data['STATUS']['fund_STATUS'] == 1 && $data['usabled'] == 2) {
+            $this->fund_result();
         }
-        $this->db->update('tb_admin', $update_data);
+
+        if ($data['STATUS']['bond_STATUS'] == 1 && $data['usabled'] == 2) {
+            $this->bond_result();
+        }
 
         if ($data['STATUS']['stock_STATUS'] == 1 && $data['usabled'] == 2) {
             $this->stock_result();
         }
+
+        if ($data['usabled'] == '3') {
+            $update_data['bond_rownum'] = 1;
+            $update_data['stock_rownum'] = 13;
+        }
+        $this->db->update('tb_admin', $update_data);
+
 
         $this->db->trans_complete();
         return true;
@@ -383,6 +392,50 @@ class Admin_m extends CI_Model
         }
         if (count($result) > 0) {
             $this->db->insert_batch('job082', $insert_data);
+        }
+    }
+
+    // 채권 데이터 처리
+    public function bond_result()
+    {
+        $query = "
+            SELECT
+              EMPL_KEY,
+              SUM(BOND_BUYPAY) AS t_BOND_BUYPAY,
+              SUM(BOND_BUYBENIFIT) AS t_BOND_BUYBENIFIT
+            FROM job070
+            GROUP BY EMPL_KEY
+        ";
+        $result = $this->db->query($query)->result();
+
+        foreach ($result as $item) {
+            $query = "
+                UPDATE job050 SET bond_CASH = bond_CASH + ? + ?
+                WHERE EMPL_KEY = ?
+            ";
+            $this->db->query($query, array($item->t_BOND_BUYPAY, $item->t_BOND_BUYBENIFIT, $item->EMPL_KEY));
+        }
+    }
+
+    // 펀드 결과 처리
+    public function fund_result()
+    {
+        $query = "
+            SELECT
+              EMPL_KEY,
+              SUM(CUSTOM_ADDPAY) AS t_CUSTOM_ADDPAY
+            FROM job062
+            GROUP BY EMPL_KEY 
+        ";
+
+        $result = $this->db->query($query)->result();
+
+        foreach ($result as $item) {
+            $query = "
+                UPDATE job050 SET fund_CASH = ?
+                WHERE EMPL_KEY = ?
+            ";
+            $this->db->query($query, array($item->t_CUSTOM_ADDPAY, $item->EMPL_KEY));
         }
     }
 }

@@ -31,7 +31,7 @@ requirejs([
         ANAL: null,
         NEWS: null,
         stock: null,
-        favor: null,
+        favor: [],
         cashFlow: null,
         buyStock: null,
     };
@@ -291,6 +291,9 @@ requirejs([
             let table = $('.wrap_layerpop:eq(4)');
 
             table.find('.box_titpop h2').text(data.COMP_NAME);
+            table.find('.box_titpop .my_h5').text(data.SECT_NAME);
+            table.find('.box_titpop .my_h5_02').text(data.COMP_CODE);
+
             table.find('.bx_innm .clfix:eq(0) span').text(data.COMP_CODE);
             table.find('.bx_innm .clfix:eq(1) span').text(nf.format(data.STOCK.max));
             table.find('.bx_innm .clfix:eq(2) span').text(nf.format(data.STOCK.min));

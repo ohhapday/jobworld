@@ -527,6 +527,8 @@
 	<div class="layerpop pop18">
 		<div class="box_titpop">
 			<h2>삼성전자</h2>
+			<div class="my_h5">test</div>
+			<div class="my_h5_02">test</div>
 			<div class="btn_close"><button type="button">닫기</button></div>
 		</div>
 		<div class="box_contpop">
