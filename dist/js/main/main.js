@@ -563,7 +563,7 @@ requirejs([
                 let tmp = $.extend({}, eData);
                 eData = $.extend(true, eData, JSON.parse(e.data));
 
-                if (eData.login_status == null) {
+                if (eData.PG_LOCK == '1' && eData.login_status == null) {
                     $(location).attr('href', '/login/main');
                 }
 

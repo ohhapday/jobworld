@@ -107,7 +107,7 @@ requirejs([
                 count = count + 1;
                 ajax.draw_chart2(mData.stock[count].COMP_CODE, $('#chart_11'));
                 $('.pt_tit').text(mData.stock[count].COMP_NAME);
-            }, 5000);
+            }, 10000);
         },
         drawchart2: function (data, object) {
             let suggestedMin, suggestedMax;

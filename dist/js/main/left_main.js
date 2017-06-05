@@ -32,6 +32,15 @@ requirejs([
         ANAL: null,
     };
 
+    let gubun = {
+        '01': '제약',
+        '02': '석유화학',
+        '03': '식품/유통',
+        '04': '건설/조선',
+        '05': '자동차/항공',
+        '06': 'IT/전자',
+    };
+
     let ui = {
         init: function () {
             this.news();
@@ -45,8 +54,9 @@ requirejs([
 
             $.each(mData.NEWS, function () {
                 let $clone = li.clone(true).css('display', '');
+                let type = '[' + gubun[this.NEWS_TYPE] + '] ';
 
-                $clone.find('a').text(this.NEWS_HEAD);
+                $clone.find('a').text(type + this.NEWS_HEAD);
                 $clone.find('span').text(moment(this.INSERT_DATE).format('YYYY.MM.DD'));
 
                 ul.append($clone.clone(true));
@@ -60,8 +70,9 @@ requirejs([
 
             $.each(mData.ANAL, function () {
                 let $clone = li.clone(true).css('display', '');
+                let type = '[' + gubun[this.ANAL_TYPE] + '] ';
 
-                $clone.find('a').text(this.ANAL_HEAD);
+                $clone.find('a').text(type + this.ANAL_HEAD);
                 $clone.find('span').text(moment(this.INSERT_DATE).format('YYYY.MM.DD'));
 
                 ul.append($clone);

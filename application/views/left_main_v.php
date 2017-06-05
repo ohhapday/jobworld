@@ -30,7 +30,7 @@
 
 	<div class="layerpop pop14">
 		<div class="box_titpop">
-			<h2>이 시각 주요뉴스</h2>
+			<h2>증권뉴스</h2>
 			<div class="btn_close" style="display: none;">
 				<button type="button">닫기</button>
 			</div>
@@ -56,7 +56,7 @@
 
 	<div class="layerpop pop15">
 		<div class="box_titpop">
-			<h2>애널리스트 분석</h2>
+			<h2>증권리포트</h2>
 			<div class="btn_close" style="display: none;">
 				<button type="button">닫기</button>
 			</div>

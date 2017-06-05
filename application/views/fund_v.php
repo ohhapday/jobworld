@@ -61,8 +61,8 @@
 						<thead>
 						<tr>
 							<th scope="col">펀드명</th>
-							<th scope="col">펀드규모</th>
-							<th scope="col">예상 수익률</th>
+							<th scope="col">펀드규모(원)</th>
+							<th scope="col">수익률(%)</th>
 							<th scope="col">보유기간(개월)</th>
 						</tr>
 						</thead>
@@ -88,8 +88,8 @@
 					<ul class="dtlist clfix">
 						<li class="mb10"><strong>펀드명</strong><span></span></li>
 						<li class="mb10"><strong>만든 날짜</strong><span></span></li>
-						<li><strong>총 금액</strong><span></span></li>
-						<li><strong>예상 수익률</strong><span></span></li>
+						<li><strong>총 금액(원)</strong><span></span></li>
+						<li><strong>수익률(%)</strong><span></span></li>
 					</ul>
 				</div>
 			</div>
@@ -109,9 +109,9 @@
 						<thead>
 						<tr>
 							<th scope="col">종목명</th>
-							<th scope="col">현재가</th>
-							<th scope="col">전월대비</th>
-							<th scope="col">등락율</th>
+							<th scope="col">현재가(원)</th>
+							<th scope="col">전월대비(원)</th>
+							<th scope="col">등락율(%)</th>
 						</tr>
 						</thead>
 					</table>
@@ -161,9 +161,15 @@
 					<h4 class="sb_bg">종합지수</h4>
 					<div class="pt_list">
 						<ul>
-							<li class="down"><strong>KOSDAQ</strong><div><span class="pt1">600.73</span><span class="pt2"><img src="/dist/images/ico_mndw.png" alt="">820</span></div><em class="per">1.35%</em></li>
-							<li class="down"><strong>KOSPI</strong><div><span class="pt1">2000.77</span><span class="pt2"><img src="/dist/images/ico_mndw.png" alt="">22.22</span></div><em class="per">1.35%</em></li>
-							<li class="up"><strong>KOSPI200</strong><div><span class="pt1">270.77</span><span class="pt2"><img src="/dist/images/ico_mnup.png" alt="">2.88</span></div><em class="per">1.35%</em></li>
+							<li class="down"><strong>KOSDAQ</strong><div><span class="pt1">600.73</span><span class="pt2"><img src="/dist/images/ico_mndw.png" alt="">820</span></div>
+								<em class="per" style="font-size: 0.8em; text-align: right;">1.35%</em>
+							</li>
+							<li class="down"><strong>KOSPI</strong><div><span class="pt1">2000.77</span><span class="pt2"><img src="/dist/images/ico_mndw.png" alt="">22.22</span></div>
+								<em class="per" style="font-size: 0.8em; text-align: right;">1.35%</em>
+							</li>
+							<li class="up"><strong>KOSPI200</strong><div><span class="pt1">270.77</span><span class="pt2"><img src="/dist/images/ico_mnup.png" alt="">2.88</span></div>
+								<em class="per" style="font-size: 0.8em; text-align: right;">1.35%</em>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -283,7 +289,7 @@
 							<td><input type="text" value="10,000" class="align-r" readonly></td>
 						</tr>
 						<tr>
-							<th scope="row">총 펀드금액</th>
+							<th scope="row">총 펀드금액(원)</th>
 							<td><input type="text" value="10,000" class="align-r" readonly></td>
 						</tr>
 						</tbody>
@@ -326,7 +332,7 @@
 
 									</select>
 								</td>
-								<th scope="row">총 펀드금액</th>
+								<th scope="row">총 펀드금액(원)</th>
 								<td>
 									<input type="text" value="10,000" class="align-r" readonly>
 								</td>
@@ -338,7 +344,7 @@
 										<option value="">비율</option>
 									</select>
 								</td>
-								<th scope="row">투자금액</th>
+								<th scope="row">투자금액(원)</th>
 								<td>
 									<input type="text" value="" class="align-r" readonly required>
 								</td>
@@ -384,9 +390,9 @@
 						<tr>
 							<th scope="col">선택</th>
 							<th scope="col">종목명</th>
-							<th scope="col">현재가</th>
-							<th scope="col">전월대비</th>
-							<th scope="col">등락율</th>
+							<th scope="col">현재가(원)</th>
+							<th scope="col">전월대비(원)</th>
+							<th scope="col">등락율(%)</th>
 							<th scope="col">상세보기</th>
 						</tr>
 						</thead>
@@ -659,11 +665,11 @@
 		<div class="box_btcc">
 			<div class="bxlls clfix">
 				<div class="fl">
-					<strong style="width: 40%">총수익률</strong>
+					<strong style="width: 40%">총수익률(%)</strong>
 					<span style="width: 50%">00%</span>
 				</div>
 				<div class="fr">
-					<strong style="width: 40%">총수익금</strong>
+					<strong style="width: 40%">총수익금(원)</strong>
 					<span style="width: 50%; margin-left: -50px;">00%</span>
 				</div>
 			</div>
