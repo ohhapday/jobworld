@@ -46,45 +46,20 @@
 <div id="container">
 	<div id="content" class="clfix">
 		<div class="box_sbtop clfix">
-			<!--
-			<div class="sbleft2">
+			<div class="sbright2" style="margin-top: -20px;">
+
 				<div class="sb_tit">
-					<h3 class="ic2">실시간 증권 정보</h3>
+					<h3 class="ic4">위탁금 현황</h3>
 				</div>
-				<div class="bx_tablist">
-					<div class="tab">
-						<div class="tabmenu m1 on"><a href="#" class="btn_tb">증권뉴스</a></div>
-						<div class="tabmenu m2"><a href="#" class="btn_tb">애널리스트 보고서</a></div>
-					</div>
-					<div class="btmtbl on">
-						<div class="ar_btm_news">
-							<h4 class="sb_bg">이 시각<br>주요뉴스</h4>
-							<span class="thum"><img src="/dist/images/thum_ex.gif" alt=""></span>
-							<ul class="dtlist">
-								<li><a href="#"><strong></strong><span></span></a></li>
-								<li><a href="#"><strong></strong><span></span></a></li>
-								<li><a href="#"><strong></strong><span></span></a></li>
-								<li><a href="#"><strong></strong><span></span></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="btmtbl off">
-						<div class="ar_btm_news">
-							<h4 class="sb_bg">이 시각<br>보고서</h4>
-							<span class="thum"><img src="/dist/images/thum_ex.gif" alt=""></span>
-							<ul class="dtlist">
-								<li><a href="#"><strong></strong><span></span></a></li>
-								<li><a href="#"><strong></strong><span></span></a></li>
-								<li><a href="#"><strong></strong><span></span></a></li>
-								<li><a href="#"><strong></strong><span></span></a></li>
-							</ul>
-						</div>
-					</div>
+				<div class="ar_btm_sel">
+					<ul class="dtlist clfix">
+						<li><strong>고객자산</strong><span></span></li>
+						<li><strong>투자금액</strong><span></span></li>
+						<li><strong>잔고</strong><span></span></li>
+					</ul>
 				</div>
-			</div>
-			-->
-			<div class="sbright2">
-				<div class="sb_tit">
+
+				<div class="sb_tit" style="margin-top: 10px;">
 					<h3 class="ic3">주식 매매</h3>
 				</div>
 				<div class="bx_tablist">
@@ -95,15 +70,15 @@
 					<div class="btmtbl on">
 						<div class="ar_btm_dt">
 							<ul class="dtlist clfix">
-								<li><strong>품목명</strong><span></span></li>
+								<li><strong style="width: 35%;">종목명</strong><span style="width: 55%"></span></li>
 								<li>
-									<strong>사는수량</strong>
+									<strong>사는수량(주)</strong>
 									<div class="numchk">
 										<input type="number" name="ea" value="0" step="10" min="0">
 									</div>
 								</li>
 								<li>
-									<strong>사는금액</strong>
+									<strong>사는금액(원)</strong>
 									<div class="numchk"></div>
 								</li>
 							</ul>
@@ -112,15 +87,15 @@
 					<div class="btmtbl off">
 						<div class="ar_btm_dt">
 							<ul class="dtlist clfix">
-								<li><strong>품목명</strong><span></span></li>
+								<li><strong style="width: 35%;">종목명</strong><span style="width: 55%"></span></li>
 								<li>
-									<strong>파는수량</strong>
+									<strong>파는수량(주)</strong>
 									<div class="numchk">
 										<input type="number" name="ea" value="0" step="10" min="0">
 									</div>
 								</li>
 								<li>
-									<strong>파는금액</strong>
+									<strong>파는금액(원)</strong>
 									<div class="numchk"></div>
 								</li>
 							</ul>
@@ -133,7 +108,7 @@
 		<div class="box_sbbtm clfix">
 			<div class="sbleftbt4">
 				<div class="sb_tit">
-					<h3 class="ic5">관심종목</h3>
+					<h3 class="ic5">선택종목</h3>
 					<div style="position: absolute; top: 3px; right: 0;">
 						<span>0초</span>
 						<span>(변경 예정 시각)</span>
@@ -150,8 +125,8 @@
 							<col style="width: 18%;">
 						</colgroup>
 						<thead>
-						<tr>
-							<th scope="col">종목명</th>
+						<tr style=" height: 80px;">
+							<th scope="col">매매내역</th>
 							<th scope="col">현재가</th>
 							<th scope="col">직전가</th>
 							<th scope="col">등락율</th>
@@ -169,16 +144,11 @@
 						</tbody>
 					</table>
 				</div>
-				<!--
-				<div class="da_add clfix">
-					<button type="button" class="btn_adgre">공시정보</button>
-					<button type="button" class="btn_adgre2">주가그래프</button>
-				</div>
-				-->
 			</div>
-			<div class="sbrightbt3">
+			<div class="sbrightbt3" style="margin-top: -10px;">
+				<!--
 				<div class="sb_tit">
-					<h3 class="ic4">잔고 보유 현황</h3>
+					<h3 class="ic4">위탁금 현황</h3>
 				</div>
 				<div class="ar_btm_sel">
 					<ul class="dtlist clfix">
@@ -186,6 +156,10 @@
 						<li><strong>투자금액</strong><span></span></li>
 						<li><strong>잔고</strong><span></span></li>
 					</ul>
+				</div>
+				-->
+				<div class="sb_tit">
+					<h3 class="ic4">구매내역</h3>
 				</div>
 				<div class="ar_btm_bx clfix">
 					<div class="box_tbllist">
@@ -204,7 +178,7 @@
 								<th scope="col">종목명</th>
 								<th scope="col">구매수량</th>
 								<th scope="col">산금액</th>
-								<th scope="col">현재가격</th>
+								<th scope="col">현재가</th>
 								<th scope="col">수익금</th>
 							</tr>
 							</thead>
@@ -526,9 +500,11 @@
 
 	<div class="layerpop pop18">
 		<div class="box_titpop">
-			<h2>삼성전자</h2>
-			<div class="my_h5">test</div>
-			<div class="my_h5_02">test</div>
+			<div>
+				<span class="my_h4" style="color: #fff; font-size: 1.625em; font-weight: normal;">삼성전자</span>
+				<span class="my_h5" style="margin-left: 15px;">test</span>
+				<span class="my_h5_02" style="margin-left: 15px;">test</span>
+			</div>
 			<div class="btn_close"><button type="button">닫기</button></div>
 		</div>
 		<div class="box_contpop">
@@ -554,11 +530,12 @@
 						<div class="chartpd" style="width: 540px; height: 350px; margin: auto">
 							<canvas id="chart_12" width="540" height="350"></canvas>
 						</div>
-						<div style="text-align: center;">월간 그래프(1달간)</div>
+						<div style="text-align: center;">연간 차트</div>
 					</div>
 				</div>
 				<div class="lftpols2">
-					<div class="bx_innm1">
+					<div class="bx_innm1" style="margin-top: -10px;">
+						<h1 style="font-size: 1.5em;">종목뉴스</h1>
 						<ul>
 							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
 							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
@@ -571,7 +548,7 @@
 						<div class="chartpd" style="width: 540px; height: 350px; margin: auto">
 							<canvas id="chart_11" width="540" height="350"></canvas>
 						</div>
-						<div style="text-align: center;">1일 그래프</div>
+						<div style="text-align: center;">실시간 차트</div>
 					</div>
 				</div>
 			</div>

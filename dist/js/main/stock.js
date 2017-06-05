@@ -290,7 +290,7 @@ requirejs([
         company_info: function (data) {
             let table = $('.wrap_layerpop:eq(4)');
 
-            table.find('.box_titpop h2').text(data.COMP_NAME);
+            table.find('.box_titpop .my_h4').text(data.COMP_NAME);
             table.find('.box_titpop .my_h5').text(data.SECT_NAME);
             table.find('.box_titpop .my_h5_02').text(data.COMP_CODE);
 
@@ -497,7 +497,7 @@ requirejs([
             $('.box_tbllist tbody tr').removeClass('on');
             $(this).addClass('on');
 
-            $('.bx_tablist:eq(0) .btmtbl:eq(1) span').text($(this).find('.align-l').text());
+            $('.bx_tablist:eq(0) .btmtbl:eq(1) span').text(stock.COMP_NAME);
             $('.bx_tablist:eq(0) .btmtbl:eq(1) input[name="ea"]').val(mData.buyStock[index].EMPL_BALQTY);
             $('.bx_tablist:eq(0) .btmtbl:eq(1) input[name="ea"]').attr('max', mData.buyStock[index].EMPL_BALQTY);
             $('.bx_tablist:eq(0) .btmtbl:eq(1) input[name="ea"]').data('BUY_KEY', mData.buyStock[index].BUY_KEY);

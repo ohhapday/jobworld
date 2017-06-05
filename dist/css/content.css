@@ -61,12 +61,12 @@
 .box_sbtop .bx_tablist .btmtbl .ar_btm_dt .dttit > strong{float: left; width: 15%; box-sizing: border-box; padding-top: 15px; background: url(../images/ico_bgtit.png) no-repeat 0 0; font-size: 1.125em;}
 .box_sbtop .bx_tablist .btmtbl .ar_btm_dt .dttit > span{float: left; width: 50%; padding-top: 18px;}
 .box_sbtop .bx_tablist .btmtbl .ar_btm_dt .btn_buyc{position: absolute; top: 121px; right: 50px; padding: 5px 10px; border: 1px solid #6e6b6b; border-radius: 5px;}
-.box_sbtop .bx_tablist .btmtbl .ar_btm_dt .dtlist{padding: 35px 40px 36px 40px;}
+.box_sbtop .bx_tablist .btmtbl .ar_btm_dt .dtlist{padding: 25px 40px 26px 40px;}
 .box_sbtop .bx_tablist .btmtbl .ar_btm_dt .dtlist li{float: left; width: 33.33%;}
-.box_sbtop .bx_tablist .btmtbl .ar_btm_dt .dtlist li strong{float: left; width: 45%; padding-right: 10px; padding-left: 15px; background: url(../images/ico_dt1.png) no-repeat 0 13px; box-sizing: border-box;}
-.box_sbtop .bx_tablist .btmtbl .ar_btm_dt .dtlist li .numchk{float: left; width: 52%;}
+.box_sbtop .bx_tablist .btmtbl .ar_btm_dt .dtlist li strong{float: left; width: 57%; padding-right: 10px; padding-left: 15px; background: url(../images/ico_dt1.png) no-repeat 0 13px; box-sizing: border-box;}
+.box_sbtop .bx_tablist .btmtbl .ar_btm_dt .dtlist li .numchk{float: left; width: 40%;}
 .box_sbtop .bx_tablist .btmtbl .ar_btm_dt .dtlist li .numchk input{float: left; width: 98%; border: 0; background: transparent;}
-.box_sbtop .bx_tablist .btmtbl .ar_btm_dt .dtlist li > span{float: left; width: 55%;}
+.box_sbtop .bx_tablist .btmtbl .ar_btm_dt .dtlist li > span{float: left; width: 40%;}
 .box_sbtop .bx_tablist .btmtbl.on{display: block}
 .box_sbtop .bx_tablist .btmtbl.off{display: none;}
 .box_sbtop .bx_tablist .btn_bview{display: block; width: 100%; height: 75px; margin-top: 10px; box-sizing: border-box; background:#f34937; font-size: 1.125em; color: #fff; text-align: center;}
@@ -78,10 +78,18 @@
 .box_sbbtm .sb_tit h3.ic4{background: url(../images/ico_sb4.gif) no-repeat 0 8px;}
 .box_sbbtm .sb_tit h3.ic5{background: url(../images/ico_sb12.gif) no-repeat 0 10px;}
 .box_sbbtm .sb_tit .btn_plss{position: absolute; top: 3px; right: 0;}
+
+.sbright2 .sb_tit{position: relative; padding-bottom: 10px;}
+.sbright2 .sb_tit h3{padding-left: 45px; font-size: 1.5em;}
+.sbright2 .sb_tit h3.ic3{background: url(../images/ico_sb3.gif) no-repeat 0 7px;}
+.sbright2 .sb_tit h3.ic4{background: url(../images/ico_sb4.gif) no-repeat 0 8px;}
+.sbright2 .sb_tit h3.ic5{background: url(../images/ico_sb12.gif) no-repeat 0 10px;}
+.sbright2 .sb_tit .btn_plss{position: absolute; top: 3px; right: 0;}
+
 .box_sbbtm .sbleftbt{float: left; width: 35%;}
 .box_sbbtm .sbleftbt2{float: left; width: 55%;}
 .box_sbbtm .sbleftbt3{float: left; width: 45%;}
-.box_sbbtm .sbleftbt4{float: left; width: 45%; margin-top: -345px;}
+.box_sbbtm .sbleftbt4{float: left; width: 45%; margin-top: -480px;}
 .box_sbbtm h4.sb_bg{float: left; width: 20%; margin-right: 20px; box-sizing: border-box; padding-top: 15px; background: url(../images/ico_bgtit.png) no-repeat 0 0; font-size: 1.125em;}
 .box_sbbtm .ar_btm_news{overflow: hidden; min-height: 160px; padding: 20px 30px 20px 30px; border: 1px solid #d0cbbe;}
 .box_sbbtm .ar_btm_news .dtlist{float: left; width: 75%;}
@@ -118,13 +126,21 @@
 .box_sbbtm .sbrightbt3 .ar_btm_sel .dtlist li span{float: left; width: 58%;}
 .box_sbbtm .sbrightbt3 .ar_btm_sel .btn_ckcof{display: block; position: absolute; top: 20px; right: 24px; padding: 5px 25px; background:#f34937; font-size: 1em; color: #fff; border-radius: 5px;}
 
+.sbright2 .ar_btm_sel .dtlist li{float: left; width: 33.33%;}
+.sbright2 .ar_btm_sel .dtlist li strong{float: left; width: 42%; padding-right: 10px; padding-left: 15px; background: url(../images/ico_dt1.png) no-repeat 0 13px; box-sizing: border-box;}
+.sbright2 .ar_btm_sel .dtlist li span{float: left; width: 58%;}
+.sbright2 .ar_btm_sel .btn_ckcof{display: block; position: absolute; top: 20px; right: 24px; padding: 5px 25px; background:#f34937; font-size: 1em; color: #fff; border-radius: 5px;}
+
+.sbright2 .ar_btm_sel{position: relative; padding: 25px 40px 26px 40px; border: 1px solid #d0cbbe;}
+
+
 .box_sbbtm .sbrightbt2 .ar_btm_sel{position: relative; padding: 25px 40px 26px 40px; border: 1px solid #d0cbbe;}
 .box_sbbtm .sbrightbt2 .ar_btm_sel .dtlist li{float: left; width: 33.33%;}
 .box_sbbtm .sbrightbt2 .ar_btm_sel .dtlist li strong{float: left; width: 42%; padding-right: 10px; padding-left: 15px; background: url(../images/ico_dt1.png) no-repeat 0 13px; box-sizing: border-box;}
 .box_sbbtm .sbrightbt2 .ar_btm_sel .dtlist li span{float: left; width: 58%;}
 .box_sbbtm .sbrightbt2 .ar_btm_sel .btn_ckcof{display: block; position: absolute; top: 20px; right: 24px; padding: 5px 25px; background:#f34937; font-size: 1em; color: #fff; border-radius: 5px;}
 
-.box_sbbtm .ar_btm_bx{margin-top: 20px;}
+.box_sbbtm .ar_btm_bx{margin-top: 0px;}
 .box_sbbtm .ar_btm_bx .leftar{float: left; width: 48%;}
 .box_sbbtm .ar_btm_bx .btn_bview{display: block; width: 100%; height: 75px; margin-top: 30px; box-sizing: border-box; background:#f34937; font-size: 1.125em; color: #fff; text-align: center;}
 .box_sbbtm .ar_btm_bx .btn_bview span{display: inline-block; padding: 20px 0 20px 50px; background:url(../images/ico_sbplsb.png) no-repeat 0 50%;}

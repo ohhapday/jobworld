@@ -80,7 +80,6 @@
 					</table>
 					<div style="margin-top: 20px; display: none;">
 						<h3 class="ic4" style="text-align: center; font-size: 30px; color: #0000ff">
-							아직 만들어진 펀드가 없어요. <br>
 							위에 [+] 버튼을 눌러 펀드를 만들어 주세요.
 						</h3>
 					</div>
@@ -318,10 +317,10 @@
 							<tbody>
 							<tr>
 								<th scope="row">펀드명</th>
-								<td colspan="3"><input type="text" value="" required></td>
+								<td colspan="3"><input type="text" value="" placeholder="잡월드증권투자펀드" required></td>
 							</tr>
 							<tr>
-								<th scope="row">펀드 운영 개월</th>
+								<th scope="row">운영기간(개월)</th>
 								<td>
 									<select name="">
 
@@ -333,7 +332,7 @@
 								</td>
 							</tr>
 							<tr>
-								<th scope="row">투자할 비율 %</th>
+								<th scope="row">투자할 비율(%)</th>
 								<td>
 									<select name="" required>
 										<option value="">비율</option>
@@ -790,9 +789,11 @@
 
 	<div class="layerpop pop18">
 		<div class="box_titpop">
-			<h2>삼성전자</h2>
-			<div class="my_h5">test</div>
-			<div class="my_h5_02">test</div>
+			<div>
+				<span class="my_h4" style="color: #fff; font-size: 1.625em; font-weight: normal;">삼성전자</span>
+				<span class="my_h5" style="margin-left: 15px;">test</span>
+				<span class="my_h5_02" style="margin-left: 15px;">test</span>
+			</div>
 			<div class="btn_close"><button type="button">닫기</button></div>
 		</div>
 		<div class="box_contpop">
@@ -818,11 +819,12 @@
 						<div class="chartpd" style="width: 540px; height: 350px; margin: auto">
 							<canvas id="chart_12" width="540" height="350"></canvas>
 						</div>
-						<div style="text-align: center;">월간 그래프(1달간)</div>
+						<div style="text-align: center;">연간 차트</div>
 					</div>
 				</div>
 				<div class="lftpols2">
-					<div class="bx_innm1">
+					<div class="bx_innm1" style="margin-top: -10px;">
+						<h1 style="font-size: 1.5em;">종목뉴스</h1>
 						<ul>
 							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
 							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
@@ -835,7 +837,7 @@
 						<div class="chartpd" style="width: 540px; height: 350px; margin: auto">
 							<canvas id="chart_11" width="540" height="350"></canvas>
 						</div>
-						<div style="text-align: center;">1일 그래프</div>
+						<div style="text-align: center;">실시간 차트</div>
 					</div>
 				</div>
 			</div>

@@ -258,7 +258,7 @@ requirejs([
         company_info: function (data) {
             let table = $('.wrap_layerpop:eq(4)');
 
-            table.find('.box_titpop h2').text(data.COMP_NAME);
+            table.find('.box_titpop .my_h4').text(data.COMP_NAME);
             table.find('.box_titpop .my_h5').text(data.SECT_NAME);
             table.find('.box_titpop .my_h5_02').text(data.COMP_CODE);
 

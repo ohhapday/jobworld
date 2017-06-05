@@ -161,7 +161,7 @@
 		</div>
 		<div class="box_mnrtg2">
 			<div class="anldoc">
-				<strong>애널리스트<br>보고서</strong>
+				<strong>증권리포트<br>보고서</strong>
 			</div>
 			<ul>
 				<li class="ic_cp1"><a href="#">제약</a></li>
@@ -210,7 +210,7 @@
 				<button type="button">닫기</button>
 			</div>
 		</div>
-		<div class="box_contpop" style="overflow-y: auto; height: 520px;">
+		<div class="box_contpop" style="overflow-y: auto; height: 720px;">
 			<ul class="list_qu">
 				<li style="display: none;">
 					<strong>1. 귀하의 나이는 어떻게 되십니까?</strong>
@@ -444,9 +444,11 @@
 
 	<div class="layerpop pop18">
 		<div class="box_titpop">
-			<h2>삼성전자</h2>
-			<div class="my_h5">test</div>
-			<div class="my_h5_02">test</div>
+			<div>
+				<span class="my_h4" style="color: #fff; font-size: 1.625em; font-weight: normal;">삼성전자</span>
+				<span class="my_h5" style="margin-left: 15px;">test</span>
+				<span class="my_h5_02" style="margin-left: 15px;">test</span>
+			</div>
 			<div class="btn_close"><button type="button">닫기</button></div>
 		</div>
 		<div class="box_contpop">
@@ -472,11 +474,12 @@
 						<div class="chartpd" style="width: 540px; height: 350px; margin: auto">
 							<canvas id="chart_12" width="540" height="350"></canvas>
 						</div>
-						<div style="text-align: center;">월간 그래프(1달간)</div>
+						<div style="text-align: center;">연간 차트</div>
 					</div>
 				</div>
 				<div class="lftpols2">
-					<div class="bx_innm1">
+					<div class="bx_innm1" style="margin-top: -10px;">
+						<h1 style="font-size: 1.5em;">종목뉴스</h1>
 						<ul>
 							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
 							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
@@ -489,7 +492,7 @@
 						<div class="chartpd" style="width: 540px; height: 350px; margin: auto">
 							<canvas id="chart_11" width="540" height="350"></canvas>
 						</div>
-						<div style="text-align: center;">1일 그래프</div>
+						<div style="text-align: center;">실시간 차트</div>
 					</div>
 				</div>
 			</div>

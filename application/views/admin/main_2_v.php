@@ -125,7 +125,7 @@
 		</div>
 		<div class="sbleftcol1 clfix adm">
 			<div class="sb_tit">
-				<h3 class="ic7">체험자 프로그램 컨트롤</h3>
+				<h3 class="ic7">체험과정 제어</h3>
 			</div>
 			<div class="sbrightdat">
 				<div class="pro_bt clfix">
@@ -164,19 +164,19 @@
 			</div>
 
 			<div class="sb_tit mt40">
-				<h3 class="ic3">체험할 주식 데이터 선택</h3>
+				<h3 class="ic3">주식데이터 난이도</h3>
 			</div>
 			<div class="sbleftdat">
 				<div class="bx_chk_list clfix">
 					<ul>
 						<li class="bg0_copy">
-							<button type="button" class="on">초보 (60초)</button>
+							<button type="button" class="on">하 (60초)</button>
 						</li>
 						<li class="bg1_copy">
-							<button type="button">중간 ( 50초)</button>
+							<button type="button">중 ( 50초)</button>
 						</li>
 						<li class="bg2_copy">
-							<button type="button">고수 (30초)</button>
+							<button type="button">상 (30초)</button>
 						</li>
 					</ul>
 				</div>
@@ -204,19 +204,19 @@
 					<button type="button" class="btn_adyee">주식종목관리</button>
 				</div>
 				<div class="da_adt clfix mt3">
-					<button type="button" class="btn_adyee2">뉴스관리</button>
-					<button type="button" class="btn_adyee2">애널리스트 분석 관리</button>
+					<button type="button" class="btn_adyee2">증권뉴스 관리</button>
+					<button type="button" class="btn_adyee2">증권리포트 관리</button>
 				</div>
 			</div>
 
 			<div class="sb_tit mt40">
-				<h3 class="ic8">뉴스&애널리스트 정보 전송</h3>
+				<h3 class="ic8">증권뉴스 및 리포트 전송</h3>
 			</div>
 
 			<div class="bx_tablist">
 				<div class="tab">
-					<div class="tabmenu m1 on"><a href="#" class="btn_tb">이 시간 뉴스</a></div>
-					<div class="tabmenu m2"><a href="#" class="btn_tb">애널리스트 분석</a></div>
+					<div class="tabmenu m1 on"><a href="#" class="btn_tb">증권뉴스</a></div>
+					<div class="tabmenu m2"><a href="#" class="btn_tb">증권리포트 분석</a></div>
 				</div>
 				<div class="btmtbl">
 					<div class="box_tbllist">

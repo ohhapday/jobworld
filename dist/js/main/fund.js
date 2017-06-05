@@ -401,7 +401,7 @@ requirejs([
         company_info: function (data) {
             let table = $('.wrap_layerpop:eq(5)');
 
-            table.find('.box_titpop h2').text(data.COMP_NAME);
+            table.find('.box_titpop .my_h4').text(data.COMP_NAME);
             table.find('.box_titpop .my_h5').text(data.SECT_NAME);
             table.find('.box_titpop .my_h5_02').text(data.COMP_CODE);
 
@@ -613,12 +613,12 @@ requirejs([
 
             select.find('option').remove();
             $.each(mData.fund_own_month, function () {
-                select.append('<option value="' + this.MD_NAME + '">' + this.MD_NAME + '</option>');
+                select.append('<option value="' + this.MD_NAME + '">' + this.MD_NAME + '개월</option>');
             });
 
             pop.find('table:eq(1) tr:eq(2) select option:not(:eq(0))').remove();
             for (let i = 1; i <= 10; i++) {
-                pop.find('table:eq(1) tr:eq(2) select').append('<option>' + (i * 10) + '</option>');
+                pop.find('table:eq(1) tr:eq(2) select').append('<option>' + (i * 10) + '%</option>');
             }
 
             pop.fadeIn(500);
