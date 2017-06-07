@@ -457,13 +457,13 @@ requirejs([
         (function () {
             $('.box_mnrtg2 li').on('click', function () {
                 let index = $('.box_mnrtg2 li').index(this);
-                let pop = $('.wrap_layerpop:eq(0)');
+                let pop = $('.wrap_layerpop:eq(5)');
 
                 let ANAL = mData.ANAL.find(function (item) {
                     return item.ANAL_TYPE == index + 1;
                 });
 
-                pop.find('.box_titpop h2').text('애널리스트 보고서');
+                // pop.find('.box_titpop h2').text('애널리스트 보고서');
                 pop.find('.news_tit').text(ANAL.ANAL_HEAD);
                 pop.find('.box_contpop p').html(ANAL.ANAL_FILE);
                 pop.find('.date em').text('잡월드 애널리스트');

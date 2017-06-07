@@ -100,7 +100,7 @@
 					</div>
 				</div>
 				<div class="sb_tit sb_tit2 mt20">
-					<h3 class="ic3">종목별 주식 그래프</h3>
+					<h3 class="ic4">종목별 주식 그래프</h3>
 				</div>
 				<div class="pt_tit">
 
