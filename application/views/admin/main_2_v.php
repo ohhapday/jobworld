@@ -203,9 +203,10 @@
 					<button type="button" class="btn_adyee">채권관리</button>
 					<button type="button" class="btn_adyee">주식종목관리</button>
 				</div>
-				<div class="da_adt clfix mt3">
-					<button type="button" class="btn_adyee2">증권뉴스 관리</button>
-					<button type="button" class="btn_adyee2">증권리포트 관리</button>
+				<div class="da_adt clfix" style="margin-top: 2px;">
+					<button type="button" class="btn_adgre" style="background: #fdc236">종합주가 관리</button>
+					<button type="button" class="btn_adyee">증권뉴스 관리</button>
+					<button type="button" class="btn_adyee">증권리포트 관리</button>
 				</div>
 			</div>
 
@@ -293,7 +294,7 @@
 </div>
 <!-- //content -->
 
-<!-- 정합환경설정 pop -->
+<!-- 종합환경설정 pop -->
 <div class="wrap_layerpop" style="display: none;">
 
 	<div class="layerpop pop9">
@@ -434,7 +435,7 @@
 	</div>
 
 </div>
-<!-- //layer pop -->
+<!-- //채권 관리 pop -->
 
 <!-- 주식종목관리 pop -->
 <div class="wrap_layerpop" style="display: none;">
@@ -475,7 +476,7 @@
 						<tr class="hidden">
 							<td>1</td>
 							<td>23456</td>
-							<td>삼성전자</td>
+							<td><div></div></td>
 						</tr>
 						</tbody>
 					</table>
@@ -525,14 +526,14 @@
 	</div>
 
 </div>
-<!-- //layer pop -->
+<!-- //주식종목관리 pop -->
 
 <!-- 뉴스정보 pop -->
 <div class="wrap_layerpop" style="display: none;">
 
 	<div class="layerpop pop9">
 		<div class="box_titpop">
-			<h2>뉴스정보</h2>
+			<h2>증권뉴스</h2>
 			<div class="btn_close">
 				<button type="button">닫기</button>
 			</div>
@@ -609,14 +610,14 @@
 	</div>
 
 </div>
-<!-- //layer pop -->
+<!-- //뉴스정보 pop -->
 
 <!-- 애널리스트 pop -->
 <div class="wrap_layerpop" style="display: none;">
 
 	<div class="layerpop pop9">
 		<div class="box_titpop">
-			<h2>애널리스트 정보</h2>
+			<h2>증권리포트</h2>
 			<div class="btn_close">
 
 			</div>
@@ -692,7 +693,61 @@
 	</div>
 
 </div>
-<!-- //layer pop -->
+<!-- //애널리스트 pop -->
+
+<!-- 종합주가 관리 pop -->
+<div class="wrap_layerpop" style="display: none;">
+
+	<div class="layerpop pop9">
+		<div class="box_titpop">
+			<h2>종합 주가 관리</h2>
+			<div class="btn_close">
+				<button type="button">닫기</button>
+			</div>
+		</div>
+		<div class="btn_sl">
+		</div>
+		<div class="box_contpop">
+			<div class="box_tbllist col2fl" style="width: 100%">
+				<table>
+					<colgroup>
+						<col style="width: 20%;">
+						<col style="width: 30%;">
+						<col style="width: 50%;">
+					</colgroup>
+					<thead>
+					<tr>
+						<th scope="col">No</th>
+						<th scope="col">주가명</th>
+						<th scope="col">현재수치</th>
+					</tr>
+					</thead>
+				</table>
+				<div style="height: 250px; overflow-y: auto;">
+					<table>
+						<colgroup>
+							<col style="width: 22%;">
+							<col style="width: 33%;">
+							<col style="width: 50%;">
+						</colgroup>
+						<tbody>
+						<tr class="hidden">
+							<td>1</td>
+							<td>23456</td>
+							<td><div></div></td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="btn_popbtm">
+			<span class="btn_blk"><a href="#">저장</a></span>
+		</div>
+	</div>
+
+</div>
+<!-- //종합주가 관리 pop -->
 
 </body>
 </html>

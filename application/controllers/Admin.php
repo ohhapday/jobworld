@@ -200,4 +200,16 @@ class Admin extends CI_Controller
         echo json_encode($return);
     }
 
+    // 주식종목 이름 변경
+    public function put_COMP_NAME()
+    {
+        $this->admin_m->put_COMP_NAME($_POST);
+    }
+
+    // 종합주가지수 변경
+    public function put_KOS_RATE()
+    {
+        $this->admin_m->put_KOS_RATE($_POST);
+    }
+
 }

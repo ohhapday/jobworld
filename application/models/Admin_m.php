@@ -334,7 +334,7 @@ class Admin_m extends CI_Model
     public function put_adjust($data)
     {
         $query = "
-            UPDATE job015_copy SET COMP_PRICE = (COMP_PRICE + (COMP_PRICE * ?))
+            UPDATE job015 SET COMP_PRICE = (COMP_PRICE + (COMP_PRICE * ?))
             WHERE
               COMP_CODE = ?
         ";
@@ -348,7 +348,17 @@ class Admin_m extends CI_Model
             'COMP_PRICE' => $data['COMP_PRICE']
         );
         $this->db->where(array('COMP_CODE' => $data['COMP_CODE'], 'COMP_DATE' => $data['COMP_DATE']));
-        return $this->db->update('job015_copy', $update_data);
+        return $this->db->update('job015', $update_data);
+    }
+
+    // 주식종목 이름 변경
+    public function put_COMP_NAME($data)
+    {
+        $update_data = array(
+            'COMP_NAME' => $data['COMP_NAME']
+        );
+        $this->db->where(array('COMP_CODE' => $data['COMP_CODE']));
+        return $this->db->update('job015', $update_data);
     }
 
     // 주식 데이터 처리
@@ -437,5 +447,15 @@ class Admin_m extends CI_Model
             ";
             $this->db->query($query, array($item->t_CUSTOM_ADDPAY, $item->EMPL_KEY));
         }
+    }
+
+    // 종합주가지수 변경
+    public function put_KOS_RATE($data)
+    {
+        $this->db->where(array('KOS_NAME' => $data['KOS_NAME'], 'KOS_DATE' => 1));
+        $update_data = array(
+            'KOS_RATE' => $data['KOS_RATE']
+        );
+        $this->db->update('job013', $update_data);
     }
 }

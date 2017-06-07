@@ -155,10 +155,10 @@ requirejs([
         var timer_update = function () {
             let url = null;
             /*
-            if (mdata.STATUS.bond_STATUS == 1) {
-                url = '/admin/put_bond_rownum'
-            }
-            */
+             if (mdata.STATUS.bond_STATUS == 1) {
+             url = '/admin/put_bond_rownum'
+             }
+             */
 
             if (mdata.STATUS.stock_STATUS == 1) {
                 url = '/admin/put_stock_rownum'
@@ -437,7 +437,7 @@ requirejs([
         (function () {
             let pop = $('.wrap_layerpop:eq(0)');
 
-            $('.btn_adgre').on('click', function () {
+            $('.btn_adgre:eq(0)').on('click', function () {
                 let job023 = handle_ajax.get_table({
                     table_nm: 'job023',
                     where: ['1', '1'],
@@ -619,7 +619,7 @@ requirejs([
                 $.each(COMP, function () {
                     $clone.find('td:eq(0)').text(this.SECT_KEY);
                     $clone.find('td:eq(1)').text(this.COMP_CODE);
-                    $clone.find('td:eq(2)').text(this.COMP_NAME);
+                    $clone.find('td:eq(2) div').text(this.COMP_NAME);
 
                     $table.append($clone.clone(true));
                 })
@@ -629,6 +629,9 @@ requirejs([
 
             // 종목명 선택
             pop.find('.col2fl tbody tr:eq(0)').on('click', function () {
+                if ($(this).hasClass('on')) {
+                    return;
+                }
                 pop.find('.col2fl tbody tr').removeClass('on');
                 $(this).addClass('on');
 
@@ -656,6 +659,17 @@ requirejs([
                 });
 
                 pop.find('.col2fr').removeClass('hidden');
+
+                $.each(pop.find('.col2fl tbody tr'), function () {
+                    let val = $(this).find('input').val();
+                    $(this).find('td:eq(2) div').text(val);
+                });
+
+                let val = $(this).find('td:eq(2) div').text();
+                $(this).find('td:eq(2) div').html('' +
+                    '<input type="text" style="width: 95%" value="' + val + '" />' +
+                    '');
+                put_COMP_NAME();
             });
 
             // 주식종목 개별 가격 조정
@@ -678,6 +692,27 @@ requirejs([
                 $(this).addClass('on');
                 input_event();
             });
+
+            // 주식종목 종목명 변경
+            let put_COMP_NAME = function () {
+                pop.find('.col2fl tbody tr input').on('blur', function () {
+                    let index1 = pop.find('.col2fl tbody tr:not(:eq(0))').index(pop.find('.col2fl tbody tr.on'));
+                    let COMP_NAME = $(this).val();
+
+                    $.ajax({
+                        async: false,
+                        dataType: 'json',
+                        type: 'post',
+                        data: {
+                            COMP_CODE: mdata.COMP_DATA[index1].COMP_CODE,
+                            COMP_NAME: COMP_NAME,
+                        },
+                        url: '/admin/put_COMP_NAME',
+                        success: function (data, status, xhr) {
+                        }
+                    });
+                });
+            };
 
             // 주식종목 개별 가격 저장
             let input_event = function () {
@@ -752,6 +787,79 @@ requirejs([
                 });
 
                 alert('가격 정보 조정 완료');
+            });
+        })();
+
+        // 종합주가 관리
+        (function () {
+            let pop = $('.wrap_layerpop:eq(5)');
+
+            $('.btn_adgre:eq(1)').on('click', function () {
+                let job013 = handle_ajax.get_table({
+                    table_nm: 'job013',
+                    where: ['KOS_DATE', '1'],
+                    // orderby: ['MKEY', 'ASC']
+                });
+                let $table = pop.find('.col2fl table tbody');
+                let $clone = pop.find('.col2fl tbody tr:eq(0)')
+                    .clone(true)
+                    .removeClass('hidden').css('cursor', 'pointer');
+
+                pop.find('.col2fl tbody tr:not(:eq(0))').remove();
+
+                $.each(job013, function (i) {
+                    $clone.find('td:eq(0)').text(i+1);
+                    $clone.find('td:eq(1)').text(this.KOS_NAME);
+                    $clone.find('td:eq(2) div').text(this.KOS_RATE);
+
+                    $table.append($clone.clone(true));
+                });
+
+                pop.fadeIn(500);
+            });
+
+            // 코드명 선택
+            pop.find('.col2fl tbody tr:eq(0)').on('click', function () {
+                if ($(this).hasClass('on')) {
+                    return;
+                }
+                pop.find('.col2fl tbody tr').removeClass('on');
+                $(this).addClass('on');
+
+                $.each(pop.find('.col2fl tbody tr'), function () {
+                    let val = $(this).find('input').val();
+                    $(this).find('td:eq(2) div').text(val);
+                });
+
+                let val = $(this).find('td:eq(2) div').text();
+                $(this).find('td:eq(2) div').html('' +
+                    '<input type="text" style="width: 95%" value="' + val + '" />' +
+                    '');
+            });
+
+            // 저장
+            pop.find('.btn_blk').on('click', function () {
+                let KOS_NAME = pop.find('.col2fl tr.on td:eq(1)').text();
+                let KOS_RATE = pop.find('.col2fl tr.on input').val();
+
+                $.each(pop.find('.col2fl tbody tr'), function () {
+                    let val = $(this).find('input').val();
+                    $(this).find('td:eq(2) div').text(val);
+                });
+                pop.find('.col2fl tbody tr').removeClass('on');
+
+                $.ajax({
+                    async: false,
+                    dataType: 'json',
+                    type: 'post',
+                    data: {
+                        KOS_NAME: KOS_NAME,
+                        KOS_RATE: KOS_RATE,
+                    },
+                    url: '/admin/put_KOS_RATE',
+                    success: function (data, status, xhr) {
+                    }
+                });
             });
         })();
     })();
@@ -846,7 +954,7 @@ requirejs([
         (function () {
             let pop = $('.wrap_layerpop:eq(3)');
 
-            $('.btn_adyee2:eq(0)').on('click', function () {
+            $('.btn_adyee:eq(2)').on('click', function () {
                 let job016 = handle_ajax.get_table({
                     table_nm: 'job016_copy',
                     where: ['1', '1'],
@@ -971,7 +1079,7 @@ requirejs([
         (function () {
             let pop = $('.wrap_layerpop:eq(4)');
 
-            $('.btn_adyee2:eq(1)').on('click', function () {
+            $('.btn_adyee:eq(3)').on('click', function () {
                 let job017 = handle_ajax.get_table({
                     table_nm: 'job017',
                     where: ['1', '1'],
