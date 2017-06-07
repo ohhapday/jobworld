@@ -291,9 +291,9 @@ requirejs([
             $('.bx_chk_list:eq(1) button:eq(1)').data('value', mdata.speed[1].MD_NAME);
             $('.bx_chk_list:eq(1) button:eq(2)').data('value', mdata.speed[2].MD_NAME);
 
-            $('.bx_chk_list:eq(1) button:eq(0)').text('초보 (' + mdata.speed[0].MD_NAME + '초)');
-            $('.bx_chk_list:eq(1) button:eq(1)').text('중간 (' + mdata.speed[1].MD_NAME + '초)');
-            $('.bx_chk_list:eq(1) button:eq(2)').text('고수 (' + mdata.speed[2].MD_NAME + '초)');
+            $('.bx_chk_list:eq(1) button:eq(0)').text('하 (' + mdata.speed[0].MD_NAME + '초)');
+            $('.bx_chk_list:eq(1) button:eq(1)').text('중 (' + mdata.speed[1].MD_NAME + '초)');
+            $('.bx_chk_list:eq(1) button:eq(2)').text('상 (' + mdata.speed[2].MD_NAME + '초)');
 
             $('.bx_chk_list:eq(1) button').removeClass('on');
             $.each($('.bx_chk_list:eq(1) button'), function () {

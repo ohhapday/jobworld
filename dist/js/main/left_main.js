@@ -131,9 +131,9 @@ requirejs([
             li.on('click', function () {
                 let index = $('.wrap_layerpop:eq(0) .layerpop:eq(0) .dtlist li:not(:eq(0))').index($(this));
                 let news = mData.NEWS[index];
-                let pop = $('.wrap_layerpop:eq(1)');
+                let pop = $('.wrap_layerpop:eq(3)');
 
-                pop.find('.box_titpop h2').text(news.NEWS_HEAD);
+                pop.find('.box_contpop h3').text(news.NEWS_HEAD);
                 pop.find('.box_contpop p').html(news.NEWS_FILE.replace(/\n/gi, '<br>'));
                 pop.find('.date em').text('잡월드 뉴스');
                 pop.find('.date span:eq(1)').text(moment(news.INSERT_DATE).format('YYYY.MM.DD'));
@@ -148,10 +148,10 @@ requirejs([
             li.on('click', function () {
                 let index = $('.wrap_layerpop:eq(0) .layerpop:eq(1) .dtlist li:not(:eq(0))').index($(this));
                 let news = mData.ANAL[index];
-                let pop = $('.wrap_layerpop:eq(1)');
+                let pop = $('.wrap_layerpop:eq(2)');
 
-                pop.find('.box_titpop h2').text(news.ANAL_HEAD);
-                pop.find('.box_contpop p').html(news.ANAL_FILE.replace(/\n/gi, '<br>'));
+                pop.find('.box_contpop h3').text(news.ANAL_HEAD);
+                pop.find('.box_contpop .con_txt').html(news.ANAL_FILE.replace(/\n/gi, '<br>'));
                 pop.find('.date em').text('잡월드 애널리스트');
                 pop.find('.date span:eq(1)').text(moment(news.INSERT_DATE).format('YYYY.MM.DD'));
 

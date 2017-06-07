@@ -115,7 +115,8 @@ class Main_m extends CI_Model
             SELECT
               QUES_KEY, QUES_NO, QUES_NAME
             FROM
-              job030; 
+              job030
+            ORDER BY QUES_NO ASC; 
         ";
         $result1 = $this->db->query($query)->result();
 

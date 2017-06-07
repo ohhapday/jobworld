@@ -413,7 +413,7 @@ requirejs([
 
                 pop.find('.box_titpop h2').text('이 시각 뉴스');
                 pop.find('.news_tit').text(mData.NEWS[index].NEWS_HEAD);
-                pop.find('.box_contpop p').html(mData.NEWS[index].NEWS_FILE);
+                pop.find('.box_contpop .con_txt').html(mData.NEWS[index].NEWS_FILE.replace(/\n/gi, '<br>'));
                 pop.find('.date em').text('잡월드 뉴스');
                 pop.find('.date span:eq(1)').text(moment().format('YYYY.MM.DD'));
 
@@ -465,7 +465,7 @@ requirejs([
 
                 // pop.find('.box_titpop h2').text('애널리스트 보고서');
                 pop.find('.news_tit').text(ANAL.ANAL_HEAD);
-                pop.find('.box_contpop p').html(ANAL.ANAL_FILE);
+                pop.find('.box_contpop .con_txt').html(ANAL.ANAL_FILE.replace(/\n/gi, '<br>'));
                 pop.find('.date em').text('잡월드 애널리스트');
                 pop.find('.date span:eq(1)').text(moment().format('YYYY.MM.DD'));
 
