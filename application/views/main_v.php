@@ -90,7 +90,7 @@
 										<span>820</span>
 									</span>
 								</div>
-								<em class="per">1.35%</em>
+								<em class="per" style="text-align: right">1.35%</em>
 							</li>
 							<li class="">
 								<strong>KOSDAQ</strong>
@@ -101,7 +101,7 @@
 										<span>820</span>
 									</span>
 								</div>
-								<em class="per">1.35%</em>
+								<em class="per" style="text-align: right">1.35%</em>
 							</li>
 							<li class="">
 								<strong>KOSPI200</strong>
@@ -112,7 +112,7 @@
 										<span>820</span>
 									</span>
 								</div>
-								<em class="per">1.35%</em></li>
+								<em class="per" style="text-align: right">1.35%</em></li>
 						</ul>
 					</div>
 				</div>

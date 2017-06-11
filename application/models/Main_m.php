@@ -68,6 +68,11 @@ class Main_m extends CI_Model
 
     public function get_KOS($rownum = 1)
     {
+        $query = "
+            SELECT kos_rownum FROM tb_admin
+        ";
+        $rownum = $this->db->query($query)->row()->kos_rownum;
+
         $this->db->query('SET @num = ?;', $rownum);
         $this->db->query('SET @PREV_NUM = IF(@num = 1, 50, @num - 1);');
         $query = "

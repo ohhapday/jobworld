@@ -764,7 +764,6 @@ requirejs([
             success: function (data, status, xhr) {
                 mData = $.extend(true, mData, data);
                 ui.init();
-                console.log(mData);
             }
         });
     })();
@@ -779,6 +778,20 @@ requirejs([
 
         if (eData.PG_LOCK == "3") {
             $(location).attr('href', '/main');
+        }
+
+        // 종합지수 변경
+        if(eData.kos_rownum !== tmp.kos_rownum) {
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'get',
+                url: '/main/get_fundData',
+                success: function (data, status, xhr) {
+                    mData.KOS = $.extend(true, mData.KOS, data.KOS);
+                    ui.kos();
+                }
+            });
         }
     };
 

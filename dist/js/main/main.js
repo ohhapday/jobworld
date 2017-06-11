@@ -45,8 +45,8 @@ requirejs([
         drawchart: function (data, object) {
             let suggestedMin, suggestedMax;
 
-            suggestedMin = Math.min.apply(null, data.sales)  - 1000;
-            suggestedMax = Math.max.apply(null, data.sales)  + 1000;
+            suggestedMin = Math.min.apply(null, data.sales) - 1000;
+            suggestedMax = Math.max.apply(null, data.sales) + 1000;
 
             let config1 = {
                 type: 'line',
@@ -118,8 +118,8 @@ requirejs([
         drawchart_mm: function (data, object) {
             let suggestedMin, suggestedMax;
 
-            suggestedMin = Math.min.apply(null, data.sales)  - 1000;
-            suggestedMax = Math.max.apply(null, data.sales)  + 1000;
+            suggestedMin = Math.min.apply(null, data.sales) - 1000;
+            suggestedMax = Math.max.apply(null, data.sales) + 1000;
 
             let config1 = {
                 type: 'line',
@@ -191,8 +191,8 @@ requirejs([
         drawchart2: function (data, object) {
             let suggestedMin, suggestedMax;
 
-            suggestedMin = Math.min.apply(null, data.sales)  - 1000;
-            suggestedMax = Math.max.apply(null, data.sales)  + 1000;
+            suggestedMin = Math.min.apply(null, data.sales) - 1000;
+            suggestedMax = Math.max.apply(null, data.sales) + 1000;
 
             let config1 = {
                 type: 'line',
@@ -273,7 +273,7 @@ requirejs([
             table.find('.bx_innm1 li:eq(3) a').text(data.NEWS_04);
             table.find('.bx_innm1 li:eq(4) a').text(data.NEWS_05);
 
-            let STOCK = mData.STOCK_POP.find(function(item){
+            let STOCK = mData.STOCK_POP.find(function (item) {
                 return item.COMP_CODE == data.COMP_CODE;
             });
 
@@ -481,13 +481,13 @@ requirejs([
         (function () {
             $('.chart_mn a, .area_cpm a').on('click', function () {
                 /*let pop = $('.wrap_layerpop:eq(2)');
-                let index = $('.chart_mn').index($(this));
-                let COMP_CODE = (index === 0) ? '005930' : '003490';
+                 let index = $('.chart_mn').index($(this));
+                 let COMP_CODE = (index === 0) ? '005930' : '003490';
 
-                ajax.company_info(COMP_CODE);
-                ajax.draw_chart(COMP_CODE, $('#chart_10'));
+                 ajax.company_info(COMP_CODE);
+                 ajax.draw_chart(COMP_CODE, $('#chart_10'));
 
-                pop.fadeIn(500);*/
+                 pop.fadeIn(500);*/
 
                 let pop = $('.wrap_layerpop:eq(4)');
                 let index = $('.chart_mn a').index($(this));
@@ -504,6 +504,35 @@ requirejs([
 
     // 시스템 데이터와 비교하여 변경된 항목만 업데이트 처리
     let get_ajax = function (tmp) {
+        // 종합지수 변경
+        if (eData.kos_rownum !== tmp.kos_rownum) {
+
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'get',
+                url: '/main/get_mData',
+                success: function (data, status, xhr) {
+                    mData = data;
+                }
+            });
+
+            $.each(mData.KOS, function (i) {
+                let $li = $('.pt_list li').eq(i);
+                $li.find('.pt1').text(this.NOW_RATE);
+
+                if (this.MEASURE > 0) {
+                    $li.find('.pt2 img').attr('src', '/dist/images/ico_mnup.png');
+                    $li.removeClass('down').addClass('up');
+                } else {
+                    $li.find('.pt2 img').attr('src', '/dist/images/ico_mndw.png');
+                    $li.removeClass('up').addClass('down');
+                }
+
+                $li.find('.pt2 span').text(this.MEASURE);
+                $li.find('.per').text(this.PER_MEASURE + '%');
+            });
+        }
         if (eData.survey_STATUS == '1') {
             $('#gnb li:eq(0)').addClass('on');
 

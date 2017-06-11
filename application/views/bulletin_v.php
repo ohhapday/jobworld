@@ -72,29 +72,32 @@
 								<div>
 									<span class="pt1">600.73</span>
 									<span class="pt2">
-										<img src="/dist/images/ico_mndw2.png" alt="">820
+										<img src="/dist/images/ico_mndw2.png" alt="">
+										<span style="font-size: 1em;"></span>
 									</span>
 								</div>
-								<em class="per">1.35%</em>
+								<em class="per" style="text-align: right">1.35%</em>
 							</li>
 							<li class="down">
 								<strong>KOSPI</strong>
 								<div>
 									<span class="pt1">2000.77</span><span class="pt2">
-										<img src="/dist/images/ico_mndw2.png" alt="">22.22
+										<img src="/dist/images/ico_mndw2.png" alt="">
+										<span style="font-size: 1em;"></span>
 									</span>
 								</div>
-								<em class="per">1.35%</em>
+								<em class="per" style="text-align: right">1.35%</em>
 							</li>
 							<li class="up">
 								<strong>KOSPI200</strong>
 								<div>
 									<span class="pt1">270.77</span>
 									<span class="pt2">
-										<img src="/dist/images/ico_mnup2.png" alt="">2.88
+										<img src="/dist/images/ico_mnup2.png" alt="">
+										<span style="font-size: 1em;"></span>
 									</span>
 								</div>
-								<em class="per">1.35%</em>
+								<em class="per" style="text-align: right">1.35%</em>
 							</li>
 						</ul>
 					</div>

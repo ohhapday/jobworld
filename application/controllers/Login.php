@@ -55,7 +55,7 @@ class Login extends CI_Controller
     {
         $return->status = $this->admin_m->get_system();
 
-        $retry = 5000;
+        $retry = 1000;
 
         header('Content-Type: text/event-stream');
         header('Cache-Control: no-cache');

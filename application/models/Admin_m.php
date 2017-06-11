@@ -103,6 +103,7 @@ class Admin_m extends CI_Model
             'DATA_TYPE' => $MD_NAME,
             'bond_rownum' => 1,
             'stock_rownum' => 13,
+            'kos_rownum' => 1,
             'news_que' => 1,
             'anal_que' => 1,
         );
