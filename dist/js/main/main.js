@@ -548,7 +548,7 @@ requirejs([
 
         if (eData.fund_STATUS == '1') {
             $('#gnb li:eq(1)').addClass('on');
-            $('#gnb li:eq(1) a').attr('href', '/main/fund');
+            $('#gnb li:eq(1) a').attr('href', '/main/fund2');
         } else {
             $('#gnb li:eq(1)').removeClass('on');
             $('#gnb li:eq(1) a').attr('href', '#');

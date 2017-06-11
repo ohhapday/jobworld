@@ -104,6 +104,11 @@ class Main extends CI_Controller
         $this->load->view('fund_v');
     }
 
+    public function fund2()
+    {
+        $this->load->view('fund2_v');
+    }
+
     public function get_fundData()
     {
         $return->FUND = $this->main_m->get_fund();
@@ -411,19 +416,28 @@ class Main extends CI_Controller
         $txt_data = array();
         $sales = array();
 
-        $term = new DateInterval('P31D');     // 31일 전
+        $term = new DateInterval('P1Y');     // 12개월 전
         $datetime = new DateTime(date('Y-m-d') . '10:50');
         $datetime->sub($term);
 
+        $i = 0;
         foreach ($data as $item) {
-            $term = new DateInterval('P01D');     // 10분단위
+            $term = new DateInterval('P15D');     // 보름단위
+
+            if ($i % 2 === 0) {
+                $tmp_date = $datetime->add($term)->format('Y/m');
+            } else {
+                $tmp_date = $datetime->add($term)->format('Y/m');
+                $tmp_date = '';
+            }
 
             array_push($txt_data,
-                $datetime->add($term)->format('m/d')
+                $tmp_date
             );
             array_push($sales,
                 (int)$item->COMP_PRICE
             );
+            $i++;
         }
 
         $return->labels = $txt_data;

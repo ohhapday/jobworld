@@ -956,6 +956,7 @@ class Main_m extends CI_Model
               job015_mm a
             WHERE
               COMP_CODE = ?
+            LIMIT 24
         ";
         $return = $this->db->query($query, $code)->result();
 
