@@ -127,6 +127,11 @@ class Admin extends CI_Controller
         return $this->admin_m->put_stock_rownum();
     }
 
+    public function put_kos_rownum()
+    {
+        return $this->admin_m->put_kos_rownum();
+    }
+
     public function put_bond_rownum()
     {
         return $this->admin_m->put_bond_rownum();
@@ -178,7 +183,7 @@ class Admin extends CI_Controller
         $return = $this->admin_m->put_adjust($_POST);
 
         $data = array(
-            'table_nm' => 'job015_copy',
+            'table_nm' => 'job015',
             'where' => array('COMP_CODE' => $_POST['COMP_CODE']),
         );
 
@@ -192,7 +197,7 @@ class Admin extends CI_Controller
         $this->admin_m->put_COMP_PRICE($_POST);
 
         $data = array(
-            'table_nm' => 'job015_copy',
+            'table_nm' => 'job015',
             'where' => array('COMP_CODE' => $_POST['COMP_CODE']),
         );
 
@@ -206,10 +211,18 @@ class Admin extends CI_Controller
         $this->admin_m->put_COMP_NAME($_POST);
     }
 
-    // 종합주가지수 변경
+    // 주가 개별 가격 조정
     public function put_KOS_RATE()
     {
         $this->admin_m->put_KOS_RATE($_POST);
+
+        $data = array(
+            'table_nm' => 'job015_copy',
+            'where' => array('COMP_CODE' => $_POST['COMP_CODE']),
+        );
+
+        $return = $this->main_m->get_table($data);
+        echo json_encode($return);
     }
 
 }

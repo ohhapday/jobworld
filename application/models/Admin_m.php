@@ -170,6 +170,14 @@ class Admin_m extends CI_Model
         $this->db->query($query);
     }
 
+    public function put_kos_rownum()
+    {
+        $query = "
+            UPDATE tb_admin SET kos_rownum = IF(kos_rownum = 50, 1, kos_rownum + 1)
+        ";
+        $this->db->query($query);
+    }
+
     public function put_bond_rownum()
     {
         $query = "
@@ -272,7 +280,7 @@ class Admin_m extends CI_Model
         );
         $this->db->where('NEWS_KEY', $data['KEY']);
 
-        return $this->db->update('job016_copy', $update_data);
+        return $this->db->update('job016', $update_data);
     }
 
     // 애널 컨텐츠 변경
@@ -286,7 +294,7 @@ class Admin_m extends CI_Model
         );
         $this->db->where('ANAL_KEY', $data['KEY']);
 
-        return $this->db->update('job017_copy', $update_data);
+        return $this->db->update('job017', $update_data);
     }
 
     // 종합환경설정 업데이트
@@ -452,10 +460,10 @@ class Admin_m extends CI_Model
     // 종합주가지수 변경
     public function put_KOS_RATE($data)
     {
-        $this->db->where(array('KOS_NAME' => $data['KOS_NAME'], 'KOS_DATE' => 1));
         $update_data = array(
             'KOS_RATE' => $data['KOS_RATE']
         );
-        $this->db->update('job013', $update_data);
+        $this->db->where(array('KOS_CODE' => $data['KOS_CODE'], 'KOS_DATE' => $data['KOS_DATE']));
+        return $this->db->update('job013', $update_data);
     }
 }

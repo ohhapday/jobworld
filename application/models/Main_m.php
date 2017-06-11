@@ -60,7 +60,7 @@ class Main_m extends CI_Model
     {
         $query = "
             SELECT * FROM job017_copy
-            ORDER BY ANAL_KEY ASC
+            ORDER BY SEND DESC, ANAL_KEY ASC
         ";
         $return = $this->db->query($query)->result();
         return $return;

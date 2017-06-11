@@ -365,7 +365,7 @@
 	</div>
 
 </div>
-<!-- //layer pop -->
+<!-- //종합환경설정 pop -->
 
 <!-- 채권 관리 pop -->
 <div class="wrap_layerpop" style="display: none;">
@@ -700,7 +700,7 @@
 
 	<div class="layerpop pop9">
 		<div class="box_titpop">
-			<h2>종합 주가 관리</h2>
+			<h2>종합주가 관리</h2>
 			<div class="btn_close">
 				<button type="button">닫기</button>
 			</div>
@@ -708,7 +708,7 @@
 		<div class="btn_sl">
 		</div>
 		<div class="box_contpop">
-			<div class="box_tbllist col2fl" style="width: 100%">
+			<div class="box_tbllist col2fl">
 				<table>
 					<colgroup>
 						<col style="width: 20%;">
@@ -718,8 +718,8 @@
 					<thead>
 					<tr>
 						<th scope="col">No</th>
+						<th scope="col">주가코드</th>
 						<th scope="col">주가명</th>
-						<th scope="col">현재수치</th>
 					</tr>
 					</thead>
 				</table>
@@ -734,6 +734,38 @@
 						<tr class="hidden">
 							<td>1</td>
 							<td>23456</td>
+							<td><div></div></td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="box_tbllist col2fr hidden">
+				<table>
+					<colgroup>
+						<col style="width: 20%;">
+						<col style="width: 40%;">
+						<col style="width: 40%;">
+					</colgroup>
+					<thead>
+					<tr>
+						<th scope="col">No</th>
+						<th scope="col">상세코드</th>
+						<th scope="col">현재주가</th>
+					</tr>
+					</thead>
+				</table>
+				<div style="height: 250px; overflow-y: auto;">
+					<table>
+						<colgroup>
+							<col style="width: 20%;">
+							<col style="width: 40%;">
+							<col style="width: 40%;">
+						</colgroup>
+						<tbody>
+						<tr class="hidden">
+							<td>1</td>
+							<td></td>
 							<td><div></div></td>
 						</tr>
 						</tbody>

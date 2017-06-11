@@ -152,14 +152,8 @@ requirejs([
 
     // 카운터 시계
     (function () {
-        var timer_update = function () {
+        let timer_update = function () {
             let url = null;
-            /*
-             if (mdata.STATUS.bond_STATUS == 1) {
-             url = '/admin/put_bond_rownum'
-             }
-             */
-
             if (mdata.STATUS.stock_STATUS == 1) {
                 url = '/admin/put_stock_rownum'
             }
@@ -171,7 +165,15 @@ requirejs([
                     url: url,
                 });
             }
-        }
+
+            // 종합주가 지수 rownum 변경
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'get',
+                url: 'put_kos_rownum',
+            });
+        };
 
         let timer = 0;
         window.setInterval(function () {
@@ -637,7 +639,7 @@ requirejs([
 
                 let SECT_KEY = pop.find('tr.on td:eq(0)').text();
                 let job015 = handle_ajax.get_table({
-                    table_nm: 'job015_copy',
+                    table_nm: 'job015',
                     where: ['SECT_KEY', SECT_KEY],
                     orderby: ['COMP_DATE', 'ASC']
                 });
@@ -809,8 +811,8 @@ requirejs([
 
                 $.each(job013, function (i) {
                     $clone.find('td:eq(0)').text(i+1);
-                    $clone.find('td:eq(1)').text(this.KOS_NAME);
-                    $clone.find('td:eq(2) div').text(this.KOS_RATE);
+                    $clone.find('td:eq(1)').text(i+1);
+                    $clone.find('td:eq(2)').text(this.KOS_NAME);
 
                     $table.append($clone.clone(true));
                 });
@@ -826,6 +828,31 @@ requirejs([
                 pop.find('.col2fl tbody tr').removeClass('on');
                 $(this).addClass('on');
 
+                let SECT_KEY = pop.find('tr.on td:eq(0)').text();
+                let job013 = handle_ajax.get_table({
+                    table_nm: 'job013',
+                    where: ['KOS_CODE', SECT_KEY],
+                    orderby: ['KOS_DATE', 'ASC']
+                });
+                let $table = pop.find('.col2fr table tbody');
+                let $clone = pop.find('.col2fr tbody tr:eq(0)')
+                    .clone(true)
+                    .removeClass('hidden');
+
+                pop.find('.col2fr tbody tr:not(:eq(0))').remove();
+
+                let now = moment().subtract(10, 'day');
+                $.each(job013, function (i) {
+                    let date = moment(now).add(i, 'day').format('YYYY-MM-DD')
+                    $clone.find('td:eq(0)').text(this.KOS_DATE);
+                    $clone.find('td:eq(1)').text(this.KOS_DATE);
+                    $clone.find('td:eq(2) div').text(nf.format(this.KOS_RATE));
+
+                    $table.append($clone.clone(true));
+                });
+
+                pop.find('.col2fr').removeClass('hidden');
+
                 $.each(pop.find('.col2fl tbody tr'), function () {
                     let val = $(this).find('input').val();
                     $(this).find('td:eq(2) div').text(val);
@@ -837,30 +864,56 @@ requirejs([
                     '');
             });
 
-            // 저장
-            pop.find('.btn_blk').on('click', function () {
-                let KOS_NAME = pop.find('.col2fl tr.on td:eq(1)').text();
-                let KOS_RATE = pop.find('.col2fl tr.on input').val();
+            pop.find('.col2fr tbody tr').on('click', function () {
+                if ($(this).hasClass('on')) {
+                    return;
+                }
+                let val = $(this).find('td:eq(2) div').text();
+                pop.find('.col2fr tbody tr').removeClass('on');
 
-                $.each(pop.find('.col2fl tbody tr'), function () {
+                $.each(pop.find('.col2fr tbody tr'), function () {
                     let val = $(this).find('input').val();
                     $(this).find('td:eq(2) div').text(val);
                 });
-                pop.find('.col2fl tbody tr').removeClass('on');
 
-                $.ajax({
-                    async: false,
-                    dataType: 'json',
-                    type: 'post',
-                    data: {
-                        KOS_NAME: KOS_NAME,
-                        KOS_RATE: KOS_RATE,
-                    },
-                    url: '/admin/put_KOS_RATE',
-                    success: function (data, status, xhr) {
-                    }
-                });
+                $(this).find('td:eq(2) div').html('' +
+                    '<input type="text" style="width: 95%" value="' + val + '" />' +
+                    '');
+
+                $(this).addClass('on');
+                input_event();
             });
+
+            // 주가 개별 가격 저장
+            let input_event = function () {
+                pop.find('.col2fr tbody tr input').on('blur', function () {
+                    let index1 = pop.find('.col2fl tbody tr.on td:eq(0)').text();
+                    let index2 = pop.find('.col2fr tbody tr.on td:eq(0)').text();
+                    let job013, KOS_RATE;
+
+                    if (index1 < 0 || index2 < 0) {
+                        alert('종목 및 변경데이터 선택해 주세요.');
+                        return;
+                    }
+
+                    KOS_RATE = pop.find('.col2fr tbody tr.on input').val().replace(/,/gi, '');
+
+                    $.ajax({
+                        async: false,
+                        dataType: 'json',
+                        type: 'post',
+                        data: {
+                            KOS_CODE: index1,
+                            KOS_DATE: index2,
+                            KOS_RATE: KOS_RATE,
+                        },
+                        url: '/admin/put_KOS_RATE',
+                        success: function (data, status, xhr) {
+                            alert('현재주가가 변경되었습니다.');
+                        }
+                    });
+                });
+            };
         })();
     })();
 
@@ -956,7 +1009,7 @@ requirejs([
 
             $('.btn_adyee:eq(2)').on('click', function () {
                 let job016 = handle_ajax.get_table({
-                    table_nm: 'job016_copy',
+                    table_nm: 'job016',
                     where: ['1', '1'],
                     // orderby: ['MKEY', 'ASC']
                 });
@@ -985,7 +1038,7 @@ requirejs([
 
                 let NEWS_KEY = pop.find('.box_tbllist:eq(0) tr.on td:eq(0)').text();
                 let job016 = handle_ajax.get_table({
-                    table_nm: 'job016_copy',
+                    table_nm: 'job016',
                     where: ['NEWS_KEY', NEWS_KEY],
                     // orderby: ['MKEY', 'ASC']
                 });
