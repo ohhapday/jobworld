@@ -358,7 +358,7 @@ requirejs([
                 },
                 url: '/main/get_bond_chart2',
                 success: function (data, status, xhr) {
-                    ui.drawchart(data, $('#chart_10'));
+                    ui.drawchart(data, $('#chart_20'));
                     console.log(data);
                 },
             });
@@ -403,9 +403,9 @@ requirejs([
         $('.box_sbtop .und').on('click', function () {
             let index = $('.und:not(:eq(0))').index($(this));
             let bond = mData.BOND[index];
-            let pop = $('.wrap_layerpop:eq(0)');
+            let pop = $('.wrap_layerpop:eq(2)');
 
-            pop.find('.area_sbptit span').text(bond.BOND_NAME);
+            pop.find('.area_sbptit7 span').text(bond.BOND_NAME);
             pop.find('.box_tblwrite:eq(0) td:eq(0)').text(bond.BOND_TYPE);
             pop.find('.box_tblwrite:eq(0) td:eq(1)').text(bond.BOND_CODE);
             pop.find('.box_tblwrite:eq(0) td:eq(2)').text(nf.format(bond.BOND_TOT));
@@ -420,7 +420,7 @@ requirejs([
 
             ajax.draw_chart(bond.BOND_KEY);
 
-            $('.wrap_layerpop:eq(0)').fadeIn(500);
+            $('.wrap_layerpop:eq(2)').fadeIn(500);
         });
 
         // 채권명 클릭

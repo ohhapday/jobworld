@@ -455,5 +455,82 @@
 </div>
 <!-- //수익률 보기 pop -->
 
+<!-- 채권 상세보기 2 pop -->
+<div class="wrap_layerpop" style="display: none;">
+	<div class="layerpop pop10">
+		<div class="box_titpop">
+			<h2>채권 상세보기 화면</h2>
+			<div class="btn_close"><button type="button">닫기</button></div>
+		</div>
+		<div class="area_sbptit7 clfix">
+			<h3 class="poph3bg2">채권명(종목명)</h3>
+			<span>국고채(3년)</span>
+		</div>
+		<div class="area_sbptit8 clfix">
+			<h3 class="poph3bg2">채권 가격 변동(예상) 그래프</h3>
+		</div>
+
+		<div class="box_contpop">
+			<div class="box_tblwrite col2fl">
+				<table>
+					<colgroup>
+						<col style="width: 35%;">
+						<col style="width: 65%;">
+					</colgroup>
+					<tbody>
+					<tr>
+						<th scope="row">채권구분</th>
+						<td class="pl20">국채</td>
+					</tr>
+					<tr>
+						<th scope="row">표준코드</th>
+						<td class="pl20">0300482828</td>
+					</tr>
+					<tr>
+						<th scope="row">채권규모(발행금액)</th>
+						<td class="pl20">200,000,000</td>
+					</tr>
+					<tr>
+						<th scope="row">기준가격</th>
+						<td class="pl20">10,00</td>
+					</tr>
+					<tr>
+						<th scope="row">예상수익률</th>
+						<td class="pl20">2%</td>
+					</tr>
+					<tr>
+						<th scope="row">발행일</th>
+						<td class="pl20">2017-05-02</td>
+					</tr>
+					<tr>
+						<th scope="row">만기일</th>
+						<td class="pl20">2017-05-02</td>
+					</tr>
+					<tr>
+						<th scope="row">이자계산주기</th>
+						<td class="pl20">3개월</td>
+					</tr>
+					<tr>
+						<th scope="row">등록기관</th>
+						<td class="pl20">한국은행</td>
+					</tr>
+					<tr>
+						<th scope="row">지급기관</th>
+						<td class="pl20">한국%</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="contpdd7">
+				<div class="chartpd" style="width: 800px; height: 600px; margin: auto">
+					<canvas id="chart_20" width="800" height="600"></canvas>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- //layer pop -->
+
 </body>
 </html>
