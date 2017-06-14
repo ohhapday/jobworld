@@ -26,7 +26,7 @@
 <!-- //content -->
 
 <!-- 리스트 pop -->
-<div class="wrap_layerpop" style="display: none;">
+<div class="wrap_layerpop" style="display: none; background: url(/dist/images/bg_dim.png) repeat 0 0">
 
 	<div class="layerpop pop14">
 		<div class="box_titpop">

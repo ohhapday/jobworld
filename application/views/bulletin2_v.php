@@ -26,10 +26,10 @@
 </div>
 
 <!-- content -->
-<div id="container">
+<div id="container" class="bg">
 	<div id="content" class="clfix">
-		<div class="box_sbtop clfix">
-			<div class="sbleft3">
+		<div class="box_sbtop clfix" style="margin-left: 20px;">
+			<div class="sbleft3" style="background: #f8f1e1">
 				<div class="sb_tit sb_tit2">
 					<h3 class="ic1">종목별 주식 현황</h3>
 				</div>
@@ -60,7 +60,7 @@
 					</table>
 				</div>
 			</div>
-			<div class="sbright3">
+			<div class="sbright3" style="background: #f8f1e1">
 				<div class="sb_tit sb_tit2 margnon">
 					<h3 class="ic2">종합현황</h3>
 				</div>

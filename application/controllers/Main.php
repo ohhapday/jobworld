@@ -51,6 +51,10 @@ class Main extends CI_Controller
         // $this->load->view('left_main_v');
         $this->load->view('bulletin2_v');
     }
+    public function left_main2()
+    {
+        $this->load->view('left_main_v');
+    }
 
     public function youtube()
     {
