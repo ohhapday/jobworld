@@ -118,6 +118,7 @@ class Main extends CI_Controller
         $return->benifit = $this->main_m->get_benifit();
         $return->fund_own_month = $this->main_m->fund_own_month();
         $return->STOCK_POP = $return->fund_stock;
+        $return->CASH = $this->main_m->get_stock_CASH();
 
         echo json_encode($return);
     }
@@ -350,7 +351,7 @@ class Main extends CI_Controller
         $return->NEWS = $this->main_m->get_NEWS();
         $return->ANAL = $this->main_m->get_ANAL();
         $return->stock = $this->main_m->get_stock();
-        // $return->favor = $this->main_m->get_favor();
+        $return->favor = $this->main_m->get_favor2();
         $return->cashFlow = $this->main_m->get_cash();
         $return->buyStock = $this->main_m->get_buyStock();
         $return->STOCK_POP = $return->stock;

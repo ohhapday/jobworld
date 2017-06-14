@@ -35,7 +35,8 @@ requirejs([
         init: function () {
             // this.news();
             this.kos();
-            this.fund();
+            this.fund2();
+            this.fund_myStock();
         },
         news: function () {
             $.each(mData.NEWS, function (i) {
@@ -94,6 +95,14 @@ requirejs([
                 $('.box_tbllist:eq(0) div').fadeOut(500);
             }
         },
+        fund2: function () {
+            if(mData.FUND.length > 0) {
+                $('.box_sbtop01 input:eq(0)').val(mData.FUND[0].FUND_NAME);
+                $('.box_sbtop01 input:eq(1)').val(nf.format(mData.FUND[0].FUND_TOT));
+                $('.box_sbtop01 input:eq(2)').val(moment().format('YYYY/MM/DD'));
+                $('.box_sbtop01 input:eq(3)').val(mData.FUND[0].FUND_DAY);
+            }
+        },
         fund_detail: function () {
             let index = $('.box_tbllist:eq(0) tbody tr:not(:eq(0))').index($('.box_tbllist:eq(0) tbody tr.on'));
             let data = mData.FUND[index];
@@ -106,48 +115,52 @@ requirejs([
         },
         fund_myStock: function () {
             let index = $('.box_tbllist:eq(0) tbody tr:not(:eq(0))').index($('.box_tbllist:eq(0) tbody tr.on'));
-            let $table = $('.box_tbllist:eq(1) table tbody');
+            let $table = $('.box_tbllist:eq(0) table tbody');
 
-            $table.find('tr:not(:eq(0))').hide(500);
-            $table.find('tr:not(:eq(0))').remove();
+            console.log(mData.FUND);
 
-            $.each(mData.FUND[index].stock, function (i) {
-                let $clone = $table.find('tr:eq(0)').clone(true);
-                let self = this;
+            if(mData.FUND.length > 0) {
+                $table.find('tr:not(:eq(0))').hide(500);
+                $table.find('tr:not(:eq(0))').remove();
 
-                let stock = mData.fund_stock.find(function (item) {
-                    return item.COMP_CODE === self.COMP_CODE;
+                $.each(mData.FUND[0].stock, function (i) {
+                    let $clone = $table.find('tr:eq(0)').clone(true);
+                    let self = this;
+
+                    let stock = mData.fund_stock.find(function (item) {
+                        return item.COMP_CODE === self.COMP_CODE;
+                    });
+
+                    $clone.find('td:eq(0)').text(stock.COMP_NAME);
+                    $clone.find('td:eq(1)').text(nf.format(stock.COMP_PRICE));
+
+                    if (parseInt(stock.MEASURE) >= 0) {
+                        $clone.find('td:eq(2) img').attr('src', '/dist/images/ico_mnup.png');
+                        $clone.find('td:eq(2) span').addClass('colred');
+                        $clone.find('td:eq(3) em').addClass('colred');
+                    } else {
+                        $clone.find('td:eq(2) img').attr('src', '/dist/images/ico_mndw.png');
+                        $clone.find('td:eq(2) span').addClass('colblu');
+                        $clone.find('td:eq(3) em').addClass('colblu');
+                    }
+                    $clone.find('td:eq(2) span').text(nf.format(stock.MEASURE));
+                    $clone.find('td:eq(3) em').text(parseFloat(stock.PER_MEASURE * 100).toFixed(2) + '%');
+
+                    $table.append($clone.clone(true).fadeIn(500));
                 });
 
-                $clone.find('td:eq(0)').text(stock.COMP_NAME);
-                $clone.find('td:eq(1)').text(nf.format(stock.COMP_PRICE));
-
-                if (parseInt(stock.MEASURE) >= 0) {
-                    $clone.find('td:eq(2) img').attr('src', '/dist/images/ico_mnup.png');
-                    $clone.find('td:eq(2) span').addClass('colred');
-                    $clone.find('td:eq(3) em').addClass('colred');
+                if (mData.FUND[0].stock.length === 0) {
+                    $('.box_tbllist:eq(1) div:eq(1)').fadeIn(500);
                 } else {
-                    $clone.find('td:eq(2) img').attr('src', '/dist/images/ico_mndw.png');
-                    $clone.find('td:eq(2) span').addClass('colblu');
-                    $clone.find('td:eq(3) em').addClass('colblu');
+                    $('.box_tbllist:eq(1) div:eq(1)').fadeOut(500);
                 }
-                $clone.find('td:eq(2) span').text(nf.format(stock.MEASURE));
-                $clone.find('td:eq(3) em').text(parseFloat(stock.PER_MEASURE * 100).toFixed(2) + '%');
-
-                $table.append($clone.clone(true).fadeIn(500));
-            });
-
-            if (mData.FUND[index].stock.length === 0) {
-                $('.box_tbllist:eq(1) div:eq(1)').fadeIn(500);
-            } else {
-                $('.box_tbllist:eq(1) div:eq(1)').fadeOut(500);
             }
         },
         fund_add_stock: function () {
             let $table = $('.wrap_layerpop:eq(2) table tbody');
             let index = $('.box_tbllist:eq(0) tbody tr:not(:eq(0))').index($('.box_tbllist:eq(0) tbody tr.on'));
 
-            $('.area_sbptit span').text(mData.FUND[index].FUND_NAME);
+            $('.area_sbptit span').text(mData.FUND[0].FUND_NAME);
 
             mData.fund_stock = ajax.get_stock();
 
@@ -478,7 +491,7 @@ requirejs([
         },
         post_myFundStock: function (data) {
             let index = $('.box_tbllist:eq(0) tbody tr:not(:eq(0))').index($('.box_tbllist:eq(0) tbody tr.on'));
-            let FUND_KEY = mData.FUND[index].FUND_KEY;
+            let FUND_KEY = mData.FUND[0].FUND_KEY;
 
             $.ajax({
                 async: false,
@@ -490,7 +503,7 @@ requirejs([
                     FUND_KEY: FUND_KEY,
                 },
                 success: function (data, status, xhr) {
-                    mData.FUND = null;
+                    mData.FUND = [];
                     mData.FUND = $.extend(true, mData.FUND, data.FUND);
                 }
             });
@@ -588,23 +601,15 @@ requirejs([
 
         // 펀드 만들기 팝업
         $('.btn_plss:eq(0)').on('click', function () {
-            if (mData.FUND.length > 2) {
-                alert('펀드는 3개만 만들수 있어요.');
+            console.log(mData);
+            if (mData.FUND.length > 0) {
+                alert('펀드는 1개만 만들수 있어요.');
                 return;
             }
             let pop = $('.wrap_layerpop:eq(1)');
-            let investor = ajax.get_investor();
             let total = 0;
 
-            $.each(investor, function (i) {
-                let tr = pop.find('table:eq(0) tr').eq(i);
-                tr.find('th').text(this.MD_CODE);
-                tr.find('input').val(nf.format(this.balance));
-                total += parseInt(this.balance);
-            });
-
-            pop.find('table:eq(0) tr:last input').val(nf.format(total));
-            pop.find('table:eq(1) tr:eq(1) input').val(nf.format(total));
+            pop.find('table:eq(0) tr:last input').val(nf.format(mData.CASH));
 
             pop.find('table:eq(1) tr:eq(0) input').val('');
             pop.find('table:eq(1) tr:eq(2) input').val('');
@@ -631,17 +636,18 @@ requirejs([
             isValid = $('form')[0].checkValidity();
 
             if (false !== isValid) {
-                let table = $('.wrap_layerpop:eq(1) table:eq(1)');
+                let table = $('.wrap_layerpop:eq(1) table:eq(0)');
                 e.preventDefault();
                 data = {
                     name: table.find('tr:eq(0) input').val(),
                     FUND_DAY: parseInt(table.find('tr:eq(1) select').val()),
-                    percent: parseInt(table.find('tr:eq(2) select').val()),
-                    FUND_TOT: parseInt(table.find('tr:eq(2) input').val().replace(/,/g, '')),
+                    percent: 0,
+                    FUND_TOT: parseInt(table.find('tr:eq(1) input').val().replace(/,/g, '')),
                 };
+
                 if (ajax.post_myFund(data) === true) {
-                    ui.fund();
-                    // ui.fund_myStock();
+                    ui.fund2();
+                    ui.fund_myStock();
                     pop.fadeOut(500);
                 }
             }
@@ -687,8 +693,8 @@ requirejs([
             // 펀드 투자 종목 추가 팝업
             $('.btn_plss:eq(1)').on('click', function () {
                 let index = $('.box_tbllist:eq(0) tbody tr:not(:eq(0))').index($('.box_tbllist:eq(0) tbody tr.on'));
-                if (index < 0) {
-                    alert('펀드명을 선택해 주세요.');
+                if (mData.FUND.length == 0) {
+                    alert('펀드를 만들어주세요.');
                     return;
                 }
                 ui.fund_add_stock();
@@ -708,7 +714,7 @@ requirejs([
 
                 ajax.post_myFundStock(stock);
                 ui.fund_myStock();
-                ui.fund();
+                ui.fund2();
                 pop.fadeOut(500);
             });
 

@@ -333,7 +333,6 @@ requirejs([
             }
         },
         stock_result: function () {
-            console.log('aaaa');
             let pop = $('.wrap_layerpop:eq(3)');
             let data = ajax.stock_result();
             let $table = pop.find('.sizhg table');
@@ -343,10 +342,7 @@ requirejs([
                 return;
             }
 
-            pop.find('.box_titpop2 span').text(user.name);
-            pop.find('.box_titpop2 div').text(moment().format('YYYY년 MM월 DD일'));
-            pop.find('table:eq(0) td:eq(0)').text(nf.format(data.EMPL_CASH) + ' 원');
-            pop.find('table:eq(0) td:eq(1)').text(nf.format(data.stock_CASH) + ' 원');
+            console.log(data);
 
             $.each(data.history, function () {
                 let $clone = $table.find('tbody tr:eq(0)')
@@ -371,9 +367,17 @@ requirejs([
                 $table.append($clone.clone(true));
             });
 
-            pop.find('table:eq(1) td:eq(0)').text(nf.format(tot_EMPL_SELPRICE) + ' 원');
+            pop.find('.box_titpop2 span').text(user.name);
+            pop.find('.box_titpop2 div').text(moment().format('YYYY년 MM월 DD일'));
+
+            pop.find('table:eq(0) td:eq(0)').text(data.FUND.FUND_NAME);
+            pop.find('table:eq(0) td:eq(1)').text(moment().format('YYYY/MM/DD'));
+            pop.find('table:eq(0) td:eq(2)').text(nf.format(data.EMPL_CASH) + ' 원');
+
+            pop.find('table:eq(1) td:eq(0)').text(nf.format(data.stock_CASH) + ' 원');
             let per = ((data.stock_CASH - data.EMPL_CASH) / data.EMPL_CASH * 100).toFixed(2);
             pop.find('table:eq(1) td:eq(1)').text(nf.format(per) + ' %');
+            pop.find('table:eq(1) td:eq(2)').text(nf.format(data.stock_CASH - data.EMPL_CASH) + ' 원');
 
             $('.btn_close').remove();
             pop.fadeIn(500);
@@ -788,11 +792,6 @@ requirejs([
                 mData = $.extend(true, mData, data);
                 ui.init();
                 console.log(mData);
-
-                // 관심종목 자동 추가
-                $.each(mData.stock, function (i) {
-                    mData.favor[i] = this.COMP_CODE;
-                });
             }
         });
     })();
@@ -806,7 +805,9 @@ requirejs([
 
         stock_timer = window.setInterval(function () {
             count = count - 1;
-            $('.box_sbbtm .sb_tit div span:eq(0)').text(count + '초');
+            if(count >= 0) {
+                $('.box_sbbtm .sb_tit div span:eq(0)').text(count + '초');
+            }
         }, 1000);
     };
 

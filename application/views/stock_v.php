@@ -417,11 +417,15 @@
 							</colgroup>
 							<tbody>
 							<tr>
-								<th scope="row">처음자산</th>
+								<th scope="row">펀드명</th>
 								<td>10,000,000원</td>
 							</tr>
 							<tr>
-								<th scope="row">현재금액</th>
+								<th scope="row">개설날짜</th>
+								<td>8,800,000원</td>
+							</tr>
+							<tr>
+								<th scope="row">투자금</th>
 								<td>8,800,000원</td>
 							</tr>
 							</tbody>
@@ -435,11 +439,15 @@
 							</colgroup>
 							<tbody>
 							<tr>
-								<th scope="row">투자금액</th>
+								<th scope="row">잔고금액</th>
 								<td>8,800,000원</td>
 							</tr>
 							<tr>
 								<th scope="row">수익률</th>
+								<td>10%</td>
+							</tr>
+							<tr>
+								<th scope="row">수익금</th>
 								<td>10%</td>
 							</tr>
 							</tbody>
@@ -450,7 +458,7 @@
 
 			<div class="pb_view clfix">
 				<div class="pb_tit">
-					<h3 class="sb_bg bg2" style="width: 30%;">상세현황</h3>
+					<h3 class="sb_bg bg2" style="width: 30%;">포트폴리오</h3>
 				</div>
 				<div class="bx2col sizhg clfix">
 					<div class="box_tbllist">

@@ -19,6 +19,44 @@
 .box_tblwrite td input[type=text]{display: block; width: 95%; box-sizing: border-box; border: 1px solid #ddd;}
 .box_tblwrite td select, .box_tbllist td select{display: block; width: 95%; height: 45px; border: 1px solid #ddd;}
 
+/*추가*/
+.box_sbtop01{width: 940px; margin-bottom: 30px; padding-top: 40px; float: left;}
+.box_sbtop02{width: 780px; margin-bottom: 30px; padding-top: 40px; float: right;}
+.box_sbtop01 .box_tbl_f{ padding: 40px 70px; font-size: 1em; font-weight: 500;}
+.box_sbtop01 .box_tbl_f .left_input{ float: left; width: 350px;}
+.box_sbtop01 .box_tbl_f .right_input{ float: left; width: 350px; margin-left: 70px;}
+.box_sbtop01 .box_tbl_f .left_input div > p{ display: inline-block;}
+.box_sbtop01 .box_tbl_f .left_input input{margin-top:10px;}
+.box_sbtop01 .box_tbl_f .left_input .in_left02{ margin-top:22px;}
+.box_sbtop01 .box_tbl_f .right_input div > p{ display: inline-block;}
+.box_sbtop01 .box_tbl_f .right_input input{margin-top:10px;}
+.box_sbtop01 .box_tbl_f .right_input .in_right02{ margin-top:22px;}
+.box_sbtop01 .sbleft{ margin-bottom: 30px;}
+.box_sbtop01 .sbleft .box_tbl_f{ height: 300px; background-color: #fff; margin-bottom:55px;}
+.box_sbtop01 .sb_tit{position: relative; padding-bottom: 10px;}
+.box_sbtop02 .sb_tit{position: relative; padding-bottom: 10px;}
+.box_sbtop01 .sb_tit h3{padding-left: 45px; font-size: 1.5em;}
+.box_sbtop02 .sb_tit h3{padding-left: 45px; font-size: 1.5em;}
+.box_sbtop01 .sb_tit h3.ic1{background: url(../images/ico_sb1.gif) no-repeat 0 5px;}
+.box_sbtop02 .sb_tit h3.ic2{background: url(../images/ico_sb2.gif) no-repeat 0 5px;}
+.box_sbtop01 .sb_tit .btn_plss{position: absolute; top: 0; right: 0;}
+.box_sbtop02 .sb_tit .btn_plss{position: absolute; top: 0; right: 0;}
+.box_sbtop01 .ar_btm_pt .area_pt{ overflow: hidden; min-height: 160px; background-color: #5d5d5d;}
+.box_sbtop01 .ar_btm_pt .area_pt .tit_pt{ float: left; width: 40%; height: 251px; padding: 20px 0 20px 25px; background: #656565 url(../images/ico_f.png) no-repeat 92% 85%; color: #fff; font-size: 1.5em;}
+.box_sbtop01 .ar_btm_pt .area_pt .pt_list{ float: left; width: 60%; height: 251px; padding: 20px 0 20px 25px; color: #fff;}
+.box_sbtop01 .ar_btm_pt .area_pt .pt_list li:first-child{ margin-top: 10px; margin-bottom: 25px;}
+.box_sbtop01 .ar_btm_pt .area_pt .pt_list li{ overflow: hidden; margin-top: 10px;}
+.box_sbtop01 .ar_btm_pt .area_pt .pt_list li strong{ float: left; width: 30%;}
+.box_sbtop01 .ar_btm_pt .area_pt .pt_list li.down span{ color: #38adff;}
+.box_sbtop01 .ar_btm_pt .area_pt .pt_list li.up span{ color: #cc5044;}
+.box_sbtop01 .ar_btm_pt .area_pt .pt_list li > div{ float: left; width: 50%;}
+.box_sbtop01 .ar_btm_pt .area_pt .pt_list li > div .pt1{ float: left; padding-right: 30px; text-align: right;}
+.box_sbtop01 .ar_btm_pt .area_pt .pt_list li > div .pt2{ float: right;}
+.box_sbtop01 .ar_btm_pt .area_pt .pt_list li > div .pt2 img{ padding-right: 10px;}
+.box_sbtop01 .ar_btm_pt .area_pt .pt_list li > div span{ width: 46%; box-sizing: border-box;}
+.box_sbtop01 .ar_btm_pt .area_pt .pt_list li em .per{ float: left; width: 20%; padding-left: 10px; box-sizing: border-box;}
+.box_sbtop01 .line{height:1px; width: 100%; background-color: #444; margin-bottom: 55px;}
+
 .box_sbtop{width: 100%; margin-bottom: 30px; padding-top: 40px;}
 .box_sbtop .sb_tit{position: relative; padding-bottom: 10px;}
 .box_sbtop .sb_tit h3{padding-left: 45px; font-size: 1.5em;}

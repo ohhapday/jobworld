@@ -44,53 +44,26 @@
 <!-- content -->
 <div id="container">
 	<div id="content" class="clfix">
-		<div class="box_sbtop clfix">
+		<div class="box_sbtop box_sbtop01 clfix">
 			<div class="sbleft sbleft3">
 				<div class="sb_tit">
 					<h3 class="ic1">내가 만든 펀드</h3>
 					<a href="#" class="btn_plss"><img src="/dist/images/ico_sbpls.gif" alt=""></a>
 				</div>
-				<div class="box_tbllist" style="overflow-y: auto; height: 330px;">
-					<table>
-						<colgroup>
-							<col style="width: 40%;">
-							<col style="width: 20%;">
-							<col style="width: 20%;">
-							<col style="width: 20%;">
-						</colgroup>
-						<thead>
-						<tr>
-							<th scope="col">펀드명</th>
-							<th scope="col">펀드규모(원)</th>
-							<th scope="col">수익률(%)</th>
-							<th scope="col">보유기간(개월)</th>
-						</tr>
-						</thead>
-						<tbody>
-						<tr style="display: none;">
-							<td class="align-l"><button type="button">잡워드 직업체험 펀드</button></td>
-							<td>10,000,000</td>
-							<td></td>
-							<td>
-								<select style="height: 40px; width: 60%; background-color: #F8F1E1; float: right;">
-								</select>
-							</td>
-						</tr>
-						</tbody>
-					</table>
-					<div style="margin-top: 20px; display: none;">
-						<h3 class="ic4" style="text-align: center; font-size: 30px; color: #0000ff">
-							위에 [+] 버튼을 눌러 펀드를 만들어 주세요.
-						</h3>
+				<div class="box_tbl_f">
+					<div class="left_input">
+						<div class="in_left01"><p><img src="/dist/images/f_ico01.png" alt="" height="28px" width="28px"></p>
+							<p>펀드명</p><input type="text" size="23" value="" style="background-color: #eee8d8; border-width: 1px;" readonly></div>
+						<div class="in_left02"><p><img src="/dist/images/f_ico03.png" alt="" height="28px" width="28px"></p>
+							<p>투자금액(원)</p><input type="text" size="23" value="" style="text-align: center; background-color: #eee8d8; border-width: 1px;" readonly></div>
 					</div>
-				</div>
-				<div class="ar_btm_dt">
-					<ul class="dtlist clfix">
-						<li class="mb10"><strong>펀드명</strong><span></span></li>
-						<li class="mb10"><strong>만든 날짜</strong><span></span></li>
-						<li><strong>총 금액(원)</strong><span></span></li>
-						<li><strong>수익률(%)</strong><span></span></li>
-					</ul>
+					<div class="cen_line"></div>
+					<div class="right_input">
+						<div class="in_right01"><p><img src="/dist/images/f_ico02.png" alt="" height="28px" width="28px"></p>
+							<p>만든 날짜</p><input type="text" size="23" value="" style="text-align: center; background-color: #eee8d8; border-width: 1px;" readonly></div>
+						<div class="in_right02"><p><img src="/dist/images/f_ico04.png" alt="" height="28px" width="28px"></p>
+							<p>보유기간(개월)</p><input type="text" size="23" value="" style="text-align: center; background-color: #eee8d8; border-width: 1px;" readonly></div>
+					</div>
 				</div>
 			</div>
 			<div class="sbright">
@@ -216,46 +189,6 @@
 <!-- 펀드 만들기 pop -->
 <div class="wrap_layerpop" style="display: none;">
 
-	<div class="layerpop pop6">
-		<div class="box_titpop">
-			<h2>펀드 투자금 확인</h2>
-			<div class="btn_close"><button type="button">닫기</button></div>
-		</div>
-		<div class="box_contpop">
-			<div class="contpdd">
-				<div class="box_tblwrite">
-					<table>
-						<colgroup>
-							<col style="width: 35%;">
-							<col style="width: 65%;">
-						</colgroup>
-						<tbody>
-						<tr>
-							<th scope="row">투자자 A</th>
-							<td><input type="text" value="10,000" class="align-r" readonly></td>
-						</tr>
-						<tr>
-							<th scope="row">투자자 B</th>
-							<td><input type="text" value="10,000" class="align-r" readonly></td>
-						</tr>
-						<tr>
-							<th scope="row">투자자 C</th>
-							<td><input type="text" value="10,000" class="align-r" readonly></td>
-						</tr>
-						<tr>
-							<th scope="row">총 펀드금액(원)</th>
-							<td><input type="text" value="10,000" class="align-r" readonly></td>
-						</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-		<!-- <div class="btn_popbtm">
-			<span class="btn_blk"><a href="">저장</a></span>
-		</div> -->
-	</div>
-
 	<div class="layerpop pop7">
 		<form>
 			<div class="box_titpop">
@@ -280,27 +213,15 @@
 								<td colspan="3"><input type="text" value="" placeholder="잡월드증권투자펀드" required></td>
 							</tr>
 							<tr>
-								<th scope="row">운영기간(개월)</th>
+								<th scope="row">보유기간(개월)</th>
 								<td>
 									<select name="">
 
 									</select>
 								</td>
-								<th scope="row">총 펀드금액(원)</th>
-								<td>
-									<input type="text" value="10,000" class="align-r" readonly>
-								</td>
-							</tr>
-							<tr>
-								<th scope="row">투자할 비율(%)</th>
-								<td>
-									<select name="" required>
-										<option value="">비율</option>
-									</select>
-								</td>
 								<th scope="row">투자금액(원)</th>
 								<td>
-									<input type="text" value="" class="align-r" readonly required>
+									<input type="text" value="" class="align-r" required>
 								</td>
 							</tr>
 							</tbody>

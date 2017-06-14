@@ -178,6 +178,18 @@ class Main_m extends CI_Model
         return $return;
     }
 
+    public function get_stock_CASH()
+    {
+        $query = "
+            SELECT stock_CASH FROM job050
+            WHERE
+              EMPL_KEY = ?
+        ";
+        $result = $this->db->query($query, $_SESSION['EMPL_KEY'])->row()->stock_CASH;
+
+        return $result;
+    }
+
     public function get_user_info()
     {
         $query = "
@@ -802,6 +814,26 @@ class Main_m extends CI_Model
         return $return;
     }
 
+    public function get_favor2()
+    {
+        $query = "
+            SELECT
+              b.COMP_CODE
+            FROM
+              job060 a, job061 b
+            WHERE
+              a.FUND_KEY = b.FUND_KEY AND a.EMPL_KEY = ?
+        ";
+        $result = $this->db->query($query, $_SESSION['EMPL_KEY'])->result();
+
+        $return = array();
+        foreach ($result as $item) {
+            $return[] = $item->COMP_CODE;
+        }
+
+        return $return;
+    }
+
     public function get_cash()
     {
         $query = "
@@ -1000,6 +1032,17 @@ class Main_m extends CI_Model
         $result = $this->db->query($query, $key)->row();
         $return->EMPL_CASH = $result->EMPL_CASH;
         $return->stock_CASH = $result->stock_CASH;
+
+        $query = "
+            SELECT * FROM job060
+            WHERE
+              EMPL_KEY = ?
+        ";
+        $result = $this->db->query($query, $key)->row();
+        $return->FUND = array(
+            'FUND_NAME' => $result->FUND_NAME,
+            'FUND_TOT' => $result->FUND_TOT
+        );
 
         $query = "
             SELECT * FROM job082
