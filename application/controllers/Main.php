@@ -31,6 +31,8 @@ class Main extends CI_Controller
         $return->stock = $this->main_m->get_stock();
         $return->STOCK_POP = $return->stock;
         $return->KOS = $this->main_m->get_KOS();
+        $return->NEWS = $this->main_m->get_NEWS();
+        $return->ANAL = $this->main_m->get_ANAL();
 
         echo json_encode($return);
     }
@@ -46,7 +48,8 @@ class Main extends CI_Controller
 
     public function left_main()
     {
-        $this->load->view('left_main_v');
+        // $this->load->view('left_main_v');
+        $this->load->view('bulletin2_v');
     }
 
     public function youtube()

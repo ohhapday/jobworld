@@ -50,8 +50,6 @@ requirejs([
             this.chart();
             this.news();
             this.anal();
-
-            console.log(mData);
         },
         stock: function () {
             let $table = $('.box_tbllist table:eq(0) tbody');
@@ -232,9 +230,9 @@ requirejs([
             if (eData.news_que > 1) {
                 let index = 0;
                 let news = mData.NEWS[index];
-                let pop = $('.wrap_layerpop:eq(0)');
+                let pop = $('.wrap_layerpop:eq(1)');
 
-                pop.find('.box_titpop h2').text(news.NEWS_HEAD);
+                pop.find('.box_contpop h3').text(news.NEWS_HEAD);
                 pop.find('.box_contpop p').html(news.NEWS_FILE.replace(/\n/gi, '<br>'));
                 pop.find('.date em').text('잡월드 뉴스');
                 pop.find('.date span:eq(1)').text(moment(news.INSERT_DATE).format('YYYY.MM.DD'));
@@ -248,8 +246,8 @@ requirejs([
                 let news = mData.ANAL[index];
                 let pop = $('.wrap_layerpop:eq(0)');
 
-                pop.find('.box_titpop h2').text(news.ANAL_HEAD);
-                pop.find('.box_contpop p').html(news.ANAL_FILE.replace(/\n/gi, '<br>'));
+                pop.find('.box_contpop h3').text(news.ANAL_HEAD);
+                pop.find('.box_contpop .con_txt').html(news.ANAL_FILE.replace(/\n/gi, '<br>'));
                 pop.find('.date em').text('잡월드 애널리스트');
                 pop.find('.date span:eq(1)').text(moment(news.INSERT_DATE).format('YYYY.MM.DD'));
 

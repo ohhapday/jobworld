@@ -199,7 +199,6 @@ requirejs([
         let eventSource = new EventSource('/login/sse_get_system');
         eventSource.onmessage = function (e) {
             if (e.data !== JSON.stringify(eData)) {
-
                 let tmp = $.extend({}, eData);
                 eData = $.extend(true, eData, JSON.parse(e.data));
 

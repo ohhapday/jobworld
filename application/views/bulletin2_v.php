@@ -13,7 +13,7 @@
 	<![endif]-->
 
 	<script src="/dist/js/require-config.js"></script>
-	<script src="/bower_components/requirejs/require.js" data-main="/dist/js/main/bulletin.js"></script>
+	<script src="/bower_components/requirejs/require.js" data-main="/dist/js/main/bulletin2.js"></script>
 
 </head>
 <body>
@@ -158,7 +158,7 @@
 		</div>
 		<div class="box_tit02"></div>
 		<div class="box_contpop">
-			<h3 class="news_tit">ㅠㅠㅠㅠ</h3>
+			<h3 class="news_tit"></h3>
 			<p class="line"></p>
 			<p class="con_txt" style="max-height: 700px; overflow-y: hidden;">ㅁㅁㅁㅁ</p>
 			<div class="date align-r">
