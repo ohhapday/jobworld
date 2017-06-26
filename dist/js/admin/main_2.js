@@ -460,6 +460,33 @@ requirejs([
                     $table.append($clone.clone(true));
                 });
 
+                (function () {
+                    let MKEY = "2";
+                    let job024 = handle_ajax.get_table({
+                        table_nm: 'job024',
+                        where: ['MKEY', MKEY],
+                        // orderby: ['MKEY', 'ASC']
+                    });
+
+                    let $table = pop.find('.col2fr table tbody');
+                    let $clone = pop.find('.col2fr tbody tr:eq(0)')
+                        .clone(true)
+                        .removeClass('hidden');
+
+                    pop.find('.col2fr tbody tr:not(:eq(0))').remove();
+
+                    $.each(job024, function (i) {
+                        $clone.find('td:eq(0)').text(this.MKEY);
+                        $clone.find('td:eq(1)').text(this.MD_CODE);
+                        $clone.find('td:eq(2) input').val(this.MD_NAME);
+                        $clone.find('td:eq(2) input').data('key', this.KEY);
+
+                        $table.append($clone.clone(true));
+                    });
+
+                    pop.find('.col2fr').removeClass('hidden');
+                })();
+
                 pop.fadeIn(500);
             });
 
@@ -624,7 +651,47 @@ requirejs([
                     $clone.find('td:eq(2) div').text(this.COMP_NAME);
 
                     $table.append($clone.clone(true));
-                })
+                });
+
+                (function () {
+                    pop.find('.col2fl tbody tr:eq(1)').addClass('on');
+
+                    let SECT_KEY = "1";
+                    let job015 = handle_ajax.get_table({
+                        table_nm: 'job015',
+                        where: ['SECT_KEY', SECT_KEY],
+                        orderby: ['COMP_DATE', 'ASC']
+                    });
+                    let $table = pop.find('.col2fr table tbody');
+                    let $clone = pop.find('.col2fr tbody tr:eq(0)')
+                        .clone(true)
+                        .removeClass('hidden');
+
+                    pop.find('.col2fr tbody tr:not(:eq(0))').remove();
+
+                    let now = moment().subtract(10, 'day');
+                    $.each(job015, function (i) {
+                        let date = moment(now).add(i, 'day').format('YYYY-MM-DD')
+                        $clone.find('td:eq(0)').text(this.COMP_DATE);
+                        $clone.find('td:eq(1)').text(date);
+                        $clone.find('td:eq(2) div').text(nf.format(this.COMP_PRICE));
+
+                        $table.append($clone.clone(true));
+                    });
+
+                    pop.find('.col2fr').removeClass('hidden');
+
+                    $.each(pop.find('.col2fl tbody tr'), function () {
+                        let val = pop.find('.col2fl tbody tr:eq(1)').find('input').val();
+                        pop.find('.col2fl tbody tr:eq(1)').find('td:eq(2) div').text(val);
+                    });
+
+                    let val = pop.find('.col2fl tbody tr:eq(1)').find('td:eq(2) div').text();
+                    pop.find('.col2fl tbody tr:eq(1)').find('td:eq(2) div').html('' +
+                        '<input type="text" style="width: 95%" value="' + val + '" />' +
+                        '');
+                    put_COMP_NAME();
+                })();
 
                 pop.fadeIn(500);
             });
@@ -816,6 +883,45 @@ requirejs([
 
                     $table.append($clone.clone(true));
                 });
+
+                (function () {
+                    pop.find('.col2fl tbody tr:eq(1)').addClass('on');
+
+                    let SECT_KEY = "1";
+                    let job013 = handle_ajax.get_table({
+                        table_nm: 'job013',
+                        where: ['KOS_CODE', SECT_KEY],
+                        orderby: ['KOS_DATE', 'ASC']
+                    });
+                    let $table = pop.find('.col2fr table tbody');
+                    let $clone = pop.find('.col2fr tbody tr:eq(0)')
+                        .clone(true)
+                        .removeClass('hidden');
+
+                    pop.find('.col2fr tbody tr:not(:eq(0))').remove();
+
+                    let now = moment().subtract(10, 'day');
+                    $.each(job013, function (i) {
+                        let date = moment(now).add(i, 'day').format('YYYY-MM-DD')
+                        $clone.find('td:eq(0)').text(this.KOS_DATE);
+                        $clone.find('td:eq(1)').text(this.KOS_DATE);
+                        $clone.find('td:eq(2) div').text(nf.format(this.KOS_RATE));
+
+                        $table.append($clone.clone(true));
+                    });
+
+                    pop.find('.col2fr').removeClass('hidden');
+
+                    $.each(pop.find('.col2fl tbody tr'), function () {
+                        let val = pop.find('.col2fl tbody tr:eq(1)').find('input').val();
+                        pop.find('.col2fl tbody tr:eq(1)').find('td:eq(2) div').text(val);
+                    });
+
+                    let val = pop.find('.col2fl tbody tr:eq(1)').find('td:eq(2) div').text();
+                    pop.find('.col2fl tbody tr:eq(1)').find('td:eq(2) div').html('' +
+                        '<input type="text" style="width: 95%" value="' + val + '" />' +
+                        '');
+                })();
 
                 pop.fadeIn(500);
             });

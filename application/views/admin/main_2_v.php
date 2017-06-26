@@ -199,7 +199,7 @@
 			</div>
 			<div class="sbrightdat">
 				<div class="da_adt clfix">
-					<button type="button" class="btn_adgre">종합환경설정</button>
+					<button type="button" class="btn_adgre" style="background-color: #fdc236">종합환경설정</button>
 					<button type="button" class="btn_adyee">채권관리</button>
 					<button type="button" class="btn_adyee">주식종목관리</button>
 				</div>
@@ -359,7 +359,7 @@
 				</table>
 			</div>
 		</div>
-		<div class="btn_popbtm">
+		<div class="btn_popbtm" style="padding-top: 50px;">
 			<span class="btn_blk"><a href="#">저장</a></span>
 		</div>
 	</div>
@@ -520,7 +520,7 @@
 			<input type="number" name="adjust" value="10" required><span>% 반영</span>
 			<button type="button" class="btn_play">실행</button>
 		</div>
-		<div class="btn_popbtm">
+		<div class="btn_popbtm" style="padding-top: 50px;">
 			<span class="btn_blk"><a href="#">저장</a></span>
 		</div>
 	</div>
@@ -604,7 +604,7 @@
 				</table>
 			</div>
 		</div>
-		<div class="btn_popbtm">
+		<div class="btn_popbtm" style="padding-top: 50px;">
 			<span class="btn_blk"><a href="#">저장</a></span>
 		</div>
 	</div>
@@ -687,7 +687,7 @@
 				</table>
 			</div>
 		</div>
-		<div class="btn_popbtm">
+		<div class="btn_popbtm" style="padding-top: 50px;">
 			<span class="btn_blk"><a href="#">저장</a></span>
 		</div>
 	</div>
@@ -773,7 +773,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="btn_popbtm">
+		<div class="btn_popbtm" style="padding-top: 50px;">
 			<span class="btn_blk"><a href="#">저장</a></span>
 		</div>
 	</div>

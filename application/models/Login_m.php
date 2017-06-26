@@ -34,7 +34,10 @@ class Login_m extends CI_Model
             $insert_data = array(
                 'EMPL_NAME' => $user_name,
                 'MF_FG' => $_POST['sx'],
-                'EMPL_CASH' => (int)$EMPL_CASH
+                'EMPL_CASH' => (int)$EMPL_CASH,
+                'fund_CASH' => (int)$EMPL_CASH,
+                'bond_CASH' => (int)$EMPL_CASH,
+                'stock_CASH' => (int)$EMPL_CASH,
             );
             $this->db->insert('job050', $insert_data);
 

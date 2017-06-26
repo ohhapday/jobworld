@@ -160,7 +160,7 @@
 		<div class="box_contpop">
 			<h3 class="news_tit"></h3>
 			<p class="line"></p>
-			<p class="con_txt" style="max-height: 700px; overflow-y: hidden;">ㅁㅁㅁㅁ</p>
+			<p class="con_txt" style="height: 400px; overflow-y: auto;">ㅁㅁㅁㅁ</p>
 			<div class="date align-r">
 				<em class="colblu">서울경제</em><span class="l_pd">|</span><span>2017.03.23</span>
 			</div>

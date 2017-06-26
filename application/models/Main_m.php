@@ -38,6 +38,8 @@ class Main_m extends CI_Model
     {
         $query = "
             SELECT * FROM job016_copy
+            WHERE
+              SEND = 0
             ORDER BY NEWS_KEY ASC
         ";
         $return = $this->db->query($query)->result();
@@ -60,6 +62,8 @@ class Main_m extends CI_Model
     {
         $query = "
             SELECT * FROM job017_copy
+            WHERE
+              SEND = 0
             ORDER BY SEND DESC, ANAL_KEY ASC
         ";
         $return = $this->db->query($query)->result();
