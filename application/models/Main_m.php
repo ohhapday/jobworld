@@ -290,7 +290,9 @@ class Main_m extends CI_Model
         $this->db->insert('job060', $job060_data);
         $FUND_KEY = $this->db->insert_id();
 
-        $CUSTOM = $this->get_investor();
+        $CUSTOM[0]->KEY = 1;
+        $CUSTOM[0]->balance = 1000000;
+
         foreach ($CUSTOM as $item) {
             $job062_data[] = array(
                 'FUND_KEY' => $FUND_KEY,
