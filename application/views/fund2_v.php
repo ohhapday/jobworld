@@ -16,6 +16,16 @@
 	<script src="/dist/js/require-config.js"></script>
 	<script src="/bower_components/requirejs/require.js" data-main="/dist/js/main/fund2.js"></script>
 
+	<style>
+		.btn_buyc {
+			margin: 0px auto;
+			padding: 5px 10px;
+			border-radius: 5px;
+			background: #fdc236;
+			color: #fff;
+		}
+	</style>
+
 </head>
 <body>
 
@@ -48,7 +58,7 @@
 			<div class="sbleft sbleft3">
 				<div class="sb_tit">
 					<h3 class="ic1">내가 만든 펀드</h3>
-					<a href="#" class="btn_plss"><img src="/dist/images/ico_sbpls.gif" alt=""></a>
+					<a href="#" class="btn_plss" style="display: none;"><img src="/dist/images/ico_sbpls.gif" alt=""></a>
 				</div>
 				<div class="box_tbl_f">
 					<div class="left_input">
@@ -64,6 +74,11 @@
 						<div class="in_right02"><p><img src="/dist/images/f_ico04.png" alt="" height="28px" width="28px"></p>
 							<p>보유기간(개월)</p><input type="text" size="23" value="" style="text-align: center; background-color: #eee8d8; border-width: 1px;" readonly></div>
 					</div>
+				</div>
+				<div class="" style="text-align: center;">
+					<a href="#" class="btn_buyc" style="margin-top: 15px; font-size: 40px;">
+						펀드 만들기
+					</a>
 				</div>
 			</div>
 			<div class="sbright">
@@ -229,6 +244,7 @@
 					</div>
 				</div>
 			</div>
+			<div style="padding: 0px 30px;">※ 한 번 저장하면 수정할 수 없습니다. 신중히 만들어 주세요.</div>
 			<div class="btn_popbtm">
 				<span class="btn_blk"><button type="submit">저장</button></span>
 			</div>
@@ -673,7 +689,7 @@
 			<div>
 				<span class="my_h4" style="color: #fff; font-size: 1.625em; font-weight: normal;">삼성전자</span>
 				<span class="my_h5" style="margin-left: 15px;">test</span>
-				<span class="my_h5_02" style="margin-left: 15px;">test</span>
+				<span class="my_h5_02" style="margin-left: 15px; display: none;">test</span>
 			</div>
 			<div class="btn_close"><button type="button">닫기</button></div>
 		</div>
@@ -682,6 +698,7 @@
 				<div class="lftpols1">
 					<div class="numkk">
 						<strong>125,000</strong>
+						<span class="">전일대비</span>
 						<span class="pt2 colblu">
 							<img src="/dist/images/ico_mndw.png" alt="">
 						</span>
@@ -704,10 +721,9 @@
 					</div>
 				</div>
 				<div class="lftpols2">
-					<div class="bx_innm1" style="margin-top: -10px;">
+					<div class="bx_innm1" style="margin-top: 20px;">
 						<h1 style="font-size: 1.5em;">종목뉴스</h1>
 						<ul>
-							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
 							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
 							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
 							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>

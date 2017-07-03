@@ -204,7 +204,8 @@ requirejs([
                 let $clone = li.clone(true).css('display', '');
                 let type = '[' + gubun[this.NEWS_TYPE] + '] ';
 
-                $clone.find('a').text(type + this.NEWS_HEAD);
+                // $clone.find('a').text(type + this.NEWS_HEAD);
+                $clone.find('a').text(this.NEWS_HEAD);
                 $clone.find('span').text(moment(this.INSERT_DATE).format('YYYY.MM.DD'));
 
                 ul.append($clone.clone(true));
@@ -220,7 +221,8 @@ requirejs([
                 let $clone = li.clone(true).css('display', '');
                 let type = '[' + gubun[this.ANAL_TYPE] + '] ';
 
-                $clone.find('a').text(type + this.ANAL_HEAD);
+                // $clone.find('a').text(type + this.ANAL_HEAD);
+                $clone.find('a').text(this.ANAL_HEAD);
                 $clone.find('span').text(moment(this.INSERT_DATE).format('YYYY.MM.DD'));
 
                 ul.append($clone);

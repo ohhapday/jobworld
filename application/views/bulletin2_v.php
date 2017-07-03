@@ -105,11 +105,11 @@
 				<div class="sb_tit sb_tit2 mt20">
 					<h3 class="ic4">종목별 주식 그래프</h3>
 				</div>
-				<div class="pt_tit">
+				<div class="pt_tit" style="padding-left: 30px;">
 
 				</div>
-				<div class="chrt">
-					<canvas id="chart_11" width="850" height="450"></canvas>
+				<div class="chrt" style="width: 650px; height: 458px; margin: auto;">
+					<canvas id="chart_11" width="850" height="550"></canvas>
 				</div>
 			</div>
 			<div class="pop_wrap">

@@ -434,18 +434,18 @@ requirejs([
             });
 
             if (parseInt(STOCK.MEASURE) >= 0) {
-                table.find('.lftpols2 img').attr('src', '/dist/images/ico_mnup.png');
-                table.find('.lftpols2 span').addClass('colred');
-                table.find('.lftpols2 em').addClass('colred');
+                table.find('.lftpols1 img').attr('src', '/dist/images/ico_mnup.png');
+                table.find('.lftpols1 span:not(:eq(0))').addClass('colred');
+                table.find('.lftpols1 em').addClass('colred');
             } else {
-                table.find('.lftpols2 img').attr('src', '/dist/images/ico_mndw.png');
-                table.find('.lftpols2 span').addClass('colblu');
-                table.find('.lftpols2 em').addClass('colblu');
+                table.find('.lftpols1 img').attr('src', '/dist/images/ico_mndw.png');
+                table.find('.lftpols1 span:not(:eq(0))').addClass('colblu');
+                table.find('.lftpols1 em').addClass('colblu');
             }
 
-            table.find('.lftpols2 strong').text(nf.format(STOCK.COMP_PRICE));
-            table.find('.lftpols2 span:eq(1)').text(nf.format(STOCK.MEASURE));
-            table.find('.lftpols2 em').text(parseFloat(STOCK.PER_MEASURE * 100).toFixed(2) + '%');
+            table.find('.lftpols1 strong').text(nf.format(STOCK.COMP_PRICE));
+            table.find('.lftpols1 span:eq(2)').text(nf.format(STOCK.MEASURE));
+            table.find('.lftpols1 em').text(parseFloat(STOCK.PER_MEASURE * 100).toFixed(2) + '%');
         },
     };
 
@@ -600,7 +600,7 @@ requirejs([
         });
 
         // 펀드 만들기 팝업
-        $('.btn_plss:eq(0)').on('click', function () {
+        $('.btn_buyc:eq(0)').on('click', function () {
             console.log(mData);
             if (mData.FUND.length > 0) {
                 alert('펀드는 1개만 만들수 있어요.');

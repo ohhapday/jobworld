@@ -45,7 +45,7 @@
 <!-- content -->
 <div id="container">
 	<div id="content" class="clfix">
-		<div class="box_sbtop clfix">
+		<div class="box_sbtop clfix" style="">
 			<div class="sbright2" style="margin-top: -20px;">
 
 				<div class="sb_tit">
@@ -59,7 +59,7 @@
 					</ul>
 				</div>
 
-				<div class="sb_tit" style="margin-top: 10px;">
+				<div class="sb_tit" style="margin-top: 410px;">
 					<h3 class="ic3">주식 매매</h3>
 				</div>
 				<div class="bx_tablist">
@@ -101,12 +101,12 @@
 							</ul>
 						</div>
 					</div>
-					<a href="#" class="btn_bview"><span>결제(완료)</span></a>
+					<a href="#" class="btn_bview"><span>결제 (완료)</span></a>
 				</div>
 			</div>
 		</div>
-		<div class="box_sbbtm clfix">
-			<div class="sbleftbt4">
+		<div class="box_sbbtm clfix" style="">
+			<div class="sbleftbt4" style="margin-top: -880px;">
 				<div class="sb_tit">
 					<h3 class="ic5">선택종목</h3>
 					<div style="position: absolute; top: 3px; right: 0;">
@@ -145,7 +145,7 @@
 					</table>
 				</div>
 			</div>
-			<div class="sbrightbt3" style="margin-top: -10px;">
+			<div class="sbrightbt3" style="margin-top: -730px;">
 				<!--
 				<div class="sb_tit">
 					<h3 class="ic4">위탁금 현황</h3>
@@ -520,6 +520,7 @@
 				<div class="lftpols1">
 					<div class="numkk">
 						<strong>125,000</strong>
+						<span class="">전일대비</span>
 						<span class="pt2 colblu">
 							<img src="/dist/images/ico_mndw.png" alt="">
 						</span>
@@ -542,17 +543,16 @@
 					</div>
 				</div>
 				<div class="lftpols2">
-					<div class="bx_innm1" style="margin-top: -10px;">
+					<div class="bx_innm1" style="margin-top: 20px;">
 						<h1 style="font-size: 1.5em;">종목뉴스</h1>
 						<ul>
 							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
 							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
 							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
 							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
-							<li><a href="#" class="ellipsis">공시정보 뉴스 표시 부분</a></li>
 						</ul>
 					</div>
-					<div class="chrt" style="margin-top: 40px;">
+					<div class="chrt" style="margin-top: 50px;">
 						<div class="chartpd" style="width: 540px; height: 350px; margin: auto">
 							<canvas id="chart_11" width="540" height="350"></canvas>
 						</div>

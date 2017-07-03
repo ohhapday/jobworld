@@ -68,13 +68,13 @@
 .box_sbtop .sb_tit .btn_plss{position: absolute; top: 0; right: 0;}
 .box_sbtop .sbleft{float: left; width: 100%;}
 .box_sbtop .sbleft2{float: left; width: 45%;}
-.box_sbtop .sbleft3{float: left; width: 58%;}
+.box_sbtop .sbleft3{float: left; width: 53%;}
 
 .box_sbtop .sbleft .ar_btm_dt{margin-top: 30px; padding: 35px 40px 36px 40px; border: 1px solid #d0cbbe;}
 .box_sbtop .sbleft .dtlist li{float: left; width: 48%;}
 .box_sbtop .sbleft .dtlist li strong{float: left; width: 40%; padding-right: 10px; padding-left: 15px; background: url(../images/ico_dt1.png) no-repeat 0 13px; box-sizing: border-box;}
 .box_sbtop .sbleft .dtlist li span{float: left; width: 60%;}
-.box_sbtop .sbright{float: right; width: 40%;}
+.box_sbtop .sbright{float: right; width: 45%;}
 .box_sbtop .sbright2{float: right; width: 53%;}
 .box_sbtop .bx_tablist .tab{position: relative; height: 63px;}
 .box_sbtop .bx_tablist .tab .tabmenu{position: absolute; height: 63px; background: #eee8d8; width: 50%; border-top: 1px solid #dbd5c6; border-right: 1px solid #dbd5c6; border-left: 1px solid #dbd5c6; text-align: center;}
@@ -107,7 +107,7 @@
 .box_sbtop .bx_tablist .btmtbl .ar_btm_dt .dtlist li > span{float: left; width: 40%;}
 .box_sbtop .bx_tablist .btmtbl.on{display: block}
 .box_sbtop .bx_tablist .btmtbl.off{display: none;}
-.box_sbtop .bx_tablist .btn_bview{display: block; width: 100%; height: 75px; margin-top: 10px; box-sizing: border-box; background:#f34937; font-size: 1.125em; color: #fff; text-align: center;}
+.box_sbtop .bx_tablist .btn_bview{display: block; width: 100%; height: 75px; margin-top: 10px; box-sizing: border-box; background:darkgray; font-size: 1.125em; color: #fff; text-align: center;}
 .box_sbtop .bx_tablist .btn_bview span{display: inline-block; padding: 20px 0 20px 50px; background:url(../images/ico_sbplsb2.png) no-repeat 0 50%;}
 
 .box_sbbtm .sb_tit{position: relative; padding-bottom: 10px;}

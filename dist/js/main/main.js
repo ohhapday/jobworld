@@ -466,8 +466,10 @@ requirejs([
                 // pop.find('.box_titpop h2').text('애널리스트 보고서');
                 pop.find('.news_tit').text(ANAL.ANAL_HEAD);
                 pop.find('.box_contpop .con_txt').html(ANAL.ANAL_FILE.replace(/\n/gi, '<br>'));
+                /*
                 pop.find('.date em').text('잡월드 애널리스트');
                 pop.find('.date span:eq(1)').text(moment().format('YYYY.MM.DD'));
+                */
 
                 pop.fadeIn(500);
             });
@@ -478,17 +480,9 @@ requirejs([
         ajax.draw_chart2('003490', $('#chart_02'));
 
         // 기업정보 상세보기
+        /* -삭제 요청 (170623)
         (function () {
             $('.chart_mn a, .area_cpm a').on('click', function () {
-                /*let pop = $('.wrap_layerpop:eq(2)');
-                 let index = $('.chart_mn').index($(this));
-                 let COMP_CODE = (index === 0) ? '005930' : '003490';
-
-                 ajax.company_info(COMP_CODE);
-                 ajax.draw_chart(COMP_CODE, $('#chart_10'));
-
-                 pop.fadeIn(500);*/
-
                 let pop = $('.wrap_layerpop:eq(4)');
                 let index = $('.chart_mn a').index($(this));
                 let COMP_CODE = $(this).data('COMP_CODE');
@@ -500,6 +494,7 @@ requirejs([
                 pop.fadeIn(500);
             });
         })();
+        */
     })();
 
     // 시스템 데이터와 비교하여 변경된 항목만 업데이트 처리
@@ -555,19 +550,19 @@ requirejs([
         }
 
         if (eData.bond_STATUS == '1') {
-            $('#gnb li:eq(2)').addClass('on');
-            $('#gnb li:eq(2) a').attr('href', '/main/bond');
-        } else {
-            $('#gnb li:eq(2)').removeClass('on');
-            $('#gnb li:eq(2) a').attr('href', '#');
-        }
-
-        if (eData.stock_STATUS == '1') {
             $('#gnb li:eq(3)').addClass('on');
-            $('#gnb li:eq(3) a').attr('href', '/main/stock');
+            $('#gnb li:eq(3) a').attr('href', '/main/bond');
         } else {
             $('#gnb li:eq(3)').removeClass('on');
             $('#gnb li:eq(3) a').attr('href', '#');
+        }
+
+        if (eData.stock_STATUS == '1') {
+            $('#gnb li:eq(2)').addClass('on');
+            $('#gnb li:eq(2) a').attr('href', '/main/stock');
+        } else {
+            $('#gnb li:eq(2)').removeClass('on');
+            $('#gnb li:eq(2) a').attr('href', '#');
         }
 
         if (eData.result_STATUS == '1') {

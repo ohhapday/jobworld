@@ -42,7 +42,7 @@
 					<ul>
 						<li><strong class="inp_st">직원명</strong>
 							<div>
-								<input type="text" name="EMPL_NAME" value="" required disabled>
+								<input type="text" name="EMPL_NAME" value="" maxlength="5" required disabled>
 							</div>
 						</li>
 						<li><strong>성별</strong>

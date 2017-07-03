@@ -310,18 +310,18 @@ requirejs([
             });
 
             if (parseInt(STOCK.MEASURE) >= 0) {
-                table.find('.lftpols2 img').attr('src', '/dist/images/ico_mnup.png');
-                table.find('.lftpols2 span').addClass('colred');
-                table.find('.lftpols2 em').addClass('colred');
+                table.find('.lftpols1 img').attr('src', '/dist/images/ico_mnup.png');
+                table.find('.lftpols1 span:not(:eq(0))').not('.bx_innm span').addClass('colred');
+                table.find('.lftpols1 em').addClass('colred');
             } else {
-                table.find('.lftpols2 img').attr('src', '/dist/images/ico_mndw.png');
-                table.find('.lftpols2 span').addClass('colblu');
-                table.find('.lftpols2 em').addClass('colblu');
+                table.find('.lftpols1 img').attr('src', '/dist/images/ico_mndw.png');
+                table.find('.lftpols1 span:not(:eq(0))').not('.bx_innm span').addClass('colblu');
+                table.find('.lftpols1 em').addClass('colblu');
             }
 
-            table.find('.lftpols2 strong').text(nf.format(STOCK.COMP_PRICE));
-            table.find('.lftpols2 span:eq(1)').text(nf.format(STOCK.MEASURE));
-            table.find('.lftpols2 em').text(parseFloat(STOCK.PER_MEASURE * 100).toFixed(2) + '%');
+            table.find('.lftpols1 strong:eq(0)').text(nf.format(STOCK.COMP_PRICE));
+            table.find('.lftpols1 span:eq(2)').text(nf.format(STOCK.MEASURE));
+            table.find('.lftpols1 em').text(parseFloat(STOCK.PER_MEASURE * 100).toFixed(2) + '%');
         },
         company_pop: function () {
             let pop2 = $('.wrap_layerpop:eq(2)');
@@ -455,8 +455,8 @@ requirejs([
 
         // 관심종목 클릭 처리 (매수)
         $('.box_tbllist:eq(0) tbody tr').on('click', function () {
-            $('.bx_tablist:eq(0) .tabmenu:eq(0)').addClass('on');
-            $('.bx_tablist:eq(0) .tabmenu:eq(1)').removeClass('on');
+            $('.bx_tablist:eq(0) .tabmenu:eq(0)').addClass('on').css('background-color', '#CAE1F7');
+            $('.bx_tablist:eq(0) .tabmenu:eq(1)').removeClass('on').css('background-color', '');
             $('.bx_tablist:eq(0) .btmtbl:eq(0)').removeClass('off').addClass('on');
             $('.bx_tablist:eq(0) .btmtbl:eq(1)').removeClass('on').addClass('off');
 
@@ -470,6 +470,10 @@ requirejs([
             $('.bx_tablist:eq(0) .btmtbl:eq(0) .numchk:eq(1)')
                 .text($(this).find('td:eq(1)').text());
             $('.bx_tablist:eq(0) .btmtbl:eq(0) input[name="ea"]').focus();
+
+            // 결재 버튼 활성화
+            $('.btn_bview').css('background-color', '#f34937');
+            $('.btn_bview span').text('매수 (완료)');
         });
 
         // 관심종목 기업정보
@@ -493,8 +497,8 @@ requirejs([
                 return item.COMP_CODE == mData.buyStock[index].COMP_CODE;
             });
 
-            $('.bx_tablist:eq(0) .tabmenu:eq(1)').addClass('on');
-            $('.bx_tablist:eq(0) .tabmenu:eq(0)').removeClass('on');
+            $('.bx_tablist:eq(0) .tabmenu:eq(1)').addClass('on').css('background-color', '#CAE1F7');
+            $('.bx_tablist:eq(0) .tabmenu:eq(0)').removeClass('on').css('background-color', '');
             $('.bx_tablist:eq(0) .btmtbl:eq(1)').removeClass('off').addClass('on');
             $('.bx_tablist:eq(0) .btmtbl:eq(0)').removeClass('on').addClass('off');
 
@@ -508,6 +512,9 @@ requirejs([
             $('.bx_tablist:eq(0) .btmtbl:eq(1) .numchk:eq(1)')
                 .text(nf.format(mData.buyStock[index].EMPL_BALQTY * stock.COMP_PRICE));
             $('.bx_tablist:eq(0) .btmtbl:eq(1) input[name="ea"]').focus();
+
+            $('.btn_bview').css('background-color', '#3c36ff');
+            $('.btn_bview span').text('매도 (완료)');
         });
 
         // 뉴스 팝업 생성
@@ -590,6 +597,8 @@ requirejs([
                 alert('수량을 선택해 주세요.');
                 return;
             }
+
+            $('.btn_bview').css('background-color', 'darkgray');
 
             $.each(tr, function () {
                 if ($(this).hasClass('on')) {

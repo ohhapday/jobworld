@@ -80,7 +80,7 @@ body{background: #f8f1e1;}
 .box_mnlft .mnl_btm .area_cpm li span{float: left; width: 50%;}
 
 
-.box_sbbtm2{float: left; width: 58%;}
+.box_sbbtm2{float: left; width: 53%;}
 .box_sbbtm2 .mnl_tp{margin-bottom: 20px; box-shadow: 5px 5px 20px #ccc;}
 .box_sbbtm2 .mnl_tp li{position: relative; float: left; height: 290px; box-sizing: border-box;}
 .box_sbbtm2 .mnl_tp li.newstit{width: 40%; padding: 20px 0 20px 25px; background: #fdc236 url(../images/ico_m1.png) no-repeat 90% 85%; box-sizing: border-box;}
@@ -150,7 +150,7 @@ body{background: #f8f1e1;}
 }
 .wrap_layerpop.prt{height: 1080px;}
 .layerpop{position: absolute; background: #fff;}
-.layerpop.pop1{top: 38px; left: 50%; width: 60%; margin-left: -30%;}
+.layerpop.pop1{top: 88px; left: 50%; width: 60%; margin-left: -30%;}
 .layerpop.pop2{top: 30px; left: 1%; width: 49%;}
 .layerpop.pop3{top: 220px; left: 50.5%; width: 45%;}
 .layerpop.pop4{width: 600px; margin-left: -300px;}

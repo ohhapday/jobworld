@@ -38,8 +38,8 @@
 		<ul class="clfix">
 			<li><a href="#">투자성향</a></li>
 			<li><a href="#">펀드</a></li>
-			<li><a href="#">채권</a></li>
 			<li><a href="#">주식</a></li>
+			<li><a href="#">채권</a></li>
 			<li><a href="#">결과보기</a></li>
 		</ul>
 	</nav>
@@ -140,22 +140,22 @@
 				<strong>추천종목</strong>
 				<!-- <a href="#" class="btn_pls"><img src="/dist/images/ico_plus.png" alt=""></a> -->
 			</div>
-			<div class="chart_mn">
+			<div class="chart_mn" style="background-color: #FFFFFF">
 				<div class="tit_bt">
 					<strong>삼성전자</strong>
 					<a href="#">기업정보 상세보기<img src="/dist/images/ico_dtarr.png" alt=""></a>
 				</div>
-				<div class="chart" style="width: 440px; height: 190px; margin: auto">
-					<canvas id="chart_01" width="400" height="170"></canvas>
+				<div class="chart" style="width: 400px; height: 190px; margin: auto;">
+					<canvas id="chart_01" width="400" height="180"></canvas>
 				</div>
 			</div>
-			<div class="chart_mn">
+			<div class="chart_mn" style="background-color: #FFFFFF">
 				<div class="tit_bt">
 					<strong>대한항공</strong>
 					<a href="#">기업정보 상세보기<img src="/dist/images/ico_dtarr.png" alt=""></a>
 				</div>
-				<div class="chart" style="width: 440px; height: 190px; margin: auto">
-					<canvas id="chart_02" width="400" height="170"></canvas>
+				<div class="chart" style="width: 400px; height: 190px; margin: auto">
+					<canvas id="chart_02" width="400" height="180"></canvas>
 				</div>
 			</div>
 		</div>
@@ -192,7 +192,9 @@
 						class="colred">한국은행이 연말까지 기준금리를 동결할 것이라는 전망에</em> 무게가 더 싣고 있는 겁니다. 기준금리 인상은 가계부채 증폭 부담이 크고 , 반면에
 				기준금리 인하는 금리 역전에 따른다.</p>
 			<div class="date align-r">
+				<!--
 				<em class="colblu">잡월드 뉴스</em><span class="l_pd">|</span><span>2017.03.23</span>
+				-->
 			</div>
 		</div>
 	</div>
@@ -203,7 +205,7 @@
 <!-- 설문조사 pop -->
 <div class="wrap_layerpop" style="display: none;">
 
-	<div class="layerpop pop1">
+	<div class="layerpop pop1" style="margin-top: -50px;">
 		<div class="box_titpop">
 			<h2>투자성향 진단하기</h2>
 			<div class="btn_close">
@@ -506,7 +508,7 @@
 <div class="wrap_layerpop" style="display: none;">
 
 	<div class="layerpop pop1">
-		<div class="box_titpop">
+		<div class="box_titpop" style="background-color: #CCCCCC">
 			<h2 class="logo"><img src="/dist/images/logo02.png" alt="" height="50px" width="250px"></h2>
 			<div class="btn_close"><button type="button">닫기</button></div>
 		</div>
@@ -516,7 +518,9 @@
 			<p class="line"></p>
 			<p class="con_txt" style="overflow-y: auto; height: 500px;">한국은행이 연내 기준금리를 낮출 것이라는 전망을 내놓았던 외국계 투자은행이 태도를 급선회했습니다. 미국 연방준비제도의 3월 기준금리 인상이 기정 사실화되자 <em class="colred">한국은행이 연말까지 기준금리를 동결할 것이라는 전망에</em> 무게가 더 싣고 있는 겁니다. 기준금리 인상은 가계부채 증폭 부담이 크고 , 반면에 기준금리 인하는 금리 역전에 따른다.</p>
 			<div class="date align-r">
+				<!--
 				<em class="colblu">서울경제</em><span class="l_pd">|</span><span>2017.03.23</span>
+				-->
 			</div>
 		</div>
 	</div>

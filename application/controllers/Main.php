@@ -433,9 +433,9 @@ class Main extends CI_Controller
             $term = new DateInterval('P15D');     // 보름단위
 
             if ($i % 2 === 0) {
-                $tmp_date = $datetime->add($term)->format('Y/m');
+                $tmp_date = $datetime->add($term)->format('m/01');
             } else {
-                $tmp_date = $datetime->add($term)->format('Y/m');
+                $tmp_date = $datetime->add($term)->format('m/01');
                 $tmp_date = '';
             }
 
