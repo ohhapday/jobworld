@@ -183,7 +183,7 @@ requirejs([
             $('.time').text(now_time);
 
             // 주식 데이터 rownum 변경
-            if (mdata.usabled === 1) {
+            if (mdata.usabled === 1 || mdata.usabled === 3) {
                 timer += 1;
                 if (timer > mdata.DATA_TYPE) {
                     timer_update();
