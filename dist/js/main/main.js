@@ -40,7 +40,7 @@ requirejs([
 
     let ui = {
         init: function () {
-            // console.log(eData);
+            console.log(eData);
         },
         drawchart: function (data, object) {
             let suggestedMin, suggestedMax;
@@ -206,7 +206,8 @@ requirejs([
                         pointRadius: 4,
                         fill: true,
                         lineTension: 0.2
-                    }]
+                    }],
+                    lineAtIndex: 12,
                 },
                 options: {
                     legend: {
@@ -217,12 +218,8 @@ requirejs([
                         text: '금리변동률'
                     },
                     tooltips: {
+                        enabled: false,
                         mode: 'label',
-                        callbacks: {
-                            /*label: function(tooltipItem, data) {
-                             return '' + tooltipItem.yLabel.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                             }*/
-                        }
                     },
                     scales: {
                         xAxes: [{
@@ -253,6 +250,31 @@ requirejs([
             config1.data.datasets[0].data = data.sales;
 
             var ctx1 = object.get(0).getContext("2d");
+
+            var originalLineDraw = Chart.controllers.line.prototype.draw;
+            Chart.helpers.extend(Chart.controllers.line.prototype, {
+                draw: function() {
+                    originalLineDraw.apply(this, arguments);
+
+                    var chart = this.chart;
+                    var ctx = chart.chart.ctx;
+
+                    var index = chart.config.data.lineAtIndex;
+                    if (index) {
+                        var xaxis = chart.scales['x-axis-0'];
+                        var yaxis = chart.scales['y-axis-0'];
+
+                        ctx.save();
+                        ctx.beginPath();
+                        ctx.moveTo(xaxis.getPixelForValue(undefined, index), yaxis.top);
+                        ctx.strokeStyle = '#ff0000';
+                        ctx.lineTo(xaxis.getPixelForValue(undefined, index), yaxis.bottom);
+                        ctx.stroke();
+                        ctx.restore();
+                    }
+                }
+            });
+
             let chart = new Chart(ctx1, config1);
         },
         company_info: function (data) {
@@ -499,6 +521,22 @@ requirejs([
 
     // 시스템 데이터와 비교하여 변경된 항목만 업데이트 처리
     let get_ajax = function (tmp) {
+        // 주식 데이터 변경
+        if (tmp.stock_rownum !== eData.stock_rownum || tmp.kos_rownum !== eData.kos_rownum) {
+            $.ajax({
+                async: false,
+                dataType: 'json',
+                type: 'get',
+                url: '/main/get_mData',
+                success: function (data, status, xhr) {
+                    mData = $.extend(true, mData, data);
+
+                    ajax.draw_chart2('005930', $('#chart_01'));
+                    ajax.draw_chart2('003490', $('#chart_02'));
+                }
+            });
+        }
+
         // 종합지수 변경
         if (eData.kos_rownum !== tmp.kos_rownum) {
 

@@ -154,9 +154,11 @@ requirejs([
     (function () {
         let timer_update = function () {
             let url = null;
-            if (mdata.STATUS.stock_STATUS == 1) {
+            /* if (mdata.STATUS.stock_STATUS == 1) {
                 url = '/admin/put_stock_rownum'
-            }
+            }*/
+            url = '/admin/put_stock_rownum';
+
             if (url !== null) {
                 $.ajax({
                     async: false,
