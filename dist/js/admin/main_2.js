@@ -1244,7 +1244,7 @@ requirejs([
                 let job017 = handle_ajax.get_table({
                     table_nm: 'job017',
                     where: ['1', '1'],
-                    // orderby: ['MKEY', 'ASC']
+                    orderby: ['ANAL_TYPE', 'ASC']
                 });
                 let $table = pop.find('.box_tbllist:eq(0) table tbody');
                 let $clone = pop.find('.box_tbllist:eq(0) tbody tr:eq(0)')
