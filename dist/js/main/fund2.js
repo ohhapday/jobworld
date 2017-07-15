@@ -12,6 +12,7 @@ requirejs([
     let nf = new Intl.NumberFormat(["en-US"]);
     let user = common.user;
     let chart = null, chart_mm = null;
+    let company_news;
 
     let eData = {                           // 실시간 데이터
         PG_LOCK: null,                      // 프로그램 중지유무
@@ -603,6 +604,7 @@ requirejs([
                 url: '/main/get_company_info',
                 success: function (data, status, xhr) {
                     ui.company_info(data);
+                    company_news = data;
                 }
             });
         }
@@ -611,15 +613,19 @@ requirejs([
     // 기본 event (1회만 처리)
     (function () {
         // 뉴스 클릭
-        $('.ar_btm_news a').on('click', function () {
-            let index = $('.ar_btm_news a').index(this);
-            let pop = $('.wrap_layerpop:eq(0)');
+        $('.bx_innm1 a').on('click', function () {
+            let index = $('.bx_innm1 a').index(this);
+            let pop = $('.wrap_layerpop:eq(6)');
+
+            let news_head = company_news['NEWS_0' + (index + 1)];
+            let news_contents = company_news['NEWS_0' + (index + 1) + '_CON'];
+            let news_tail = company_news['NEWS_0' + (index + 1) + '_TAIL'];
 
             pop.find('.box_titpop h2').text('이 시각 뉴스');
-            pop.find('.news_tit').text(mData.NEWS[index].NEWS_HEAD);
-            pop.find('.box_contpop p').html(mData.NEWS[index].NEWS_FILE);
-            pop.find('.date em').text('잡월드 뉴스');
-            pop.find('.date span:eq(1)').text(moment().format('YYYY.MM.DD'));
+            pop.find('.news_tit').text(news_head);
+            pop.find('.box_contpop p').html(news_contents.replace(/\n/g, "<br>"));
+            pop.find('.date em').text(news_tail);
+            // pop.find('.date span:eq(1)').text(moment().format('YYYY.MM.DD'));
 
             pop.fadeIn(500);
         });

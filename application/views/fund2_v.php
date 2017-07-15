@@ -744,5 +744,30 @@
 </div>
 <!-- //신규 기업정보 pop -->
 
+
+<!-- 뉴스정보 pop2 -->
+<div class="wrap_layerpop" style="display: none;">
+
+	<div class="layerpop pop1">
+		<div class="box_titpop">
+			<h2>컨텐츠 형태</h2>
+			<div class="btn_close">
+				<button type="button">닫기</button>
+			</div>
+		</div>
+		<div class="box_contpop">
+			<h3 class="news_tit">한국은행 기준 금리 동결 방침 한국은행 기준 금리 동결 방침</h3>
+			<p>한국은행이 연내 기준금리를 낮출 것이라는 전망을 내놓았던 외국계 투자은행이 태도를 급선회했습니다. 미국 연방준비제도의 3월 기준금리 인상이 기정 사실화되자 <em
+						class="colred">한국은행이 연말까지 기준금리를 동결할 것이라는 전망에</em> 무게가 더 싣고 있는 겁니다. 기준금리 인상은 가계부채 증폭 부담이 크고 , 반면에
+				기준금리 인하는 금리 역전에 따른다.</p>
+			<div class="date align-r">
+				<em class="colblu">잡월드 뉴스</em><span class="l_pd">|</span>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- //뉴스정보 pop2 -->
+
 </body>
 </html>
