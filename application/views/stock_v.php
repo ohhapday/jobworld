@@ -529,10 +529,10 @@
 					</div>
 					<div class="bx_innm clfix">
 						<ul>
-							<li class="clfix"><strong>- 종목코드 :</strong><span>009863</span></li>
-							<li class="clfix"><strong>- 최고가 :</strong><span>129,000</span></li>
-							<li class="clfix"><strong>- 최저가 :</strong><span>129,000</span></li>
-							<li class="clfix"><strong>- 신용정보 :</strong><span>BBB</span></li>
+							<li class="clfix"><strong>- 종목코드 </strong><span>009863</span></li>
+							<li class="clfix"><strong>- 최고가 </strong><span>129,000</span></li>
+							<li class="clfix"><strong>- 최저가 </strong><span>129,000</span></li>
+							<li class="clfix"><strong>- 신용정보 </strong><span>BBB</span></li>
 						</ul>
 					</div>
 					<div class="chrt" style="margin-top: 50px;">

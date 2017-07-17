@@ -72,11 +72,11 @@
 						<div class="in_right01"><p><img src="/dist/images/f_ico02.png" alt="" height="28px" width="28px"></p>
 							<p>만든 날짜</p><input type="text" size="23" value="" style="text-align: center; background-color: #eee8d8; border-width: 1px;" readonly></div>
 						<div class="in_right02"><p><img src="/dist/images/f_ico04.png" alt="" height="28px" width="28px"></p>
-							<p>보유기간(개월)</p><input type="text" size="23" value="" style="text-align: center; background-color: #eee8d8; border-width: 1px;" readonly></div>
+							<p>펀드유형</p><input type="text" size="23" value="" style="text-align: center; background-color: #eee8d8; border-width: 1px;" readonly></div>
 					</div>
 				</div>
 				<div class="" style="text-align: center;">
-					<a href="#" class="btn_buyc" style="margin-top: 15px; font-size: 40px;">
+					<a href="#" class="btn_buyc" style="margin-top: 15px; font-size: 30px;">
 						펀드 만들기
 					</a>
 				</div>
@@ -225,10 +225,10 @@
 							<tbody>
 							<tr>
 								<th scope="row">펀드명</th>
-								<td colspan="3"><input type="text" value="" placeholder="잡월드증권투자펀드" required></td>
+								<td colspan="3"><input type="text" value="" placeholder="(예시)잡월드증권투자펀드" required></td>
 							</tr>
 							<tr>
-								<th scope="row">보유기간(개월)</th>
+								<th scope="row">펀드유형</th>
 								<td>
 									<select name="">
 
