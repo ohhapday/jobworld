@@ -475,10 +475,12 @@ requirejs([
     // 기본 event (1회만 처리)
     (function () {
         // 실시간 뉴스 탭 클릭 처리
+        /*
         $('.bx_tablist:eq(0) .tabmenu').on('click', function () {
             $('.bx_tablist:eq(0) .tabmenu').toggleClass('on');
             $('.bx_tablist:eq(0) .btmtbl').toggle();
         });
+        */
 
         // 관심종목 클릭 처리 (매수)
         $('.box_tbllist:eq(0) tbody tr').on('click', function () {

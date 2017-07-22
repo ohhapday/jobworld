@@ -528,5 +528,17 @@
 </div>
 <!-- //layer pop -->
 
+<!-- 신규 애널리스트 이미지 pop -->
+<div class="wrap_layerpop" style="display: none;">
+
+	<div class="layerpop pop23">
+		<div class="">
+			<img src="/dist/images/analist/애널리스트_IT전자(내림).jpg" />
+		</div>
+	</div>
+
+</div>
+<!-- //layer pop -->
+
 </body>
 </html>

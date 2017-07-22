@@ -97,11 +97,11 @@ requirejs([
             }
         },
         fund2: function () {
-            if(mData.FUND.length > 0) {
+            if (mData.FUND.length > 0) {
                 $('.box_sbtop01 input:eq(0)').val(mData.FUND[0].FUND_NAME);
                 $('.box_sbtop01 input:eq(1)').val(nf.format(mData.FUND[0].FUND_TOT));
                 $('.box_sbtop01 input:eq(2)').val(moment().format('YYYY/MM/DD'));
-                $('.box_sbtop01 input:eq(3)').val(mData.FUND[0].FUND_DAY);
+                $('.box_sbtop01 input:eq(3)').val(mData.FUND[0].FUND_DAY + '개월');
             }
         },
         fund_detail: function () {
@@ -120,7 +120,7 @@ requirejs([
 
             console.log(mData.FUND);
 
-            if(mData.FUND.length > 0) {
+            if (mData.FUND.length > 0) {
                 $table.find('tr:not(:eq(0))').hide(500);
                 $table.find('tr:not(:eq(0))').remove();
 
@@ -171,6 +171,14 @@ requirejs([
             $.each(mData.fund_stock, function () {
                 let $clone = $table.find('tr:eq(0)').clone(true);
                 let self = this;
+
+                let tmp_index = mData.FUND[0].stock.findIndex(function (item, idx) {
+                    return item.COMP_CODE === self.COMP_CODE;
+                });
+
+                if (tmp_index > -1) {
+                    $clone.find('input[type="checkbox"]').prop('checked', 'checked');
+                }
 
                 $clone.find('td:eq(0) input').val(this.COMP_CODE);
                 $clone.find('td:eq(0) input').attr('id', 'id' + this.COMP_CODE);
@@ -335,7 +343,7 @@ requirejs([
 
             var originalLineDraw = Chart.controllers.line.prototype.draw;
             Chart.helpers.extend(Chart.controllers.line.prototype, {
-                draw: function() {
+                draw: function () {
                     originalLineDraw.apply(this, arguments);
 
                     var chart = this.chart;
@@ -367,8 +375,8 @@ requirejs([
         drawchart_mm: function (data, object) {
             let suggestedMin, suggestedMax;
 
-            suggestedMin = Math.min.apply(null, data.sales)  - 1000;
-            suggestedMax = Math.max.apply(null, data.sales)  + 1000;
+            suggestedMin = Math.min.apply(null, data.sales) - 1000;
+            suggestedMax = Math.max.apply(null, data.sales) + 1000;
 
             let config1 = {
                 type: 'line',
@@ -455,7 +463,7 @@ requirejs([
             table.find('.bx_innm1 li:eq(3) a').text(data.NEWS_04);
             table.find('.bx_innm1 li:eq(4) a').text(data.NEWS_05);
 
-            let STOCK = mData.STOCK_POP.find(function(item){
+            let STOCK = mData.STOCK_POP.find(function (item) {
                 return item.COMP_CODE == data.COMP_CODE;
             });
 
@@ -818,7 +826,7 @@ requirejs([
         }
 
         // 종합지수 변경
-        if(eData.kos_rownum !== tmp.kos_rownum) {
+        if (eData.kos_rownum !== tmp.kos_rownum) {
             $.ajax({
                 async: false,
                 dataType: 'json',

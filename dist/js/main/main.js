@@ -253,7 +253,7 @@ requirejs([
 
             var originalLineDraw = Chart.controllers.line.prototype.draw;
             Chart.helpers.extend(Chart.controllers.line.prototype, {
-                draw: function() {
+                draw: function () {
                     originalLineDraw.apply(this, arguments);
 
                     var chart = this.chart;
@@ -479,13 +479,18 @@ requirejs([
         (function () {
             $('.box_mnrtg2 li').on('click', function () {
                 let index = $('.box_mnrtg2 li').index(this);
-                let pop = $('.wrap_layerpop:eq(5)');
+                let pop = $('.wrap_layerpop:eq(6)');
 
                 let ANAL = mData.ANAL.find(function (item) {
                     return item.ANAL_TYPE == index + 1;
                 });
 
-                // pop.find('.box_titpop h2').text('애널리스트 보고서');
+                pop.find('img').attr('src', '/dist/images/analist/' + ANAL.IMG_FILE);
+
+
+                /* 2017/07/22 재수정
+
+                // pop.find('box_titpop h2').text('애널리스트 보고서');
                 pop.find('.news_tit').text(ANAL.ANAL_HEAD);
                 pop.find('.box_contpop .con_txt').html(ANAL.ANAL_FILE.replace(/\n/gi, '<br>'));
                 /*
@@ -495,7 +500,13 @@ requirejs([
 
                 pop.fadeIn(500);
             });
+
+            // 애널리스트 이미지 닫기
+            $('.wrap_layerpop:eq(6)').find('img').on('click', function () {
+                $('.wrap_layerpop:eq(6)').fadeOut(500);
+            });
         })();
+
 
         // 그래프
         ajax.draw_chart2('005930', $('#chart_01'));

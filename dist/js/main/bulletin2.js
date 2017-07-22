@@ -309,14 +309,23 @@ requirejs([
             li.on('click', function () {
                 let index = $('.dtlist:eq(1) li:not(:eq(0))').index($(this));
                 let news = mData.ANAL[index];
-                let pop = $('.wrap_layerpop:eq(0)');
+                let pop = $('.wrap_layerpop:eq(2)');
 
+                pop.find('img').attr('src', '/dist/images/analist/' + news.IMG_FILE);
+
+                /*
                 pop.find('.box_contpop h3').text(news.ANAL_HEAD);
                 pop.find('.box_contpop .con_txt').html(news.ANAL_FILE.replace(/\n/gi, '<br>'));
                 pop.find('.date em').text('잡월드 애널리스트');
                 pop.find('.date span:eq(1)').text(moment(news.INSERT_DATE).format('YYYY.MM.DD'));
+                */
 
                 pop.fadeIn(500);
+            });
+
+            // 애널리스트 이미지 닫기
+            $('.wrap_layerpop:eq(2)').find('img').on('click', function () {
+                $('.wrap_layerpop:eq(2)').fadeOut(500);
             });
         })();
     })();

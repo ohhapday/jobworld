@@ -172,6 +172,8 @@ body{background: #f8f1e1;}
 .layerpop.pop21{top: 50px; left: 50%; width: 80%; margin-left: -40%;}
 .layerpop.pop22{top: 220px; left: 44%; width: 45%; margin-left: 9%;}
 
+.layerpop.pop23{top: 88px; left: 50%; margin-left: -30%;}
+
 .layerpop .box_tbllist table th{background: #f5f5f5;}
 .layerpop .box_tblwrite.tblview th{padding-left: 20px;}
 .layerpop .box_tblwrite.tblview td{padding-left: 20px;}

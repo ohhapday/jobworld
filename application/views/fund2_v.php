@@ -236,7 +236,7 @@
 								</td>
 								<th scope="row">투자금액(원)</th>
 								<td>
-									<input type="text" value="" class="align-r" required>
+									<input type="text" value="" class="align-r" required readonly>
 								</td>
 							</tr>
 							</tbody>
